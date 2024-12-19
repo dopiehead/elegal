@@ -1,0 +1,22 @@
+.g-5{
+    gap:15px;
+}
+
+.bg-search{
+    width:18rem;
+    padding:3px;
+}
+
+.active-link{
+    font-weight: bold;
+}
+
+.navbar{
+    position: fixed;
+    width:100%;
+    top:0;
+    z-index: 2;
+    /* background-color: #b6cfbd; */
+}
+
+ 

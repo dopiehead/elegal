@@ -1,0 +1,98 @@
+.tabs-link{
+
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    gap:20px;
+
+}
+
+
+.tabs-link div{
+
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    height:150px;
+    width:210px;
+    padding:0px 20px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+
+}
+
+
+.section-volunteer img{
+width:100%;
+height:auto;
+}
+
+.volunteer-content{
+    display:flex;
+    /* justify-content:center; */
+    align-items:flex-end;
+}
+
+
+
+@media screen and (max-width:768px) {
+      
+    .volunteer-content{
+     margin-top:30px;
+    }
+   
+
+}
+
+
+   
+.volunteer-content div{
+ gap:10px;
+}
+
+.btn-dark{
+    width:25%;
+}
+
+@media screen and (max-width:768px) {
+      
+     .btn-dark{
+        width:100%;
+    }
+    
+
+}
+
+.need-container{
+    background-color: #b6cfbd;
+}
+
+.need-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:10px;
+}
+
+.connect-content img{
+   
+     height: 18rem;
+     width:13rem !important;
+     border-radius:10px;
+     object-fit: cover;
+}
+
+
+.connect-content{
+    background-image: url("../images/hero.png");
+    padding:20px 30px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.need-container{
+    background-image:url("../images/need.png");
+}

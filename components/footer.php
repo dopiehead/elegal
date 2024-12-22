@@ -1,6 +1,6 @@
 <div>
  
-     <div class='d-flex justify-content-between px-2 py-1 border-bottom border-2'>
+     <div class='d-flex justify-content-between flex-md-row flex-column px-2 py-1 border-bottom border-2'>
 
          <div>
 
@@ -40,9 +40,9 @@
 
 
 
-     <div class='d-flex justify-content-between px-2 py-3'>
+     <div class='d-flex justify-content-between flex-md-row flex-column px-2 py-3'>
 
-         <div class='d-flex justify-content-evenly g-5 mt-2'>
+         <div class='d-flex justify-content-evenly  g-5 mt-2'>
              <span>Become a volunteer</span>
              <span>Get in touch with a lawyer</span>
              <span>Privacy policy</span>

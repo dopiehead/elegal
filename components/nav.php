@@ -9,8 +9,6 @@
 
      </div>
 
-
-
      <ul class='link-container d-flex justify-content-center g-5 list-unstyled'>
 
          <li class='active-link'>Home</li>   
@@ -23,6 +21,15 @@
          <li>Library</li>                  
 
      </ul>
+
+     <div class='navigator'>
+
+         <span class='fa fa-bars d-md-none'>
+
+
+         </span>
+
+     </div>
 
 
 </div>

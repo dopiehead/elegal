@@ -12,11 +12,18 @@
 }
 
 .navbar{
-    position: fixed;
-    width:100%;
-    top:0;
-    z-index: 2;
+     position: fixed;
+     width:100%;
+     top:0;
+     z-index: 2;
     /* background-color: #b6cfbd; */
+}
+
+@media only screen and (max-width:768px){
+   .link-container{
+     display:none !important;
+   }
+
 }
 
  

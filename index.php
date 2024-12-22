@@ -902,6 +902,172 @@
 
 </div>
 
+<br><br>
+
+
+ <div class='px-3 mt-5 d-flex justify-content-between g-3 flex-md-row flex-column'>
+     
+     <div class=' p-2 border border-2 border-success rounded seeker-container'>
+  
+             <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
+
+             <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+
+         <div class='d-flex justify-content-end bg-seeker'>
+
+             <div class='w-25'>
+
+                 <img class='w-75 h-auto shadow-md' src="assets/images/seeker.png" alt="elegal"> 
+                 
+             </div>
+             
+         </div>
+
+     </div>
+
+
+
+         <div class='p-2 border border-2 border-success  seeker-container rounded'>
+  
+              <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
+
+              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+ 
+              <div class='d-flex justify-content-end bg-seeker'>
+
+                   <div class='w-25'>
+
+                        <img class='w-75 h-auto shadow-md' src="assets/images/chess.png" alt="elegal"> 
+      
+                  </div>
+  
+             </div>
+
+         </div>
+
+
+
+         <div class=' p-2 border border-2 border-success  seeker-container rounded'>
+  
+              <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
+
+              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+ 
+              <div class='d-flex justify-content-end bg-seeker'>
+
+                   <div class='w-25'>
+
+                        <img class='w-75 h-auto shadow-md' src="assets/images/seeker.png" alt="elegal"> 
+      
+                  </div>
+  
+             </div>
+
+         </div>
+
+
+         <div class='p-2 border border-2 border-success  seeker-container rounded'>
+  
+              <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
+
+              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+ 
+              <div class='d-flex justify-content-end bg-seeker'>
+
+                   <div class='w-25'>
+
+                        <img class='w-75 h-auto shadow-md' src="assets/images/chess.png" alt="elegal"> 
+      
+                  </div>
+  
+             </div>
+
+         </div>         
+
+
+     </div>
+
+     <br><br>
+
+
+
+
+
+     <div class='d-flex justify-content-between connect-home px-3 flex-md-row flex-column'>
+           
+          <div class='d-flex justify-content-between g-3 connect-container border border-success px-2 py-3'>
+
+              <div class='d-flex justify-content-center  align-items-start flex-row flex-column w-100'>
+
+                   <p class='text-sm'>Find out <b>who is hiring</b> today!
+                          Get connected to reputable firms with the click of a button.</p>
+                   <a class='btn btn-dark text-white text-sm w-75' href="">Get started</a>
+
+             </div>
+
+         <div class='image-container-profile'>
+
+               <img class='profiler w-100' src="assets/images/profile.png" alt="">
+
+         </div>
+
+     </div>
+
+
+         <div class='d-flex justify-content-between g-3  connect-container border  border-success px-2 py-3'>
+
+                 <div class='d-flex justify-content-center  align-items-start flex-row flex-column w-100'>
+
+                      <p class='text-sm'>Find out <b>who is hiring</b> today!
+                         Get connected to reputable firms with the click of a button.</p>
+                      <a class='btn btn-dark text-white text-sm w-75' href="">Get started</a>
+
+                  </div>
+
+                  <div class='image-container-profile'>
+
+                       <img class='profiler w-100' src="assets/images/profile.png" alt="">
+
+                  </div>
+         </div>
+
+     </div>
+
+     <br><br>
+
+
+
+
+
+
+
+     <div class='d-flex banner-learn border border-success px-3 py-2'>
+
+         <div class='banner-learn-content d-flex h-100'>
+
+             <div>
+
+                 <br>
+
+             <h3>Learn about <b>historical people</b> and past heroes in the legal world here!</h3>
+
+             <a class='btn btn-success text-white w-25' href="">Explore</a>
+            
+            </div>
+
+         </div>
+
+
+         <div class='d-flex justify-content-end banner-learn-img'>
+             
+              <img class='shadow' src="assets/images/chess-table.png" alt="elegal">
+
+         </div>
+
+
+
+     </div>
+
 
 
      <br><br><br>

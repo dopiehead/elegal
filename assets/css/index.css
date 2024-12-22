@@ -240,9 +240,23 @@ height:auto;
      gap:5px;
 }
 
+
 .group-container{
      width:17rem;
 }
+
+
+@media screen and (max-width:768px) {
+
+     .group-home{
+          
+        flex-direction: column;
+     }
+
+}
+
+
+
 
 @media screen and (max-width:768px) {
 

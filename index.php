@@ -1074,7 +1074,7 @@
          
          <h4 class='fw-bold'> Groups you may like</h4><br>
 
-         <div>
+         <div class='d-flex group-home justify-content-between'>
 
              <div class='group-container shadow pb-2'>
 
@@ -1094,6 +1094,70 @@
                  </div>
 
              </div>
+
+
+
+
+             <div class='group-container shadow pb-2'>
+
+                  <img class='w-100' src="assets/images/book.png" alt="">
+
+                  <div class='d-flex flex-row flex-column g-1 px-2 py-2'>
+                       <h5 class='fw-bold'>Law school ‘23</h5>
+                       <span>Graduants of law school 2023</span>
+                       <span class='text-sm text-secondary'>36 members</span>
+                       <span class='text-secondary text-sm'>8 posts</span>
+                       <span class='text-secondary text-sm'>opened June 2024</span>
+                           <br>
+                         <div>
+                             <a class='border border-success px-3 py-1' href="">Join</a>
+                         </div>
+
+                  </div>
+
+             </div> 
+ 
+             <div class='group-container shadow pb-2'>
+
+                 <img class='w-100' src="assets/images/group-paper.png" alt="">
+
+                 <div class='d-flex flex-row flex-column g-1 px-2 py-2'>
+                     <h5 class='fw-bold'>Law school ‘23</h5>
+                     <span>Graduants of law school 2023</span>
+                     <span class='text-sm text-secondary'>36 members</span>
+                     <span class='text-secondary text-sm'>8 posts</span>
+                     <span class='text-secondary text-sm'>opened June 2024</span>
+                     <br>
+                     <div>
+                         <a class='border border-success px-3 py-1' href="">Join</a>
+                     </div>
+
+                 </div>
+
+             </div>
+
+
+
+             <div class='group-container shadow pb-2'>
+
+             <img class='w-100' src="assets/images/groupie.png" alt="">
+
+                 <div class='d-flex flex-row flex-column g-1 px-2 py-2'>
+                     <h5 class='fw-bold'>Law school ‘23</h5>
+                     <span>Graduants of law school 2023</span>
+                     <span class='text-sm text-secondary'>36 members</span>
+                     <span class='text-secondary text-sm'>8 posts</span>
+                     <span class='text-secondary text-sm'>opened June 2024</span>
+                     <br>
+                     <div>
+                         <a class='border border-success px-3 py-1' href="">Join</a>
+                     </div>
+
+                 </div>
+
+             </div>
+
+
 
 
 

@@ -632,7 +632,7 @@
 
     <br>
 
-      <h2 class='w-25 text-white fw-bold'>  Can’t afford a lawyer? We are here for you</h2>
+      <h2 class=' text-white fw-bold'>  Can’t afford a lawyer? We are here for you</h2>
 
       <br>
 
@@ -1088,7 +1088,7 @@
                     <span class='text-secondary text-sm'>opened June 2024</span>
                     <br>
                     <div>
-                         <a class='border border-success px-3 py-1' href="">Join</a>
+                         <a class='text-secondary border border-success px-3 py-1' href="">Join</a>
                     </div>
 
                  </div>
@@ -1107,7 +1107,7 @@
                        <span class='text-secondary text-sm'>opened June 2024</span>
                            <br>
                          <div>
-                             <a class='border border-success px-3 py-1' href="">Join</a>
+                             <a class='border border-success px-3 py-1 text-secondary' href="">Join</a>
                          </div>
 
                   </div>
@@ -1126,7 +1126,7 @@
                      <span class='text-secondary text-sm'>opened June 2024</span>
                      <br>
                      <div>
-                         <a class='border border-success px-3 py-1' href="">Join</a>
+                         <a class='border text-secondary border-success px-3 py-1' href="">Join</a>
                      </div>
 
                  </div>
@@ -1147,7 +1147,7 @@
                      <span class='text-secondary text-sm'>opened June 2024</span>
                      <br>
                      <div>
-                         <a class='border border-success px-3 py-1' href="">Join</a>
+                         <a class='border border-success px-3 py-1 text-secondary' href="">Join</a>
                      </div>
 
                  </div>

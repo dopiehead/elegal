@@ -59,14 +59,27 @@ height:auto;
 @media screen and (max-width:768px) {
       
      .btn-dark{
-        width:100%;
+         width:100%;
     }
     
 
 }
 
 .need-container{
-    background-color: #b6cfbd;
+     background-color: #b6cfbd;
+}
+
+
+.need-container h2{
+     width: 25%;
+}
+
+
+@media screen and (max-width:768px) {
+  
+    .need-container h2{
+         width: 80%;
+    } 
 }
 
 .need-content{
@@ -251,6 +264,7 @@ height:auto;
      .group-home{
           
         flex-direction: column;
+        gap:15px;
      }
 
 }

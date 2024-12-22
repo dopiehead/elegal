@@ -993,9 +993,9 @@
 
 
 
-     <div class='d-flex justify-content-between connect-home px-3 flex-md-row flex-column'  data-aos='fade-up'>
+     <div class='d-flex justify-content-between connect-home px-3 flex-md-row flex-column' >
            
-          <div class='d-flex justify-content-between g-3 connect-container border border-success px-2 py-3'>
+          <div class='d-flex justify-content-between g-3 connect-container border border-success px-2 py-3'  data-aos='fade-right'>
 
               <div class='d-flex justify-content-center  align-items-start flex-row flex-column w-100'>
 
@@ -1014,7 +1014,7 @@
      </div>
 
 
-         <div class='d-flex justify-content-between g-3  connect-container border  border-success px-2 py-3'>
+         <div class='d-flex justify-content-between g-3  connect-container border  border-success px-2 py-3' data-aos='fade-left'>
 
                  <div class='d-flex justify-content-center  align-items-start flex-row flex-column w-100'>
 

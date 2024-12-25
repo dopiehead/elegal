@@ -1158,7 +1158,123 @@
 
      </div>
 
-     <br><br><br>
+     <br><br>
+    
+     <div class='px-2' data-aos='fade-up'>
+
+         <h4 class='fw-bold'>Watch videos you may like</h4>
+
+         <br>
+
+
+         <div class="d-flex video-container justify-content-evenly g-3">
+
+             <div>
+                 <span>Law school ‘23</span>
+                  <video  controls>
+                   
+                     <source src="assets/videos/vecteezy.mp4">
+                   
+                  </video>
+              
+             </div>
+
+             <div>
+                  <span>Law school ‘23</span>
+                  <video  controls>
+
+                     <source src="assets/videos/video.mp4">
+                   
+                  </video>
+        
+             </div>
+
+             <div>
+                 <span>Law school ‘23</span>
+                 <video controls>
+
+                     <source src="assets/videos/vecteezy.mp4">
+
+                 </video>
+       
+             </div>
+
+             <div> 
+                 <span>Law school ‘23</span>
+                 <video controls>
+
+                     <source src="assets/videos/video.mp4">
+                     
+                 </video>
+              
+                     
+             </div>
+
+         </div>
+
+
+
+
+     </div>
+
+     <br><br>
+
+     <h4 class='mt-5 px-2 fw-bold'>News & Articles</h4>
+
+     <div class="news px-2 mt-5" data-aos='fade-up'>
+
+         <div class='d-flex flex-row flex-column'>
+
+             <img src="assets/images/Frame 37.png" alt="elegal">
+             
+              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
+
+              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
+
+         </div>
+
+         <div class='d-flex flex-row flex-column'>
+
+              <img src="assets/images/Frame 38.png" alt="elegal">
+
+              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
+
+              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
+
+         </div>
+
+
+         <div class='d-flex flex-row flex-column'>
+
+             <img src="assets/images/Frame 39.png" alt="elegal">
+             
+              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
+
+              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
+
+         </div>
+
+
+         <div class='d-flex flex-row flex-column'>
+
+             <img src="assets/images/Frame 40.png" alt="elegal">
+             
+              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
+
+              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
+
+         </div>
+
+
+     </div>
+
+
+
+     <br><br>
+     
+     <br><br>
+     
+     <br>
 
      <?php include 'components/footer.php'; ?> 
      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

@@ -925,8 +925,6 @@
 
      </div>
 
-
-
          <div class='p-2 border border-2 border-success  seeker-container rounded'>
   
               <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>

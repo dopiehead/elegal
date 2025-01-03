@@ -8,6 +8,11 @@
 }
 
 
+.navbar .home-link{
+    font-weight:bold;
+}
+
+
 .tabs-link div{
 
     flex-wrap: wrap;

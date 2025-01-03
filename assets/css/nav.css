@@ -18,6 +18,16 @@
      z-index: 2;
     /* background-color: #b6cfbd; */
 }
+.link-container li a{
+    text-decoration: none;
+    color:rgb(44, 43, 43);
+}
+
+
+.link-container li a:hover{
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+}
 
 @media only screen and (max-width:768px){
    .link-container{

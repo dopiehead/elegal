@@ -255,28 +255,7 @@
 
  <br>
 
- <div class='container mt-3'>
-
-      <div class='text-center px-3 py-2'  data-aos='zoom-in' data-aos-easing='ease-out-cubic'>
-
-          <div class='mb-2'>
-
-               <h5 class='my-2 fw-bold'>Want to get noticed? Run an advert here!</h5>
-           
-              <img class='w-75 h-auto' src="assets/images/advert/ad-image.png" alt="elegal">
-
-          </div>
-
-          <div class='text-center'>
-
-                 <span class='border-bottom'>Run an ad here</span>
-
-          </div>
-
-      </div>
-
-
- </div>
+<?php include "components/advert.php"; ?>
 
  <br><br>
 
@@ -675,7 +654,7 @@
 
                    <div class='d-flex justify-content-between mt-2 g-3'>
                      <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                     <a class='btn border border-success text-success text-sm' href="">View Profile</a>
+                     <a class='btn border border-success text-success text-sm' href="profile.php?id=1&&user_type=lawyer">View Profile</a>
                    </div>
 
               </div>
@@ -1276,9 +1255,9 @@
 
      <?php include 'components/footer.php'; ?> 
      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+     <script>
+          AOS.init();
+     </script>
 </body>
 </html>
 

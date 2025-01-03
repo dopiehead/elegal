@@ -1,7 +1,7 @@
 <div class='navbar d-flex justify-content-between py-3 shadow bg-light '>      
     
      <div class='logo-container'>
-           LOGO    
+           <a href='index.php'>LOGO</a>  
      </div>
 
      <div>
@@ -11,14 +11,14 @@
 
      <ul class='link-container d-flex justify-content-center g-5 list-unstyled'>
 
-         <li class='active-link'>Home</li>   
-         <li>Lawyers</li>   
-         <li>Firms</li>  
-         <li>Customers</li> 
-         <li>Practice Areas</li>  
-         <li>Court</li> 
-         <li>jobs</li>  
-         <li>Library</li>                  
+         <li class='home-link'><a href='index.php'>Home</a></li>   
+         <li class='law-link'><a href='lawyers.php'>Lawyers</a></li>   
+         <li class='firm-link'><a href='firm.php'>Firms</a></li>  
+         <li class='customer-link'><a href='customers.php'>Customers</a></li> 
+         <li class='practice-link'><a href='practice-areas.php'>Practice Areas</a></li>  
+         <li class='court-link'><a href='court.php'>Court</a></li> 
+         <li class='jobs-link'><a href='jobs.php'>jobs</a></li>  
+         <li class='library-link'><a href='library.php'>Library</a></li>                  
 
      </ul>
 

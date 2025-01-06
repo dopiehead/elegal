@@ -7,66 +7,69 @@
 </head>
 <body class='bg-light'>
 
-     <?php include ("components/nav.php"); ?>
-     
-     <br><br>
+    <?php include("components/nav.php"); ?>
 
-     <div class="px-3 mt-5 d-flex flex-row flex-column">
-        
-         <h2 class="fw-bold">Create a job description</h2>
-         <span class='text-sm'>Tell us your expectations</span>
-        
-     </div>
-     <br>
+    <br><br>
 
-     <div class='container mt-3'>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
 
-          <div class='jumbotron'>
+                        <h2 class="fw-bold text-center mb-4">Create a job description</h2>
+                        <p class="text-center text-muted mb-4">Tell us your expectations</p>
 
-              <form>
-                  
-                  <label class='text-sm' for="job_title">Job title <span class='text-danger'>*</span></label>
+                        <form method="POST" action="submit_job.php">
+                            <div class="mb-3">
+                                <label class="form-label" for="job_title">Job title <span class='text-danger'>*</span></label>
+                                <input type="text" id="job_title" name="job_title" class="form-control" required>
+                            </div>
 
-                  <input type="text" class='form-control'><br>
+                            <div class="mb-3">
+                                <label class="form-label" for="responsibilities">Responsibilities <span class='text-danger'>*</span></label>
+                                <input type="text" id="responsibilities" name="responsibilities" class="form-control" required>
+                            </div>
 
-                  <label class='text-sm' for="job_title">Responsibilities <span class='text-danger'>*</span></label>
+                            <div class="mb-3">
+                                <label class="form-label" for="experience_level">Experience level of Candidate <span class='text-danger'>*</span></label>
+                                <input type="text" id="experience_level" name="experience_level" class="form-control" placeholder="1 year" required>
+                            </div>
 
-                  <input type="text" class='form-control'><br>
+                            <div class="mb-3">
+                                <label class="form-label" for="work_mode">Work mode <span class='text-danger'>*</span></label>
+                                <input type="text" id="work_mode" name="work_mode" class="form-control" placeholder="Remote" required>
+                            </div>
 
-                  <label class='text-sm' for="job_title">Experience level of Candidate <span class='text-danger'>*</span></label>
+                            <div class="mb-3">
+                                <label class="form-label" for="work_benefits">Work benefits <span class='text-danger'>*</span></label>
+                                <input type="text" id="work_benefits" name="work_benefits" class="form-control" required>
+                            </div>
 
-                  <input type="text" class='form-control' placeholder="1 year"><br>
+                            <div class="mb-3">
+                                <label class="form-label" for="remuneration">Renumeration <span class='text-danger'>*</span></label>
+                                <input type="text" id="remuneration" name="remuneration" class="form-control" placeholder='NGN 400,000' required>
+                            </div>
 
-                  <label class='text-sm' for="job_title">Work mode <span class='text-danger'>*</span></label>
+                            <div class="mb-3">
+                                <label class="form-label" for="job_requirements">Job requirements <span class='text-danger'>*</span></label>
+                                <textarea id="job_requirements" name="job_requirements" class="form-control" rows="5" required></textarea>
+                            </div>
 
-                  <input type="text" class='form-control' placeholder="Remote"><br>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark w-100 py-2">Create</button>
+                            </div>
+                        </form>
 
-                  <label class='text-sm' for="job_title">Work benefits <span class='text-danger'>*</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                  <input  type="text" class='form-control'><br>
+    <br><br>
+    <?php include("components/footer.php"); ?>
 
-                  <label class='text-sm' for="job_title">Renumeration <span class='text-danger'>*</span></label>
-
-                  <input type="text" class='form-control' placeholder ='NGN 400,000'><br>
-
-                  <label for="job_title">Job requirements <span class='text-danger'>*</span></label>
-
-                  <textrea class='form-control h-25'>
-
-
-                  </textrea>
-                  <br>
-                  <button class='btn btn-dark form-control'>Create</button>
-
-              </form>
-
-
-          </div>
-
-     </div>
-
-     <br><br>
-     <?php include ("components/footer.php"); ?>
-    
 </body>
+
 </html>

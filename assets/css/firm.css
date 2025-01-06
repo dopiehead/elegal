@@ -1,0 +1,63 @@
+.navbar .firm-link{
+    font-weight:bold;
+}
+
+
+
+.package-container{
+     display: flex;
+     justify-content:flex-start;
+     flex-wrap: wrap;
+     gap:25px;
+}
+
+@media screen  and (max-width: 768px)    {
+    .package-container{
+         justify-content: center;
+         gap: 15px;
+    
+    }    
+}
+
+
+
+
+.package{
+     width:17rem;
+     height:28em;
+     box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+}
+
+.package img{
+     width: 100%;
+     height: 17em;
+     object-fit: cover;
+}
+
+.find-out,.btn-viewjobs{
+     width: 50%;
+}
+
+@media screen  and (max-width:768px){
+    .find-out,.btn-viewjobs{
+        width: 100%;
+    }  
+
+
+}
+
+.img-background{
+     padding:30px 20px;
+     background:url("../images/circles.png");
+     background-size: cover;
+     background-position:100% 100%;
+     background-repeat: no-repeat;
+     display: flex;
+     justify-content: flex-end;
+
+}
+
+.img-background img{
+     height:auto ;
+     max-width:250px;
+}

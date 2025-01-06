@@ -14,10 +14,10 @@
          <li class='home-link'><a href='index.php'>Home</a></li>   
          <li class='law-link'><a href='lawyers.php'>Lawyers</a></li>   
          <li class='firm-link'><a href='firm.php'>Firms</a></li>  
-         <li class='customer-link'><a href='customers.php'>Customers</a></li> 
+         <li class='user-link'><a href='users.php'>Users</a></li> 
          <li class='practice-link'><a href='practice-areas.php'>Practice Areas</a></li>  
          <li class='court-link'><a href='court.php'>Court</a></li> 
-         <li class='jobs-link'><a href='jobs.php'>jobs</a></li>  
+         <li class='jobs-link'><a href='jobs.php'>Jobs</a></li>  
          <li class='library-link'><a href='library.php'>Library</a></li>                  
 
      </ul>

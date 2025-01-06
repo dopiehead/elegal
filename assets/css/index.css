@@ -70,62 +70,6 @@ height:auto;
 
 }
 
-.need-container{
-     background-color: #b6cfbd;
-}
-
-
-.need-container h2{
-     width: 25%;
-}
-
-
-@media screen and (max-width:768px) {
-  
-    .need-container h2{
-         width: 80%;
-    } 
-}
-
-.need-content{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap:10px;
-}
-
-.connect-content img{
-   
-     height: 18rem;
-     width:13rem !important;
-     border-radius:10px;
-     object-fit: cover;
-}
-
-
-.connect-content{
-    background-image: url("../images/hero.png");
-    padding:20px 30px;
-    background-size: cover;
-    background-position: center;
-}
-
-
-.need-container{
-    background-image:url("../images/need.png");
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 .bg-seeker{
     background-image:url("../images/circles.png"); 

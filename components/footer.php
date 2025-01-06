@@ -1,4 +1,4 @@
-<div>
+<div style='box-shadow:3px 0px 0px rgba(0,0,0,0.3)'>
  
      <div class='d-flex justify-content-between flex-md-row flex-column px-2 py-1 border-bottom border-2'>
 
@@ -52,7 +52,7 @@
 
          <div>
           
-              <span>Abous us</span>
+              <span>About us</span>
 
          </div>
 

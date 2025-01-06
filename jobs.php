@@ -1,0 +1,108 @@
+<?php
+
+     require ("engine/config.php");
+
+     $stmt = mysqli_query($conn,'SELECT * FROM lawyer_firm');
+
+?>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice areas</title>
+    <?php include ('components/links.php'); ?>
+    <link rel="stylesheet" href="assets/css/jobs.css">
+    <title>Jobs</title>
+   
+</head>
+<body class='bg-light'>
+     <?php include("components/nav.php"); ?> 
+     <br><br>
+     <div class='px-3 mt-5'>
+
+        <h4 class='fw-bold'>Discover the perfect job for you</h4>
+        <span class='text-sm'>Connect with firms today!</span>
+
+     </div>
+     <br><br>
+
+     <div>
+          
+     <div class='package-container mt-4 px-3' data-aos='fade-up'>
+
+     <?php 
+
+         while($firm = mysqli_fetch_array($stmt)){
+
+             if($firm){
+
+                  include('components/firm-content.php');
+
+
+     ?>
+
+                <div class='package shadow'>
+
+                          <img src="<?php echo htmlspecialchars($firm_img); ?>" alt="">
+
+                         <div class='px-3 d-flex flex-row flex-column  mt-1'>
+
+                              <span class='text-dark fw-bold'><?php echo htmlspecialchars($firm_name); ?></span>
+                              <span class='text-secondary text-sm mt-2'><?php echo htmlspecialchars($nooflawyers); ?></span>
+                              <span class="text-secondary text-sm"><?php echo htmlspecialchars($found_date); ?></span>
+                              <span class="text-sm text-secondary"><?php echo htmlspecialchars($firm_location); ?></span>
+
+                              <div>
+                                  <span class='fa fa-star'></span>
+                                  <span class='fa fa-star'></span>
+                                  <span class='fa fa-star'></span>
+                                  <span class='fa fa-star'></span>
+                                   <span class='fa fa-star'></span>
+                             </div>
+
+                        <div class='d-flex justify-content-between mt-1'>
+                          
+                             <a class='btn btn-success text-white text-sm' href="">Apply</a>
+
+                             <a class='btn border border-2 border-success rounded text-success text-sm' href="">View Profile</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+<?php 
+
+            }
+
+        }
+
+?>
+
+          </div>
+
+     </div>
+
+     <div class='mt-3 px-2' data-aos='fade-left'>
+         
+         <a class='text-dark border-bottom border-bottom-2 border-bottom-dark' href="">Are you hiring? Create a job application here</a>
+       
+     </div>
+
+
+     <br><br>
+     <?php include("components/footer.php"); ?>
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+     <script>
+
+         AOS.init({     
+             duration: 500,   // Transition duration in ms (1.2 seconds)
+             easing: 'ease-in-out',   // Easing function for transition
+
+    });
+  </script>
+</body>
+</html>

@@ -168,15 +168,15 @@
           
          <div class='d-flex flex-md-row flex-column'>
               
-             <div class='col-md-3' data-aos='fade-in-left' data-aos-delay="300">
+             <div class='col-md-3' data-aos='fade-right' data-aos-delay="300">
                  
                  <img src="assets/images/guy-smiling.png" alt="elegal">
          
              </div>
 
-             <div class='col-md-9 volunteer-content' data-aos='fade-in-right'>
+             <div class='col-md-9 volunteer-content'>
 
-                  <div class='d-flex flex-row flex-column '>
+                  <div class='d-flex flex-row flex-column'  data-aos='fade-left'>
                   
                        <h3 class='fw-bold'>Volunteer with us</h3>
 
@@ -607,19 +607,7 @@
  <br> <br>
 
 
- <div class='need-container px-3 py-5' data-aos='zoom-in-up'>
-
-    <br>
-
-      <h2 class=' text-white fw-bold'>  Can’t afford a lawyer? We are here for you</h2>
-
-      <br>
-
-      <a class='bg-white px-2 py-1 text-dark text-sm' href="">Get a lawyer</a>
-
-      <br>
-
- </div>
+<?php include ('components/afford.php'); ?>
 
  <br><br>
 

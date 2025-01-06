@@ -74,7 +74,7 @@
                                           <div class='d-flex justify-content-between mt-2'>
 
                                              <a class='btn text-success border border-2 border-success px-2 rounded text-sm' href="">Send message</a>
-                                             <a class='btn btn-success text-white px-2 text-sm' href="">View Profile</a>
+                                             <a class='btn btn-success text-white px-2 text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
 
                                          </div>
 

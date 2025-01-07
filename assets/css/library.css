@@ -14,10 +14,11 @@
 
 @media screen and (max-width: 768px){
     
-    .package-container,.package-article{
-         justify-content:center; ;
-         flex-direction: column;
-         gap:15px;
+    .package-container{
+         
+           justify-content:center !important; 
+           flex-direction: column;
+           gap:15px;
     }
 }
 

@@ -25,13 +25,13 @@
      <ul class="d-flex justify-content-center login-container g-4 list-unstyled">
         
          <li class="mx-2">
-             <a href="#" class="text-dark text-decoration-none p-2 hover:bg-secondary rounded transition duration-300">
+             <a href="login.php" class="text-dark text-decoration-none p-2 hover:bg-secondary rounded transition duration-300">
                    Login
              </a>
          </li>
 
          <li class="mx-2">
-             <a href="#" class="bg-secondary text-white rounded-pill px-4 py-2 text-decoration-none hover:bg-dark transition duration-300">
+             <a href="create-account.php" class="bg-secondary text-white rounded-pill px-4 py-2 text-decoration-none hover:bg-dark transition duration-300">
                Register
              </a>
          </li>

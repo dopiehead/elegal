@@ -1,0 +1,16 @@
+.welcome_background{
+     background-image: linear-gradient(to right top,rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url("../images/1763.jpg");
+     background-size: cover;
+     background-position: center;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height:100%;
+}
+
+.welcome-container{
+     width: 60%;
+     text-align: center;
+     color: #fff;
+     backdrop-filter: blur(15px);
+}

@@ -1,0 +1,54 @@
+.create_background{
+
+    background-image: linear-gradient(to right,rgba(0,0,0,0.9),rgba(0,0,0,0.7)),url("../images/35360.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height:100vh;
+
+}
+
+/* .heading-container{
+   position: relative;
+   left:0;
+} */
+
+
+.create-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    height: 100%;
+    width:70%;
+    backdrop-filter: blur(5px);
+ 
+} 
+
+@media screen and (max-width:768px){
+
+    .create-container{
+
+        min-height: 100%;
+        width:90%;  
+    }
+
+}
+
+
+
+
+label{
+    margin-top:18px;
+}
+
+input{
+    width:100%;
+}
+
+
+
+select:focus,input:focus,textarea:focus{
+ border:1px solid transparent;
+ outline:1px solid transparent;
+}

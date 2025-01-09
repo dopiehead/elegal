@@ -20,7 +20,7 @@
 
          <div class='container'>
 
-             <h4 class='text-white fw-bold mt-5'>Sign up to join E-legal</h4>
+             <h5 class='text-white fw-bold mt-5'>Sign up to join E-legal</h5>
  
          </div>
 

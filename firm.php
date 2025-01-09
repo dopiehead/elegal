@@ -69,7 +69,7 @@
                                    
                                       <a class='btn btn-success text-white text-sm' href="">Get in Touch</a>
 
-                                      <a class='btn border border-2 border-success rounded text-success text-sm' href="">View Profile</a>
+                                      <a class='btn border border-2 border-success rounded text-success text-sm' href="firm-profile.php?id=<?php echo htmlspecialchars($firm_id); ?>">View Profile</a>
 
                                  </div>
 

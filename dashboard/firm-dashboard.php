@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js'></script>
     <link rel="stylesheet" href="../assets/css/dashboard/firm-dashboard.css">
@@ -123,7 +124,7 @@
 
                  <div class='b-part px-3'>
 
-                           <div class='table-container'></div>
+                           <div class='table-container container'></div>
 
 
                  </div>
@@ -137,15 +138,48 @@
      <br><br>
 
      <script>
-
-        $("#clients_onboard").click(function(){
-      
-            $(".table-container").load("../components/dashboard/clients-onboard.php");
-        });
-
-        
-       
+             $(document).ready(function () {
+              $("#clients_onboard").trigger("click");
+             });
      </script>
+
+     <script>
+
+    function loadContent(page) {
+         $(".table-container").load(page).focus();
+    }
+
+    $("#clients_onboard").click(function() {
+         loadContent("../components/dashboard/clients-onboard.php");
+    });
+
+    $("#ongoing_cases").click(function() {
+         loadContent("../components/dashboard/ongoing_cases.php");
+    });
+
+    $("#concluded_cases").click(function() {
+         loadContent("../components/dashboard/concluded_cases.php");
+    });
+
+    $("#lawyers_onboard").click(function() {
+         loadContent("../components/dashboard/lawyers_onboard.php");
+    });
+
+    $("#case_definition").click(function() {
+         loadContent("../components/dashboard/case_definition.php");
+    });
+
+    $("#money_in").click(function() {
+         loadContent("../components/dashboard/money_in.php");
+    });
+
+    $("#money_out").click(function() {
+         loadContent("../components/dashboard/money_out.php");
+    });
+
+
+</script>
+
  
 </body>
 </html>

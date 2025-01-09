@@ -83,6 +83,17 @@ li{
 
 }
 
+table{
+     border-collapse: collapse;
+     width: 100%;
+     padding:20px;
+}
+
 .text-sm{
     font-size:14px;
+}
+
+.canvas{
+     width:100%;
+     max-height:500px;
 }

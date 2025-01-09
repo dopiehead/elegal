@@ -1,4 +1,5 @@
-<h3 class='fw-bold mb-3 mt-2'>Clients on board</h3>
+
+<h3 class='fw-bold mb-3 mt-2'>Concluded cases</h3>
 
 
 <table class=' table table-responsive table-striped table-hover w-100 text-sm px-2'>

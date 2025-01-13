@@ -1,6 +1,6 @@
 
+<?php require ('../../engine/config.php'); ?>
 <h3 class='fw-bold mb-3 mt-2'>Concluded cases</h3>
-
 
 <table class=' table table-responsive table-striped table-hover w-100 text-sm px-2'>
 
@@ -21,33 +21,41 @@
 
 <tbody>
 
-    <tr>
+<?php 
 
-        <td>Alan Walker</td>
-        <td>Nneka Harry</td>
-        <td>4320</td>                                 
-        <td>Ongoing</td>                                 
-        <td>50%</td>                                 
-        <td><span class='text-danger'>50%</span></td>
+$get= mysqli_query($conn,"SELECT * FROM court_cases WHERE case_status = 1"); 
+
+     if($get){
+
+        while($row = mysqli_fetch_array($get)) {
+          
+?>
+
+     <tr class='text-capitalize'>
+
+          <td><?php echo htmlspecialchars($row['client']);?></td>
+          <td><?php echo htmlspecialchars($row['lawyer']);?></td>
+          <td><?php echo htmlspecialchars($row['court_case']);?></td>                                 
+          <td> <?php  echo ($row['case_status'] == '0') ? "on going" : "case concluded"; ?></td>                                 
+          <td><?php echo htmlspecialchars($row['paid']);?></td>                                 
+          <td><span class='text-danger'><?php if($row['unpaid']==0){ echo "settled";} else{ echo htmlspecialchars($row['unpaid']);};?></span></td>
+          <td><a class='text-primary conclude_cases text-decoration-unline' id='<?php echo htmlspecialchars($row['id']); ?>'>view details</a></td>
 
 
-    </tr>
+     </tr>
 
-    <tr>
+<?php
+    
+       }
+    }
 
-        <td>Alan Walker</td>
-        <td>Nneka Harry</td>
-        <td>4320</td>                                 
-        <td>Ongoing</td>                                 
-        <td>50%</td>                                 
-        <td><span class='text-danger'>50%</span></td>
-
-
-    </tr>
+?>
 
 </tbody>
 
-
-
-
 </table>
+
+
+
+
+

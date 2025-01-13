@@ -1,7 +1,7 @@
 <div class="chart-container">
      <h3 class='fw-bold mb-3 mt-2'>Money out</h3>
 
-     <div class='d-flex justify-content-around flex-md-row flex-row'>
+     <div class='d-flex justify-content-around flex-column flex-md-row gap-md-3'>
 
          <div class='shadow p-4 rounded rounded-3'>           
              <h6 class='fw-bold'>Total money</h6>

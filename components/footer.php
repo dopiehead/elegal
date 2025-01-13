@@ -43,7 +43,7 @@
      <div class='d-flex justify-content-between flex-md-row flex-column px-2 py-3'>
 
          <div class='d-flex justify-content-evenly  g-5 mt-2'>
-             <span>Become a volunteer</span>
+             <span><a class='text-dark text-decoration-none volunteer-footer' href='volunteer.php'>Become a volunteer</a></span>
              <span>Get in touch with a lawyer</span>
              <span>Privacy policy</span>
              <span>Terms of service</span>
@@ -52,7 +52,7 @@
 
          <div>
           
-              <span>About us</span>
+              <span><a class='text-dark' href='about-us.php'>About us</a></span>
 
          </div>
 

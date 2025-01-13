@@ -1,11 +1,8 @@
-
-
 <?php
 
      require ("engine/config.php");
 
      $federal_court = mysqli_query($conn,"SELECT * FROM courts WHERE court_type = 'federal'");
-
      $state_court = mysqli_query($conn,"SELECT * FROM courts WHERE court_type = 'state'");
 
 ?>
@@ -13,7 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice areas</title>
     <?php include ('components/links.php'); ?>
     <link rel="stylesheet" href="assets/css/court.css">
     <title>Court</title>
@@ -61,7 +57,7 @@
 
                              <div class='mt-3 px-3'>
 
-                                 <a class='text-secondary btn border border-2 border-secondary ' href="">Learn more</a>
+                                 <a class='text-secondary btn border border-2 border-secondary ' href="court-profile.php?id=<?php echo htmlspecialchars($court_id); ?>&&court_type=federal">Learn more</a>
 
                              </div>
 
@@ -81,13 +77,9 @@
 
          </div>    
 
-
-
      </div>
 
-
      <br>
-
 
      <div class='px-3 mt-5' data-aos='fade-up'>
 
@@ -118,7 +110,7 @@
                                
                              <div class='mt-3 px-3'>
 
-                                   <a class='text-secondary btn border border-2 border-secondary ' href="">Learn more</a>
+                             <a class='text-secondary btn border border-2 border-secondary ' href="court-profile.php?id=<?php echo htmlspecialchars($court_id); ?>&&court_type=state">Learn more</a>
 
                              </div>
 

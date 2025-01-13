@@ -1,0 +1,59 @@
+
+.card{
+     width:280px;
+}
+
+
+.card img {
+     height:240px;
+     width:100%;
+     object-fit: cover;
+}
+
+.text-sm{
+    font-size:14px !important;
+}
+
+.history-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+
+}
+
+.history-content {
+    
+     display: flex;
+     flex-direction: column;
+      gap: 10px;
+}
+
+@media screen {
+    .history-content {
+    
+        margin-top: 18px;
+   }
+}
+
+.history-content h4{
+     width: 60%;
+}
+
+
+
+.explore-button{
+     width:25%;
+}
+
+@media screen and  (max-width:768px) {
+    .explore-button{
+          width:100%;
+     }
+}
+
+
+.history-image-container{
+
+     background: url("../../assets/images/circles.png");
+
+}

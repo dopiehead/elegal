@@ -1,3 +1,5 @@
+<?php require ('../../engine/config.php'); ?>
+
 <h3 class='fw-bold mb-3 mt-2'>Ongoing cases</h3>
 
 <table class=' table table-responsive table-striped table-hover w-100 text-sm px-2'>
@@ -12,6 +14,7 @@
         <th scope='cols'>Case status</th>
         <th scope='cols'>Paid</th>
         <th scope='cols'>Unpaid</th>
+        <th scope='cols'>Action</th>
 
     </tr>
 
@@ -19,29 +22,39 @@
 
 <tbody>
 
-    <tr>
+<?php 
 
-        <td>Alan Walker</td>
-        <td>Nneka Harry</td>
-        <td>4320</td>                                 
-        <td>Ongoing</td>                                 
-        <td>50%</td>                                 
-        <td><span class='text-danger'>50%</span></td>
+     $get= mysqli_query($conn,"SELECT * FROM court_cases WHERE case_status = 0"); 
 
+     if($get){
 
-    </tr>
+        while($row = mysqli_fetch_array($get)) {
+          
+?>
 
-    <tr>
+    <tr class='text-capitalize'>
 
-        <td>Alan Walker</td>
-        <td>Nneka Harry</td>
-        <td>4320</td>                                 
-        <td>Ongoing</td>                                 
-        <td>50%</td>                                 
-        <td><span class='text-danger'>50%</span></td>
-
+        <td><?php echo htmlspecialchars($row['client']);?></td>
+        <td><?php echo htmlspecialchars($row['lawyer']);?></td>
+        <td><?php echo htmlspecialchars($row['court_case']);?></td>                                 
+        <td> <?php  echo ($row['case_status'] == '0') ? "on going" : "case concluded"; ?></td>                                 
+        <td><?php echo htmlspecialchars($row['paid']);?></td>                                 
+        <td><span class='text-danger'><?php echo htmlspecialchars($row['unpaid']);?></span></td>
+        <td><a class='text-primary  ongoing_cases text-decoration-unline' id='<?php echo htmlspecialchars($row['id']); ?>'>view details</a></td>
 
     </tr>
+
+<?php
+    
+            
+}
+     }
+
+
+?>
+
+
+
 
 </tbody>
 
@@ -49,3 +62,4 @@
 
 
 </table>
+

@@ -19,7 +19,7 @@
              <div class='profile-container w-100 bg-white pt-2 pb-3 px-3 mb-2'>
 
                   <div class='position-relative'>
-                      <a class='text-dark fw-bold' href=""><i class='fa fa-sign-out'></i></a>
+                      <a class='text-dark fw-bold' href="../logout.php"><i class='fa fa-sign-out'></i></a>
                   </div>
 
                   <div class='d-flex justify-content-around'>
@@ -47,35 +47,35 @@
 
                      <li class='bg-light'>
                           <span class='text-success fa fa-user-alt fa-1x'></span>
-                          <a class='text-secondary text-decoration-none' id='clients_onboard'>Clients onboard</a>
-                          <span class='fa fa-arrow-right'></span>
+                          <a class='text-secondary text-decoration-none link-button active-button' id='clients_onboard'>Clients onboard</a>
+                          <span class='fa fa-arrow-right' id="clients_onboard"></span>
                      </li>
 
                      <li class='bg-light'>
                           <span class='text-success fa fa-user-alt fa-1x'></span>
-                          <a class='text-secondary text-decoration-none' id='ongoing_cases'>Ongoing cases</a>
-                          <span class='fa fa-arrow-right'></span>
+                          <a class='text-secondary text-decoration-none  link-button' id='ongoing_cases'>Ongoing cases</a>
+                          <span class='fa fa-arrow-right' id="ongoing_cases"></span>
                     </li>
 
                      <li class='bg-light'>
                         
                           <span class='text-success fa fa-user-alt fa-1x'></span>
-                          <a class='text-secondary text-decoration-none' id="concluded_cases">Concluded cases</a>
-                          <span class='fa fa-arrow-right'></span>
+                          <a class='text-secondary text-decoration-none link-button' id="concluded_cases">Concluded cases</a>
+                          <span class='fa fa-arrow-right' id="concluded_cases"></span>
                     
                      </li>
 
                      <li class='bg-light'>
                           <span class='text-success fa fa-user-alt fa-1x'></span>
-                          <a class='text-secondary text-decoration-none' id="lawyers_onboard">Lawyers onboard</a>
-                          <span class='fa fa-arrow-right'></span>
+                          <a class='text-secondary text-decoration-none link-button' id="lawyers_onboard">Lawyers onboard</a>
+                          <span class='fa fa-arrow-right' id="lawyers_onboard"></span>
                     </li>
 
                      <li class='bg-light'>
                         
                           <span class='text-success fa fa-user-alt fa-1x'></span>
-                          <a class='text-secondary text-decoration-none' id="money_in">Money in</a>
-                          <span class='fa fa-arrow-right'></span>
+                          <a class='text-secondary text-decoration-none link-button' id="money_in">Money in</a>
+                          <span class='fa fa-arrow-right' id="money_in"></span>
                     
                      </li>    
                     
@@ -83,8 +83,8 @@
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none' id="money_out">Money out</a>
-                         <span class='fa fa-arrow-right'></span>
+                         <a class='text-secondary text-decoration-none link-button' id="money_out">Money out</a>
+                         <span class='fa fa-arrow-right' id="money_out"></span>
                   
                      </li> 
 
@@ -92,8 +92,8 @@
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none' id="case_definition">Case definition</a>
-                         <span class='fa fa-arrow-right'></span>
+                         <a class='text-secondary text-decoration-none link-button' id="case_definition">Case definition</a>
+                         <span class='fa fa-arrow-right' id="case_definition"></span>
                   
                      </li> 
 
@@ -101,8 +101,8 @@
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none' id="to_do_list">To do list</a>
-                         <span class='fa fa-arrow-right'></span>
+                         <a class='text-secondary text-decoration-none link-button' id="to_do_list">To do list</a>
+                         <span class='fa fa-arrow-right' id="to_do_list"></span>
                  
                      </li> 
 
@@ -110,8 +110,8 @@
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none' id="reminder">Reminder</a>
-                         <span class='fa fa-arrow-right'></span>
+                         <a class='text-secondary text-decoration-none link-button' id="reminder">Reminder</a>
+                         <span class='fa fa-arrow-right' id="reminder"></span>
                  
                      </li> 
 
@@ -135,6 +135,16 @@
              </div>
 
      </div> 
+
+     
+
+      <div>
+
+             <div class='popup' id="case_details"></div>
+
+      </div>
+
+
      <br><br>
 
      <script>
@@ -148,6 +158,12 @@
     function loadContent(page) {
          $(".table-container").load(page).focus();
     }
+
+    $(".link-button").click(function () {
+
+         $(".link-button").removeClass("active-button");
+         $(this).addClass("active-button");
+    });
 
     $("#clients_onboard").click(function() {
          loadContent("../components/dashboard/clients-onboard.php");
@@ -178,6 +194,58 @@
     });
 
 
+</script>
+
+<script>
+
+      $(document).on('click',".ongoing_cases",function(){
+           var cases = $(this).attr("id");
+          
+           $.ajax({
+                type: "POST",
+                url: "../components/dashboard/components/ongoing_cases_content.php",               
+                data : {id:cases},               
+                success: function(response) {
+                     $("#case_details").html(response).show();
+                }
+           });
+
+      });
+
+</script>
+
+
+<script>
+
+      $(document).on('click',".conclude_cases",function(){
+           var case_closed = $(this).attr("id");
+          
+           $.ajax({
+                type: "POST",
+                url: "../components/dashboard/components/ongoing_cases_content.php",
+                data : {id:case_closed},
+                success: function(response) {
+                     $("#case_details").html(response).show();
+                }
+           });
+      });
+
+
+
+    
+</script>
+
+
+
+<script>
+
+      $(document).on('click',".close-btn",function(){
+             $("#case_details").hide();
+      });
+
+
+
+    
 </script>
 
  

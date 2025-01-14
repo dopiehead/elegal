@@ -15,7 +15,7 @@
 
          <div class='px-5'>
 
-              <a class='text-white fw-bold mt-5' href=""><i class='fa fa-arrow-left'></i></a>
+              <a class='text-white fw-bold mt-5' onclick="history.go(-1)"><i class='fa fa-arrow-left'></i></a>
          </div>
 
          <div class='container'>

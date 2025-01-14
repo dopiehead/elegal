@@ -22,8 +22,18 @@
 
 .package{
      width:270px;
-     height:26em;
+     height:28em !important;
 
+}
+
+
+@media screen and (max-width:768px){
+
+     .package{
+           width:270px;
+           height:auto;
+     
+     }
 }
 
 .package img{

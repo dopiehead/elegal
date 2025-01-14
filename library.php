@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice areas</title>
+    <title>library</title>
     <?php include ('components/links.php'); ?>
     <link rel="stylesheet" href="assets/css/library.css">
 </head>
@@ -95,9 +95,228 @@
 
        }?>
 
-</div>
+             </div>
 
         </div>
+
+        <br><br>
+
+         <div class='px-3' data-aos='fade-up'>
+
+             <h4 class='text-capitalize fw-bold text-dark'>references</h4>
+
+             <div class='d-flex justify-content-between flex-md-row flex-column g-3 mt-4'>
+ 
+                 <div class='shadow-lg bg-white px-3 py-2'>
+
+                     <table class='table-responsive border-0'>
+
+                         <thead  class='py-2 bg-dark text-white'>
+
+                             <tr>
+                                <th>Related Clauses</th>                             
+                             </tr>
+
+                         </thead>
+
+                         <tbody class='text-sm mt-3'>
+
+                             <tr>
+                                 <td>References to Loan Agreement</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Agreements, Laws e.t.c</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Documents</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Statuses</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Agreements</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to time</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Regulations</td>
+                             </tr>
+
+                          
+                         </tbody>
+
+                     </table>
+
+
+                 </div>
+
+
+
+                 <div class='shadow-lg bg-white px-3 py-2'>
+
+                      <table class='table-responsive border-0'>
+
+                          <thead class='py-2 bg-dark text-white'>
+
+                             <tr>
+                                   <th>Parent Clauses</th>                             
+                             </tr>
+    
+                         </thead>
+
+                         <tbody class='text-sm mt-3'>
+
+                             <tr>
+
+                                <td>References to Loan Agreement</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Agreements, Laws e.t.c</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Documents</td>
+                             </tr>
+
+                              <tr>
+                                 <td>References to Statuses</td>
+                              </tr>
+
+                             <tr>
+                                 <td>References to Agreements</td>
+                              </tr>
+
+                             <tr>
+                                 <td>References to time</td>
+                             </tr>
+
+                             <tr>
+                                 <td>References to Regulations</td>
+                             </tr>
+
+   
+
+                         </tbody>
+
+                     </table>
+
+
+
+                 </div>
+
+
+
+
+                 <div class='shadow-lg bg-white px-3 py-2'>
+
+                     <table class='table-responsive border-0'>
+
+                         <thead class='py-2 bg-dark text-white'>
+
+                              <tr>
+                                  <th>Related Clauses</th>                             
+                              </tr>
+
+                         </thead>
+
+                         <tbody class='text-sm mt-3'>
+
+                          <tr>
+                               <td>References to Loan Agreement</td>
+                         </tr>
+
+                         <tr>
+                                 <td>References to Agreements, Laws e.t.c</td>
+                         </tr>
+
+                         <tr>
+                              <td>References to Documents</td>
+                         </tr>
+
+                         <tr>
+                             <td>References to Statuses</td>
+                         </tr>
+
+                         <tr>
+                                <td>References to Agreements</td>
+                         </tr>
+
+                         <tr>
+                               <td>References to time</td>
+                         </tr>
+
+                         <tr>
+                              <td>References to Regulations</td>
+                         </tr>
+
+ 
+                     </tbody>
+
+                 </table>                 
+
+             </div>
+
+
+             <div class='shadow-lg bg-white px-3 py-2'>
+
+                 <table class='table-responsive border-0'>
+
+                     <thead class='py-2 bg-dark text-white'>
+
+                         <tr>
+                             <th>Related Clauses</th>                             
+                         </tr>
+
+                     </thead>
+
+                     <tbody class='text-sm mt-3'>
+
+                          <tr>
+                               <td>References to Loan Agreement</td>
+                         </tr>
+
+                         <tr>
+                                 <td>References to Agreements, Laws e.t.c</td>
+                         </tr>
+
+                         <tr>
+                              <td>References to Documents</td>
+                         </tr>
+
+                         <tr>
+                             <td>References to Statuses</td>
+                         </tr>
+
+                         <tr>
+                                <td>References to Agreements</td>
+                         </tr>
+
+                         <tr>
+                               <td>References to time</td>
+                         </tr>
+
+                         <tr>
+                              <td>References to Regulations</td>
+                         </tr>
+
+ 
+                     </tbody>
+
+                 </table>                 
+
+             </div>
+
+          </div>
+
+      </div>
 
      <br><br><br>
 

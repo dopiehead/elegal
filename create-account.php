@@ -15,7 +15,8 @@
 
          <div class='px-5'>
 
-              <a class='text-white fw-bold mt-5' href=""><i class='fa fa-arrow-left'></i></a>
+              <a class='text-white fw-bold mt-5' onclick='history.go(-1)'><i class='fa fa-arrow-left'></i></a>
+              
          </div>
 
          <div class='container'>
@@ -29,18 +30,18 @@
          <div class='d-flex justify-content-center align-items-center g-5 flex-md-row flex-column mt-4'>
            
              <div class='create-container'>
-                 <span class='text-success '><i class='fa fa-user-alt fa-3x'></i></span>
-                 <span class='text-sm text-white'>I am a user/explorer</span>
+                 <span class='text-success '><a class='text-success' href='user-register.php'><i class='fa fa-user-alt fa-3x'></i></a></span>
+                 <span class='text-sm text-white'><a class='text-white' href='user-register.php'>I am a user/explorer</a></span>
              </div>
 
              <div class='create-container'>
-                  <span><img src="assets/images/law-icon.png" alt=""></span>
-                 <span class='text-sm text-white'>I am a legal practioner</span>
+                  <span><a class='text-white' href='lawyer-register.php'><img src="assets/images/law-icon.png" alt=""></a></span>
+                 <span class='text-sm text-white'><a class='text-white' href='lawyer-register.php'>I am a legal practioner</a></span>
              </div>
 
              <div class='create-container'>
-                 <span><img src="assets/images/building-icon.png" alt=""></span>
-                 <span class='text-sm text-white'>I am a firm</span>
+                 <span><a class='text-white' href='firm-register.php'><img src="assets/images/building-icon.png" alt=""></a></span>
+                 <span class='text-sm text-white'><a class='text-white' href='firm-register.php'>I am a firm</a></span>
              </div>
 
          </div>

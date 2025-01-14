@@ -10,6 +10,13 @@
     
 
     <title>Firm dashboard</title>
+    <style>
+
+   body{
+        font-family: "Helvetica Neue",Helvetica,Arial
+   }
+
+    </style>
 </head>
 <body class='bg-light'>
    
@@ -101,8 +108,8 @@
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none link-button' id="to_do_list">To do list</a>
-                         <span class='fa fa-arrow-right' id="to_do_list"></span>
+                         <a class='text-secondary text-decoration-none link-button' id="todo_list">To do list</a>
+                         <span class='fa fa-arrow-right' id="todo_list"></span>
                  
                      </li> 
 
@@ -115,10 +122,8 @@
                  
                      </li> 
 
-
                  </ul>     
-                 
-                 
+                                  
 
                             <!-- main content  -->
 
@@ -193,6 +198,14 @@
          loadContent("../components/dashboard/money_out.php");
     });
 
+    $("#todo_list").click(function() {
+         loadContent("../components/dashboard/todo-list.php");
+    });
+
+    $("#reminder").click(function() {
+         loadContent("../components/dashboard/reminder.php");
+    });
+
 
 </script>
 
@@ -243,11 +256,27 @@
              $("#case_details").hide();
       });
 
-
-
-    
 </script>
 
  
+<script>
+
+     $(document).on('click',".show-details",function(){
+       
+           $("#popup-reminder").show();
+          
+     });
+
+
+     $(document).on('click',"#closeButton",function(){
+       
+       $("#popup-reminder").hide();
+      
+ });
+
+</script>
+
+
+
 </body>
 </html>

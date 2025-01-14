@@ -2,7 +2,7 @@
 
      require ("engine/config.php");
 
-     $stmt = mysqli_query($conn,'SELECT * FROM lawyer_firm');
+     $stmt = mysqli_query($conn,'SELECT * FROM law_jobs');
 
 ?>
 
@@ -10,7 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice areas</title>
     <?php include ('components/links.php'); ?>
     <link rel="stylesheet" href="assets/css/jobs.css">
     <title>Jobs</title>
@@ -33,25 +32,26 @@
 
      <?php 
 
-         while($firm = mysqli_fetch_array($stmt)){
+         while($job = mysqli_fetch_array($stmt)){
 
-             if($firm){
+             if($job){
 
-                  include('components/firm-content.php');
+                  include('components/jobs-content.php');
 
 
      ?>
 
                 <div class='package shadow'>
 
-                          <img src="<?php echo htmlspecialchars($firm_img); ?>" alt="">
+                          <img src="<?php echo htmlspecialchars($company_image); ?>" alt="">
 
                          <div class='px-3 d-flex flex-row flex-column  mt-1'>
 
-                              <span class='text-dark fw-bold'><?php echo htmlspecialchars($firm_name); ?></span>
-                              <span class='text-secondary text-sm mt-2'><?php echo htmlspecialchars($nooflawyers); ?></span>
-                              <span class="text-secondary text-sm"><?php echo htmlspecialchars($found_date); ?></span>
-                              <span class="text-sm text-secondary"><?php echo htmlspecialchars($firm_location); ?></span>
+                              <span class='text-dark fw-bold'><?php echo htmlspecialchars($company_name); ?></span>
+                              <span class='text-secondary text-sm mt-2'><?php echo htmlspecialchars($established); ?></span>
+                              <span class="text-secondary text-sm"><?php echo htmlspecialchars($nooflawyers); ?> lawyers</span>
+                              <span class="text-sm text-secondary"><?php echo htmlspecialchars($job_location); ?></span>
+                              <span class="text-sm text-secondary"><?php echo htmlspecialchars($practice_areas); ?></span>
 
                               <div>
                                   <span class='fa fa-star'></span>
@@ -63,13 +63,14 @@
 
                         <div class='d-flex justify-content-between mt-1'>
                           
-                             <a class='btn btn-success text-white text-sm' href="">Apply</a>
+                             <a class='btn btn-success text-white text-sm' href="job-application.php?id=<?php echo htmlspecialchars($job_id); ?>">Apply</a>
 
-                             <a class='btn border border-2 border-success rounded text-success text-sm' href="">View Profile</a>
+                             <a class='btn border border-2 border-success rounded text-success text-sm' href="job-profile.php?id=<?php echo htmlspecialchars($job_id); ?>">View Profile</a>
 
                         </div>
 
                     </div>
+                    <br>
 
                 </div>
 
@@ -88,7 +89,7 @@
 
      <div class='mt-3 px-2' data-aos='fade-left'>
          
-         <a class='text-dark border-bottom border-bottom-2 border-bottom-dark' href="">Are you hiring? Create a job application here</a>
+         <a class='text-dark border-bottom border-bottom-2 border-bottom-dark' href="job-application.php">Are you hiring? Create a job application here</a>
        
      </div>
 

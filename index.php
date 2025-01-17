@@ -38,7 +38,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Pro Bono</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=pro bono'> Pro Bono </a></h6>
 
              </div>
 
@@ -48,7 +48,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Constitutional Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=constitutional law'>Constitutional Law </a></h6>
 
              </div>
 
@@ -57,7 +57,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Company Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=company law'>Company Law </a></h6>
 
              </div>
 
@@ -66,7 +66,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                  <h6 class='fw-bold text-sm'>Family Law</h6>
+                  <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=family law'>Family Law </a></h6>
 
              </div>
 
@@ -74,7 +74,7 @@
 
                   <img src="assets/images/carbon_building.png" alt="elegal">
 
-                   <h6 class='fw-bold text-sm'>International law</h6>
+                   <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=international law'>International law </a></h6>
 
              </div>
 
@@ -82,7 +82,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Property Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=property law'>Property Law </a></h6>
 
              </div>
 
@@ -91,7 +91,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Labour Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=labour law'>Labour Law</h6>
 
              </div>
 
@@ -99,7 +99,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Administrative Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lwayers.php?category=administrative law'>Administrative Law </a></h6>
 
              </div>
 
@@ -107,7 +107,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Constitutional Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=constitutional'>Constitutional Law </a></h6>
 
              </div>
 
@@ -116,7 +116,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Energy Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lwayers.php?category=energy law'>Energy Law </a></h6>
 
              </div>
 
@@ -125,7 +125,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                  <h6 class='fw-bold text-sm'>Public Law</h6>
+                  <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=public law'>Public Law </a></h6>
 
              </div>
 
@@ -133,7 +133,7 @@
 
                   <img src="assets/images/carbon_building.png" alt="elegal">
 
-                   <h6 class='fw-bold text-sm'>Customary law</h6>
+                   <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=customary law'>Customary law </a></h6>
 
              </div>
 
@@ -141,7 +141,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Admiralty Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=administrative law'>Admiralty Law </a></h6>
 
              </div>
 
@@ -150,7 +150,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Nigerian legislature Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=nigerian legislature law'>Nigerian legislature Law </a></h6>
 
              </div>
 
@@ -158,7 +158,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>The literal rule</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=the literal rule'>The literal rule </a></h6>
 
              </div>
 
@@ -166,7 +166,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'>Common Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=common law'>Common Law </a></h6>
 
              </div>
 
@@ -1029,7 +1029,7 @@
 
              <h3>Learn about <b>historical people</b> and past heroes in the legal world here!</h3>
 
-             <a class='btn btn-success text-white w-25' href="">Explore</a>
+             <a class='btn btn-success text-white w-25' href="past-heroes.php">Explore</a>
             
             </div>
 
@@ -1110,7 +1110,6 @@
                  </div>
 
              </div>
-
 
 
              <div class='group-container rounded-top shadow pb-2'>

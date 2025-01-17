@@ -1,0 +1,72 @@
+.user_image{
+    height:90px;
+    width:90px;
+    border-radius:50%; 
+    object-fit: cover;
+}
+
+body{
+    font-family:poppins;
+}
+
+.dashboard{
+
+   width:75%;
+   margin-left:28%;
+}
+
+@media screen and (max-width: 768px){
+    
+   .dashboard{
+
+       margin-left:0;
+   }
+   
+    
+}
+
+
+.navigator{
+
+    width:25%;
+    height:100%;
+    background-color: #52727c;
+    position: fixed;
+}
+
+@media screen and (max-width: 768px){ 
+
+   
+.navigator{
+
+    background-color: #52727c;
+    position: relative;
+}
+
+}
+
+
+
+@media screen and (max-width: 768px){ 
+   .dashboard, .navigator{         
+       width:100%;
+   }
+}
+
+.active-link-notification{
+   border: 1px solid white;
+   padding:10px 10px;
+}
+
+table{
+    border-collapse: separate;
+    padding:20px;
+    width: 100%;
+}
+
+
+
+li a:hover{
+    border: 1px solid white;
+    padding:10px 10px; 
+}

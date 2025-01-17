@@ -1,0 +1,100 @@
+.user_image{
+     height:90px;
+     width:90px;
+     border-radius:50%; 
+     object-fit: cover;
+}
+
+body{
+    font-family:poppins;
+}
+
+.dashboard{
+
+     width:75%;
+     margin-left:28%;
+}
+
+@media screen and (max-width: 768px){
+    
+   .dashboard{
+
+         margin-left:0;
+   }
+   
+    
+}
+
+
+.navigator{
+
+     width:25%;
+     height:100%;
+     background-color: #52727c;
+     position: fixed;
+}
+
+@media screen and (max-width: 768px){ 
+
+   
+.navigator{
+
+     background-color: #52727c;
+     position: relative;
+}
+
+}
+
+
+
+@media screen and (max-width: 768px){ 
+   .dashboard, .navigator{         
+         width:100%;
+   }
+}
+
+.active-link-dashboard{
+     border: 1px solid white;
+     padding:10px 10px;
+}
+
+li a:hover{
+     border: 1px solid white;
+     padding:10px 10px; 
+}
+
+canvas{
+   width:89%; 
+}
+
+.client-part img{
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+}
+
+
+select:focus ,select:hover{
+     border:1px solid transparent;
+     outline:1px solid transparent;
+}
+
+
+.activities div{
+     width:200px;
+     height:200px;
+}
+
+.activities div:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width:768px){
+    .activities div{
+         width:100%;
+         height:250px;
+    }
+}

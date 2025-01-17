@@ -63,7 +63,7 @@
 
                              <a class='btn btn-success text-white rounded text-sm' href="">Get in touch</a>
 
-                             <a class='btn border border-2 border-secondary text-secondary rounded text-sm' href="">View Profile</a>
+                             <a class='btn border border-2 border-secondary text-secondary rounded text-sm' href="user-profile.php?id=<?php echo htmlspecialchars($user_id); ?>">View Profile</a>
 
                           </div>
                           

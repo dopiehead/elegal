@@ -33,6 +33,10 @@
 
                  <input type="email" class='bg-secondary border-0 w-100 py-2'>
 
+                 <label class='text-sm text-secondary' for="">Supreme court number  <span class='text-danger'>*</span></label>
+
+                 <input type="text" class='bg-secondary border-0 w-100 py-2'>
+
 
                  <label class='text-sm text-secondary' for="">Are you currently engaged with a law firm  <span class='text-danger'>*</span></label>
 

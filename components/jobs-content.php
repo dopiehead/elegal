@@ -27,7 +27,7 @@ $experience_level = $job['experience_level'];
 
 $experience_length = $job['experience_length'];
 
-$job_description=$job['job_description'];
+$job_description = $job['job_description'];
 
 $responsibilities = $job['responsibilities'];
 

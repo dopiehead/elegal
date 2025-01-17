@@ -1,0 +1,21 @@
+.user_img{
+     height:250px;
+     width:250px;
+     border-radius:50%;
+     object-fit: cover;
+}
+
+.card{
+     justify-content:center;
+     flex-direction: column;
+     text-align: center;
+}
+
+.user_bio{
+    text-align: center;
+    width: 50%;
+}
+
+.card{
+    width: 50%;
+}

@@ -1,9 +1,22 @@
 
 <?php
 
-     require ("engine/config.php");
+      require ("engine/config.php");
 
-     $stmt = mysqli_query($conn,"SELECT * FROM lawyer_profile");
+      $condition = "SELECT * FROM lawyer_profile";
+
+      if(isset($_GET['category'])){
+
+         $category = mysqli_escape_string($conn,$_GET['category']);
+
+         if(!empty($category)){
+
+         $condition .= " WHERE practice_areas like '%".$category."%'";
+
+         }
+      }
+
+       $stmt = mysqli_query($conn,$condition);
 
 ?>
 
@@ -24,17 +37,15 @@
 
                  <div class = 'd-flex g-3 flex-row flex-column' >
 
-                      <h4 class='fw-bold'>Lawyers of E-legal</h4>
+                      <h4 class='fw-bold'><?php if(!empty($category)){ echo "<span class='text-capitalize'>".$category."</span>"; }  ?> Lawyers of E-legal</h4>
 
                       <span class='text-sm'>Discover the best representatives across Nigeria</span>
-
 
                   </div>
 
                   <br><br>
 
                   <div class='package-container d-flex justify-content-evenly flex-md-row flex-column g-5' data-aos = 'fade-up'>
-
                     
                      <?php 
 
@@ -61,7 +72,7 @@
 
                                          <span class='text-sm text-secondary'><?php  echo htmlspecialchars($practice_areas); ?></span>
 
-                                          <span>
+                                         <span>
                                          
                                               <i class='fa fa-star'></i>
                                               <i class='fa fa-star'></i>
@@ -80,22 +91,13 @@
 
                                       </div>
 
-
-
-
                                   </div><br>
 
                      <?php 
 
-                              
-
-
-
                              }
 
                          }
-
-
 
                      ?>
 

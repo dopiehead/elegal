@@ -55,7 +55,26 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                  <div class='d-flex flex-row flex-column px-2'>
 
                      <span class='mt-1'><?php echo htmlspecialchars($firm_name); ?></span>
+
+                     <?php
+
+                           function claculatedatedifference($year){
+
+                          //  $dateString = "$thefound_date";  
+                         //  $date = DateTime::createFromFormat('M j, Y', $dateString);
+                         //  $mydate = $date->format('Y-m-d');  // Output: 2023-01-05
+                         //   $date1 = new DateTime("$mydate"); 
+                         //   $date2 = new DateTime("2025-01-13"); 
+                         //   $diff = $date1->diff($date2);
+
+                         //   $years = $diff->y;
+
+                         }
+
+                     ?>
+                     
                      <span class='text-sm text-secondary'><?php echo htmlspecialchars($found_date); ?></span>
+                     
                      <span class='text-sm text-secondary'><?php echo htmlspecialchars($nooflawyers);?> Lawyers</span>
                      <span class='text-sm text-secondary'><?php echo htmlspecialchars($practice_areas); ?></span>
                      <div>

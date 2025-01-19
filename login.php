@@ -85,7 +85,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
      </div>
 
      <script>
-        
+
 $(document).ready(function() {
 
      $(".spinner-border").hide();
@@ -97,8 +97,7 @@ $(document).ready(function() {
          $(".spinner-border").show();
 
          $('#btn-login').prop('disabled', true);
-
-     
+    
          $(".sign-in-note").hide();
 
         let details = $("#details").val();

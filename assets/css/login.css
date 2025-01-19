@@ -20,13 +20,19 @@
 }
 
 label{
-     margin-top:10px;
+
+      margin-top:10px;
 }
 
 input{
-     width:100%;
+
+      width:100%;
 }
 
-input:hover{
-     border:1px solid transparent;
+
+select:hover, select:focus, input:hover, input:focus{
+
+      border:1px solid transparent;
+      outline: none !important;
+
 }

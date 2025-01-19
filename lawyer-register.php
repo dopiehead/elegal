@@ -132,7 +132,7 @@
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 
                       <button class='btn btn-success text-sm d-flex justify-content-center align-items-center' id='btn-signup'><span class='spinner-border text-warning'></span> <span class='sign-up-note'>Sign up</span></button>
-                      <span class='btn border border-2 border-white text-white' oclick="history.go(-1)">Go back</span>
+                      <span class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</span>
                  </div>
 
              </form>

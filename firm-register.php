@@ -3,8 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include ('components/links.php');?>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <link rel="stylesheet" href="assets/css/firm-register.css">
-    <link rel="stylesheet" href="assets/css/scrollbar.css">
+    <link rel="stylesheet" href="assets/css/scrollbar.css"> 
+    <!-- <link rel="stylesheet" href="assets/css/customSelect.css">  -->
     <title>Create account for Firms</title>
 </head>
 
@@ -49,10 +52,10 @@
 
                  <input type="text" name="nooflawyers" class='bg-secondary border-0 w-100 py-2'>
 
-                 <label class='text-sm text-secondary' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary form-label' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
 
-                 <select name="practice_areas[]" id="practice_areas" multiple  multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm'>
-                       <option value="">Select practice area</option>
+                 <select name="practice_areas[]" id="practice_areas" multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm position-relative'>
+                 <!-- <option value=""selected>Select practice area</option> -->
                        <option value="criminal">Criminal Law</option>
                        <option value="civil">Civil Law</option>
                        <option value="corporate">Corporate Law</option>
@@ -62,7 +65,7 @@
 
                  <label class='text-sm text-secondary' for="">Certifications and accreditation <span class='text-danger'>*</span></label>
 
-                 <select type="text" name="certification_accredit[]" multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm'>
+                 <select type="text" name="certification_accredit[]" id='certification_accreditation' multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm text-white'>
 
                       <option value="san">Select Award</option>
                       <option value="san">SAN Award</option>
@@ -86,7 +89,8 @@
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 
                        <button id="btn-signup" class='btn btn-success text-sm d-flex justify-content-center align-items-center'>Sign up</button>
-                       <button class='btn border border-2 border-white text-white' oclick="history.go(-1)"><span class='go-back'>Go back</span></button>
+
+                       <a class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</a>
                  </div>
 
              </form>
@@ -94,7 +98,15 @@
          </div>
 
      </div>
+        
+     <!-- <script>
 
+        $('#practice_areas,#certification_accreditation').select2({
+             placeholder: 'Select Practice areas',
+             width: '100%',      
+        });
+  
+</script>  -->
     
      <script>
 $(document).ready(function() {
@@ -161,7 +173,7 @@ $(document).ready(function() {
 });
 </script>
 
-    
+ 
 
 </body>
 </html>

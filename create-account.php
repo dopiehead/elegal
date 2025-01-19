@@ -31,17 +31,17 @@
            
              <div class='create-container'>
                  <span class='text-success '><a class='text-success' href='user-register.php'><i class='fa fa-user-alt fa-3x'></i></a></span>
-                 <span class='text-sm text-white'><a class='text-white' href='user-register.php'>I am a user/explorer</a></span>
+                 <span class='text-sm text-white'><a class='text-white text-decoration-none' href='user-register.php'>I am a user/explorer</a></span>
              </div>
 
              <div class='create-container'>
                   <span><a class='text-white' href='lawyer-register.php'><img src="assets/images/law-icon.png" alt=""></a></span>
-                 <span class='text-sm text-white'><a class='text-white' href='lawyer-register.php'>I am a legal practioner</a></span>
+                 <span class='text-sm text-white'><a class='text-white text-decoration-none' href='lawyer-register.php'>I am a legal practioner</a></span>
              </div>
 
              <div class='create-container'>
                  <span><a class='text-white' href='firm-register.php'><img src="assets/images/building-icon.png" alt=""></a></span>
-                 <span class='text-sm text-white'><a class='text-white' href='firm-register.php'>I am a firm</a></span>
+                 <span class='text-sm text-white'><a class='text-white text-decoration-none' href='firm-register.php'>I am a firm</a></span>
              </div>
 
          </div>

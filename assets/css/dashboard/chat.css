@@ -1,0 +1,105 @@
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #f1f1f1;
+}
+
+.scroll-container {
+    width: 300px;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}  
+
+
+body{
+     font-family:poppins;
+     /* overflow-x: hidden; */
+}
+
+.profile-container{
+width:350px;
+}
+
+.chat-profile img{
+     height:100px;
+     width:100px;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+.text-sm{
+
+     font-size:14px;
+}
+
+.profile-body img{
+      
+     width:50px;
+     height: 50px;
+     border-radius:50%;
+     object-fit: cover;
+}
+
+.fa-circle{
+     margin-top:-10px;
+     margin-left:-10px;
+}
+
+.chat-body img{
+     height:60px;
+     width:60px;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+
+.col-md-8{
+
+     margin-left: 60px;
+}
+
+.from-container{
+
+     float: left;
+     border-radius: 0px 20px 20px 20px ;
+}
+
+.to-container{
+     float: right;
+     border-radius: 20px 20px 0px 20px ;
+}
+
+
+
+.text-body{
+    display: flex;
+    align-items: center;
+    margin-left:8px;
+    bottom:20px;
+    width:75%;
+ 
+}
+
+.text-body textarea{
+width:100%;
+}

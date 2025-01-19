@@ -3,7 +3,7 @@
      background-image: linear-gradient(to right,rgba(0,0,0,0.9),rgba(0,0,0,0.7)),url("../images/35360.jpg");
      background-size: cover;
      background-position: center;
-     min-height:100vh;
+     height:100vh;
  
 }
 
@@ -14,14 +14,15 @@
 
 
 .create-container{
-     display:flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     gap:5px;
-     height: 100%;
-     width:70%;
-     backdrop-filter: blur(5px);
+      display:flex;
+      flex-direction: column;
+     /* justify-content: center; */
+     /* align-items: center; */
+      gap:5px;
+      height: 90%;    
+      width:70%;
+      /* backdrop-filter: blur(5px); */
+      overflow-y: auto;
   
 } 
 
@@ -30,8 +31,8 @@
 
     .create-container{
 
-        min-height: 100%;
-        width:90%;  
+            height: 100%;
+           width:90%;  
     }
 
 }

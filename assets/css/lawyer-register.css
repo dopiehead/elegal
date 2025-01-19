@@ -1,11 +1,3 @@
-.create_background{
-
-    background-image: linear-gradient(to right,rgba(0,0,0,0.9),rgba(0,0,0,0.7)),url("../images/35360.jpg");
-    background-size: cover;
-    background-position: center;
-    min-height:100vh;
-
-}
 
 /* .heading-container{
    position: relative;
@@ -16,12 +8,15 @@
 .create-container{
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     gap:5px;
-    height: 100%;
+    height:90%;
     width:70%;
     backdrop-filter: blur(5px);
+
+    overflow-y:auto;
+    padding:10px;
  
 } 
 
@@ -29,8 +24,9 @@
 
     .create-container{
 
-        min-height: 100%;
+        height: 100%;
         width:90%;  
+
     }
 
 }

@@ -32,6 +32,11 @@
 }
 
 
+.create-container:hover, .create-container:focus{
+     border:2px solid white;
+}
+
+
 select:focus,input:focus,textarea:focus{
      border:1px solid transparent;
      outline:1px solid transparent;

@@ -1,16 +1,16 @@
 .package{
-     width:17em;
+     width:21em;
      overflow:hidden;
      white-space: nowrap;
      text-overflow: ellipsis;
-     height:27.4em;
+     height:28.0em;
      box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
     
 }
 
 .package img{
      width: 100%;
-     height:15em;
+     height:15em !important;
      object-fit: cover;
     
 }

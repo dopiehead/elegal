@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Hash the password for storage
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password,  PASSWORD_BCRYPT);
 
     // Prepare SQL query to insert the new user into the database
     $sql = "INSERT INTO user_profile (user_name, user_email, user_password, user_img, user_bio, user_phone, user_location, user_occupation, date_of_birth, created_at)

@@ -1,3 +1,10 @@
+<?php require ("engine/config.php");
+
+      $condition = "SELECT * FROM lawyer_profile";
+
+      $stmt = mysqli_query($conn,$condition);
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +15,7 @@
     <title>Homepage</title>
 </head>
 <body class='bg-light'>
+
      <?php include 'components/nav.php'; ?>  
     
      <div class='hero-section'>
@@ -19,7 +27,7 @@
           <p>Let us help you navigate all the aspects of the law. 
           We are here for you!</p>
 
-          <a class='text-dark bg-white btn border mt-3 border-2' href="">Get started</a>
+          <a class='text-dark bg-white btn border mt-3 border-2' href="create-account.php">Get started</a>
 
       </div>
 
@@ -38,7 +46,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=pro bono'> Pro Bono </a></h6>
+                 <h6 class='fw-bold text-sm text-decoration-none'><a class='text-dark text-decoration-none' href='lawyers.php?category=pro bono'> Pro Bono </a></h6>
 
              </div>
 
@@ -48,7 +56,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=constitutional law'>Constitutional Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=constitutional law'>Constitutional Law </a></h6>
 
              </div>
 
@@ -57,7 +65,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=company law'>Company Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=company law'>Company Law </a></h6>
 
              </div>
 
@@ -66,7 +74,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                  <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=family law'>Family Law </a></h6>
+                  <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=family law'>Family Law </a></h6>
 
              </div>
 
@@ -74,7 +82,7 @@
 
                   <img src="assets/images/carbon_building.png" alt="elegal">
 
-                   <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=international law'>International law </a></h6>
+                   <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=international law'>International law </a></h6>
 
              </div>
 
@@ -82,7 +90,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=property law'>Property Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=property law'>Property Law </a></h6>
 
              </div>
 
@@ -91,7 +99,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=labour law'>Labour Law</h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=labour law'>Labour Law</h6>
 
              </div>
 
@@ -99,7 +107,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lwayers.php?category=administrative law'>Administrative Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=administrative law'>Administrative Law </a></h6>
 
              </div>
 
@@ -107,7 +115,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=constitutional'>Constitutional Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=constitutional'>Constitutional Law </a></h6>
 
              </div>
 
@@ -116,7 +124,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lwayers.php?category=energy law'>Energy Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=energy law'>Energy Law </a></h6>
 
              </div>
 
@@ -125,7 +133,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                  <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=public law'>Public Law </a></h6>
+                  <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=public law'>Public Law </a></h6>
 
              </div>
 
@@ -133,7 +141,7 @@
 
                   <img src="assets/images/carbon_building.png" alt="elegal">
 
-                   <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=customary law'>Customary law </a></h6>
+                   <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=customary law'>Customary law </a></h6>
 
              </div>
 
@@ -141,7 +149,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=administrative law'>Admiralty Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=administrative law'>Admiralty Law </a></h6>
 
              </div>
 
@@ -150,7 +158,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=nigerian legislature law'>Nigerian legislature Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=nigerian legislature law'>Nigerian legislature Law </a></h6>
 
              </div>
 
@@ -166,7 +174,7 @@
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=common law'>Common Law </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=common law'>Common Law </a></h6>
 
              </div>
 
@@ -197,7 +205,7 @@
 
                        <p>We have a range of roles in local Citizens Advice and Witness Service, want to find out more?</p>
 
-                       <a class='btn btn-dark text-white  text-sm'>Become a volunteer</a>
+                       <a class='btn btn-dark text-white  text-sm' href='volunteer.php'>Become a volunteer</a>
                   
                  </div>
 
@@ -228,7 +236,7 @@
 
     <div>
 
-     <a class='btn btn-secondary text-white rounded' href="">Get in touch</a>
+     <a class='btn btn-secondary text-white rounded' href="lawyers.php">Get in touch</a>
 
      </div>
 
@@ -250,7 +258,7 @@
 
               We are here to help everyone who needs it with practical advice you can really trust. Our national charity and network of local charities offer confidential advice online, over the phone, and in person, for free.</p>
 
-              <span class=' btn btn-dark text-white px-2 py-1'>Sign up here</span>
+              <span class=' btn btn-dark text-white px-2 py-1'><a class='text-white text-decoration-none' href='create-account.php'>Sign up here</a></span>
 
          </div>
 
@@ -277,15 +285,31 @@
      <div>
 
           <h3 class='fw-bold my-3 '>Connect with top Lawyers</h3>
+
           <br>
 
           <div class='d-flex justify-content-evenly g-5 flex-md-row flex-column'>
+
+          <?php 
+
+                 $condition = "SELECT * FROM lawyer_profile limit 2";
+
+                 $stmt = mysqli_query($conn,$condition);
+                  
+                 while($lawyer = mysqli_fetch_array($stmt)){
+
+                     if($lawyer){
+
+                         include('components/lawyer-profile.php');
+   
+
+   ?>
 
              <div class='connect-content col-md-6 d-flex  flex-md-row flex-column' data-aos='fade-up-left'>
 
                  <div>
 
-                     <img class='w-100' src="assets/images/man.jpg" alt="elegal">
+                     <img class='w-100' src="<?php echo htmlspecialchars($img); ?>" alt="elegal">
 
                  </div>
 
@@ -293,17 +317,17 @@
 
                      <div class='d-flex flex-column flex-row justify-content-center h-100'>
                          <br>
-                         <h5 class='fw-bold ml-1 mt-2'>John Doe</h5>
+                         <h5 class='fw-bold ml-1 mt-2'><?php echo htmlspecialchars($name); ?></h5>
                          <span class='text-sm ml-2'>Partner</span>
-                         <span class='text-sm ml-2'>Criminal law, franchising, business law</span>
-                         <span class='text-sm ml-2'>janedoe@gmail.com</span>
-                         <span class='text-sm ml-2'>+234(0)8012223344</span>
+                         <span class='text-sm ml-2'><?php echo htmlspecialchars($practice_areas);?></span>
+                         <span class='text-sm ml-2'><?php echo htmlspecialchars($email);?></span>
+                         <span class='text-sm ml-2'><?php echo htmlspecialchars($phone_number);?></span>
 
                      </div>
 
                      <div class='h-100 d-flex align-items-end'>
 
-                        <button class='bg-white text-success border border-success fw-bold rounded text-sm' href=" ">View Profile</button>
+                        <button class='bg-white text-success border border-success fw-bold rounded text-sm' href="profile.php?id='<?php echo htmlspecialchars($id);?>&&user_type=lawyer'">View Profile</button>
 
                      </div>
 
@@ -312,36 +336,12 @@
              </div>
 
 
-             <div class='connect-content col-md-6 d-flex flex-md-row flex-column' data-aos='fade-up-right'>
+             <?php
+             
+                     }
 
-                 <div>
-
-                     <img src="assets/images/woman.png" alt="elegal">
-
-                 </div>
-
-                 <div class='d-flex justify-content-center  w-100'>
-
-                     <div style='backdrop-filter: blur(8px);' class='d-flex flex-column flex-row justify-content-center h-100'>
-                         <br>
-                         <h5 class='fw-bold ml-1'>Jane Doe</h5>
-                         <span class='text-sm ml-1'>Partner</span>
-                         <span class='text-sm ml-1'>Criminal law, franchising, business law</span>
-                         <span class='text-sm ml-1'>johndoe@gmail.com</span>
-                         <span class='text-sm ml-1'>+234(0)8012223344</span>
-
-                     </div>
-
-                     <div class='h-100 d-flex  align-items-end'>
-
-                        <button class='bg-white text-success border border-success w-100 fw-bold rounded text-sm' href=" ">View Profile</button>
-
-                     </div>
-
-                 </div>
-               
-
-             </div>
+                 }
+            ?>
 
 
           </div>
@@ -352,7 +352,6 @@
 
   <div>
 
- </div>
 
  <br><br>
 
@@ -458,8 +457,6 @@
 
 
          </div>
-
-
 
 
          <div class='shadow rounded'  data-aos='fade-up'>
@@ -632,19 +629,34 @@
 
      <br>
      
-     <div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column' data-aos='fade-in'>
+     <div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column lawyer-content-container' data-aos='fade-in'>
+
+
+     <?php 
+
+        
+
+
+        while($lawyer = mysqli_fetch_array($stmt)){
+
+              if($lawyer){
+
+                  include('components/lawyer-profile.php');
+     
+
+     ?>
 
          <div class='d-flex flex-row flex-column shadow'>
 
-              <img class='w-100' src="assets/images/man-law.png" alt="elegal">
+             <img class='w-100' src="<?php echo htmlspecialchars($img); ?>" alt="elegal">
 
-              <div class='d-flex flex-row flex-column px-2 py-3'>
+             <div class='d-flex flex-row flex-column px-2 py-3'>
 
-                   <h5>Richard Igwe, Esq</h5>
-                   <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-                   <span class='text-secondary text-sm'>6 years experience</span>
-                   <span class='text-secondary text-sm'>Rivers state</span>
-                   <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
+                   <h5 class='text-capitalize fw-bold'><?php echo htmlspecialchars($name); ?>, Esq</h5>
+                   <span class='text-dark fs-6'>Associate at <?php echo htmlspecialchars($firm);?> Law Firm</span>
+                   <span class='text-secondary text-sm'><?php echo htmlspecialchars($experience); ?> years experience</span>
+                   <span class='text-secondary text-sm'><?php echo htmlspecialchars($state); ?> state</span>
+                   <span class='text-secondary text-sm'><?php echo htmlspecialchars (substr($practice_areas,0,25)); ?></span>
                    <span class='text-secondary text-sm'>
                           <i class='fa fa-star'></i>
                           <i class='fa fa-star'></i>
@@ -654,107 +666,23 @@
                    </span>
 
                    <div class='d-flex justify-content-between mt-2 g-3'>
-                     <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                     <a class='btn border border-success text-success text-sm' href="profile.php?id=1&&user_type=lawyer">View Profile</a>
+                     <a class='btn btn-success text-white  text-sm'>Send a message</a>
+                     <a class='btn border border-success text-success text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
                    </div>
 
-              </div>
+             </div>
 
          </div>
 
-
-
-         <div class='d-flex flex-row flex-column shadow'>
-
-              <img class='w-100' src="assets/images/woman-law.png" alt="elegal">
-
-              <div class='d-flex flex-row flex-column px-2 py-3'>
-
-                  <h5>Priscilla Nwosu, Esq</h5>
-                  <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-                  <span class='text-secondary text-sm'>9 years experience</span>
-                  <span class='text-secondary text-sm'>Rivers state</span>
-                  <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-                  <span class='text-secondary text-sm'>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                   </span>
-
-                  <div class='d-flex justify-content-between g-3 text-sm mt-2'>
-                     <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                     <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-                 </div>                  
-
-              </div>
-
-         </div>   
-         
-         
-         <div class='d-flex flex-row flex-column shadow'>
-
-              <img class='w-100' src="assets/images/man-law.png" alt="elegal">
-
-              <div class='d-flex flex-row flex-column px-2 py-3'>
-
-                  <h5>Richard Igwe, Esq</h5>
-                  <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-                  <span class='text-secondary text-sm'>6 years experience</span>
-                  <span class='text-secondary text-sm'>Rivers state</span>
-                  <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-                  <span class='text-secondary text-sm'>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                          <i class='fa fa-star'></i>
-                   </span>
-
-                  <div class='d-flex justify-content-between g-3 mt-2 text-sm'>
-                     <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                     <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-                 </div>                  
-
-              </div>
-
-         </div>
-
-
-         <div class='d-flex flex-row flex-column shadow'>
-
-             <img class='w-100' src="assets/images/woman-law.png" alt="elegal">
-
-         <div class='d-flex flex-row flex-column px-2 py-3'>
-
-              <h5>Priscilla Nwosu, Esq</h5>
-              <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-              <span class='text-secondary text-sm'>9 years experience</span>
-              <span class='text-secondary text-sm'>Rivers state</span>
-              <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-              <span class='text-secondary text-sm'>
-                 <i class='fa fa-star'></i>
-                  <i class='fa fa-star'></i>
-                  <i class='fa fa-star'></i>
-                  <i class='fa fa-star'></i>
-                 <i class='fa fa-star'></i>
-             </span>
-
-             <div class='d-flex justify-content-between g-3 text-sm mt-2'>
-                  <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                  <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-             </div>                  
-
-         </div>
+         <?php  }  }  ?>
 
      </div>
          
-     </div>
-
  </div>
 
 <br><br>
+
+
 
  <div class='mt-3'>
 
@@ -762,19 +690,34 @@
 
 <br>
 
-<div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column' data-aos='fade-up'>
+<div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column  lawyer-content-container' data-aos='fade-up'>
+
+
+<?php 
+
+     $condition = "SELECT * FROM lawyer_profile";
+
+     $stmt = mysqli_query($conn,$condition);
+
+     while($lawyer = mysqli_fetch_array($stmt)){
+
+          if($lawyer){
+
+              include('components/lawyer-profile.php');
+
+?>
 
     <div class='d-flex flex-row flex-column shadow'>
 
-         <img class='w-100' src="assets/images/man-law.png" alt="elegal">
+         <img class='w-100' src="<?php echo htmlspecialchars($img); ?>" alt="elegal">
 
          <div class='d-flex flex-row flex-column px-2 py-3'>
 
-              <h5>Richard Igwe, Esq</h5>
-              <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-              <span class='text-secondary text-sm'>6 years experience</span>
-              <span class='text-secondary text-sm'>Rivers state</span>
-              <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
+              <h5 class='text-capitalize text-dark fw-bold'><?php echo htmlspecialchars($name); ?>, Esq</h5>
+              <span class='text-dark fs-6'>Associate at <?php echo htmlspecialchars($firm); ?> Law Firm</span>
+              <span class='text-secondary text-sm'><?php echo htmlspecialchars($experience) ?> years experience</span>
+              <span class='text-secondary text-sm'><?php echo htmlspecialchars($state);?> state</span>
+              <span class='text-secondary text-sm'><?php echo htmlspecialchars (substr($practice_areas,0,25)); ?></span>
               <span class='text-secondary text-sm'>
                      <i class='fa fa-star'></i>
                      <i class='fa fa-star'></i>
@@ -785,100 +728,22 @@
 
               <div class='d-flex justify-content-between mt-2 g-3'>
                 <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                <a class='btn border border-success text-success text-sm' href="">View Profile</a>
+                <a class='btn border border-success text-success text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
               </div>
 
          </div>
 
-    </div>
+     </div>
 
 
+     <?php
 
-    <div class='d-flex flex-row flex-column shadow'>
+        }
 
-         <img class='w-100' src="assets/images/woman-law.png" alt="elegal">
+     }
+     
+     ?>
 
-         <div class='d-flex flex-row flex-column px-2 py-3'>
-
-             <h5>Priscilla Nwosu, Esq</h5>
-             <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-             <span class='text-secondary text-sm'>9 years experience</span>
-             <span class='text-secondary text-sm'>Rivers state</span>
-             <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-             <span class='text-secondary text-sm'>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-              </span>
-
-             <div class='d-flex justify-content-between g-3 text-sm mt-2'>
-                <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-            </div>                  
-
-         </div>
-
-    </div>   
-    
-    
-    <div class='d-flex flex-row flex-column shadow'>
-
-         <img class='w-100' src="assets/images/man-law.png" alt="elegal">
-
-         <div class='d-flex flex-row flex-column px-2 py-3'>
-
-             <h5>Richard Igwe, Esq</h5>
-             <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-             <span class='text-secondary text-sm'>6 years experience</span>
-             <span class='text-secondary text-sm'>Rivers state</span>
-             <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-             <span class='text-secondary text-sm'>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-              </span>
-
-             <div class='d-flex justify-content-between g-3 mt-2 text-sm'>
-                <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-                <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-            </div>                  
-
-         </div>
-
-    </div>
-
-
-    <div class='d-flex flex-row flex-column shadow'>
-
-        <img class='w-100' src="assets/images/woman-law.png" alt="elegal">
-
-    <div class='d-flex flex-row flex-column px-2 py-3'>
-
-         <h5>Priscilla Nwosu, Esq</h5>
-         <span class='text-dark fs-6'>Associate at Chaman Law Firm</span>
-         <span class='text-secondary text-sm'>9 years experience</span>
-         <span class='text-secondary text-sm'>Rivers state</span>
-         <span class='text-secondary text-sm'>Corporate, criminal, family law</span>
-         <span class='text-secondary text-sm'>
-            <i class='fa fa-star'></i>
-             <i class='fa fa-star'></i>
-             <i class='fa fa-star'></i>
-             <i class='fa fa-star'></i>
-            <i class='fa fa-star'></i>
-        </span>
-
-        <div class='d-flex justify-content-between g-3 text-sm mt-2'>
-             <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
-             <a class='btn border border-success text-success text-sm' href="">View Profile</a>
-        </div>                  
-
-    </div>
-
-  </div>
 
 </div>
 
@@ -891,7 +756,7 @@
   
              <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
 
-             <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+             <a class='btn btn-secondary text-white text-sm' href="create-account.php">Get started</a>
 
          <div class='d-flex justify-content-end bg-seeker'>
 
@@ -909,7 +774,7 @@
   
               <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
 
-              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+              <a class='btn btn-secondary text-white text-sm' href="create-account.php">Get started</a>
  
               <div class='d-flex justify-content-end bg-seeker'>
 
@@ -924,12 +789,11 @@
          </div>
 
 
-
          <div class=' p-2 border border-2 border-success  seeker-container rounded'>
   
               <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
 
-              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+              <a class='btn btn-secondary text-white text-sm' href="create-account.php">Get started</a>
  
               <div class='d-flex justify-content-end bg-seeker'>
 

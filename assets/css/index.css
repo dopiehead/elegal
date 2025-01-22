@@ -42,10 +42,19 @@ height:auto;
 
 
 
+.lawyer-content-container img{
+   
+     height:250px;
+     object-fit: cover;
+     
+
+}
+
+
 @media screen and (max-width:768px) {
       
     .volunteer-content{
-     margin-top:30px;
+         margin-top:30px;
     }
    
 

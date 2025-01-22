@@ -1,10 +1,13 @@
 <?php
 
-$details = null;
-if(isset($_GET['details']) && !empty($_GET['details'])){
-     $details = $_GET['details'];
-}
+$details = "";
 
+if(isset($_GET['details']) && !empty($_GET['details'])){
+
+     $details = $_GET['details'];
+
+}
+echo ($details);
 ?>
 <html lang="en">
 <head>
@@ -39,7 +42,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
 
              <div class='create-container px-1'>
              
-                 <span>Don't have an account? <a class='text-white border-bottom border-2 border-secondary pb-1' href='create-account.php'>Sign up</a></span> 
+                 <span>Don't have an account? <a class='text-white border-bottom border-2 border-secondary pb-1 text-decoration-none' href='create-account.php'>Sign up</a></span> 
 
                  <br>
 
@@ -47,7 +50,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
 
                       <label class='text-sm text-secondary' for="">Choose role</label>
 
-                      <select name="user_type" class='bg-secondary border-0 w-100 py-2 text-sm'>
+                      <select name="user_type" class='bg-secondary border-0 w-100 py-2 text-sm user_type'>
 
                          <option value="user">Client</option>
 
@@ -58,6 +61,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
                       </select>
 
                       <br><br>
+
 
                      <label class='text-sm text-secondary' for="">Email address</label>
 
@@ -84,75 +88,95 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
         
      </div>
 
+
+     <input type="hidden" id="details" value="<?php echo htmlspecialchars($details); ?>">
+
      <script>
 
-$(document).ready(function() {
+     $(document).ready(function() {
 
-     $(".spinner-border").hide();
+         $(".spinner-border").hide();
 
-     $(".btn-login").on("click", function(e) {
+         $(".btn-login").on("click", function(e) {
 
-        e.preventDefault();
+             e.preventDefault();
 
-         $(".spinner-border").show();
+             $(".spinner-border").show();
 
-         $('#btn-login').prop('disabled', true);
+             $('#btn-login').prop('disabled', true);
     
-         $(".sign-in-note").hide();
+             $(".sign-in-note").hide();
 
-        let details = $("#details").val();
+             let details = $("#details").val();
 
-        let formData = $("#login-form").serialize(); // Get form data
+             let user_type = $(".user_type").val();
 
-        $.ajax({
-             type: "POST",
+             let formData = $("#login-form").serialize(); // Get form data
 
-             url: "engine/login-process.php",
+             $.ajax({
 
-             data: formData,
+                 type: "POST",
 
-             success: function(response) {
+                 url: "engine/login-process.php",
+
+                 data: formData,
+
+                 success: function(response) {
         
-                 $(".spinner-border").hide();
-                 $(".sign-in-note").show();
-                 $('#btn-login').prop('disabled', false);
+                     $(".spinner-border").hide();
 
-                if (response == 1) {
+                     $(".sign-in-note").show();
+
+                     $('#btn-login').prop('disabled', false);
+
+                     if (response == 1) {
                  
-                     $("#login-form")[0].reset();
+                         $("#login-form")[0].reset();
              
-                     if (details !== "") {
+                         if (details !== "") {
 
-                         window.location.href = details;
+                              window.location.href = details;
 
-                    } else {
+                         } else {
 
-                         window.location.href = "dashboard/dashboard.php"; // Default redirect
-                    }
+                              if(user_type != "firm") {
 
-                } else {
+                                  window.location.href = "dashboard/mydashboard.php";
+
+                             }
+
+                             else{
+
+                                  window.location.href = "dashboard/firm-dashboard.php";
+
+                             }
+                         }
+
+                     } else {
                   
-                    swal({
+                              swal({
 
-                         icon: "warning",
-                         text: response,
-                         title: "Notice"
+                                 icon: "warning",
+                                 text: response,
+                                 title: "Notice"
 
-                    });
+                             });
 
-                     $("input").css('border', '1px solid red');
-                }
-            },
-            error: function(err) {
+                         $("input").css('border', '1px solid red');
+                     }
 
-                 $(".spinner-border").hide();
+                 },
+
+                 error: function(err) {
+
+                     $(".spinner-border").hide();
                
-                swal({
+                     swal({
 
-                     icon: "error",
-                     text: err,
-                     title: "Error"
-                });
+                         icon: "error",
+                         text: err,
+                         title: "Error"
+                     });
             }
         });
     });

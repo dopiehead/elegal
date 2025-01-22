@@ -1,4 +1,4 @@
-<div class='navbar d-flex justify-content-between py-3 shadow bg-light '>      
+<div class='navbar d-flex justify-content-between py-3 shadow bg-light px-2'>      
     
      <div class='logo-container'>
            <a href='index.php'>LOGO</a>  

@@ -165,21 +165,24 @@ $(document).ready(function() {
             processData: false, // Don't let jQuery try to process the data
             contentType: false, // Let FormData set content-type correctly
             success: function(response) {
-                $(".spinner-border").hide();  // Hide the spinner
-                $(".sign-up-note").show();    // Show the sign-up note
+                 $(".spinner-border").hide();  // Hide the spinner
+                 $(".sign-up-note").show();    // Show the sign-up note
 
-                if (response == 1) {
+                 if (response == 1) {
                     swal({
-                        title: "Success",
-                        icon: "success",
-                        text: "You have successfully registered. Please check your email for a verification link.",
+                         title: "Success",
+                         icon: "success",
+                         text: "You have successfully registered. Please check your email for a verification link.",
                       
                     });
 
                     // Reset the form
                     $("#lawyer-registration-form")[0].reset();
-                    $("#lawyer-registration-form").val("");
+                    $("#lawyer-registration-form input").val(""); // Clears input fields
+                    $("#lawyer-registration-form select").val(""); // Clears select fields
+                    $("#lawyer-registration-form textarea").val(""); // Clears textarea fields
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
+
                 } else {
                     swal({
                         title: "Notice",
@@ -187,15 +190,15 @@ $(document).ready(function() {
                         text: response,
                     });
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                    $('input').css('border-color', 'red');     // Highlight invalid fields
-                    $('textarea').css('border-color', 'red');  // Highlight invalid textarea
+                    $('input').css('border', '1px solid red');     // Highlight invalid fields
+                    $('textarea').css('border', '1px solid red');  // Highlight invalid textarea
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $(".spinner-border").hide();  // Hide the spinner in case of error
-                $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                console.log(errorThrown);  // Log the error
-                swal({
+                 $(".spinner-border").hide();  // Hide the spinner in case of error
+                 $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
+                 console.log(errorThrown);  // Log the error
+                 swal({
                      title: "Error",
                      icon: "error",
                      text: "An error occurred. Please try again.",

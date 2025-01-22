@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/library.css">
 </head>
 <body class='bg-light'>
+
      <?php include("components/nav.php"); ?>
      <br>
      <br>
@@ -35,14 +36,31 @@
                      if($book){
 
                           include('components/library-content.php');
+
+                          $extension = strtolower(pathinfo($book_img,PATHINFO_EXTENSION));
+
+                          $image_extension  = array('jpg','jpeg','png'); 
      
              ?>    
 
                      <div class='package' data-aos='fade-up'>
+
+                      <?php 
                       
-                         <img src="<?php echo htmlspecialchars($book_img);?>" alt="">
+                          if (!in_array($extension , $image_extension)) {
+
+                              echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";                  
+
+                         } else { ?>  
+                      
+                             <img src="<?php echo htmlspecialchars($book_img);?>" alt="">
+
+                         <?php } ?>
+
                          <div class='text-center mt-3 px-3'>
-                             <a class='btn btn-success form-control text-white text-sm' href="">Read</a>
+
+                             <a class='btn btn-success form-control text-white text-sm' href="library-details.php?id=<?php echo htmlspecialchars($book_id); ?>">Read</a>
+
                          </div>
 
                      </div>

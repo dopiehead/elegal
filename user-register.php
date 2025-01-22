@@ -23,7 +23,7 @@
 
              <div class='d-flex flex-row flex-column heading-container position-relative justify-content-start mt-4 w-100 w-md-100 g-3'>
                   <span class='fw-bold text-white'>Sign up</span>
-                  <span class='text-sm text-white'>Already have an account? <a class='text-white border-bottom border-2 border-secondary pb-1' href='login.php'>login</a></span> 
+                  <span class='text-sm text-white'>Already have an account? <a class='text-white border-bottom border-2 border-secondary pb-1 text-decoration-none' href='login.php'>login</a></span> 
              </div>  
 
              
@@ -127,6 +127,7 @@ $(document).ready(function() {
 
                     // Reset the form
                     $("#user-registration-form")[0].reset();
+                    $("#user-registration-form").val('');
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
                 } else {
                     swal({
@@ -135,8 +136,8 @@ $(document).ready(function() {
                          text: response,
                     });
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                    $('input').css('border-color', 'red');     // Highlight invalid fields
-                    $('textarea').css('border-color', 'red');  // Highlight invalid textarea
+                    $('input').css('border', '1px solid red');     // Highlight invalid fields
+                    $('textarea').css('border', '1px solid red');  // Highlight invalid textarea
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {

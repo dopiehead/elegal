@@ -20,6 +20,10 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
                   include 'components/lawyer-profile.php';
 
+                  $extension = strtolower(pathinfo($img,PATHINFO_EXTENSION));
+
+                  $image_extension  = array('jpg','jpeg','png'); 
+
              } else {
            
             header("Location: index.php");
@@ -105,8 +109,16 @@ function format_paragraphs($text) {
      <div class='col-md-6 intro d-flex flex-md-row flex-column mt-5  px-3 py-2 g-3'>
 
           <div class='profile_img'>
+  
+              <?php  if (!in_array($extension , $image_extension)) {
 
-              <img src="<?php echo htmlspecialchars($img); ?>" alt="">
+                 echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";                  
+
+             } else { ?>  
+
+                 <img src="<?php echo htmlspecialchars($img); ?>" alt="">
+
+             <?php    }   ?> 
 
          </div>
 

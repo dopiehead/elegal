@@ -1,117 +1,126 @@
-<?php 
+<?php session_start();
 
- session_start();
-
- error_reporting(E_ALL ^ E_NOTICE);  
+ error_reporting(E_ALL ^ E_NOTICE);
 
  require 'config.php';
 
- $user_email = mysqli_real_escape_string($conn, $_POST['user_email']);
+ $user_email = mysqli_escape_string($conn, $_POST['user_email']);
+
  $user_password = $_POST['user_password'];
- $user_type = mysqli_real_escape_string($conn, $_POST['user_type']);
+
+ $user_type = mysqli_escape_string($conn, $_POST['user_type']);
+
+
+if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+
+     echo "Invalid email format";
+ 
+     exit;
+}
 
 
 if (empty($user_email) || empty($user_password)) {
 
      echo "All fields are required";
 
-     exit;
-}
+} elseif ($user_email == '') {
 
-function loginUser($conn, $user_email, $user_password, $user_type) {
-   
-     $table = ''; 
-     $email_column = '';
-     $password_column = '';
-     $id_column = '';
-     $name_column = '';
-     $location_column = '';
-     $phone_column = '';
-     $image_column = '';
+     echo "Email field is required"; 
 
-     switch ($user_type) {
-        case 'lawyer':
-            $table = 'lawyer_profile';
-            $email_column = 'lawyer_email';
-            $password_column = 'lawyer_password';
-            $id_column = 'id';
-            $name_column = 'lawyer_name';
-            $location_column = 'lawyer_location';
-            $phone_column = 'lawyer_phone_no';
-            $image_column = 'lawyer_img';
-            break;
+} elseif ($user_password == '') {
 
-        case 'firm':
-            $table = 'lawyer_firm';
-            $email_column = 'firm_email';
-            $password_column = 'firm_password';
-            $id_column = 'firm_id';
-            $name_column = 'firm_name';
-            $location_column = 'location';
-            $phone_column = 'firm_phone_number';
-            $image_column = 'firm_img';
-            break;
+     echo "Password field is required";
 
-        case 'user':
-            $table = 'user_profile';
-            $email_column = 'user_email';
-            $password_column = 'user_password';
-            $id_column = 'id';
-            $name_column = 'user_name';
-            $location_column = 'user_location';
-            $phone_column = 'user_phone';
-            $image_column = 'user_img';
-            break;
+} else {
+    // Determine the query based on user type
+    if ($user_type == 'user') {
 
-        case 'admin':
-            $table = 'admin';
-            $email_column = 'admin_email';
-            $password_column = 'admin_password';
-            $id_column = 'admin_id';
-            $name_column = 'admin_email'; 
-            break;
-    }
+         $query = "SELECT * FROM user_profile WHERE user_email = ? AND verified = 1";
 
-    // Prepare and execute query
-    $stmt = $conn->prepare("SELECT * FROM $table WHERE $email_column = ? AND verified = 1");
+    } elseif ($user_type == 'lawyer') {
 
-    $stmt->bind_param("s", $user_email);
-    $stmt->execute();
+         $query = "SELECT * FROM lawyer_profile WHERE lawyer_email = ? AND verified = 1";
 
-    $result = $stmt->get_result();
+    } elseif ($user_type == 'firm') {
 
-    if ($result->num_rows > 0) {
-        
-         $row = $result->fetch_assoc();
+         $query = "SELECT * FROM lawyer_firm WHERE firm_email = ? AND verified = 1";
 
-        // Use password_verify() to check the entered password against the stored hashed password
-        if (password_verify($user_password, $row[$password_column])) {
-            $_SESSION["loggedin"] = true;
-            $_SESSION["{$user_type}_id"] = $row[$id_column];
-            $_SESSION["{$user_type}_email"] = $row[$email_column];
-            $_SESSION["{$user_type}_name"] = $row[$name_column];
-            $_SESSION["{$user_type}_location"] = isset($row[$location_column]) ? $row[$location_column] : '';
-            $_SESSION["{$user_type}_phone"] = isset($row[$phone_column]) ? $row[$phone_column] : '';
+    } elseif ($user_type == 'admin') {
 
-            // Set user-specific image session
-            if (isset($row[$image_column])) {
-                $_SESSION["{$user_type}_image"] = __DIR__ . $row[$image_column]; 
-            }
-
-            echo "1";  // Success message
-
-        } else {
-            echo "Incorrect login details"; // Error message if password does not match
-        }
+         $query = "SELECT * FROM admin WHERE admin_email = ?";
 
     } else {
-        echo "Incorrect login details"; // Error message if email not found
+
+         echo "Invalid user type";
+
+         exit;
     }
 
-    $stmt->close();
+    
+    if ($stmt = mysqli_prepare($conn, $query)) {
+
+         mysqli_stmt_bind_param($stmt, 's', $user_email);
+
+         mysqli_stmt_execute($stmt);
+ 
+         $result = mysqli_stmt_get_result($stmt);
+
+        if ($row = mysqli_fetch_assoc($result)) {
+        
+            if (password_verify($user_password, $row[$user_type . '_password'])) {
+               
+
+                 if ($user_type == 'user') {
+
+                     $_SESSION["id"] = $row['id'];
+                     $_SESSION["email"] = $row['user_email'];
+                     $_SESSION["name"] = $row['user_name'];
+                     $_SESSION["location"] = $row['user_location'];
+                     $_SESSION["phone"] = $row['user_phone'];
+                     $_SESSION['date'] = $row['created_at'];
+
+                } elseif ($user_type == 'lawyer') {
+
+                     $_SESSION["lawyer_id"] = $row['id'];
+                     $_SESSION["lawyer_email"] = $row['lawyer_email'];
+                     $_SESSION["lawyer_name"] = $row['lawyer_name'];
+                     $_SESSION['lawyers_date'] = $row['date'];
+                     $_SESSION['lawyer_image'] = __DIR__ . $row['lawyer_img'];
+                     $_SESSION['lawyer_contact'] = $row['lawyer_contact'];
+                     $_SESSION['lawyer_location'] = $row['lawyer_location'];
+
+                } elseif ($user_type == 'firm') {
+
+                     $_SESSION["firm_id"] = $row['firm_id'];
+                     $_SESSION["firm_email"] = $row['firm_email'];
+                     $_SESSION["firm_name"] = $row['firm_name'];
+                     $_SESSION['date_found'] = $row['date_found'];
+                     $_SESSION['firm_phone_number'] = $row['firm_phone_number'];
+                     $_SESSION['firm_location'] = $row['location'];
+                     $_SESSION['firm_img'] = __DIR__ . $row['firm_img'];
+                } elseif ($user_type == 'admin') {
+
+                     $_SESSION["admin_id"] = $row['admin_id'];
+                     $_SESSION["admin_email"] = $row['admin_email'];
+                     $_SESSION['admin_date'] = $row['admin_date'];
+                     $_SESSION['admin_password'] = $row['admin_password'];
+                }
+
+                     echo "1";  // Success
+
+            } else {
+                     echo "Incorrect login details";  // Invalid password
+            }
+        } else {
+
+                 echo "Email not found or not verified";  // Email does not exist or not verified
+        }
+              
+           mysqli_stmt_close($stmt);
+
+    } else {
+
+           echo "Error preparing the query";  // SQL preparation error
+    }
 }
-
-loginUser($conn, $user_email, $user_password, $user_type);
-
-$conn->close();
 ?>

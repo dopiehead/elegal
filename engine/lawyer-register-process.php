@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Hash the password before storing it in the database
-    $hashed_password = password_hash($lawyer_password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($lawyer_password,  PASSWORD_BCRYPT);
 
     // Correct SQL query with matching column names and placeholders
     $sql = "INSERT INTO lawyer_profile (

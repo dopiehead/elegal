@@ -44,12 +44,23 @@
 
                        include('components/firm-content.php');
 
+                       $extension = strtolower(pathinfo($firm_img,PATHINFO_EXTENSION));
+
+                       $image_extension  = array('jpg','jpeg','png'); 
 
          ?>
 
                          <div class='package'>
 
-                             <img src="<?php echo htmlspecialchars($firm_img); ?>" alt="">
+                               <?php   if (!in_array($extension , $image_extension)) {
+
+                                     echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";                  
+
+                               } else { ?>                               
+
+                                     <img src="<?php echo htmlspecialchars($firm_img); ?>" alt="">
+                              
+                                     <?php } ?>
 
                              <div class='px-3 d-flex flex-row flex-column mt-1'>
 

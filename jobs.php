@@ -38,13 +38,25 @@
 
                   include('components/jobs-content.php');
 
+                  $extension = strtolower(pathinfo($company_image,PATHINFO_EXTENSION));
+
+                  $image_extension  = array('jpg','jpeg','png'); 
+
 
      ?>
 
                 <div class='package shadow'>
 
+
+                <?php   if (!in_array($extension , $image_extension)) {
+
+                           echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";                  
+
+                 } else { ?>   
                           <img src="<?php echo htmlspecialchars($company_image); ?>" alt="">
 
+                  <?php } ?>
+                  
                          <div class='px-3 d-flex flex-row flex-column  mt-1'>
 
                               <span class='text-dark fw-bold'><?php echo htmlspecialchars($company_name); ?></span>

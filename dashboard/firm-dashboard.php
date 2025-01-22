@@ -1,3 +1,12 @@
+<?php session_start();
+
+if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION['firm_id'])){
+     header("location:../login.php");
+     exit();
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

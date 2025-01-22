@@ -42,14 +42,33 @@
              if($user){
 
                  include('components/user-content.php');
+
+                 $extension = strtolower(pathinfo($user['user_img'],PATHINFO_EXTENSION));
+
+                     $image_extension  = array('jpg','jpeg','png'); 
+
+
      
-
          ?>   
-      
-
                      <div class='package' data-aos='fade-up'>
-                      
-                         <img src="<?php echo htmlspecialchars(trim($user_img)); ?>" alt="elegal">
+
+                         <?php 
+                         
+                                  if (!in_array($extension , $image_extension)) {
+
+
+                                       echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";
+                           
+
+                                 } else { ?>
+
+                                                   <img src="<?php echo htmlspecialchars(trim($user_img)); ?>" alt="elegal">
+                               
+                         <?php
+                         
+                                 } 
+                         
+                         ?>          
 
                           <div class='d-flex flex-row flex-column p-2'>
 
@@ -63,7 +82,7 @@
 
                              <a class='btn btn-success text-white rounded text-sm' href="">Get in touch</a>
 
-                             <a class='btn border border-2 border-secondary text-secondary rounded text-sm' href="user-profile.php?id=<?php echo htmlspecialchars($user_id); ?>">View Profile</a>
+                             <a class='btn border border-2 border-secondary text-secondary rounded text-sm' href="user-profile.php?id=<?php echo htmlspecialchars($user_id); ?> &&user_type = user">View Profile</a>
 
                           </div>
                           

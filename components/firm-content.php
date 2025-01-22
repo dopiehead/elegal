@@ -6,7 +6,7 @@
       $firm_about = $firm['firm_about']; 
       $firm_location = $firm['location'];
       $practice_areas = $firm['practice_areas'];
-      $found_date = $firm['found_date'];
+      $found_date = $firm['date_found'];
       $nooflawyers = $firm['nooflawyers'];
 
 ?>

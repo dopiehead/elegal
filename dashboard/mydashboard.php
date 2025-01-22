@@ -1,5 +1,30 @@
-
 <?php session_start();
+
+if (!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSION['firm_id'])) {
+     header("Location: ../login.php");
+     exit();
+}
+
+require("../engine/config.php");
+
+if (isset($_SESSION["id"])) {
+
+     include ("content/user-content.php");
+}
+
+
+if (isset($_SESSION["lawyer_id"])) {
+
+     include ("content/lawyer-content.php");
+}
+
+
+if (isset($_SESSION["firm_id"])) {
+  
+     include ("content/firm-content.php");
+
+}
+
 
 ?>
 
@@ -20,7 +45,7 @@
 
 <body class='bg-light'> 
 
-     <div class='px-3'>
+     <div class='px-1'>
 
          <div class='d-flex gap-3 flex-md-row flex-column'>              
 
@@ -29,7 +54,7 @@
              <div class='dashboard mt-3'>
 
                  <div class='d-flex justify-content-start gap-2'>
-                     <h4>My dashboard</h4>
+                     <h4 class='text-capitalize'><b><?php echo htmlspecialchars($user_name); ?></b> dashboard</h4>
                       <span><?php echo date("y-m-d"); ?></span>
                  </div>
 

@@ -1,0 +1,26 @@
+.card{
+    width:230px;
+    height:100%;
+}
+
+
+.firm_pic{
+    width:100%;
+    height:150px;
+    object-fit: cover;
+}
+
+.top-container {
+    width:270px;
+    height:21em;
+    margin-right: 15px;
+    padding:15px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
+ 
+}
+
+.top-img{
+    height:80px;
+    width:80px;
+}
+

@@ -1,0 +1,15 @@
+.navbar .practice-link{
+     font-weight:bold;
+}
+
+.p-contents{
+     width:80%;
+     margin-top: 20px;
+}
+
+@media screen and (max-width:768px) {
+    
+    .p-contents{
+         width:100%;
+   }
+}

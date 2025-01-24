@@ -1,0 +1,33 @@
+.intro{
+
+      background-image:linear-gradient(to right,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url("../images/hero.png");
+      background-size: cover;
+      background-position: center;
+}
+
+.intro-content{
+    width: 40%;
+}
+
+.g-3{
+    gap:15px;
+}
+
+.text-details{
+    margin-top:5px;
+    color: rgb(15, 84, 46);
+}
+
+.top-container {
+    width:270px;
+    height:21em;
+    margin-right: 15px;
+    padding:15px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
+ 
+}
+
+.top-img{
+    height:80px;
+    width:80px;
+}

@@ -1,0 +1,20 @@
+<?php
+
+require ("../../engine/config.php");
+// Query to fetch data
+$sql = "SELECT date, daily_sales, monthly_sales FROM lawyer_sales ORDER BY date ASC";
+$result = $conn->query($sql);
+
+$data = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+}
+
+// Return JSON response
+header('Content-Type: application/json');
+echo json_encode($data);
+
+$conn->close();
+?>

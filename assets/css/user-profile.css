@@ -1,0 +1,44 @@
+.user_img{
+     height:250px;
+     width:250px;
+     border-radius:50%;
+     object-fit: cover;
+}
+
+.card{
+     justify-content:center;
+     flex-direction: column;
+     text-align: center;
+}
+
+
+.user_bio{
+
+     text-align: center;
+     width: 50%;
+}
+
+.get_in_touch{
+
+     width: 25%;
+}
+
+@media screen and (max-width:768px){
+
+    .get_in_touch{
+         width: 80%;
+   }
+}
+
+
+.card{
+     width: 50%;
+}
+
+@media screen and (max-width:768px){
+     
+    .card{
+        width: 100%;
+    }
+
+}

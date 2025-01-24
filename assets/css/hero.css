@@ -1,0 +1,19 @@
+
+
+
+.hero-section{
+    background-image:url("../images/hero.png");
+    height:60vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    margin-top:60px;
+ 
+}
+
+.hero-section .hero-text h1{
+    font-weight: bolder;
+}

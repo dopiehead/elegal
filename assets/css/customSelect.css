@@ -1,0 +1,36 @@
+.select2-selection {
+    background-color:#6c757d !important; /* Background color of selected option */
+    color: rgb(255, 255, 255) !important; /* Text color of selected option */
+    font-size:14px;
+    padding:5px 0;
+  
+
+}
+
+.select2-selection__rendered {
+    color: rgb(47, 47, 47) !important; /* Text color inside the selected box */
+    font-size:14px;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid transparent; /* Border for the multiple select box */
+
+    font-size:14px;
+}
+
+.select2-dropdown {
+    background-color: rgb(162, 162, 162) !important; /* Background color of the dropdown */
+    color: rgb(41, 41, 41) !important; /* Text color inside the dropdown */
+    font-size:14px;
+    
+}
+
+.select2-results__option {
+    color: rgb(52, 51, 51) !important; /* Text color of options inside the dropdown */
+    font-size:14px;
+}
+
+.select2-results__option[aria-selected="true"] {
+    background-color: rgb(255, 71, 71) !important; /* Highlight color of selected options in dropdown */
+    font-size:14px;
+}

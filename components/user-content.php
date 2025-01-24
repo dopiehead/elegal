@@ -7,6 +7,7 @@
      $user_email = $user['user_email'];
      $user_bio = $user['user_bio'];
      $user_occupation = $user['user_occupation'];
+     $user_contact = $user['user_phone'];
      $created_at = $user['created_at'];
  
 ?>

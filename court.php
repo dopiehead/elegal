@@ -42,11 +42,25 @@
              
                       include('components/court-content.php');
 
+                      $extension = strtolower(pathinfo($court_img,PATHINFO_EXTENSION));
+
+                      $image_extension  = array('jpg','jpeg','png'); 
+
           ?>
 
                           <div class='package-container d-flex flex-row flex-column'>
 
+                    <?php 
+                    
+                          if (!in_array($extension , $image_extension)) {
+
+                             echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($court_name,0,2)."</span></div>";                  
+
+                         } else { ?>     
+
                              <img src="<?php echo htmlspecialchars($court_img); ?>" alt="elegal">
+
+                         <?php }  ?>
 
                              <div class='mt-4 px-2'>
 
@@ -95,10 +109,26 @@
              
                       include('components/court-content.php');
 
+                      $extension = strtolower(pathinfo($court_img,PATHINFO_EXTENSION));
+
+                      $image_extension  = array('jpg','jpeg','png');
+
           ?>
                           <div class='package-container d-flex flex-row flex-column'>
 
+                          <?php 
+                    
+                               if (!in_array($extension , $image_extension)) {
+
+                                  echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($court_name,0,2)."</span></div>";                  
+
+                              } else { ?>     
+    
+ 
                                <img src="<?php echo htmlspecialchars($court_img); ?>" alt="elegal">
+                         
+                               <?php } ?>
+
 
                                <div class='mt-4 px-2'>
 

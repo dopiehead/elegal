@@ -40,6 +40,7 @@ if(isset($_GET['id'])){
           <div class='d-flex flex-row flex-column card g-3 py-2'>
 
              <div>
+                
              <?php 
                          
                  if (!in_array($extension , $image_extension)) {

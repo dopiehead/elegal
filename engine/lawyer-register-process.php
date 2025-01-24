@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $created_at = date("Y-m-d H:i:s"); // Only define once
     $lawyer_location = trim($_POST['lawyer_location']);
     $practice_location = trim($_POST['practice_location']);
-    $practice_areas = trim($_POST['practice_areas']);
+    $practice_areas = implode(" , ",$_POST['practice_areas']);  
     $published_article = trim($_POST['published_article']);
     $lawyer_rating = $_POST['lawyer_rating'] ?? '0'; // Default to '0' if not set
 

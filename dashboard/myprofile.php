@@ -9,13 +9,16 @@ require("../engine/config.php");
 
 if (isset($_SESSION["id"])) {
    
-  include ("content/user-content.php");
+      include ("content/user-content.php");
+
+
 }
 
 
 if (isset($_SESSION["lawyer_id"])) {
  
-   include ("content/lawyer-content.php");
+     include ("content/lawyer-content.php");
+
 }
 
 
@@ -23,8 +26,13 @@ if (isset($_SESSION["firm_id"])) {
   
      include ("content/firm-content.php");
 
+
 }
 
+
+$extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
+
+$image_extension  = array('jpg','jpeg','png'); 
 
 ?>
 
@@ -58,9 +66,19 @@ if (isset($_SESSION["firm_id"])) {
 
                  <div class='d-flex justify-content-between shadow-lg px-3 py-4 mt-4 bg-white border border-1 border-mute'> 
 
-                     <div class='d-flex flex-column-start gap-1'>
+                     <div class='d-flex flex-column-start gap-2'>
+
+                     <?php    
+                
+                          if (!in_array($extension , $image_extension)) {
+
+                              echo"<div class='text-center rounded rounded-circle border border-1 border-success  px-2'><span class='text-secondary text-uppercase' style='font-size:40px;'>".substr($user_name,0,2)."</span></div>";                  
+
+                         } else { ?> 
 
                          <img class='user_image' src="<?php echo "../". htmlspecialchars($user_img); ?>" alt="elegal">
+
+                         <?php } ?>
 
                          <div class='d-flex flex-column flex-row'>
 
@@ -82,15 +100,12 @@ if (isset($_SESSION["firm_id"])) {
 
                  <!-- end of profile part -->
 
-
              
                 <div class='px-3 py-2 border border-1 border-mute shadow-lg bg-white mt-4'>
 
                      <div class='d-flex justify-content-between'>
 
-                         <h5 class='fw-bold'>Personal information</h5>
-
-                        
+                         <h5 class='fw-bold'>Personal information</h5>                      
 
                      </div>
 
@@ -160,10 +175,6 @@ if (isset($_SESSION["firm_id"])) {
 
                      </div>
 
-
-
-
-
                      <?php if (isset($_SESSION['lawyer_id']) && !empty($_SESSION['lawyer_id'])) { ?>
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3 px-3'>
@@ -185,13 +196,7 @@ if (isset($_SESSION["firm_id"])) {
 
                      <?php }  ?>
 
-
                 </div>
-
-
-
-
-
 
 
                 <div class='bg-white px-3 py-3 mt-4 shadow-lg'>
@@ -213,10 +218,6 @@ if (isset($_SESSION["firm_id"])) {
 
                      </div>
 
-
-
-
-
                      <div class='d-flex justify-content-between align-items-start gap-1'>
 
                      <?php if (isset($_SESSION['lawyer_id']) && !empty($_SESSION['lawyer_id'])) { ?>
@@ -227,15 +228,6 @@ if (isset($_SESSION["firm_id"])) {
                               <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', '<?php echo $supreme_court_number; ?>');"><?php echo htmlspecialchars($supreme_court_number); ?></span>
                               
                           </div>
-
-
-                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
-
-                                  <label for="">Bio</label>  
-                                  <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', '<?php echo $user_bio; ?>');"><?php echo htmlspecialchars($user_bio); ?></span>
-
-                          </div>
-
 
                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
 
@@ -253,10 +245,6 @@ if (isset($_SESSION["firm_id"])) {
                          </div>
 
                      </div>
-
-
-
-
 
                      <div class='d-flex justify-content-between'>
 
@@ -302,9 +290,18 @@ if (isset($_SESSION["firm_id"])) {
 
                      ?>
 
+                     <div class='d-flex flex-row flex-column mt-3 text-secondary'>
+
+                         <label for="">Bio</label>  
+                         <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', '<?php echo $user_bio; ?>');"><?php echo htmlspecialchars($user_bio); ?></span>
+
+                     </div>
+
+</div>
+
              </div>
 
-         </div>
+
 
              <?php  } ?>
                   
@@ -327,60 +324,58 @@ if (isset($_SESSION["firm_id"])) {
 
 
 <script type="text/javascript">
-$(".edit").on("click", function() {
-    // Apply the dotted border only to the clicked span element
-    $(this).find('span').css("border-bottom", "1px dotted rgb(47, 47, 47)");
 
-    // Call the changeBackground function if needed (assuming you want to change background of the clicked element)
-    changeBackground(this);
-
-    // Call the saveData function, assuming you pass the necessary parameters
-    var id = $(this).data('id');  // Assuming you have an 'id' attribute on the element
-    var column = $(this).data('column');  // Assuming you have a 'column' attribute
-    saveData(this, id, column);
-});
-
-// Function to change background of the clicked element
 function changeBackground(obj) {
-    $(obj).removeClass("bg-success");
-    $(obj).css("border-bottom","1px dotted rgba(0, 70, 90, 0.3");
-    $(obj).addClass("simple");
-}
+      
+        $(obj).addClass("border-mute");
+        $(obj).addClass("simple");
 
-// Function to save data through an AJAX request
-function saveData(obj, id, column) {
-    var customer = {
-        id: id,
-        column: column,
-        value: obj.innerHTML
-    };
+    }
 
-    $.ajax({
-        type: "POST",
-        url: "engine/saveData.php",
-        data: customer,
-        dataType: 'json',
-        success: function(data) {
-            if (data) {
-                swal({
-                    title: "Success",
-                    text: "Record saved",
-                    icon: "success"
-                });
-
-                // Remove the background change after success
-                $(obj).removeClass("bg-danger");
-                $(obj).removeClass("simple");
-
-                swal({
-                    text: "Item was modified successfully",
-                    icon: "success"
-                });
-            }
+    function saveData(obj, id, column) {
+        var customer = {
+            id: id,
+            column: column,
+            value: obj.innerHTML
         }
-    });
-}
-</script>
+        $.ajax({
+            type: "POST",
+            url: "saveData.php",
+            data: customer,
+            dataType: 'json',
+            success: function(data){
+                if (data) {
+
+                swal({
+                     title:"Success",
+                     text:"Record saved",
+                     icon:"success"
+
+
+                });  
+                 
+                  $(obj).removeClass("border-mute");
+                 $(obj).removeClass("simple"); 
+
+  
+                   
+                }
+
+                else {
+
+                     swal({
+
+                         title:"error",
+                         text:"Error in saving record",
+                         icon:"warning"  
+
+                     });
+                }
+            }
+       });
+    };
+    </script>
+
 
 </body>
 </html>

@@ -1,5 +1,22 @@
 
+<?php 
+     require ("engine/config.php");
+     if(isset($_GET['id']) && !empty($_GET['id'])){
+         $id = $_GET['id'];
+         if(empty($id)){
+             header('Location:jobs.php');
+         }
+         else{
+             $stmt = mysqli_query($conn,"SELECT * FROM law_jobs WHERE id ='".$id."'");
+             while($row = mysqli_fetch_array($stmt)){
+                 if($row){                   
+                     include ('components/live-jobs-content.php');
 
+                 }
+         }
+     } 
+    }
+?>
 <html lang="en">
 <head>
      <meta charset="UTF-8">
@@ -15,7 +32,7 @@
 
  
      <?php include 'components/nav.php';?>
-     <br><br><br>
+     <br><br><br> 
 
      <div class='container mt-5'>
 
@@ -28,13 +45,17 @@
          <h5 class='text-white bg-dark fw-bold px-2 py-2 mt-4'>Personal information</h5>
          <br>
 
-         <div class='d-flex g-3 flex-md-row flex-column'>
+         <form id="application-form">
+
+         <div class='d-flex g-3 flex-md-row flex-column px-5'>
 
              <div class='col-md-6'>
 
+                   <input type="hidden" name="job_id" value='<?php echo htmlspecialchars($id); ?>'>
+
                    <label class='text-sm' for="">First name </label>
 
-                   <input type="text" name="" id="" class='form-control  bg-light'>
+                   <input type="text" name="first_name" id="" class='form-control  bg-light'>
 
              </div>
 
@@ -42,7 +63,7 @@
 
              <div class='col-md-6'>
                      <label  class='text-sm' for="">Last name</label>
-                    <input type="text" class='form-control  bg-light'>
+                    <input type="text" name="last_name" class='form-control  bg-light'>
 
              </div>
 
@@ -50,18 +71,18 @@
          </div>
 
 
-         <div class='d-flex g-3 flex-md-row flex-column'>
+         <div class='d-flex g-3 flex-md-row flex-column mt-3 px-5'>
 
               <div class='col-md-6'>
                   <label  class='text-sm' for="">Email address</label>
-                  <input type="text" class='form-control bg-light'>
+                  <input type="text" name="email" class='form-control bg-light'>
 
               </div>
 
 
               <div class='col-md-6'>
                    <label  class='text-sm' for="">Phone number</label>
-                   <input type="text" class='form-control  bg-light'>
+                   <input type="text" name="phone_number" class='form-control  bg-light'>
 
               </div>
 
@@ -70,14 +91,26 @@
 
          <div>
 
-              <div>
+              <div class='mt-3 px-5'>
 
                  <div  class='col-md-6'>
-                     <label  class='text-sm' for="">Location</label>
-                     <select name="" id="" class='form-control text-sm'>
-                         <option value="">Select Location</option>
-                         <option value="">Lagos</option>
-                     </select>
+
+                         <label  class='text-sm' for="">Location</label>
+
+                         <select name="location" id="" class='form-control text-sm text-capitalize'>
+
+                          <?php 
+
+                                 require 'engine/connection.php';
+                                 $getStates = mysqli_query($con,"SELECT * from states_in_nigeria GROUP by state"); ?>
+                                 <option value="">Entire Nigeria</option>
+                         <?php 
+                                 while ($states = mysqli_fetch_array($getStates)) { ?>            
+                                 <option value="<?php echo $states['state']?>"><?php echo $states['state']?></option>
+
+                         <?php	} ?>
+                                                    
+                         </select>
 
                  </div>
 
@@ -86,9 +119,9 @@
 
                  </div>
 
-              <div class='mt-2 text-sm'>
+              <div class='mt-2 text-sm px-5'>
                 
-                 <input type="checkbox">
+                 <input type="checkbox" name="relocation">
                  <span class='text-sm'>I'm willing to relocate</span>
                 
              </div>
@@ -103,33 +136,33 @@
           <h5 class='text-white bg-dark fw-bold px-2 py-2 mt-4'>Most recent jobs</h5>
           <br>
 
-           <div class='d-flex g-3 flex-md-row flex-column'>
+           <div class='d-flex g-3 flex-md-row flex-column px-5'>
 
                  <div class='col-md-6'>
                      <label class='text-sm' for="">Job title </label>
-                     <input type="text" class='form-control  bg-light'>
+                     <input type="text" name="job_title" value="<?php echo htmlspecialchars($job_title); ?>" class='form-control  bg-light'>
 
                  </div>
 
                  <div class='col-md-6'>
                      <label class='text-sm' for="">Company </label>
-                     <input type="text" class='form-control  bg-light'>
+                     <input type="text" name="company" value="<?php echo htmlspecialchars($company_name); ?>" class='form-control  bg-light'>
 
                  </div>
 
            </div>
 
-           <div class='d-flex g-3 flex-md-row flex-column mt-2'>
+           <div class='d-flex g-3 flex-md-row flex-column mt-3 px-5'>
 
                <div class='col-md-6'>
                      <label class='text-sm' for="">Start date </label>
-                     <input type="text" class='form-control  bg-light'>
+                     <input type="date" name="start_date" class='form-control  bg-light'>
 
                </div>
 
                <div class='col-md-6'>
                      <label class='text-sm' for="">End date </label>
-                     <input type="text" class='form-control  bg-light'>
+                     <input type="date" name="end_date" class='form-control  bg-light'>
 
                </div>
 
@@ -142,34 +175,39 @@
               <h5 class='text-white bg-dark fw-bold px-2 py-2 mt-4'>Career Summary</h5>
               <br>
 
-              <div class='d-flex g-3 flex-md-row flex-column'>
+              <div class='d-flex g-3 flex-md-row flex-column px-5'>
 
                   <div class='col-md-6'>
                         <label class='text-sm' for="">Years of experience </label>
-                       <input type="text" class='form-control bg-light'>
+                       <input type="number" name="years_of_experience" min="0" class='form-control bg-light'>
 
                   </div>
 
                   <div class='col-md-6'> 
                         <label class='text-sm' for="">Highest education</label>
-                        <input type="text" class='form-control  bg-light'>
+                        <select name="highest_education" class='form-control  bg-light'>
+                              <option value="ll.b">LL.B</option> 
+                              <option value="BL">BL</option>   
+                              <option value="ll.m">LL.M</option>
+                              <option value="ll.d">LL.D</option>
+                        </select>
                   
                   </div>
     
 
               </div>
 
-              <div class='d-flex g-3 flex-md-row flex-column mt-2'>
+              <div class='d-flex g-3 flex-md-row flex-column mt-3 px-5'>
 
                   <div class='col-md-6'>
                        <label class='text-sm' for="">Upload CV </label>
-                       <input type="text" class='form-control  bg-light'>
+                       <input type="file" name="cv_upload"  accept=".pdf, .docx" class='form-control  bg-light'>
 
                   </div>
 
                   <div class='col-md-6'> 
                         <label class='text-sm' for="">Year called to bar </label>
-                        <input type="text" class='form-control  bg-light'>
+                        <input type="date" name="year_called_to_bar" min="1900-01-01" class='form-control  bg-light'>
                   
                   </div>
     
@@ -177,17 +215,17 @@
               </div>
               
               
-              <div class='d-flex g-3 flex-md-row flex-column mt-2'>
+              <div class='d-flex g-3 flex-md-row flex-column mt-3 px-5'>
 
                   <div class='col-md-6'>
                        <label class='text-sm' for="">Upload cover letter </label>
-                       <input type="text" class='form-control  bg-light'>
+                       <input type="file" name="cover_letter"  accept=".pdf, .docx" class='form-control  bg-light'>
 
                   </div>
 
                   <div class='col-md-6'> 
                         <label class='text-sm' for="">portfolio link </label>
-                        <input type="text" class='form-control  bg-light'>
+                        <input type="url" name="portfolio_link" class='form-control  bg-light'>
                   
                   </div>
     
@@ -197,12 +235,12 @@
          </div>
 
          <div class="text-center mt-4">
-               <button type="submit" class="btn btn-dark px-4 py-2">Submit Application</button>
+               <button type="submit" name="submit" class="btn btn-dark px-4 py-2"><span id='loading' class='spinner-border text-warning text-sm'></span> <span id='button-name'>Submit Application</span></button>
           </div>
 
-
-
     </div>
+
+    </form>
 </div>
     <br><br>
     <?php include 'components/footer.php';?>
@@ -215,6 +253,58 @@
 
     });
   </script>
+<script>
+
+ $("#loading").hide();
+$(document).ready(function() {
+
+    $('#application-form').submit(function(e) {
+
+        e.preventDefault(); 
+
+        $('#button-name').hide();
+
+        $("#loading").show();
+
+        var formData = new FormData(this); 
+        $.ajax({
+             url: 'engine/job-application-process.php', // Replace with the correct PHP file path
+             type: 'POST',
+             data: formData,
+             processData: false, // Don't process the files
+             contentType: false, // Set content-type as false to allow FormData to handle it
+             success: function(response) {
+                $("#loading").hide();
+                $('#button-name').show(); 
+                if(response == "1") {
+                    swal({
+                        title: 'Success!',
+                        icon: 'success',
+                        text: 'Application submitted successfully!',
+                    });
+
+                    $('#application-form').trigger('reset'); // Reset the form after submission
+                } else {
+                    swal({
+                        icon: "warning",
+                        title: "Notice",
+                        text: response, // Show the error message from the server
+                    });
+                }
+            },
+            error: function() {
+                // Handle error case
+                swal({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'There was an error submitting your application. Please try again.',
+                });
+            }
+        });
+    });
+});
+</script>
+
     
     
 </body>

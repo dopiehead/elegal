@@ -50,9 +50,6 @@
                  <input type="text" name="telephone" class='bg-secondary border-0 w-100 py-2'>
 
 
-
-
-
                  <label class='text-sm text-secondary' for="">Are you currently engaged with a law firm  <span class='text-danger'>*</span></label>
 
                  <select name="currently_engaged" class='bg-secondary border-0 w-100 py-2'>
@@ -65,7 +62,16 @@
 
                  <label class='text-sm text-secondary' for="">What is your current position? (Write nil if not applicable to you) <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="current_position" class='bg-secondary border-0 w-100 py-2'> 
+                 <select name="current_position" class='bg-secondary border-0 w-100 py-2'> 
+
+                               <option value="ll.b">LL.B</option>
+                               <option value="bl">BL</option>
+                               <option value="ll.m">LL.M</option>
+                               <option value="phd">PHD</option>
+                               <option value="san">SAN</option>
+
+                 </select>
+
 
                  <label class='text-sm text-secondary' for="">What is your current work place? <span class='text-danger'></span></label>
 
@@ -90,7 +96,25 @@
 
                  <label class='text-sm text-secondary' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
 
-                 <input type="text"  name="practice_areas"  class='bg-secondary border-0 w-100 py-2' placeholder='family law, criminal law'>                     
+                 <select name="practice_areas[]" multiple  class='bg-secondary border-0 w-100 py-2 text-sm'> 
+                    
+
+                        <option value='public law'>Public Law</option>
+                        <option value='property law'>Property Law</option>
+                        <option value='labour law'>Labour Law</option>
+                        <option value='admininstrative law'>Administrative Law</option>
+                        <option value='common law'>Common Law</option>
+                        <option value='constructivity law'>Constructivity law</option>
+                        <option value='constitutional law'>Constitutional Law</option>
+                        <option value='energy'>Energy Law</option>
+                        <option value='family'>Family Law</option>
+                        <option value='public'>Public Law</option>
+                        <option value='customary'>Customary Law</option>
+                        <option value='admiralty'>Admiralty Law</option>
+                         <option value='nigerian legislature'>Nigerian Legislature</option>
+                         <option value='literal rule'>Literalrule</option>
+                    
+                 </select>
 
 
 

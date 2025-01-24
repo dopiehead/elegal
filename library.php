@@ -45,7 +45,7 @@
 
                      <div class='package' data-aos='fade-up'>
 
-                      <?php 
+                          <?php 
                       
                           if (!in_array($extension , $image_extension)) {
 

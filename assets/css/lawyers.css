@@ -15,6 +15,11 @@
     
 }
 
-.navbar .law-link{
-    font-weight:bold;
+ .law-link{
+    font-weight:bold !important;
+}
+
+#linking{
+     
+     font-weight:bold !important;  
 }

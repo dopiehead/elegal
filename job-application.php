@@ -1,5 +1,5 @@
 
-<?php 
+<?php  session_start();
      require ("engine/config.php");
      if(isset($_GET['id']) && !empty($_GET['id'])){
          $id = $_GET['id'];
@@ -51,7 +51,7 @@
 
              <div class='col-md-6'>
 
-                   <input type="hidden" name="job_id" value='<?php echo htmlspecialchars($id); ?>'>
+                   <input type="hidden" name="job_id" value='<?php if(!empty($id)){echo htmlspecialchars($id); } ?>'>
 
                    <label class='text-sm' for="">First name </label>
 
@@ -140,13 +140,13 @@
 
                  <div class='col-md-6'>
                      <label class='text-sm' for="">Job title </label>
-                     <input type="text" name="job_title" value="<?php echo htmlspecialchars($job_title); ?>" class='form-control  bg-light'>
+                     <input type="text" name="job_title" value="<?php if(!empty($job_title)){echo htmlspecialchars($job_title); } ?>" class='form-control  bg-light'>
 
                  </div>
 
                  <div class='col-md-6'>
                      <label class='text-sm' for="">Company </label>
-                     <input type="text" name="company" value="<?php echo htmlspecialchars($company_name); ?>" class='form-control  bg-light'>
+                     <input type="text" name="company" value="<?php if(!empty($company_name)){ echo htmlspecialchars($company_name); } ?>" class='form-control  bg-light'>
 
                  </div>
 

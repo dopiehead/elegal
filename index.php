@@ -3,8 +3,16 @@
 require ("engine/config.php");
 
       $condition = "SELECT * FROM lawyer_profile";
-
+      
       $stmt = mysqli_query($conn,$condition);
+
+ if(isset($_POST["submit-search"]))   {  
+
+    if(!empty($_POST["search"]))   {
+        
+        $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
+        header("location:search-process.php?search=" .$query); 
+    }  } 
 
 ?>
 <html lang="en">

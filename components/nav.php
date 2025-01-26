@@ -1,18 +1,34 @@
+<?php 
+
+if(isset($_POST["submit-search"]))   {  
+    if(!empty($_POST["search"]))   {  
+        $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
+        header("location:search-process.php?search=" .$query); 
+    }  } 
+
+
+?>
+
+
 <div class='navbar d-flex justify-content-between py-3 shadow bg-light px-2'>      
     
      <div class='logo-container'>
            <a href='index.php'>LOGO</a>  
      </div>
 
-     <div>
-          <input type="text" placeholder='&#xF002; Search' style='font-family:arial,fontawesome;' class='rounded rounded-pill bg-white border-0 bg-search'>
-
+     <div> 
+          <form action="">
+              <div class='d-flex'>
+                  <input type="text" name='search' placeholder='&#xF002; Search' style='font-family:arial,fontawesome;' class='rounded rounded-pill bg-white border-0 bg-search'>
+                  <button name='submit-search' class='btn-secondary text-white text-sm rounded rounded-pill border-0'>Search</button>
+              </div>
+          </form>
      </div>
 
      <ul class='link-container d-flex justify-content-center g-5 list-unstyled'>
 
          <li class='home-link'><a href='index.php'>Home</a></li>   
-         <li class='law-link'><a href='lawyers.php'>Lawyers</a></li>   
+         <li class='law-link linking'><a  id='linking' href='lawyers.php'>Lawyers</a></li>   
          <li class='firm-link'><a href='firm.php'>Firms</a></li>  
          <li class='user-link'><a href='users.php'>Users</a></li> 
          <li class='practice-link'><a href='practice-areas.php'>Practice Areas</a></li>  

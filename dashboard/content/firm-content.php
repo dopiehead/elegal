@@ -21,7 +21,6 @@
          $user_img = $row['firm_img'];
          $certification_and_accreditation = $row['certification_and_accreditation'];
          $practice_areas = $row['practice_areas'];
-         $practice_location = $row['practice_location'];
          $nooflawyers = $row['nooflawyers'];
          
      } else {

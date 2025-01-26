@@ -13,7 +13,6 @@
 
      <div class='create_background d-flex justify-content-center align-items-center flex-row flex-column'>
  
-
          <div class='create-container px-5'>
 
              <div class='d-flex flex-row flex-column heading-container position-relative justify-content-start mt-4 w-100 w-md-100 g-3'>
@@ -38,8 +37,6 @@
 
                  <input type="text" name="lawyer_education" class='bg-secondary border-0 w-100 py-2' placeholder="Seperate higher institutions by a comma">
 
-
-
                  <label  class='text-sm text-secondary' for="">Supreme court number  <span class='text-danger'>*</span></label>
 
                  <input type="text" name="supreme_court_number" class='bg-secondary border-0 w-100 py-2'>
@@ -59,7 +56,6 @@
 
                  </select>
 
-
                  <label class='text-sm text-secondary' for="">What is your current position? (Write nil if not applicable to you) <span class='text-danger'>*</span></label>
 
                  <select name="current_position" class='bg-secondary border-0 w-100 py-2'> 
@@ -72,86 +68,74 @@
 
                  </select>
 
-
                  <label class='text-sm text-secondary' for="">What is your current work place? <span class='text-danger'></span></label>
 
                  <input type="text" name="lawyer_firm" class='bg-secondary border-0 w-100 py-2'> 
-
-
-
-
 
                  <label class='text-sm text-secondary' for="">How long have you been practicing <span class='text-danger'>*</span></label>
 
                  <input type="text" name="lawyer_experience" class='bg-secondary border-0 w-100 py-2'>
 
-
-
-
-   
                  <label class='text-sm text-secondary' for="">Date of birth <span class='text-danger'>*</span></label>
 
                  <input type="date" name="lawyer_dob"  max="2009-01-01"  class='bg-secondary border-0 w-100 py-2'>
 
-
                  <label class='text-sm text-secondary' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
+  
+                 <div>
 
-                 <select name="practice_areas[]" multiple  class='bg-secondary border-0 w-100 py-2 text-sm'> 
-                    
+                      <div class='d-flex justify-content-start g-5 flex-wrap mt-2 bg-secondary py-5 px-2 text-sm'>
 
-                        <option value='public law'>Public Law</option>
-                        <option value='property law'>Property Law</option>
-                        <option value='labour law'>Labour Law</option>
-                        <option value='admininstrative law'>Administrative Law</option>
-                        <option value='common law'>Common Law</option>
-                        <option value='constructivity law'>Constructivity law</option>
-                        <option value='constitutional law'>Constitutional Law</option>
-                        <option value='energy'>Energy Law</option>
-                        <option value='family'>Family Law</option>
-                        <option value='public'>Public Law</option>
-                        <option value='customary'>Customary Law</option>
-                        <option value='admiralty'>Admiralty Law</option>
-                         <option value='nigerian legislature'>Nigerian Legislature</option>
-                         <option value='literal rule'>Literalrule</option>
-                    
-                 </select>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox"  name="practice_areas[]" value="criminal"> Criminal Law</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input  type="checkbox" name="practice_areas[]" value="civil" > Civil Law</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="corporate"> Corporate Law</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="family"> Family Law</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="intellectual_property"> Intellectual Property</span>         
 
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Property"> Property</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Labour"> Labour</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Administrative"> Administrative</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Common"> Common</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Constructive"> Constructive</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Constitutional"> Constitutional</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Energy"> Energy</span>
+
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Public"> Public</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Customary"> Customary</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Admiralty"> Admiralty</span>
+                         <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Nigerian Legislature"> Nigerian Legislature</span>
+                        <span class='text-white d-flex justify-content-start g-1'><input type="checkbox" name="practice_areas[]" value="Literalrule"> Literalrule</span>
+                          <span><input type="text" placeholder ="Others" name="practice_areas[]"> </span>          
+                     </div>
+
+                 </div>
 
 
                  <label class='text-sm text-secondary' for="">Published articles (Please paste link if applicable) <span class='text-danger'></span></label>
 
                  <input type="text" name="published_article" class='bg-secondary border-0 w-100 py-2' placeholder='family law articles, criminal law articles'>  
 
-
-
                  <label class='text-sm text-secondary' for="">License number and states(s) in which you are licensed to practise <span class='text-danger'>*</span></label>
 
                  <input type="text" name="practice_location" class='bg-secondary border-0 w-100 py-2' placeholder='seperate by a comma(,)'>  
-
-
 
                  <label class='text-sm text-secondary' for="">Location (This will only be seen by you) <span class='text-danger'> *</span></label>
 
                  <input type="text" name="lawyer_location" class='bg-secondary border-0 w-100 py-2' placeholder='Full address zip code, house no e.t.c'>  
 
 
-
-
                  <label class='text-sm text-secondary' for="">Tell us more about you <span class='text-danger'>*</span></label>
 
                  <textarea name="lawyer_bio" class='bg-secondary border-0 w-100 py-2' rows="5"></textarea>  
-                 
-                 
+                                  
 
                  <label class='text-sm text-secondary' for="">Password <span class='text-danger'>*</span></label>
 
                  <input type="password" name="lawyer_password" class='bg-secondary border-0 w-100 py-2' placeholder='Enter password'>  
 
-
                  <label class='text-sm text-secondary' for="">Confirm password <span class='text-danger'>*</span></label>
 
                  <input type="password" name="confirm_password" class='bg-secondary border-0 w-100 py-2' placeholder='Confirm password'>  
-
                   
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 

@@ -24,7 +24,7 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSIO
 
 <body class='bg-light'> 
 
-     <div class='px-3'>
+     <div class='px-1'>
 
          <div class='d-flex gap-3 flex-md-row flex-column'>              
 

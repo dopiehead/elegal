@@ -1,4 +1,6 @@
-<?php
+<?php session_start(); 
+
+
 
  require ("engine/config.php"); 
 
@@ -71,7 +73,7 @@
 
           <div class='d-flex form-board mt-4'>
 
-              <form>
+              <form id='volunteer-form'>
 
                  <label class='text-secondary text-sm' for="">First name</label>
                  <input type="text" class='form-control bg-light border-0'>
@@ -87,8 +89,16 @@
 
                 <label class='text-secondary text-sm' for="">Why do you want to volunteer?</label>
                 <input type="text" class='form-control bg-light border-0'>
+                 
+                <?php if(isset($_SESSION['id']) &&  isset($_SESSION['']) && isset($_SESSION[''])){ ?>
+    
+                <button class='btn btn-primary px-3 py-2 mt-5 text-sm form-control btn-submit' name='submit' >Submit</button>
 
-                <button class='btn btn-primary px-3 py-2 mt-5 text-sm form-control'>Submit</button>
+                <?php } else { ?>
+
+                    <button class='btn btn-primary px-3 py-2 mt-5 text-sm form-control btn-log' href='login.php' name='submit' >Submit</button>
+                    
+                 <?php } ?>
 
               </form>
 
@@ -108,5 +118,7 @@
 
      <br><br>
      <?php include("components/footer.php");?>
+
+
 </body>
 </html>

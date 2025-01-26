@@ -12,7 +12,7 @@
          </div>
 
 
-         <div class='bg-secondary shadow p-4 rounded rounded-3'>          
+         <div class='bg-success shadow p-4 rounded rounded-3'>          
              <h6 class='text-white fw-bold'>This month's income</h6>
               <div class='d-flex justify-content-evenly gap-3'>
                  <p class='text-white'>NGN 500,000</p>
@@ -83,8 +83,8 @@ $conn->close();
      const incomeChart = new Chart(ctx, {
          type: 'line',
          data: {
-            labels: labels,
-            datasets: [{
+         labels: labels,
+         datasets: [{
                 label: 'Income (NGN)',
                 data: data,
                 borderColor: '#007bff',

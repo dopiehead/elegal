@@ -80,7 +80,7 @@
 
                           <div class='mt-2 d-flex justify-content-between px-3'>
 
-                             <a class='btn btn-success text-white rounded text-sm' href="">Get in touch</a>
+                             <a class='btn btn-success text-white rounded text-sm text-decoration-none' href="pricing-list.php">Get in touch</a>
 
                              <a class='btn border border-2 border-secondary text-secondary rounded text-sm' href="user-profile.php?id=<?php echo htmlspecialchars($user_id); ?> &&user_type = user">View Profile</a>
 

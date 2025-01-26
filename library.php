@@ -97,7 +97,7 @@
 
         <div class='package-article' data-aos='fade-up'>
          
-            <img src="<?php echo htmlspecialchars($article_img);?>" alt="elegal">
+            <a href="article-details.php?id=<?php echo htmlspecialchars($article_id); ?>"><img src="<?php echo htmlspecialchars($article_img);?>" alt="elegal"></a>
             <div class=' mt-3 px-3 d-flex flex-row flex-column'>
                 <span class='text-sm fw-bold'><?php echo htmlspecialchars($title); ?></span>
                 <span class='text-sm text-secondary'><?php echo htmlspecialchars($created_at); ?> / <?php echo htmlspecialchars($author_name); ?></span>

@@ -35,7 +35,13 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
          while ($firm = mysqli_fetch_array($stmt)){
            
-            include ("components/firm-content.php");
+             include ("components/firm-content.php");
+
+             $extension = strtolower(pathinfo($firm_img,PATHINFO_EXTENSION));
+
+             $image_extension  = array('jpg','jpeg','png'); 
+
+
 
          }
 
@@ -50,8 +56,18 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
          
             <div class='shadow card pb-2'>
 
-                 <img class='firm_pic' src="<?php echo htmlspecialchars($firm_img); ?>" alt="elegal">
+             <?php 
              
+                 if (!in_array($extension , $image_extension)) {
+
+                      echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:130px;'>".substr($firm_name,0,2)."</span></div>";                  
+
+                 } else { ?> 
+
+                     <img class='firm_pic' src="<?php echo htmlspecialchars($firm_img); ?>" alt="elegal">
+                
+                 <?php } ?>
+
                  <div class='d-flex flex-row flex-column px-2'>
 
                      <span class='mt-1'><?php echo htmlspecialchars($firm_name); ?></span>

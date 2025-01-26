@@ -2,40 +2,29 @@
 require("config.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Collect data from the form
+  // Collect data from the form
     $firm_name = trim($_POST['firm_name']);
     $firm_email = trim($_POST['firm_email']);
     $firm_password = $_POST['firm_password'];
-    $firm_bio = $_POST['firm_bio'];
     $confirm_password = $_POST['confirm_password'];
     $firm_phone_number = trim($_POST['firm_phone_number']);
-    $firm_img = $_FILES['firm_img']['name'] ?? ''; // Optional field for image
+    $firm_bio = $_POST['firm_bio'];
     $date_found = $_POST['date_found'];
     $nooflawyers = trim($_POST['nooflawyers']);
-    
+    $firm_img = $_FILES['firm_img']['name'] ?? ''; // Optional field for image
+    $firm_location = trim($_POST['firm_location']);
+    $firm_rating = $_POST['firm_rating'] ?? 0; // Default to '0' if not set
+    $verified = $_POST['verified'] ?? 0; // Default to '0' if not set
+    $created_at = date("Y-m-d H:i:s"); // Only define once
     // Handle practice areas selection
-    if (isset($_POST['practice_areas'])) {
-        $practice_areas = $_POST['practice_areas'];
-        $selectedareas = implode(' , ', $practice_areas);
-    } else {
-        $selectedareas = ''; // If no areas are selected
-    }
+    $practice_areas = isset($_POST['practice_areas']) ? $_POST['practice_areas'] : [];
+    $selectedareas = implode(' , ', $practice_areas);
 
     // Handle certification and accreditation
-    if (isset($_POST['certification_accredit'])) {
-        $certification_accreditation = implode(" , ", $_POST['certification_accredit']);
-    } else {
-        $certification_accreditation = ''; // If no certification is provided
-    }
-
-    $firm_location = trim($_POST['firm_location']);
-    $firm_bio = trim($_POST['firm_bio']);
-    $created_at = date("Y-m-d H:i:s"); // Only define once
-    $firm_rating = $_POST['firm_rating'] ?? '0'; // Default to '0' if not set
+    $certification_and_accreditation = isset($_POST['certification_accredit']) ? implode(" , ", $_POST['certification_accredit']) : '';
 
     // Validation
-    if (empty($firm_name) || empty($firm_email) || empty($firm_password) || empty($confirm_password) || empty($firm_phone_number) || empty($date_found) || empty($nooflawyers) || empty($practice_areas) || empty($firm_bio)) {
+    if (empty($firm_name) || empty($firm_email) || empty($firm_password) || empty($confirm_password) || empty($firm_phone_number) || empty($date_found) || empty($nooflawyers) || empty($selectedareas) || empty($firm_bio)) {
         echo "All fields are required.";
         exit;
     }
@@ -97,26 +86,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          firm_name, 
          firm_email, 
          firm_password, 
-         firm_bio, 
-         certification_accreditation, 
+         firm_about, 
+         certification_and_accreditation,
          date_found,
          nooflawyers,
          firm_phone_number, 
          firm_rating,
-         firm_location, 
+         location, 
          practice_areas,
          firm_img,
-         date_created
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+         date_created,
+         verified
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
-        // Binding parameters to the SQL statement
+        // Bind parameters
         $stmt->bind_param("ssssssssssssss", 
              $firm_name, 
              $firm_email, 
              $hashed_password, 
              $firm_bio, 
-             $certification_accreditation, 
+             $certification_and_accreditation, 
              $date_found, 
              $nooflawyers, 
              $firm_phone_number, 
@@ -124,12 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              $firm_location, 
              $selectedareas, 
              $image_path, 
-             $created_at
+             $created_at, // Get current timestamp
+             $verified
         );
 
         // Execute the query
         if ($stmt->execute()) {
-            echo "Firm registered successfully.";
+            echo "1";
         } else {
             echo "Failed to register firm. Please try again. Error: " . $stmt->error;
         }

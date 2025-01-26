@@ -1,3 +1,4 @@
+<?php require ('../../engine/config.php'); ?>
 
 <h3 class='fw-bold mb-3 mt-2'>Case Definition</h3>
 
@@ -15,6 +16,7 @@
              <th scope='cols'>Lawyer</th>
              <th scope='cols'>Status</th>
              <th scope='cols'>paid</th>
+             <th scope='cols'>Action</th>
        
 
          </tr>
@@ -30,20 +32,20 @@
              <td>Ekemena Anchor</td>                                 
              <td>Nneka Harry</td>  
              <td>Ongoing</td> 
-             <td>50%</td>    
+             <td>50%</td> 
+             <td>
+                  
+                 <div class='d-flex justify-content-evenly gap-1 text-sm'>  
+                     <a class=' text-success  ongoing_cases ' id='<?php echo htmlspecialchars($row['id']); ?>'><span class='fa fa-eye'></span></a>
+                     <a class=' text-primary' href='edit-case.php?id=<?php echo htmlspecialchars($row['id']);?>'><span class='fa fa-edit'></span></a>
+                     <a class=' text-danger' href='delete-case.php?id=<?php echo htmlspecialchars($row['id']);?>'> <span class='fa fa-trash'></span></a>
+                 </div>
+
+             </td>   
                                   
           </tr>
 
-          <tr>
 
-             <td>4320</td>
-             <td>Alan walker</td>
-             <td>Ekemena Anchor</td>                                 
-             <td>Nneka Harry</td>  
-             <td>Ongoing</td> 
-             <td>50%</td>    
-                     
-</tr>
 
 </tbody>
 

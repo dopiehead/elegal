@@ -98,7 +98,7 @@ $(document).ready(function() {
     // Handle form submission
     $('#user-registration-form').on('submit', function(e) {
         e.preventDefault();  // Prevent the default form submission
-
+         let form = $('#user-registration-form').serialize();
         // Show spinner, disable submit button, and hide sign-up note
         $(".spinner-border").show();
         $('#btn-signup').prop('disabled', true);
@@ -128,6 +128,7 @@ $(document).ready(function() {
                     // Reset the form
                     $("#user-registration-form")[0].reset();
                     $("#user-registration-form").val('');
+                    $("#user-registration-form").trigger('reset');
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
                 } else {
                     swal({

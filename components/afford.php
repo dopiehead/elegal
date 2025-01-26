@@ -6,7 +6,7 @@
 
   <br>
 
-  <a class='bg-white px-2 py-1 text-dark text-sm' href="">Get a lawyer</a>
+  <a class='bg-white px-2 py-1 text-dark text-sm text-decoration-none' href="lawyers.php">Get a lawyer</a>
 
   <br>
 

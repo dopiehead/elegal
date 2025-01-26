@@ -26,7 +26,7 @@ echo ($details);
 
          <div class='px-5'>
 
-              <a class='text-white fw-bold mt-5' onclick="history.go(-1)"><i class='fa fa-arrow-left'></i></a>
+              <a class='text-white fw-bold mt-5' href='index.php' ><i class='fa fa-arrow-left'></i></a>
 
          </div>
 
@@ -57,6 +57,8 @@ echo ($details);
                          <option value="lawyer">Counselor</option>
 
                          <option value="firm">Law Firm</option>
+
+                         <option value="admin">Admin</option>
                     
                       </select>
 
@@ -92,95 +94,65 @@ echo ($details);
      <input type="hidden" id="details" value="<?php echo htmlspecialchars($details); ?>">
 
      <script>
+    $(document).ready(function() {
+        // Initially hide the spinner
+        $(".spinner-border").hide();
 
-     $(document).ready(function() {
+        $(".btn-login").on("click", function(e) {
+            e.preventDefault();
 
-         $(".spinner-border").hide();
+            $(".spinner-border").show();
+            $('#btn-login').prop('disabled', true);
+            $(".sign-in-note").hide();
 
-         $(".btn-login").on("click", function(e) {
+            let details = $("#details").val();
+            let user_type = $(".user_type").val();
+            let formData = $("#login-form").serialize(); // Get form data
 
-             e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "engine/login-process.php",
+                data: formData,
+                success: function(response) {
+                    $(".spinner-border").hide();
+                    $(".sign-in-note").show();
+                    $('#btn-login').prop('disabled', false);
 
-             $(".spinner-border").show();
+                    if (response == 1) {
+                        $("#login-form")[0].reset();
 
-             $('#btn-login').prop('disabled', true);
-    
-             $(".sign-in-note").hide();
+                        if (details !== "") {
+                            window.location.href = details;
+                        } else {
+                            if (user_type == "admin") {
+                                window.location.href = "admin/admin-dashboard.php";
+                            } else if (user_type == "firm") {
+                                window.location.href = "dashboard/firm-dashboard.php";
+                            } else {
+                                window.location.href = "dashboard/mydashboard.php";
+                            }
+                        }
+                    } else {
+                        swal({
+                            icon: "warning",
+                            text: response,
+                            title: "Notice"
+                        });
+                        $("input").css('border', '1px solid red');
+                    }
+                },
 
-             let details = $("#details").val();
-
-             let user_type = $(".user_type").val();
-
-             let formData = $("#login-form").serialize(); // Get form data
-
-             $.ajax({
-
-                 type: "POST",
-
-                 url: "engine/login-process.php",
-
-                 data: formData,
-
-                 success: function(response) {
-        
-                     $(".spinner-border").hide();
-
-                     $(".sign-in-note").show();
-
-                     $('#btn-login').prop('disabled', false);
-
-                     if (response == 1) {
-                 
-                         $("#login-form")[0].reset();
-             
-                         if (details !== "") {
-
-                              window.location.href = details;
-
-                         } else {
-
-                              if(user_type != "firm") {
-
-                                  window.location.href = "dashboard/mydashboard.php";
-
-                             }
-
-                             else{
-
-                                  window.location.href = "dashboard/firm-dashboard.php";
-
-                             }
-                         }
-
-                     } else {
-                  
-                              swal({
-
-                                 icon: "warning",
-                                 text: response,
-                                 title: "Notice"
-
-                             });
-
-                         $("input").css('border', '1px solid red');
-                     }
-
-                 },
-
-                 error: function(err) {
-
-                     $(".spinner-border").hide();
-               
-                     swal({
-
-                         icon: "error",
-                         text: err,
-                         title: "Error"
-                     });
-            }
+                error: function(err) {
+                    $(".spinner-border").hide();
+                    swal({
+                        icon: "error",
+                        text: err,
+                        title: "Error"
+                    });
+                }
+            });
         });
     });
-});
 </script>
 
 

@@ -54,7 +54,7 @@
 
                                <?php   if (!in_array($extension , $image_extension)) {
 
-                                     echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";                  
+                                     echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:180px;'>".substr($firm_name,0,2)."</span></div>";                  
 
                                } else { ?>                               
 
@@ -114,7 +114,7 @@
 
          <div class='mt-2'>
 
-              <a class='text-dark border-bottom border-bottom-2 border-dark p-1 mt-1' href="">View Layers around you</a>
+              <a class='text-dark border-bottom border-bottom-2 border-dark p-1 mt-1 text-decoration-none' href="">View Lawyers around you</a>
 
          </div>
        
@@ -122,7 +122,7 @@
 
          <div class='text-center' data-aos='fade-up'>
 
-               <a class='btn text-secondary border border-2 border-secondary' href="sign-up.php">Register your firm</a>
+               <a class='btn text-secondary border border-2 border-secondary' href="firm-register.php">Register your firm</a>
 
          </div>
          <br><br>

@@ -70,3 +70,7 @@
      height:15em;
      object-fit: cover;
 }
+
+a:hover{
+     opacity: 0.5 !important;
+}

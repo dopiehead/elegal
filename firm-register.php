@@ -15,7 +15,6 @@
 
      <div class='create_background d-flex justify-content-center align-items-center flex-row flex-column'>
  
-
          <div class='create-container px-5'>
 
              <div class='d-flex flex-row flex-column heading-container position-relative justify-content-start mt-4 w-100 w-md-100 g-3'>
@@ -45,35 +44,55 @@
 
                   <label class='text-sm text-secondary' for="">Location<span class='text-danger'>*</span></label>
 
-
                  <input type="text" name="firm_location" class='bg-secondary border-0 w-100 py-2' placeholder="Full address"> 
 
                  <label class='text-sm text-secondary' for="">How many lawyers work in your firm <span class='text-danger'>*</span></label>
 
                  <input type="text" name="nooflawyers" class='bg-secondary border-0 w-100 py-2'>
 
-                 <label class='text-sm text-secondary form-label' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary form-label' for="">What are you areas of specialization (select multiple if you have more than 1) <span class='text-danger'>*</span></label>
+                  
+                 <div>
 
-                 <select name="practice_areas[]" id="practice_areas" multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm position-relative'>
-                 <!-- <option value=""selected>Select practice area</option> -->
-                       <option value="criminal">Criminal Law</option>
-                       <option value="civil">Civil Law</option>
-                       <option value="corporate">Corporate Law</option>
-                       <option value="family">Family Law</option>
-                        <option value="intellectual_property">Intellectual Property</option>
-                 </select>                  
+                      <div class='d-flex justify-content-start g-5 flex-wrap mt-2 bg-secondary py-5 px-2 text-sm'>
 
-                 <label class='text-sm text-secondary' for="">Certifications and accreditation <span class='text-danger'>*</span></label>
+                         <span class='text-white'><input type="checkbox"  name="practice_areas[]" value="criminal"> Criminal Law</span>
+                         <span class='text-white'><input  type="checkbox" name="practice_areas[]" value="civil" > Civil Law</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="corporate"> Corporate Law</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="family"> Family Law</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="intellectual_property"> Intellectual Property</span>         
 
-                 <select type="text" name="certification_accredit[]" id='certification_accreditation' multiple="multiple" class='bg-secondary border-0 w-100 py-2 form-control text-sm text-white'>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Property"> Property</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Labour"> Labour</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Administrative"> Administrative</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Common"> Common</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Constructive"> Constructive</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Constitutional"> Constitutional</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Energy"> Energy</span>
 
-                      <option value="san">Select Award</option>
-                      <option value="san">SAN Award</option>
-                      <option value="usf">USF Award</option>
-                      <option value="encomium">Ecomium Award of the year</option>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Public"> Public</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Customary"> Customary</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Admiralty"> Admiralty</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Nigerian Legislature"> Nigerian Legislature</span>
+                        <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Literalrule"> Literalrule</span>
+                                    
+                     </div>
+
+                 </div>
+
+                 <label class='text-sm text-secondary mt-4' for="">Certifications and accreditation (select multiple if you have more than 1) <span class='text-danger'>*</span></label>
+                 
+                 <div>
+
+                     <div class='d-flex justify-content-evenly g-1 flex-wrap mt-2 bg-secondary py-3 text-sm'>
+                         <span class='text-white'><input type="checkbox"  name="certification_accredit[]" value="san" > WHO Award</span>
+                         <span class='text-white'>  <input type="checkbox"  name="certification_accredit[]" value="san"> SAN Award</span>
+                         <span class='text-white'><input  type="checkbox" name="certification_accredit[]" value="usf"> USF Award</span>
+                         <span class='text-white'><input  type="checkbox" name="certification_accredit[]" value="encomium"> Ecomium Award of the year</span>
 
                  </select>
-
+                     </div>
+                 </div>
                  <label class='text-sm text-secondary' for="">Tell us more about you <span class='text-danger'>*</span></label>
 
                  <textarea name="firm_bio" class='bg-secondary border-0 w-100 py-2' rows="5"></textarea>  
@@ -88,9 +107,9 @@
                   
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 
-                       <button id="btn-signup" class='btn btn-success text-sm d-flex justify-content-center align-items-center'>Sign up</button>
-
-                       <a class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</a>
+                     <button class='btn btn-success text-sm d-flex justify-content-center align-items-center' id='btn-signup'><span class='spinner-border text-warning'></span> <span class='sign-up-note'>Sign up</span></button>
+                     <a class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</a>
+                     
                  </div>
 
              </form>
@@ -98,29 +117,28 @@
          </div>
 
      </div>
-        
-     <!-- <script>
 
-        $('#practice_areas,#certification_accreditation').select2({
-             placeholder: 'Select Practice areas',
-             width: '100%',      
-        });
-  
-</script>  -->
-    
      <script>
-$(document).ready(function() {
-    // Initially hide the spinner
-    $(".spinner-border").hide();
 
+$(document).ready(function() {
+    // Cache jQuery selectors for repeated use
+    const $spinner = $(".spinner-border");
+    const $signupBtn = $('#btn-signup');
+    const $signUpNote = $(".sign-up-note");
+    const $firmRegistrationForm = $('#firm-registration-form');
+    const $inputs = $('input, textarea');
+
+    // Initially hide the spinner and sign-up note
+    $spinner.hide();
+  
     // Handle form submission
-    $('#firm-registration-form').on('submit', function(e) {
-        e.preventDefault();  // Prevent the default form submission
+    $firmRegistrationForm.on('submit', function(e) {
+        e.preventDefault();  // Prevent default form submission
 
         // Show spinner, disable submit button, and hide sign-up note
-        $(".spinner-border").show();
-        $('#btn-signup').prop('disabled', true);
-        $(".sign-up-note").hide();
+        $spinner.show();
+        $signupBtn.prop('disabled', true);
+        $signUpNote.hide();
 
         // Create FormData object
         let formData = new FormData(this);
@@ -133,35 +151,41 @@ $(document).ready(function() {
             processData: false, // Don't let jQuery try to process the data
             contentType: false, // Let FormData set content-type correctly
             success: function(response) {
-                $(".spinner-border").hide();  // Hide the spinner
-                $(".sign-up-note").show();    // Show the sign-up note
+                // Hide spinner, show the sign-up note
+                $spinner.hide();
+                $signUpNote.show();
 
                 if (response == 1) {
                     swal({ 
                           title: "Success",
                           text: "Registration successful. Please check your email for verification.",
-                         icon: "success",
+                          icon: "success",
                     });
 
-                    // Reset the form
-                    $("#firm-registration-form")[0].reset();
-                    $("#firm-registration-form").val("");
-                    $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
+                    // Reset the form and re-enable the submit button
+                    $firmRegistrationForm[0].reset();
+                    $signupBtn.prop('disabled', false);
                 } else {
                     swal({
                          title: "Notice",
                          icon: "warning",
                          text: response,
                     });
-                    $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                    $('input').css('border-color', 'red');     // Highlight invalid fields
-                    $('textarea').css('border-color', 'red');  // Highlight invalid textarea
+                    $signupBtn.prop('disabled', false);  // Re-enable the submit button
+
+                    // Highlight invalid fields
+                    $inputs.css('border-color', 'red');
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $(".spinner-border").hide();  // Hide the spinner in case of error
-                $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                console.log(errorThrown);  // Log the error
+                // Hide spinner and re-enable the submit button
+                $spinner.hide();
+                $signupBtn.prop('disabled', false);
+
+                // Log detailed error for debugging
+                console.error("Error Details: ", textStatus, errorThrown);
+
+                // Show error alert
                 swal({
                     title: 'Error',
                     icon: "error",
@@ -172,8 +196,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
- 
 
 </body>
 </html>

@@ -16,8 +16,20 @@
          }
       }
 
+      elseif(isset($_GET['current_position'])){
+          
+         if(!empty($_GET['current_position'])){
+
+             $current_position = mysqli_escape_string($conn,$_GET['current_position']);
+
+             $condition .= " WHERE current_position like '%".$current_position."%'";
+
+         }
+      }
+
       else{
         $category = null;
+         $current_position = null;
       }
 
        $stmt = mysqli_query($conn,$condition);
@@ -94,7 +106,7 @@
 
                                           <div class='d-flex justify-content-between mt-2 g-3'>
 
-                                             <a  id="openModalBtn" class='btn text-success border border-2 border-success px-2 rounded text-sm'>Send message</a>
+                                             <a  id="openModalBtn" class='btn text-success border border-2 border-success px-2 rounded text-sm' href='pricing-list.php'>Send message</a>
                                              <a class='btn btn-success text-white px-2 text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
 
                                          </div>

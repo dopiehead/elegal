@@ -37,11 +37,10 @@ a{
 .profile-container img{
      height:90px;
      width:90px;
-     border-radius:50%;
+     border-radius:50% !important;
      padding:5px;
-     border:2px solid green;
+  
 }
-
 
 
 
@@ -100,8 +99,8 @@ table{
 }
 
 .canvas{
-     width:100%;
-     max-height:500px;
+     width:80%;
+     max-height:300px;
 }
 
 

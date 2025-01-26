@@ -14,7 +14,7 @@
         <th scope='cols'>Case status</th>
         <th scope='cols'>Paid</th>
         <th scope='cols'>Unpaid</th>
-        <th scope='cols'>Action</th>
+        <th class='text-center' scope='cols'>Action</th>
 
     </tr>
 
@@ -40,7 +40,13 @@
         <td> <?php  echo ($row['case_status'] == '0') ? "on going" : "case concluded"; ?></td>                                 
         <td><?php echo htmlspecialchars($row['paid']);?></td>                                 
         <td><span class='text-danger'><?php echo htmlspecialchars($row['unpaid']);?></span></td>
-        <td><a class='text-primary  ongoing_cases text-decoration-unline' id='<?php echo htmlspecialchars($row['id']); ?>'>view details</a></td>
+        <td>
+            <div class='d-flex justify-content-evenly gap-3 text-sm'>  
+                 <a class=' text-success  ongoing_cases ' id='<?php echo htmlspecialchars($row['id']); ?>'><span class='fa fa-eye'></span></a>
+                 <a class=' text-primary' href='edit-case.php?id=<?php echo htmlspecialchars($row['id']);?>'><span class='fa fa-edit'></span></a>
+                 <a class=' text-danger' href='delete-case.php?id=<?php echo htmlspecialchars($row['id']);?>'> <span class='fa fa-trash'></span></a>
+             </div>
+        </td>
 
     </tr>
 

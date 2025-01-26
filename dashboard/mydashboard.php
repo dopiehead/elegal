@@ -61,14 +61,20 @@ if (isset($_SESSION["firm_id"])) {
 
                   <div class=' activities d-flex justify-content-between align-items-center mt-4 mb-3 flex-md-row flex-column gap-1'>
 
-                      <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Reminder</span><span class='fw-bold fs-5'><?php echo date("d-m-Y") ?></span></div>
+                    
 
                       <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Notes</span><span class='fw-bold fs-5'>0</span></div>
+                     <?php if(isset($_SESSION['id'])) {?>
 
-                      <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Lawyers contacted</span><span class='fw-bold fs-5'>0</span></div>
+                          <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Cases Filed</span><span class='fw-bold fs-5'>0</span></div>
+                          <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Lawyers contacted</span><span class='fw-bold fs-5'>0</span></div>
+                     <?php }?>
 
-                      <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Court cases</span><span class='fw-bold fs-5'>0</span></div>
 
+                     <?php if(isset($_SESSION['lawyer_id'])) {?>
+                          <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Reminder</span><span class='fw-bold fs-5'><?php echo date("d-m-Y") ?></span></div>
+                          <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Court cases</span><span class='fw-bold fs-5'>0</span></div>
+                     <?php }?>
 
                   </div>
 
@@ -135,6 +141,7 @@ if (isset($_SESSION["firm_id"])) {
 
 
                    <br><br>
+                   <?php if(isset($_SESSION['lawyer_id'])) {?>
 
               <div class='mt-5 shadow-lg bg-white client-part py-3 px-2 '>
 
@@ -146,6 +153,9 @@ if (isset($_SESSION["firm_id"])) {
                   </div>
 
                   <br>
+
+
+
 
                   <div>
 
@@ -182,10 +192,14 @@ if (isset($_SESSION["firm_id"])) {
 
                   </div>
 
+                
+
               </div>    
 
              </div>
-       
+             
+             <?php }?>
+
 
      </div>
 

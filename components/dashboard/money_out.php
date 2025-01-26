@@ -22,7 +22,7 @@
          </div>
 
 
-         <div class='bg-secondary shadow p-4 rounded rounded-2'>
+         <div class='bg-warning shadow p-4 rounded rounded-2'>
              <h6 class='fw-bold text-white'>Expenses this month</h6>
              <div class='d-flex justify-content-evenly gap-3'>
                  <p class='text-white'>300,000</p>
@@ -72,18 +72,18 @@ $conn->close();
 
 <script>
     // PHP variables passed as JSON
-     const labels = <?php echo json_encode($months); ?>;
-     const data = <?php echo json_encode($incomes); ?>;
+     const labels_money_out = <?php echo json_encode($months); ?>;
+     const data_money_out = <?php echo json_encode($incomes); ?>;
 
     // Chart.js code
-     const ctx = document.getElementById('incomeChart').getContext('2d');
-     const incomeChart = new Chart(ctx, {
+     const ctx_money_out = document.getElementById('incomeChart').getContext('2d');
+     const outgoing_Chart = new Chart(ctx_money_out, {
          type: 'line',
          data: {
-            labels: labels,
+            labels:  labels_money_out,
             datasets: [{
                 label: 'outgoing (NGN)',
-                data: data,
+                data: data_money_out,
                 borderColor: '#ff8400',
                 backgroundColor: 'rgba(55, 81, 0, 0.2)',
                 tension: 0.3,

@@ -1,3 +1,25 @@
+
+<?php
+
+session_start();
+if(!isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id'])){
+     header("Location:jobs.php");
+     exit();
+}
+
+else{
+
+     $firm_id = $_SESSION['firm_id'];
+     require("engine/config.php");
+     $stmt = mysqli_query($conn,"SELECT * FROM lawyer_firm WHERE firm_id = '$firm_id'");
+     $row = mysqli_fetch_assoc($stmt);
+     include ("components/firm-content.php");
+ 
+}
+
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

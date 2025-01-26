@@ -1,3 +1,7 @@
 .price {
     font-size: 18px;
 }
+
+.price-head{
+    border-top: 3px solid rgb(13, 112, 127);
+}

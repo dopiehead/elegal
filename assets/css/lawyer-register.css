@@ -50,10 +50,13 @@ label{
     margin-top:18px;
 }
 
-input{
+input[type=text], textarea{
     width:100%;
 }
 
+.g-1{
+    gap:5px;
+}
 
 
 select:focus,input:focus,textarea:focus{

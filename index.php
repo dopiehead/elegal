@@ -320,14 +320,17 @@
                          <h5 class='fw-bold ml-1 mt-2'><?php echo htmlspecialchars($name); ?></h5>
                          <span class='text-sm ml-2'>Partner</span>
                          <span class='text-sm ml-2'><?php echo htmlspecialchars($practice_areas);?></span>
-                         <span class='text-sm ml-2'><?php echo htmlspecialchars($email);?></span>
-                         <span class='text-sm ml-2'><?php echo htmlspecialchars($phone_number);?></span>
 
+                         <?php if(isset($_SESSION['id']) && isset($_SESSION['firm_id']) && isset($_SESSION['lawyer_id'])) { ?>
+                              <span class='text-sm ml-2'><?php echo htmlspecialchars($email);?></span>
+                         
+                              <span class='text-sm ml-2'><?php echo htmlspecialchars($phone_number);?></span>
+                         <?php }?>
                      </div>
 
                      <div class='h-100 d-flex align-items-end'>
 
-                        <button class='bg-white text-success border border-success fw-bold rounded text-sm' href="profile.php?id='<?php echo htmlspecialchars($id);?>&&user_type=lawyer'">View Profile</button>
+                        <a class='bg-white text-success border border-success fw-bold rounded text-sm text-decoration-none px-3 py-2' href="profile.php?id=<?php echo htmlspecialchars($id);?>&&user_type=lawyer">View Profile</a>
 
                      </div>
 
@@ -411,33 +414,61 @@
 
  <br>
 
- <div>
+ <div class='px-2'>
 
      <h2 class='text-center fw-bold'>Senior Advocates of Nigeria (SAN) Wall Of Fame</h2>
 
      <br>
 
-     <div class='d-flex justify-content-between align-items-center flex-md-row flex-column g-5 px-2 mt-3 '>
+     <div class='d-flex justify-content-start align-items-center flex-md-row flex-column g-5 px-3 mt-3 '>
         
-         <div class='shadow rounded'  data-aos='fade-up'>
+       <?php
 
-             <div>
-           
-                  <img class='w-100 rounded' src="assets/images/bamgbose.png" alt="">
+        $get_san_lawyers = mysqli_query($conn,"SELECT * FROM lawyer_profile  where current_position like '%senior advocate%'");
 
+         while($lawyer = mysqli_fetch_array($get_san_lawyers)){
+
+             include('components/lawyer-profile.php');
+            
+             $extension = strtolower(pathinfo($img,PATHINFO_EXTENSION));
+
+             $image_extension  = array('jpg','jpeg','png'); 
+
+
+        ?>
+         
+
+         <div class='shadow rounded package-container' style='width:18rem !important; height:29rem; !important'  data-aos='fade-up'>
+
+
+             <div class='w-100'>
+
+            <?php 
+            
+                  if (!in_array($extension , $image_extension)) {
+
+                           echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($name,0,2)."</span></div>";                  
+
+                  } else { 
+                   ?>  
+                  <img class='w-100' style='height:14rem !important;object-fit:cover;' src="<?php echo htmlspecialchars($img); ?>" alt="">
+                  
+                  <?php } ?>
               </div>
 
-             <div class='p-2 d-flex g-3 flex-row flex-column'>
+
+
+             <div class='p-2 d-flex flex-row flex-column g-1'>
                 
-                 <h5>Timileyin Bamgbose (SAN)</h5>
+                 <h5><?php echo htmlspecialchars($name); ?> (SAN)</h5>
 
-                 <span class='fs-6'>Partner at Ernest&Young</span>
+                 <span class='fs-6'><?php echo htmlspecialchars($firm); ?> at Ernest&Young</span>
 
-                 <span class='text-sm text-mute'>20 years experience</span>
+                 <span class='text-sm text-secondary'><?php echo htmlspecialchars($experience); ?> years experience</span>
 
-                 <span class='text-sm text-mute'>Abuja, FCT</span>
+                 <span class='text-sm text-secondary'><?php echo htmlspecialchars($lawyer_location); ?></span>
 
-                 <span class='text-sm text-mute'>Corporate, constitutional, criminal law</span>
+                 <span class='text-sm text-secondary'><?php echo htmlspecialchars (substr($practice_areas,0,30));?></span>
 
                  <span>
                       <i class='fa fa-star'></i>
@@ -447,9 +478,9 @@
                       <i class='fa fa-star'></i>
                  </span>
 
-                 <div class='d-flex justify-content-between'>
+                 <div class='d-flex justify-content-between g-3 mt-1'>
                      <a class='btn btn-success' href="">Get in touch</a>
-                     <a class='btn border border-success border-2 text-success' href="">View profile</a>
+                     <a class='btn border border-success border-2 text-success' href="lawyers.php?current_position=senior advocate">View profile</a>
                  </div>
 
 
@@ -458,131 +489,15 @@
 
          </div>
 
-
-         <div class='shadow rounded'  data-aos='fade-up'>
-
-             <div>
-
-                  <img class='w-100 rounded' src="assets/images/bamgbose.png" alt="">
-
-             </div>
-
-            <div class='p-2 d-flex g-3 flex-row flex-column'>
-   
-                 <h5>Timileyin Bamgbose (SAN)</h5>
-
-                 <h6 class='fs-6'>Partner at Ernest&Young</h6>
-
-                 <span class='text-sm text-mute'>20 years experience</span>
-
-                 <span class='text-sm text-mute'>Abuja, FCT</span>
-
-                 <span class='text-sm text-mute'>Corporate, constitutional, criminal law</span>
-
-                 <span>
-                      <i class='fa fa-star'></i>
-                      <i class='fa fa-star'></i>
-                      <i class='fa fa-star'></i>
-                       <i class='fa fa-star'></i>
-                     <i class='fa fa-star'></i>
-                 </span>
-
-                  <div class='d-flex justify-content-between'>
-                     <a class='btn btn-success' href="">Get in touch</a>
-                     <a class='btn border border-success border-2 text-success' href="">View profile</a>
-                 </div>
-
-              </div>
-
-
-         </div>
-
-
-         <div class='shadow rounded'  data-aos='fade-up'>
-
-<div>
-
-     <img class='w-100 rounded' src="assets/images/bamgbose.png" alt="">
-
-</div>
-
-<div class='p-2 d-flex g-3 flex-row flex-column'>
-
-    <h5>Timileyin Bamgbose (SAN)</h5>
-
-    <h6 class='fs-6'>Partner at Ernest&Young</h6>
-
-    <span class='text-sm text-mute'>20 years experience</span>
-
-    <span class='text-sm text-mute'>Abuja, FCT</span>
-
-    <span class='text-sm text-mute'>Corporate, constitutional, criminal law</span>
-
-    <span>
-         <i class='fa fa-star'></i>
-         <i class='fa fa-star'></i>
-         <i class='fa fa-star'></i>
-          <i class='fa fa-star'></i>
-        <i class='fa fa-star'></i>
-    </span>
-
-     <div class='d-flex justify-content-between'>
-        <a class='btn btn-success' href="">Get in touch</a>
-        <a class='btn border border-success border-2 text-success' href="">View profile</a>
-    </div>
-
- </div>
-
-
-</div>
-
-
-
-
-<div class='shadow rounded'  data-aos='fade-up'>
-
-     <div>
-
-         <img class='w-100 rounded' src="assets/images/bamgbose.png" alt="">
-
-     </div>
-
-     <div class='p-2 d-flex g-3 flex-row flex-column'>
-
-          <h5>Timileyin Bamgbose (SAN)</h5>
-
-          <h6 class='fs-6'>Partner at Ernest&Young</h6>
-
-          <span class='text-sm text-mute'>20 years experience</span>
-
-          <span class='text-sm text-mute'>Abuja, FCT</span>
-
-          <span class='text-sm text-mute'>Corporate, constitutional, criminal law</span>
-
-          <span>
-             <i class='fa fa-star'></i>
-              <i class='fa fa-star'></i>
-              <i class='fa fa-star'></i>
-              <i class='fa fa-star'></i>
-              <i class='fa fa-star'></i>
-         </span>
-
-         <div class='d-flex justify-content-between'>
-             <a class='btn btn-success' href="">Get in touch</a>
-             <a class='btn border border-success border-2 text-success' href="">View profile</a>
-         </div>
-
-     </div>
-
-
- </div>
-
+                
+          
+        <?php } ?>
 
 </div>
 
 <div class='d-flex justify-content-between text-sm mt-2 px-2'>
     <span>Are you a SAN? Apply for a spot in our Wall Of Fame</span>
-    <span>View more</span>
+    <span><a href='pricing-list.php'>View more</a></span>
 
 </div>
 
@@ -634,8 +549,9 @@
 
      <?php 
 
-        
+         $condition = "SELECT * FROM lawyer_profile";
 
+         $stmt = mysqli_query($conn,$condition);
 
         while($lawyer = mysqli_fetch_array($stmt)){
 
@@ -665,8 +581,8 @@
                           <i class='fa fa-star'></i>
                    </span>
 
-                   <div class='d-flex justify-content-between mt-2 g-3'>
-                     <a class='btn btn-success text-white  text-sm'>Send a message</a>
+                   <div class='d-flex justify-content-between mt-2 g-5'>
+                     <a class='btn btn-success text-white  text-sm' href='pricing-list'>Send a message</a>
                      <a class='btn border border-success text-success text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
                    </div>
 
@@ -727,7 +643,7 @@
               </span>
 
               <div class='d-flex justify-content-between mt-2 g-3'>
-                <a class='btn btn-success text-white  text-sm' href="">Send a message</a>
+                <a class='btn btn-success text-white  text-sm' href="pricing-list.php">Send a message</a>
                 <a class='btn border border-success text-success text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
               </div>
 
@@ -1064,48 +980,30 @@
 
      <div class="news px-2 mt-5" data-aos='fade-up'>
 
+     <?php 
+
+         $stmt_articles = mysqli_query($conn,"SELECT * FROM articles");
+
+         while($article = mysqli_fetch_array($stmt_articles)){
+
+              if($article){
+
+              include('components/article-content.php');
+ 
+     ?>    
+
+
          <div class='d-flex flex-row flex-column'>
 
-             <img src="assets/images/Frame 37.png" alt="elegal">
+            <a href="article-details.php?id=<?php echo htmlspecialchars($article_id); ?>"> <img src="<?php echo htmlspecialchars($article_img); ?>" alt="elegal"></a>
              
-              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
+              <h6 class='text-dark'><a class='text-dark text-decoration-none' href="article-details.php?id=<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($title); ?></a></h6>
 
-              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
-
-         </div>
-
-         <div class='d-flex flex-row flex-column'>
-
-              <img src="assets/images/Frame 38.png" alt="elegal">
-
-              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
-
-              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
+              <span class='text-secondary text-sm'><?php echo htmlspecialchars( $created_at); ?> / <?php echo htmlspecialchars($author_name); ?></span>
 
          </div>
 
-
-         <div class='d-flex flex-row flex-column'>
-
-             <img src="assets/images/Frame 39.png" alt="elegal">
-             
-              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
-
-              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
-
-         </div>
-
-
-         <div class='d-flex flex-row flex-column'>
-
-             <img src="assets/images/Frame 40.png" alt="elegal">
-             
-              <h6>Reflections on 2022: My Nigerian Law School Experience</h6>
-
-              <span class='text-secondary text-sm'>31/12/2022 / RUKKY OTIVE-IGBUZOR</span>
-
-         </div>
-
+        <?php } } ?>
 
      </div>
 

@@ -1,4 +1,4 @@
-<div class=' shadow-lg pt-2'>
+<div class=' shadow-lg bg-dark text-white pt-2'>
  
      <div class='d-flex justify-content-between flex-md-row flex-column px-2 py-1 border-bottom border-2'>
 

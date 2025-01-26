@@ -22,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $practice_location = trim($_POST['practice_location']);
     $practice_areas = implode(" , ",$_POST['practice_areas']);  
     $published_article = trim($_POST['published_article']);
-    $lawyer_rating = $_POST['lawyer_rating'] ?? '0'; // Default to '0' if not set
+    $lawyer_rating = $_POST['lawyer_rating'] ?? '0';
+    $status = $_POST['status'] ?? '0';
+    $payment_status =   $_POST['payment_status'] ?? '0';
 
     // Validation
     if (empty($lawyer_name) || empty($lawyer_email) || empty($lawyer_password) || empty($confirm_password) || empty($telephone) || empty($currently_engaged) || empty($current_position) || empty($lawyer_bio) || empty($supreme_court_number)) {
@@ -101,13 +103,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         practice_location, 
         published_articles, 
         supreme_court_number, 
+        paymemt_status, 
+        status,
         currently_engaged, 
         created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
         // Binding parameters to the SQL statement
-        $stmt->bind_param("sssssssssssssssssss", 
+        $stmt->bind_param("sssssssssssssssssssss", 
             $lawyer_email, 
             $hashed_password, 
             $lawyer_name, 
@@ -125,6 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $practice_location, 
             $published_article, 
             $supreme_court_number, 
+            $payment_status,
+            $status,
             $currently_engaged, 
             $created_at
         );

@@ -1,4 +1,10 @@
-<?php
+<?php session_start();
+if(!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSION['firm_id'])){
+    $_SESSION['id']= null;
+    $_SESSION['firm_id']= null;
+    $_SESSION['lawyer_id']= null;
+}
+
 
 require ("engine/config.php");
 
@@ -128,9 +134,15 @@ function format_paragraphs($text) {
              <span class='fs-6 fw-bold text-capitalize text-details'><?php echo strtolower(htmlspecialchars($name)); ?></span><br>
               <span class='text-capitalize text-details text-sm'>Associate</span>
               <span class='text-capitalize text-details text-sm'><?php echo htmlspecialchars($practice_areas); ?></span>
+
+              <?php if(isset($_SESSION['id']) && isset($_SESSION['id']) && isset($_SESSION['id'])){?>
               <span class='text-capitalize text-sm text-details'><i class='fa fa-envelope'></i> <?php echo htmlspecialchars($email); ?></span>
               <span class='text-capitalize text-sm text-details'><i class='fa fa-phone'></i> <?php echo htmlspecialchars($phone_number); ?></span>
+              <?php } else {?>                 
+                <span class='text-capitalize text-sm text-details'><i class='fa fa-envelope'></i> <a class='text-details text-decoration-none' href='pricing-list.php'>Click to see more</a></span>
+                <span class='text-capitalize text-sm text-details'><i class='fa fa-phone'></i> <a class='text-details text-decoration-none' href='pricing-list.php'>Click to see more</a></span>
 
+             <?php } ?>
          </div>
 
      </div>

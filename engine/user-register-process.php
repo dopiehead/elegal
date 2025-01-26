@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $about_you = trim($_POST['user_bio']);
     $created_at = date("Y-m-d H:i:s");
     $user_location = trim($_POST['user_location']);
+    $payment_status = trim($_POST['payment_status'])??'0';
+    $verified = trim($_POST['verified'])??'0';
 
     // Validate required fields
     if (empty($full_name) || empty($email) || empty($password) || empty($confirm_password) || empty($phone_number) || empty($occupation) || empty($date_of_birth) || empty($about_you)) {
@@ -72,18 +74,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashed_password = password_hash($password,  PASSWORD_BCRYPT);
 
     // Prepare SQL query to insert the new user into the database
-    $sql = "INSERT INTO user_profile (user_name, user_email, user_password, user_img, user_bio, user_phone, user_location, user_occupation, date_of_birth, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO user_profile (user_name, user_email, user_password, user_img, user_bio, user_phone, user_location, user_occupation, date_of_birth, created_at, payment_status, verified)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement
-        $stmt->bind_param("ssssssssss", $full_name, $email, $hashed_password, $image_path, $about_you, $phone_number, $user_location, $occupation, $date_of_birth, $created_at);
+        $stmt->bind_param("ssssssssssss", $full_name, $email, $hashed_password, $image_path, $about_you, $phone_number, $user_location, $occupation, $date_of_birth, $created_at, $payment_status, $verified);
 
         // Execute the query
         if ($stmt->execute()) {
-            echo "User registered successfully.";
+
+              echo "User registered successfully.";
         } else {
-            echo "Failed to register user. Please try again.";
+              echo "Failed to register user. Please try again.";
         }
 
         // Close the prepared statement

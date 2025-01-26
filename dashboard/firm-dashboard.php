@@ -1,10 +1,16 @@
 <?php session_start();
+      require("../engine/config.php");
 
-if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION['firm_id'])){
-     header("location:../login.php");
-     exit();
-}
+if(!isset($_SESSION['firm_id'])){
+      header("location:../login.php");
+      exit();
+} else
+     {
 
+
+      include ("content/firm-content.php");
+
+     }
 ?>
 
 <html lang="en">
@@ -16,8 +22,6 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js'></script>
     <link rel="stylesheet" href="../assets/css/dashboard/firm-dashboard.css">
-    
-
     <title>Firm dashboard</title>
     <style>
 
@@ -27,37 +31,47 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
 
     </style>
 </head>
+
 <body class='bg-light'>
    
-
      <div> 
 
-             <div class='profile-container w-100 bg-white pt-2 pb-3 px-3 mb-2'>
+             <div class='profile-container w-100 bg-dark pt-2 pb-3 px-3 mb-2'>
 
                   <div class='position-relative'>
-                      <a class='text-dark fw-bold' href="../logout.php"><i class='fa fa-sign-out'></i></a>
+                      <a class='text-white fw-bold' href="../logout.php"><i class='fa fa-sign-out'></i></a>
                   </div>
 
-                  <div class='d-flex justify-content-around'>
-                     <img src="../assets/images/firms/Frame 35 (1).png" alt="e-legal">
+                  <div class='d-flex justify-content-around border border-white border-3 rounded-circle '>
+               
+               <?php 
+                     $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
+
+                     $image_extension  = array('jpg','jpeg','png');
+                
+                     if (!in_array($extension , $image_extension)) {
+
+                          echo"<div class='text-center px-1'><span class='text-secondary text-white text-uppercase' style='font-size:50px;'>".substr($user_name,0,2)."</span></div>";                  
+
+                     } else { ?>    
+
+                           <img src="<?php echo "../assets/". htmlspecialchars($user_img); ?>" alt="e-legal">
                   
+                     <?php    }   ?>
+
                   </div>    
                   
                   <div>
                      
-                      <h4 class='fw-bold'>Osuya & Osuya</h4>
+                      <h4 class='fw-bold text-white'><?php echo htmlspecialchars($user_name); ?></h4>
 
                   </div>
 
              </div>
 
-
-
                <!-- navigation container -->
-
-
-             
-             <div class='d-flex justify-content-between flex-md-row flex-column mt-5'>
+            
+             <div class='d-flex justify-content-between flex-md-row flex-column mt-3'>
 
                  <ul class='list-unstyled d-flex justify-content-center align-items-start flex-row flex-column py-2 px-3 bg-white link-content'>
 
@@ -113,7 +127,6 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
                   
                      </li> 
 
-
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
@@ -132,9 +145,7 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
                      </li> 
 
                  </ul>     
-                                  
-
-                            <!-- main content  -->
+                                                              <!-- main content  -->
 
                  <div class='b-part px-3'>
 
@@ -143,14 +154,9 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
 
                  </div>
 
-
-
-
              </div>
 
      </div> 
-
-     
 
       <div>
 
@@ -251,10 +257,7 @@ if(!isset($_SESSION['id']) || !isset($_SESSION['lawyer_id']) || !isset($_SESSION
                 }
            });
       });
-
-
-
-    
+   
 </script>
 
 

@@ -15,7 +15,7 @@
              <th>Years of experience</th>
              <th>Start date</th>
              <th>End date</th>
-             <th>Action</th>
+             <th class='text-center'>Action</th>
          </tr>
      </thead>
      <tbody>
@@ -24,7 +24,11 @@
 
  while($application = mysqli_fetch_array($getuser)){
 
-     include("../components/job-applicants-content.php"); ?>
+     include("../components/job-applicants-content.php"); 
+     
+
+
+     ?>
 
  <tr>          
      <td><?php echo htmlspecialchars($application_first_name); ?></td>
@@ -38,7 +42,13 @@
      <td><?php echo htmlspecialchars($application_start_date); ?></td>
      <td><?php echo htmlspecialchars($application_end_date); ?></td>
 
-     <td><a class='btn border-bottom border-1 border-primary text-primary' href="view-details.php?id=<?php echo htmlspecialchars($id); ?>">View</a></td>
+     <td>
+        <div class='d-flex justify-content-evenly gap-3'>
+             <a class='btn border-bottom border-1 border-primary text-primary' href="view/view-details.php?id=<?php echo htmlspecialchars($application_id); ?>&type=job_applicants">View</a>
+             <a class='btn border-bottom border-1 border-danger text-danger' href="delete/delete-job-application.php?id=<?php echo htmlspecialchars($application_id);?>">Delete</a>
+             <a class='btn border-bottom border-1 border-warning text-warning' href="update/update-job-application.php?id=<?php echo htmlspecialchars($application_id);?>">Update</a>
+        </div>
+    </td>
  </tr>
 
 <?php } ?>

@@ -1,4 +1,6 @@
-<?php require ("engine/config.php");
+<?php session_start();
+
+require ("engine/config.php");
 
       $condition = "SELECT * FROM lawyer_profile";
 

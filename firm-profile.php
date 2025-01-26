@@ -1,4 +1,4 @@
-<?php 
+<?php  session_start();
 if(isset($_GET['id']) && !empty($_GET['id'])){
      if(empty($_GET['id'])){
          header("Location:firm.php");

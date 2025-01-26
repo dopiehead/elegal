@@ -1,4 +1,4 @@
-<?php 
+<?php  session_start();
 
 require ("engine/config.php");
 if(isset($_GET['id'])){

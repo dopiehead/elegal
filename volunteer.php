@@ -1,5 +1,28 @@
 <?php session_start(); 
 
+ if(!isset($_SESSION['id']) || !isset($_SESSION['firm_id']) && !isset($_SESSION['lawyer_id'])){
+
+     $_SESSION['id'] = null;
+     $_SESSION['firm_id'] = null;
+     $_SESSION['lawyer_id'] = null;
+     $_SESSION['name'] = null;
+     $_SESSION['firm_name'] = null;
+     $_SESSION['lawyer_name'] = null;
+ }
+
+ else{
+
+      $user_name = $_SESSION['name'];
+      $user_name =$_SESSION['firm_name'];
+      $username =$_SESSION['lawyer_name'];
+
+
+      $user_id = $_SESSION['id'];
+      $user_id = $_SESSION['lawyer_id'];
+      $user_id = $_SESSION['firm_id'];
+
+
+ }
 
 
  require ("engine/config.php"); 
@@ -76,10 +99,9 @@
               <form id='volunteer-form'>
 
                  <label class='text-secondary text-sm' for="">First name</label>
-                 <input type="text" class='form-control bg-light border-0'>
+                 
+                 <input type="text" value='<?php if(!empty($user_name)){ echo htmlspecialchars($user_name); } ?>' class='form-control bg-light border-0'>
 
-                 <label class='text-secondary text-sm' for="">Last name</label>
-                 <input type="text" class='form-control bg-light border-0'>
 
                  <label class='text-secondary text-sm' for="Email address">Email address</label>
                  <input type="email" class='form-control bg-light border-0'>

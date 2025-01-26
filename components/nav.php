@@ -23,7 +23,32 @@
      </ul>
 
      <ul class="d-flex justify-content-center login-container g-4 list-unstyled">
+
+      <?php if(isset($_SESSION['id']) || isset($_SESSION['firm_id']) || isset($_SESSION['lawyer_id'])){ 
+         
+         if(isset($_SESSION['firm_id'])){       
+        ?>          
+        <li class="mx-2">
+
+             <a href="dashboard/firm-dashboard.php" class="text-dark text-decoration-none bg-secondary text-white p-2 rounded-pill hover:bg-secondary rounded transition duration-300">
+                   Profile
+             </a>
+         </li>
+
+         <?php } else { ?>
+
+         <li class="mx-2">
+
+             <a href="dashboard/mydashboard.php" class="text-dark text-decoration-none  bg-secondary text-white p-2 hover:bg-secondary rounded rounded-pill transition duration-300">
+               Profile
+             </a>
+
+         </li>
         
+         <?php } ?>
+
+      <?php } else { ?>
+
          <li class="mx-2">
              <a href="login.php" class="text-dark text-decoration-none p-2 hover:bg-secondary rounded transition duration-300">
                    Login
@@ -35,6 +60,9 @@
                Register
              </a>
          </li>
+
+        <?php } ?>
+
      </ul>
 
 

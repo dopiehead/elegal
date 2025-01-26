@@ -1,7 +1,5 @@
 
-<?php
-
-session_start();
+<?php session_start();
 if(!isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id'])){
      header("Location:jobs.php");
      exit();

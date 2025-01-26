@@ -1,5 +1,6 @@
 
-<?php
+<?php  session_start();
+
     if(isset($_GET['id']) && !empty($_GET['id'])){
 
           $firm_id = $_GET['id'];

@@ -1,5 +1,15 @@
-
 <?php  session_start();
+
+       if(isset($_SESSION['id']) || isset($_SESSION['firm_id']) || isset($_SESSION['lawyer_id'])){
+          
+        $status = $_SESSION['payment_status'];
+
+       }
+
+       else{
+        $_SESSION['payment_status'] = null;
+       }
+ 
 
        require ("engine/config.php");
 
@@ -113,8 +123,11 @@
                                          </span>
 
                                           <div class='d-flex justify-content-between mt-2 g-3'>
-
-                                             <a  id="openModalBtn" class='btn text-success border border-2 border-success px-2 rounded text-sm' href='pricing-list.php'>Send message</a>
+                                             <?php if($status==0){ ?>
+                                             <a class='btn text-success border border-2 border-success px-2 rounded text-sm' href='login.php?details=pricing-list.php'>Send message</a>
+                                             <?php } else {?>
+                                             <a id="openModalBtn" class='btn text-success border border-2 border-success px-2 rounded text-sm'>Send message</a>
+                                             <?php }?>
                                              <a class='btn btn-success text-white px-2 text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
 
                                          </div>
@@ -164,24 +177,32 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h3 class='fw-bold'>Hire a lawyer</h3>
+    <form id='message-form'>
 
-    <label  class='mt-2 fw-bold text-secondary text-sm' for="">Email</label>
-    <input type="text" class='form-control' placeholder="Enter email">
+         <label  class='mt-2 fw-bold text-secondary text-sm' for="">Email</label>
+         <input type="text" name='sentby' class='form-control' placeholder="Enter email">
 
-    <label class='mt-2 fw-bold text-secondary text-sm' for="">Subject</label>
-    <input type="text" class='form-control' placeholder="Enter Subject">
+         <label class='mt-2 fw-bold text-secondary text-sm' for="">Subject</label>
+         <input type="text" name='subject' class='form-control' placeholder="Enter Subject">
 
-    <label class='mt-2 fw-bold  text-secondary text-sm' for="">Body</label>
-    <textarea class='form-control' placeholder="Write message..."></textarea>
+         <label class='mt-2 fw-bold  text-secondary text-sm' for="">Body</label>
+         <textarea name='message' class='form-control' placeholder="Write message..."></textarea>
 
-    <button class='btn btn-primary mt-4'>Send</button>
+         <input type="hidden" name="sentto" value="<?php echo htmlspecialchars($lawyer_email); ?>">
+         <button class='btn btn-primary mt-4' id='submit-message'>
+             <span class='send-button'>Send</span>
+             <span class='spinner-border text-warning'></span>
+        </button>
 
+    </form>
   </div>
 </div>
 
 <script>
  
   $(document).ready(function() {
+
+
   
     $("#openModalBtn").click(function() {
       $("#myModal").fadeIn(); 
@@ -204,6 +225,54 @@
       }
     });
   });
+</script>
+
+<script type="text/javascript">
+
+     $('.spinner-border').hide();
+   $('#submit-message').on('click',function(e){
+        e.preventDefault();
+        $(".spinner-border").show();
+          $.ajax({
+           type: "POST",
+           url: "engine/message-process.php",
+           data:  $("#message-form").serialize(),
+           cache:false,
+           contentType: "application/x-www-form-urlencoded",
+           success: function(response) {
+           $(".spinner-border").hide();
+           if (response==1) {
+            swal({
+            text:"Message sent",
+             icon:"success",
+            });
+                
+            $("#myModal").hide(1000);
+            $("#message-form")[0].reset(); 
+            $("#message-form").find('input:text').val('');
+            $("#message-form").find('textarea').val('');
+         
+                                                        }    
+            else{
+            
+              swal({ icon:"error",
+              	     text:response
+              });
+           
+
+           }
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+
+    });
 </script>
 
     

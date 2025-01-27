@@ -78,6 +78,7 @@ if (empty($user_email) || empty($user_password)) {
                      $_SESSION["location"] = $row['user_location'];
                      $_SESSION["phone"] = $row['user_phone'];
                      $_SESSION['date'] = $row['created_at'];
+                     $_SESSION['payment_status'] = $row['payment_status'];
 
                 } elseif ($user_type == 'lawyer') {
 
@@ -89,6 +90,8 @@ if (empty($user_email) || empty($user_password)) {
                      $_SESSION['lawyer_contact'] = $row['lawyer_contact'];
                      $_SESSION['lawyer_location'] = $row['lawyer_location'];
 
+                     $_SESSION['payment_status'] = $row['payment_status'];
+
                 } elseif ($user_type == 'firm') {
 
                      $_SESSION["firm_id"] = $row['firm_id'];
@@ -98,6 +101,8 @@ if (empty($user_email) || empty($user_password)) {
                      $_SESSION['firm_phone_number'] = $row['firm_phone_number'];
                      $_SESSION['firm_location'] = $row['location'];
                      $_SESSION['firm_img'] = __DIR__ . $row['firm_img'];
+                     $_SESSION['payment_status'] = $row['payment_status'];
+                     
                 } elseif ($user_type == 'admin') {
 
                      $_SESSION["admin_id"] = $row['admin_id'];

@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firm_img = $_FILES['firm_img']['name'] ?? ''; // Optional field for image
     $firm_location = trim($_POST['firm_location']);
     $firm_rating = $_POST['firm_rating'] ?? 0; // Default to '0' if not set
-    $verified = $_POST['verified'] ?? 0; // Default to '0' if not set
+    $verified = $_POST['verified'] ?? 0;
+    $payment_status = $_POST['payment_status'] ?? 0;
     $created_at = date("Y-m-d H:i:s"); // Only define once
     // Handle practice areas selection
     $practice_areas = isset($_POST['practice_areas']) ? $_POST['practice_areas'] : [];
@@ -96,12 +97,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          practice_areas,
          firm_img,
          date_created,
+         payment_status
          verified
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters
-        $stmt->bind_param("ssssssssssssss", 
+        $stmt->bind_param("sssssssssssssss", 
              $firm_name, 
              $firm_email, 
              $hashed_password, 
@@ -115,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              $selectedareas, 
              $image_path, 
              $created_at, // Get current timestamp
+             $payment_status,
              $verified
         );
 

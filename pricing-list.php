@@ -1,4 +1,38 @@
-<?php  session_start(); ?>
+<?php  session_start();
+
+if(isset($_SESSION['id'])){
+      $user_email = $_SESSION['email'];
+      $user_id = $_SESSION['id'];
+      $user_contact = $_SESSION['phone'];
+      $user_type = "user";
+}
+
+elseif(isset($_SESSION['firm_id'])){
+      $user_email = $_SESSION['firm_email'];
+      $user_id = $_SESSION['firm_id'];
+      $user_contact = $_SESSION['firm_phone_number'];
+      $user_type = "firm";
+}
+
+elseif(isset($_SESSION['lawyer_id'])){
+      $user_email = $_SESSION['lawyer_email'];
+      $user_contact = $_SESSION['lawyer_contact'];
+      $user_id = $_SESSION['lawyer_id'];
+      $user_type = "lawyer";
+}
+
+
+else{
+
+      $user_email = null;
+      $user_id = null;
+      $user_contact = null;
+      $user_type = null;
+}
+
+$txn_ref = time();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +73,7 @@
                               <li><i class="fa fa-circle text-success"></i> Renew daily</li>
                          </ul>
                          <div class="text-center mt-4">
-                              <button class="btn btn-outline-dark rounded-pill py-2 px-4">Pay</button>
+                              <button id='1000' class="btn btn-outline-dark rounded-pill py-2 px-4 btn-basic">Pay</button>
                          </div>
                     </div>
                </div>
@@ -61,7 +95,7 @@
                               <li><span class="text-success fw-bold">Save NGN 21,000</span></li>
                          </ul>
                          <div class="text-center">
-                              <button class="btn btn-warning text-white rounded-pill py-2 px-4">Pay</button>
+                              <button id='2500' class="btn btn-warning text-white rounded-pill py-2 px-4 btn-gold">Pay</button>
                          </div>
                     </div>
                </div>
@@ -83,7 +117,7 @@
                               <li><span class="text-success fw-bold">Save NGN 27,000</span></li>
                          </ul>
                          <div class="text-center">
-                              <button class="btn btn-info text-white rounded-pill py-2 px-4">Pay</button>
+                              <button id='4000' class="btn btn-info text-white rounded-pill py-2 px-4 btn-platinum">Pay</button>
                          </div>
                     </div>
                </div>
@@ -104,5 +138,93 @@
      <a class="btn-down" onclick="topFunction()">&#8593;</a>
 
      <!------------------------------------------Footer--------------------------------------------------->
+
+  <input type="hidden" value="<?php if(!$user_contact) { echo htmlspecial($user_contact);} ?>"  id='phone_number' >
+  <input type="text" value = "<?php if(!$user_type) { echo htmlspecial($user_type);} ?>" id='user_type'>
+
+<?php $txn_ref = time();
+?>
+
+
+<script src="https://js.paystack.co/v2/inline.js"></script>
+
+    <script>
+        // Global variable to store selected amount
+        let amount;
+
+        // Button click event listeners
+        $(".btn-basic").on("click", function() {
+            amount = $(this).attr("id");
+            paywithPaystack();
+        });
+
+        $(".btn-gold").on("click", function() {
+            amount = $(this).attr("id");
+            paywithPaystack();
+        });
+
+        $(".btn-platinum").on("click", function() {
+            amount = $(this).attr("id");
+            paywithPaystack();
+        });
+
+        // Paystack Payment function
+        function paywithPaystack() {
+          
+            if (!amount) {
+                alert("Please select a package first!");
+
+                return ;
+            }
+
+            var id = "<?php echo htmlspecialchars($user_id); ?>"; 
+            var user_type = "<?php echo htmlspecialchars($user_type); ?>";
+            const paystack = new PaystackPop();
+
+            // Paystack options
+            var options = {
+                key: "pk_test_7580449c6abedcd79dae9c1c08ff9058c6618351", // Replace with your Paystack public key
+                email: "<?php echo htmlspecialchars($user_email); ?>", // PHP to get user email
+                amount: (amount * 100), // Amount in kobo (multiply by 100)
+                currency: "NGN",
+                ref: "<?php echo $txn_ref ?>", // PHP to generate unique transaction reference
+                metadata: {
+
+                    custom_fields: [
+                        {
+                            display_name: "Mobile Number",
+                            variable_name: "mobile_number",
+                            value: document.getElementById('phone_number').value // User's phone number
+                        }
+
+                    ]
+                },
+                onSuccess: function(response) {
+                    // Handle success response
+                    if (response.status === "success") {
+                        var ref = response.reference; // Retrieve payment reference
+                        window.location.href = "verify-pay.php?status=success&id="+id+"&reference="+ref+"&user_type="+user_type+"&amount="+amount;
+                    } 
+                    
+                    else if(response.status === "failure") {
+                    
+                    }
+                    else {
+                        console.log("Payment not successful");
+                    }
+                },
+                onCancel: function() {
+                    // Handle payment cancellation
+                    console.log("Payment canceled");
+                }
+            };
+
+            // Initialize Paystack payment
+            paystack.newTransaction(options);
+        }
+    </script>
+</body>
+</html>
+
 </body>
 </html>

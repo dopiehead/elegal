@@ -44,6 +44,13 @@
     <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Lawyers</title>
+    <style>
+       
+        #linking{
+          
+             font-weight:bold !important;  
+         }
+    </style>
 </head>
 <body class='bg-light'>
 

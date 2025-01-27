@@ -3,16 +3,8 @@
 require ("engine/config.php");
 
       $condition = "SELECT * FROM lawyer_profile";
-      
+
       $stmt = mysqli_query($conn,$condition);
-
- if(isset($_POST["submit-search"]))   {  
-
-    if(!empty($_POST["search"]))   {
-        
-        $query = str_replace(" ", "+", mysqli_real_escape_string($conn,$_POST["search"]));
-        header("location:search-process.php?search=" .$query); 
-    }  } 
 
 ?>
 <html lang="en">
@@ -1026,6 +1018,12 @@ require ("engine/config.php");
      <br>
 
      <?php include 'components/footer.php'; ?> 
+     <!------------------------------------------btn-scroll--------------------------------------------------->
+
+     <a class="btn-down" onclick="topFunction()">&#8593;</a>
+
+     <!------------------------------------------Footer--------------------------------------------------->
+     
      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
      <script>
           AOS.init();

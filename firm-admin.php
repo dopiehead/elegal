@@ -40,6 +40,10 @@
      <p>This is the Firm Admin dashboard. Here you can manage your firm's users, jobs, and other relevant information.</p>
      <br><br>
      <?php include ('components/footer.php');?>
-         
+     <!------------------------------------------btn-scroll--------------------------------------------------->
+
+     <a class="btn-down" onclick="topFunction()">&#8593;</a>
+
+     <!------------------------------------------Footer--------------------------------------------------->         
 </body>
 </html>

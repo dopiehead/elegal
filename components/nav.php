@@ -10,17 +10,17 @@ if(isset($_POST["submit-search"]))   {
 ?>
 
 
-<div class='navbar d-flex justify-content-between py-3 shadow bg-light px-2'>      
+<div class='navbar d-flex justify-content-between align-items-center py-3 shadow bg-light px-2'>      
     
      <div class='logo-container'>
            <a href='index.php'>LOGO</a>  
      </div>
 
      <div> 
-          <form action="">
-              <div class='d-flex'>
-                  <input type="text" name='search' placeholder='&#xF002; Search' style='font-family:arial,fontawesome;' class='rounded rounded-pill bg-white border-0 bg-search'>
-                  <button name='submit-search' class='btn-secondary text-white text-sm rounded rounded-pill border-0'>Search</button>
+          <form action="" method="POST">
+              <div>
+                  <input type="text" name='search' placeholder='&#xF002; Search' style='font-family:arial,fontawesome;' class='rounded rounded-pill bg-white border-0 bg-search input-search'>
+                  <button name='submit-search' class='btn-secondary text-white text-sm rounded rounded-pill border-0 search-button text-sm'>Search</button>
               </div>
           </form>
      </div>
@@ -94,3 +94,4 @@ if(isset($_POST["submit-search"]))   {
 
 
 </div>
+<br>

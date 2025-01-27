@@ -156,6 +156,5 @@ echo ($details);
 </script>
 
 
-    
 </body>
 </html>

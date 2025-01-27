@@ -46,8 +46,6 @@
                  $extension = strtolower(pathinfo($user['user_img'],PATHINFO_EXTENSION));
 
                      $image_extension  = array('jpg','jpeg','png'); 
-
-
      
          ?>   
                      <div class='package' data-aos='fade-up'>
@@ -56,13 +54,11 @@
                          
                                   if (!in_array($extension , $image_extension)) {
 
-
-                                       echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";
+                                     echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($user_name,0,2)."</span></div>";
                            
-
                                  } else { ?>
 
-                                                   <img src="<?php echo htmlspecialchars(trim($user_img)); ?>" alt="elegal">
+                                      <img src="<?php echo htmlspecialchars(trim($user_img)); ?>" alt="elegal">
                                
                          <?php
                          

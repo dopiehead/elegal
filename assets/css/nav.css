@@ -38,11 +38,49 @@
 
 @media only screen and (max-width:768px) {
     .login-container{
-        display: none !important ;
+         display: none !important ;
     }
     
 }
 
+.search-button{
+     float: right;
+     position: relative;
+     margin-left:-74px !important; 
+     padding:5px;
+     margin-top:1px;
 
+}
+
+@media screen and (max-width: 768px){
+
+    .search-button{
+        padding:3px;
+        margin-left:-80px !important;
+        margin-top:3px;
+       
+     }
+}
+
+
+.text-sm{
+
+    font-size: 13px;
+}
+
+.input-search{
+   
+     width:16em;
+     font-size:15px;
+     padding:5px 2px;
+    
+}
+
+@media screen and (max-width:768px){
+    .input-search{
+    
+         width:18rem;
+     }
+}
 
  

@@ -1,8 +1,8 @@
 
 .volunteer-container{
-     justify-content: space-around;
+     justify-content:flex-start;
      flex-wrap: wrap;
-     gap:10px;
+     gap:30px;
 
 }
 
@@ -18,8 +18,8 @@
 }
 
 .volunteer{
-     width:15em; 
-     height:13em;
+     width:17em; 
+     height:18em;
      flex-wrap: wrap;
      position: relative;
      border-radius: 15px;;
@@ -39,6 +39,7 @@
      width:100%;
      height:100%;
      border-radius: 15px;
+     object-fit: cover;
 }
 
 @media screen and (max-width: 768px){

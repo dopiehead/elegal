@@ -1,34 +1,35 @@
-<?php session_start(); 
+<?php 
+      session_start();
+      
+      if(isset($_SESSION['id'])){
+         $user_name = $_SESSION['name']; 
+         $user_email = $_SESSION['email']; 
+         $user_id = $_SESSION['id'];
+      } 
+      
+      elseif(isset($_SESSION['firm_id'])){
+         $user_name =$_SESSION['firm_name'];
+         $user_email = $_SESSION['firm_email']; 
+         $user_id = $_SESSION['firm_id'];
+      }
 
- if(!isset($_SESSION['id']) || !isset($_SESSION['firm_id']) && !isset($_SESSION['lawyer_id'])){
+      elseif(isset($_SESSION['lawyer_id'])){  
+         $user_id = $_SESSION['lawyer_id'];
+         $user_name =$_SESSION['lawyer_name'];
+         $user_email = $_SESSION['lawyer_email']; 
+      }
 
-     $_SESSION['id'] = null;
-     $_SESSION['firm_id'] = null;
-     $_SESSION['lawyer_id'] = null;
-     $_SESSION['name'] = null;
-     $_SESSION['firm_name'] = null;
-     $_SESSION['lawyer_name'] = null;
- }
+      else{
+        $user_email = null;
+        $user_name = null;
+        $user_id = null;
 
- else{
+      }
 
-      $user_name = $_SESSION['name'];
-      $user_name =$_SESSION['firm_name'];
-      $username =$_SESSION['lawyer_name'];
-
-
-      $user_id = $_SESSION['id'];
-      $user_id = $_SESSION['lawyer_id'];
-      $user_id = $_SESSION['firm_id'];
-
-
- }
-
-
+ 
  require ("engine/config.php"); 
 
  $getvolunteer = mysqli_query($conn, "SELECT * FROM volunteers");
-
 
 ?>
 
@@ -104,7 +105,7 @@
 
 
                  <label class='text-secondary text-sm' for="Email address">Email address</label>
-                 <input type="email" class='form-control bg-light border-0'>
+                 <input type="email" value="<?php if(!empty($user_email)){ echo htmlspecialchars($user_email); } ?>" class='form-control bg-light border-0'>
 
                  <label class='text-secondary text-sm' for="">Area of specialization(s)</label>
                  <textarea name="" id="" class='form-control border-0 bg-light'></textarea>

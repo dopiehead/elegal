@@ -72,7 +72,7 @@
                          <h5 class="card-title text-center text-info">Platinum Package</h5>
                          <div class="text-center mb-3">
                               <span class="fw-bold fs-3">NGN 4000</span><br>
-                              <span class="text-secondary">per day</span>
+                              <span class="text-secondary">monthly</span>
                          </div>
                          <ul class="list-unstyled">
                               <li><i class="fa fa-circle text-success"></i> Chat with your choice of lawyer</li>

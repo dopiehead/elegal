@@ -1,11 +1,11 @@
 
 <?php  session_start();
 
-      require ("engine/config.php");
+       require ("engine/config.php");
 
-      $condition = "SELECT * FROM lawyer_profile";
+       $condition = "SELECT * FROM lawyer_profile";
 
-      if(isset($_GET['category'])){
+       if(isset($_GET['category'])){
 
          $category = mysqli_escape_string($conn,$_GET['category']);
 
@@ -50,6 +50,7 @@
           
              font-weight:bold !important;  
          }
+         
     </style>
 </head>
 <body class='bg-light'>

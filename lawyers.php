@@ -123,7 +123,7 @@
                                          </span>
 
                                           <div class='d-flex justify-content-between mt-2 g-3'>
-                                             <?php if($status==0){ ?>
+                                             <?php if($status == 1){ ?>
                                              <a class='btn text-success border border-2 border-success px-2 rounded text-sm' href='login.php?details=pricing-list.php'>Send message</a>
                                              <?php } else {?>
                                              <a id="openModalBtn" class='btn text-success border border-2 border-success px-2 rounded text-sm'>Send message</a>
@@ -147,11 +147,6 @@
                   </div>
 
              </div>
-
-
-
-
-
              <br><br>
 
              <?php include 'components/advert.php';?>
@@ -202,8 +197,6 @@
  
   $(document).ready(function() {
 
-
-  
     $("#openModalBtn").click(function() {
       $("#myModal").fadeIn(); 
     });

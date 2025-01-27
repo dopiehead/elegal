@@ -5,6 +5,11 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSION
     $_SESSION['lawyer_id']= null;
 }
 
+else{
+
+    $status = $_SESSION['payment_status'];
+}
+
 
 require ("engine/config.php");
 
@@ -98,6 +103,7 @@ function format_paragraphs($text) {
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php include ('components/links.php'); ?>
      <link rel="stylesheet" href="assets/css/index.css">
+     <link rel="stylesheet" href="assets/css/modal.css">
      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
      <title>Profile</title>
 </head>
@@ -135,10 +141,13 @@ function format_paragraphs($text) {
               <span class='text-capitalize text-details text-sm'>Associate</span>
               <span class='text-capitalize text-details text-sm'><?php echo htmlspecialchars($practice_areas); ?></span>
 
-              <?php if(isset($_SESSION['id']) && isset($_SESSION['id']) && isset($_SESSION['id'])){?>
-              <span class='text-capitalize text-sm text-details'><i class='fa fa-envelope'></i> <?php echo htmlspecialchars($email); ?></span>
-              <span class='text-capitalize text-sm text-details'><i class='fa fa-phone'></i> <?php echo htmlspecialchars($phone_number); ?></span>
-              <?php } else {?>                 
+              <?php if(isset($_SESSION['id']) && isset($_SESSION['id']) && isset($_SESSION['id'])){
+                  
+                  if($_SESSION['payment_status'] == 1){
+                ?>
+              <span class='text-capitalize text-sm text-details'><a class='text-details text-decoration-none' href='mailto:<?php echo htmlspecialchars($email); ?>'><i class='fa fa-envelope'></i> <?php echo htmlspecialchars($email); ?></a></span>
+              <span class='text-capitalize text-sm text-details'><a class='text-details text-decoration-none' href="tel:<?php echo htmlspecialchars($phone_number); ?>"><i class='fa fa-phone'></i> <?php echo htmlspecialchars($phone_number); ?></a></span>
+              <?php } } else {?>                 
                 <span class='text-capitalize text-sm text-details'><i class='fa fa-envelope'></i> <a class='text-details text-decoration-none' href='pricing-list.php'>Click to see more</a></span>
                 <span class='text-capitalize text-sm text-details'><i class='fa fa-phone'></i> <a class='text-details text-decoration-none' href='pricing-list.php'>Click to see more</a></span>
 
@@ -152,9 +161,6 @@ function format_paragraphs($text) {
      </div>
 
  </div>
-
-
-
 
          <div class='px-4 mt-5 d-flex flex-md-row flex-column'>
 
@@ -187,20 +193,17 @@ function format_paragraphs($text) {
 
                      ?>
 
-
-
                  </div>
 
-                 <div>
-                  
-                     <button class='btn border border-2 border-secondary text-secondary text-sm mt-3 '>Send message</button>
-
+                 <div class='mt-4'>
+                     <?php if($status != 1){ ?>
+                         <a class='btn text-success border border-2 border-success px-2 rounded text-sm' href='login.php?details=pricing-list.php'>Send message</a>
+                     <?php } else {?>
+                          <a id="openModalBtn" class='btn text-dark border border-2 border-secondary px-2 rounded text-sm'>Send message</a>
+                     <?php }?>
                  </div>
 
              </div>
-
-
-
 
              <div class='col-md-6 d-flex flex-row flex-column'>
 
@@ -210,10 +213,7 @@ function format_paragraphs($text) {
 
              </div>
 
-
-
          </div>
-
 
          <div class='px-4 py-2 mt-5'>
               
@@ -237,11 +237,8 @@ function format_paragraphs($text) {
                                      </div>
 
                              </div>
-
-                         
+                        
                                  <p class='text-sm text-secondary mt-3'>Every day, they strive to improve their service to the clients by developing the right blend of technology and creativity to make sure every job done is done as efficiently as possible</p>
-
-
 
                          </div>
 
@@ -262,8 +259,6 @@ function format_paragraphs($text) {
                          
                                  <p class='text-sm text-secondary mt-3'>Every day, they strive to improve their service to the clients by developing the right blend of technology and creativity to make sure every job done is done as efficiently as possible</p>
 
-
-
                          </div>
 
                          <div class='top-container g-5'>
@@ -278,15 +273,9 @@ function format_paragraphs($text) {
                                      </div>
 
                              </div>
-
-                         
+                       
                                  <p class='text-sm text-secondary mt-3'>Every day, they strive to improve their service to the clients by developing the right blend of technology and creativity to make sure every job done is done as efficiently as possible</p>
-
-
-
                          </div>
-
-
 
                       </div>
                       
@@ -296,6 +285,34 @@ function format_paragraphs($text) {
 
          </div>
 
+           <!-- modal container -->
+         <div id="myModal" class="modal">
+              <a id="closeModalBtn" class='position-absolute right-0 text-danger fw-bold'>&times;</a>
+                <!-- Modal content -->
+               <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h3 class='fw-bold'>Hire a lawyer</h3>
+                  <form id='message-form'>
+
+                       <label  class='mt-2 fw-bold text-secondary text-sm' for="">Email</label>
+                       <input type="text" name='sentby' class='form-control' placeholder="Enter email">
+
+                     <label class='mt-2 fw-bold text-secondary text-sm' for="">Subject</label>
+                     <input type="text" name='subject' class='form-control' placeholder="Enter Subject">
+
+                     <label class='mt-2 fw-bold  text-secondary text-sm' for="">Body</label>
+                     <textarea name='message' class='form-control' placeholder="Write message..."></textarea>
+
+                     <input type="hidden" name="sentto" value="<?php echo htmlspecialchars($lawyer_email); ?>">
+                     <button class='btn btn-primary mt-4' id='submit-message'>
+                          <span class='send-button'>Send</span>
+                          <span class='spinner-border text-warning'></span>
+                      </button>
+
+                   </form>
+
+                 </div>
+</div>
 
         <br><br>
 
@@ -318,6 +335,82 @@ function format_paragraphs($text) {
   });
 
 </script>
+
+
+<script>
+ 
+  $(document).ready(function() {
+  
+    $("#openModalBtn").click(function() {
+      $("#myModal").fadeIn(); 
+    });
+
+    $(".close").click(function() {
+      $("#myModal").fadeOut(); // Hide the modal with fade effect
+    });
+
+    // When the user clicks on the "Close Modal" button, close the modal
+    $("#closeModalBtn").click(function() {
+      $("#myModal").fadeOut(); // Hide the modal with fade effect
+    });
+
+    // Close the modal if the user clicks anywhere outside the modal content
+    $(window).click(function(event) {
+      if ($(event.target).is("#myModal")) {
+        $("#myModal").fadeOut(); // Hide the modal if clicked outside
+      }
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+
+     $('.spinner-border').hide();
+   $('#submit-message').on('click',function(e){
+        e.preventDefault();
+        $(".spinner-border").show();
+          $.ajax({
+           type: "POST",
+           url: "engine/message-process.php",
+           data:  $("#message-form").serialize(),
+           cache:false,
+           contentType: "application/x-www-form-urlencoded",
+           success: function(response) {
+           $(".spinner-border").hide();
+           if (response==1) {
+            swal({
+            text:"Message sent",
+             icon:"success",
+            });
+                
+            $("#myModal").hide(1000);
+            $("#message-form")[0].reset(); 
+            $("#message-form").find('input:text').val('');
+            $("#message-form").find('textarea').val('');
+
+                                                        }    
+            else{
+            
+              swal({ icon:"error",
+              	     text:response
+              });
+
+           }
+
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                console.log(errorThrown);
+
+            }
+
+        })
+
+    });
+</script>
+
      
      <!------------------------------------------btn-scroll--------------------------------------------------->
 

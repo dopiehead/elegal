@@ -7,7 +7,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
      $details = $_GET['details'];
 
 }
-echo ($details);
+
 ?>
 <html lang="en">
 <head>

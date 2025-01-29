@@ -1028,6 +1028,22 @@ require ("engine/config.php");
      <script>
           AOS.init();
      </script>
+     
+     <script>
+         function openform() {
+             document.getElementById("myform").
+             style.height="100%";
+         }
+
+         function closeform() {
+             document.getElementById("myform").
+             style.height="0%";
+         }
+</script>
+
+
+
+
 </body>
 </html>
 

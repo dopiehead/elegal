@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="assets/css/flickity.min.css">
 <link rel="stylesheet" href="assets/css/need.css">
 <link rel="stylesheet" href="assets/css/hero.css">
-<link rel="stylesheet" href="assets/css/ads.css">
+<!-- <link rel="stylesheet" href="assets/css/ads.css"> -->
 <link rel="stylesheet" href="assets/css/nav.css">
 <link rel="stylesheet" href="assets/css/footer.css">
 <link rel="stylesheet" href="assets/css/btn_scroll.css">
-<link rel="stylesheet" href="assets/css/banner.css">
-<link rel="stylesheet" href="assets/css/loader.css">
+<!-- <link rel="stylesheet" href="assets/css/banner.css"> -->
+<!-- <link rel="stylesheet" href="assets/css/loader.css"> -->
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <!-- JavaScript -->

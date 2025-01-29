@@ -47,7 +47,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
       }
 
 
-
       if($user_type=='user'){
 
          $stmt = mysqli_query($conn,"SELECT * FROM user_profile WHERE id ='".$id."'");
@@ -70,8 +69,9 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
      }
 
 
-
 }
+
+
 
 }
 

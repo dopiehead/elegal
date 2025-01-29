@@ -1,8 +1,44 @@
 <?php session_start();
 
-if (!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSION['firm_id'])) {
-     header("Location: ../login.php");
+if (!isset($_SESSION["id"]) && !isset($_SESSION["firm_id"]) && !isset($_SESSION["lawyer_id"] )) { 
+    
+     echo"<script>location.href='login.php?details=messages.php'</script>";
      exit();
+
+}
+
+date_default_timezone_set('Africa/Lagos');
+
+date_default_timezone_get();
+ ?>
+<?php 
+
+if (isset($_SESSION['firm_id'])) {
+
+     $you = $_SESSION['firm_email'];
+     $userId = $_SESSION['firm_id'];
+
+}
+
+elseif (isset($_SESSION['lawyer_id'])) {
+
+     $you = $_SESSION['lawyer_email'];
+     $userId = $_SESSION['lawyer_id'];
+}
+
+
+elseif (isset($_SESSION['id'])) {
+
+     $you = $_SESSION['email'];
+     $userId = $_SESSION['id'];
+
+}
+
+else{
+
+    $you = null; 
+    $userId= null;
+
 }
 
 ?>
@@ -34,13 +70,11 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id']) && !isset($_SESSIO
                  
                  <h4 class='mt-5'>Messages</h4>
 
-                 <?php
-
-                     $you ="essentialng@gmail.com";
+                 <?php             
 
                      require '../engine/config.php';
 
-                     $limit = 2;  
+                     $limit = 10;  
 
                      $getQuery = "select * from messages where receiver_email = '$you' and is_receiver_deleted = 0 group by sender_email"; 
 

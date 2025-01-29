@@ -101,7 +101,7 @@ else{
              <div class='history-content'>
                   
                  <h4>Learn about <b>historical people</b> and past heroes in the legal world here</h4>
-                 <a class='btn btn-success text-white mt-3 text-sm explore-button' href="">Explore</a>
+                 <a class='btn btn-success text-white mt-3 text-sm explore-button' href="past-heroes.php">Explore</a>
 
   
              </div>

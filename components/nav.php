@@ -10,12 +10,12 @@ if(isset($_POST["submit-search"]))   {
 ?>
 
 
-<div class='navbar d-flex justify-content-between align-items-center py-3 shadow bg-light px-2'>      
-    
-     <div class='logo-container'>
-           <a href='index.php'>LOGO</a>  
+<div class='navbar d-flex justify-content-between align-items-center border py-3 shadow bg-light px-2 position-fixed w-100 top-0'>      
+    <div>
+     <div class=' h-100 full-height py-2'>
+           <p><a class='d-block' href='index.php'>LOGO</a> </p> 
      </div>
-
+     </div>
      <div> 
           <form action="" method="POST">
               <div>
@@ -82,16 +82,51 @@ if(isset($_POST["submit-search"]))   {
      </ul>
 
 
-     <div class='navigator'>
+     <div class='navigator '>
 
-         <span class='fa fa-bars d-md-none'>
+         <p><span onclick="openform()" class='fa fa-bars d-md-none'>
 
 
-         </span>
+         </span></p>
 
      </div>
 
+</div>
 
+
+
+<div id="myform" class="overlay">
+
+      <a onclick="closeform()" class='close-btn fs-3 text-white'>&times;</a>
+
+     <div class='overlay-content d-flex flex-row flex-column px-2'>         
+         
+         <div class='d-flex justify-content-center g-3'>
+
+             <a class='text-decoration-none' href="">Login</a>
+             <a class='border-left border-2 border-white px-2 text-decoration-none text-capitalize' href="">register</a>
+
+         </div>
+         
+     
+         <div class='d-flex justify-content-center'>
+            
+             <hr class='border border-2 border-white w-25'>
+ 
+          </div>  
+         <a class='text-decoration-none lawyer-link' href='lawyers.php'>Lawyers</a>  
+         <a class='text-decoration-none firm-link' href='firm.php'>Firms</a>
+         <a class='text-decoration-none user-link' href='users.php'>Users</a>
+         <a class='text-decoration-none practice-link' href='practice-areas.php'>Practice Areas</a>
+         <a class='text-decoration-none court-link' href='court.php'>Court</a>
+         <a class='text-decoration-none jobs-link' href='jobs.php'>Jobs</a>
+         <a class='text-decoration-none library-link' href='library.php'>Library</a>
+
+
+
+     
+
+     </div>
 
 </div>
 <br>

@@ -185,7 +185,7 @@
 
          <input type="hidden" name="sentto" value="<?php echo htmlspecialchars($lawyer_email); ?>">
          <button class='btn btn-primary mt-4' id='submit-message'>
-             <span class='send-button'>Send</span>
+             <span class='send-button'>Send message</span>
              <span class='spinner-border text-warning'></span>
         </button>
 

@@ -10,10 +10,9 @@ else{
     $status = $_SESSION['payment_status'];
 }
 
+ require ("engine/config.php");
 
-require ("engine/config.php");
-
-if(isset($_GET['id']) && !empty($_GET['id'])){
+ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $id = $_GET['id'];
 
@@ -71,15 +70,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 }
 
-
-
 }
-
 
 ?>
 
 <?php 
-
 
 function format_paragraphs($text) {
     // Trim whitespace and then split by double new lines (paragraphs)
@@ -410,6 +405,8 @@ function format_paragraphs($text) {
 
     });
 </script>
+
+
 
      
      <!------------------------------------------btn-scroll--------------------------------------------------->

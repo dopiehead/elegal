@@ -13,7 +13,6 @@ $is_receiver_deleted = isset($_POST['is_receiver_deleted']) ? mysqli_real_escape
 $has_read = isset($_POST['has_read']) ? mysqli_real_escape_string($conn, $_POST['has_read']) : 0;
 $date = date('Y-m-d H:i:s');
 
-print_r($date.$sender_email.$subject);
 // Validate input
 if (empty($compose)) {
     echo "Message field is required";

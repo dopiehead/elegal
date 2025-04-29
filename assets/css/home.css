@@ -1,0 +1,330 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    background-color: white !important;
+    padding: 15px 0;
+}
+.navbar-brand img {
+    max-height: 60px;
+}
+.navbar .nav-link {
+    color: #555 !important;
+    font-weight: 500;
+    padding: 0 15px;
+}
+.navbar .active .nav-link {
+    border-bottom: 2px solid #1a237e;
+}
+.hero-section {
+    position: relative;
+    height: 500px;
+    background-image: url('https//elegal.ng/background/bg-1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 150px;
+}
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color:rgb(125, 131, 206);
+}
+.hero-content h2 {
+    font-size: 36px;
+    color:rgb(125, 131, 206);
+}
+.hero-content h3 {
+    font-size: 20px;
+    color:rgb(125, 131, 206);
+}
+.btn-find-lawyer {
+    background-color: #ffc107;
+    color: white;
+    padding: 10px 30px;
+    font-weight: bold;
+    border: none;
+    font-size: 18px;
+}
+.btn-find-lawyer:hover {
+    background-color: #e6b000;
+    color: white;
+}
+.bottom-section {
+    background-color: #1a237e;
+    padding: 50px 0;
+    text-align: center;
+}
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+.carousel-indicators {
+    bottom: 0;
+}
+
+/* about section */
+
+.about-section {
+    padding: 50px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.about-title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.more-btn {
+    display: inline-block;
+    padding: 8px 40px;
+    border: 1px solid #ffa500;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.more-btn:hover {
+    background-color: #ffa500;
+    color: white;
+}
+
+.logo-img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* highlight section  */
+
+.highlights-section {
+    padding: 50px 0;
+}
+.highlights-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+.card {
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+.card-body {
+    padding: 20px 15px;
+}
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    font-style: italic;
+}
+.more-btn {
+    display: inline-block;
+    padding: 8px 40px;
+    border: 1px solid #ffa500;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+.more-btn:hover {
+    background-color: #ffa500;
+    color: white;
+}
+.card-img-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/*lawyers*/
+
+      .lawyer-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            height: 100%;
+        }
+        .lawyer-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .lawyer-info {
+            padding: 15px;
+        }
+        .lawyer-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .lawyer-firm {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .lawyer-experience, .lawyer-location, .lawyer-specialty {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+        .rating {
+            color: #00a651;
+            margin: 10px 0;
+        }
+        .btn-message {
+            background-color: #00a651;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .btn-profile {
+            background-color: white;
+            color: #00a651;
+            border: 1px solid #00a651;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #666;
+            color: white;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+
+
+
+/* footer */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer {
+    background-color: #222222;
+    color: #aaaaaa;
+    padding: 30px 0;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+    padding: 0 10px;
+    border-right: 1px solid #555;
+    font-size: 15px;
+}
+
+.footer-links a:last-child {
+    border-right: none;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.social-icons {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.social-icons h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-icon i {
+    color: #222222;
+    font-size: 20px;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+}
+
+.partner-logos {
+    text-align: right;
+}
+
+.partner-logo {
+    margin-bottom: 15px;
+}
+
+.partner-logo img {
+    max-width: 100%;
+    height: auto;
+}

@@ -119,8 +119,7 @@
 
      </div>
 
-     <script>
-
+   <script>
 $(document).ready(function() {
     // Cache jQuery selectors for repeated use
     const $spinner = $(".spinner-border");
@@ -141,22 +140,36 @@ $(document).ready(function() {
         $signupBtn.prop('disabled', true);
         $signUpNote.hide();
 
-        // Create FormData object
-        let formData = new FormData(this);
+        // Create a JSON object to send as the API request body
+        let data = {
+            firm_name: $('#firm_name').val(),
+            firm_email: $('#firm_email').val(),
+            firm_password: $('#firm_password').val(),
+            confirm_password: $('#confirm_password').val(),
+            firm_phone_number: $('#firm_phone_number').val(),
+            firm_bio: $('#firm_bio').val(),
+            date_found: $('#date_found').val(),
+            nooflawyers: $('#nooflawyers').val(),
+            firm_location: $('#firm_location').val(),
+            firm_rating: $('#firm_rating').val() || 0, // Default to 0 if empty
+            verified: $('#verified').val() || 0, // Default to 0 if empty
+            payment_status: $('#payment_status').val() || 0, // Default to 0 if empty
+            practice_areas: $('#practice_areas').val() || [], // Default to empty array if no areas selected
+            certification_accredit: $('#certification_accredit').val() || [], // Default to empty array if no certs selected
+        };
 
-        // Send the form data via AJAX
+        // Send the form data as a JSON object to the API via AJAX
         $.ajax({
             type: "POST",
-            url: "engine/firm-register-process.php",
-            data: formData,
-            processData: false, // Don't let jQuery try to process the data
-            contentType: false, // Let FormData set content-type correctly
+            url: "engine/firm-register.php", // Replace with your API endpoint
+            contentType: "application/json",  // Set content type to JSON
+            data: JSON.stringify(data), // Send data as JSON string
             success: function(response) {
                 // Hide spinner, show the sign-up note
                 $spinner.hide();
                 $signUpNote.show();
 
-                if (response == 1) {
+                if (response.success == "1") {
                     swal({ 
                           title: "Success",
                           text: "Registration successful. Please check your email for verification.",
@@ -170,7 +183,7 @@ $(document).ready(function() {
                     swal({
                          title: "Notice",
                          icon: "warning",
-                         text: response,
+                         text: response.error || "An error occurred, please try again.",
                     });
                     $signupBtn.prop('disabled', false);  // Re-enable the submit button
 
@@ -197,6 +210,7 @@ $(document).ready(function() {
     });
 });
 </script>
+
      <!------------------------------------------btn-scroll--------------------------------------------------->
 
      <a class="btn-down" onclick="topFunction()">&#8593;</a>

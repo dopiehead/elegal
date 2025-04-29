@@ -18,7 +18,7 @@ if (isset($_SESSION["lawyer_id"])) {
     $user_type = "lawyer";
 } else {
     $user_id = $_SESSION["firm_id"];
-    $query = "SELECT id, firm_name FROM lawyer_firm WHERE id = ?";
+    $query = "SELECT firm_id, firm_name FROM lawyer_firm WHERE firm_id = ?";
     $user_type = "firm";
 }
 
@@ -33,9 +33,17 @@ if ($result->num_rows > 0) {
     
     // Get the profile name based on user type
     $profile_name = ($user_type == "lawyer") ? $row['lawyer_name'] : $row['firm_name'];
-    $profile_name = strtolower(preg_replace('/[^a-zA-Z0-9\-]/', '', $profile_name));
+    
+    $profile_name = preg_replace('/[ _&,]+/', '-', $profile_name);
+
+    // Step 2: Remove any other characters except a-z, 0-9, and hyphens
+    $profile_name = preg_replace('/[^a-zA-Z0-9\-]/', '-', $profile_name);
+
+    // Step 3: Convert to lowercase
+    $profile_name = strtolower($profile_name);
     // Generate the subdomain URL
     $base_domain = "elegal.ng";
+    
     $profile_url = "http://" . $profile_name . "." . $base_domain;
     
     // Display the profile URL to the user
@@ -46,6 +54,11 @@ if ($result->num_rows > 0) {
     </div>";
 }
 
+else{
+
+     header("location:dashboard/profile.php");
+
+}
 $stmt->close();
 $conn->close();
 ?>

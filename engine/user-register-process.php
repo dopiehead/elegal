@@ -83,8 +83,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Execute the query
         if ($stmt->execute()) {
+            require 'PHPMailer-master/PHPMailer-master/PHPMailerAutoload.php';
 
-              echo "User registered successfully.";
+            $mail = new PHPMailer;
+
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'elegal.ng';
+            $mail->Port = 465;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Username = 'info@elegal.ng';
+            $mail->Password = "Qbr0uX3mwA";
+            $mail->setFrom('info@elegal.ng', 'ElegalNG');
+            $mail->addAddress($email);
+            $mail->addReplyTo('info@elegal.ng');
+            $mail->isHTML(true);
+            $mail->Subject = 'Welcome to ElegalNG';
+
+            $mailContent = "
+            <html>
+            <head>
+                 <meta name='color-scheme' content='light only'>
+                 <meta name='supported-color-schemes' content='light only'>
+                 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>
+            </head>
+            <body style='font-family: Arial, sans-serif; padding: 10px;'>
+                <div class='text-left'>
+                     <img src='https://elegal.ng/assets/icons/logo.png' height='50' width='50' alt='ElegalNG Logo'>
+                </div>
+                <br><br>
+                <div style='font-size: 15px;'>
+                    <h6>Hello {$full_name},</h6>
+                    <p>Thank you for signing up with ElegalNG! We're excited to have you on board.</p>
+                    <p>To complete your registration and activate your account, please verify your email by clicking the link below:</p>
+                    <p><a href='https://elegal.ng/engine/verify-user.php?vkey={$vkey}' style='background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;'>Verify Account</a></p>
+                    <br>
+                    <p>If you did not sign up for this account, please ignore this email.</p>
+                    <p>Need help? Contact our support team at <a href='mailto:info@elegal.ng'>info@elegal.ng</a>.</p>
+                    <p>Best regards,<br>The ElegalNG Team</p>
+                </div>
+            </body>
+            </html>";
+
+            $mail->Body = $mailContent;
+
+            if (!$mail->send()) {
+                  echo "Error in sending verification email: " . $mail->ErrorInfo;
+            } else {
+                echo "1";
+            }
         } else {
               echo "Failed to register user. Please try again.";
         }

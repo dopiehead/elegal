@@ -148,7 +148,9 @@
          </div>
 
      </div>
-     <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
 $(document).ready(function() {
     // Initially hide the spinner
     $(".spinner-border").hide();
@@ -165,23 +167,26 @@ $(document).ready(function() {
         // Create FormData object
         let formData = new FormData(this);
 
-        // Send the form data via AJAX
+        // Send the form data via AJAX to the REST API
         $.ajax({
             type: "POST",
-            url: "engine/lawyer-register-process.php",
+            url: "engine/lawyer_registration.php",  // REST API endpoint (adjust as needed)
             data: formData,
             processData: false, // Don't let jQuery try to process the data
             contentType: false, // Let FormData set content-type correctly
             success: function(response) {
-                 $(".spinner-border").hide();  // Hide the spinner
-                 $(".sign-up-note").show();    // Show the sign-up note
+                $(".spinner-border").hide();  // Hide the spinner
+                $(".sign-up-note").show();    // Show the sign-up note
 
-                 if (response == 1) {
+                // Parse the JSON response
+                let res = JSON.parse(response);
+
+                // Check if the response contains success message
+                if (res.success) {
                     swal({
-                         title: "Success",
-                         icon: "success",
-                         text: "You have successfully registered. Please check your email for a verification link.",
-                      
+                        title: "Success",
+                        icon: "success",
+                        text: "You have successfully registered. Please check your email for a verification link.",
                     });
 
                     // Reset the form
@@ -190,12 +195,11 @@ $(document).ready(function() {
                     $("#lawyer-registration-form select").val(""); // Clears select fields
                     $("#lawyer-registration-form textarea").val(""); // Clears textarea fields
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-
-                } else {
+                } else if (res.error) {
                     swal({
                         title: "Notice",
                         icon: "warning",
-                        text: response,
+                        text: res.error,  // Show the error message from the response
                     });
                     $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
                     $('input').css('border', '1px solid red');     // Highlight invalid fields
@@ -203,19 +207,20 @@ $(document).ready(function() {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                 $(".spinner-border").hide();  // Hide the spinner in case of error
-                 $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                 console.log(errorThrown);  // Log the error
-                 swal({
-                     title: "Error",
-                     icon: "error",
-                     text: "An error occurred. Please try again.",
+                $(".spinner-border").hide();  // Hide the spinner in case of error
+                $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
+                console.log(errorThrown);  // Log the error
+                swal({
+                    title: "Error",
+                    icon: "error",
+                    text: "An error occurred. Please try again.",
                 });
             }
         });
     });
 });
 </script>
+
 
      <!------------------------------------------btn-scroll--------------------------------------------------->
 

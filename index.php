@@ -1,5 +1,6 @@
 <?php session_start();
-
+error_reporting(E_ALL); // Report all types of errors
+ini_set('display_errors', 1); // Show errors in browser
 require ("engine/config.php");
 
       $condition = "SELECT * FROM lawyer_profile";
@@ -7,8 +8,6 @@ require ("engine/config.php");
       $stmt = mysqli_query($conn,$condition);
 
 ?>
-
-
 
 <html lang="en">
 <head>
@@ -20,8 +19,8 @@ require ("engine/config.php");
     <title>Homepage</title>
 </head>
 <body class='bg-light'>
-
-     <?php include 'components/nav.php'; ?>  
+<?php include ("components/nav.php"); ?>
+   
     
      <div class='hero-section'>
 
@@ -171,7 +170,7 @@ require ("engine/config.php");
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
 
-                 <h6 class='fw-bold text-sm'><a class='text-dark' href='lawyers.php?category=the literal rule'>The literal rule </a></h6>
+                 <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=the literal rule'>The literal rule </a></h6>
 
              </div>
 
@@ -1049,10 +1048,3 @@ require ("engine/config.php");
 
 </body>
 </html>
-
-
-
-
-
-
-

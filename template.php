@@ -1,33 +1,59 @@
 <?php
-error_reporting(E_ALL); // Report all types of errors
-ini_set('display_errors', 1); // Display errors to the browser
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require("engine/config.php");
-
 $host = $_SERVER['HTTP_HOST'];
-
-$base_domain = "elegal.ng"; // Your main domain
-
-// Check if this is a subdomain request
+$base_domain = "elegal.ng";
 if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
-    // Extract username from subdomain
-    $username = str_replace('.' . $base_domain, '', $host);
-    
-    print_r($username);
-    
+    $username = str_replace('.' . $base_domain, '', $host);  
+     $username = preg_replace("/-/"," ",$username); 
+    // First check if it's a lawyer
     $stmt = $conn->prepare("SELECT * FROM lawyer_profile WHERE lawyer_name = ?");
-    
     $stmt->bind_param("s", $username);
-    
     $stmt->execute();
-    
     $result = $stmt->get_result();
+    $lawyer_found = $result->num_rows; 
+    if ( $lawyer_found > 0) {
+        $row = $result->fetch_assoc();
+        include("contents/lawyer-content.php");
+    } else {
+        // Then check if it's a firm
+        $stmt = $conn->prepare("SELECT * FROM lawyer_firm WHERE firm_name = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+         $firm_found = $result->num_rows; 
+        if ($firm_found > 0) {
+            $row = $result->fetch_assoc();
+            include("contents/firm-content.php");
+        } else {
+            // You can show a 404 or redirect to homepage here
+            header("location:dashboard/profile.php");
+            exit;
+        }
+    }
 
-     include ("content/lawyer-content.php");
+    // Handle image extension if $user_img is set
+    if (!empty($user_img)) {
+        $extension = strtolower(pathinfo($user_img, PATHINFO_EXTENSION));
+        $image_extension = ['jpg', 'jpeg', 'png'];
+    }
+}
 
-     $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
+function timeAgo($time) {
+    $time = strtotime($time);
+    $diff = time() - $time;
 
-     $image_extension  = array('jpg','jpeg','png'); 
-
+    if ($diff < 60) return $diff . " seconds ago";
+    $diff = round($diff / 60);
+    if ($diff < 60) return $diff . " minutes ago";
+    $diff = round($diff / 60);
+    if ($diff < 24) return $diff . " hours ago";
+    $diff = round($diff / 24);
+    if ($diff < 7) return $diff . " days ago";
+    if ($diff < 30) return round($diff / 7) . " weeks ago";
+    if ($diff < 365) return round($diff / 30) . " months ago";
+    return round($diff / 365) . " years ago";
 }
 
 ?>
@@ -45,22 +71,96 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
      <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js'></script>
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css">
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.js"></script>
-     <link rel="stylesheet" href="../assets/css/dashboard/myprofile.css">
+     <link rel="stylesheet" href="assets/css/template.css">
      <style>
         .swal2-container {
               z-index: 9999 !important; /* Make sure SweetAlert has a very high z-index */ 
          }
+         .user_image{
+     height:90px;
+     width:90px;
+     border-radius:50%; 
+     object-fit: cover;
+}
+
+body{
+     font-family:poppins;
+}
+
+.dashboard{
+
+    width:75%;
+    margin-left:28%;
+}
+
+.fa-camera{
+    left:-15px;
+}
+
+@media screen and (max-width: 768px){
+     
+    .dashboard{
+
+        margin-left:0;
+    }
+    
+     
+ }
+
+
+.navigator{
+
+     width:25%;
+     height:100%;
+     background-color: #52727c;
+     position: fixed;
+}
+
+@media screen and (max-width: 768px){ 
+
+    
+.navigator{
+
+     background-color: #52727c;
+     position: relative;
+}
+
+}
+
+
+
+@media screen and (max-width: 768px){ 
+    .dashboard, .navigator{         
+        width:100%;
+    }
+}
+
+.active-link-profile{
+    border: 1px solid white;
+    padding:10px 10px;
+}
+
+
+li a:hover{
+    border: 1px solid white;
+    padding:10px 10px; 
+}
      </style>
 
 </head>
 
 <body class='bg-light text-sm'> 
 
-     <div class='px-1'>
+     <div class='px-1 w-100'>
 
-         <div class='d-flex gap-3 flex-md-row flex-column'>              
+             <div class='d-flex gap-3 flex-md-row flex-column'>              
 
-             <?php include ("navigator.php"); ?>
+             <div class='navigator bg-success'>
+                 
+             
+             <?php include ("dashboard/navigator.php"); ?>
+             
+             </div>
                     
              <div class='dashboard'>
                  
@@ -87,26 +187,20 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
                              
                          <?php } else { ?> 
 
-                         <img class='user_image' src="<?php echo "../". htmlspecialchars($user_img); ?>" alt="elegal">
+                         <img class='user_image' src="<?="https://elegal.ng/"."../../".htmlspecialchars($user_img); ?>" alt="elegal">
 
-                         <?php } ?>
+                         <?php  } ?>
 
                          <div class='d-flex flex-column flex-row'>
 
-                             <h6 class='fw-bold text-secondary text-capitalize'  ><?php echo htmlspecialchars($user_name); ?></h6>
+                             <h6 class='fw-bold text-secondary text-capitalize'  ><?= htmlspecialchars($user_name); ?></h6>
                              
-                             <small class='text-secondary' ><?php echo htmlspecialchars($user_location); ?></small>
+                             <small class='text-secondary' ><?= htmlspecialchars($user_location); ?></small>
 
                          </div>
 
                      </div>
 
-                     <div>
-                      
-                         <a class='btn border border-1 border-mute text-secondary btn-edit'><span class='fa fa-edit'></span>Edit</a>
-
-                     </div>
-                    
                  </div>
 
                  <!-- end of profile part -->
@@ -115,8 +209,16 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
                 <div class='px-3 py-2 border border-1 border-mute shadow-lg bg-white mt-4'>
 
                      <div class='d-flex justify-content-between'>
-
-                         <h5 class='fw-bold'>Personal information</h5>                      
+                         
+                         <?php if($lawyer_found > 0 ): ?>
+                         
+                         <h5 class='fw-bold'>Personal information</h5> 
+                         
+                         <?php else: ?>
+                         
+                          <h5 class='fw-bold'>Firm information</h5> 
+                         
+                         <?php endif; ?>
 
                      </div>
 
@@ -124,29 +226,19 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3'>
                         
+                             <?php if($lawyer_found > 0 ): ?>
+                             
                              <label for="">Name</label>
                               
+                              <?php else: ?>
+                              
+                               <label for="">Firm Name</label>
+                              
+                              <?php endif; ?>
                  
-                                  <span onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
+                              <span><?= htmlspecialchars($user_name); ?></span>
                            
                          </div>
-                           
-
-
-                         <div class='d-flex flex-row flex-column text-secondary mt-3'>
-                        
-                         <label for="">Password</label>
-
-                         <?php
-                             // Assuming $user_password is the actual password
-                             $masked_password = substr(str_repeat('*', strlen($user_password)),0,14); // Create a string of '*' of the same length as the password
-                         ?>
-
-               
-
-                             <span id='password' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_password');" class='fw-bold'><?php echo  htmlspecialchars($masked_password); ?></span>
-                   
-                    </div>
 
                      </div>
 
@@ -158,7 +250,7 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
 
                              <label for="">Email address</label>
 
-                             <strong class='fw-bold text-success'><?php echo htmlspecialchars($you); ?></strong>
+                             <strong class='fw-bold text-success'><?=htmlspecialchars($user_email); ?></strong>
                             
                          </div>
 
@@ -166,56 +258,82 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
                          <div class='d-flex flex-row flex-column text-secondary mt-3'>
 
                              <label for="">Phone number</label>
-
                      
-                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_phone_no');"><?php echo htmlspecialchars($user_contact); ?></span>
+                                 <span class='fw-bold'><?= htmlspecialchars($user_contact); ?></span>
                            
                          </div>
 
                
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3'>
+                             
+                              <?php if($lawyer_found > 0 ): ?>
 
                              <label for="">Date of Birth</label>
 
-                             <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', '<?php echo $user_dob; ?>');"><?php echo htmlspecialchars($user_dob); ?></span>
+                             <span class='fw-bold'><?=htmlspecialchars($user_dob); ?></span>
+                              
+                              <?php else :  ?>
+                              
+                              <label for="">Date found</label> 
+                              
+                               <span><?= htmlspecialchars($date_found)?></span>
+                              
+                              <?php endif; ?>
+
+                         </div>
+                         
+                         
+                         
+                           <div class='d-flex flex-row flex-column text-secondary mt-3'>
+                             
+                              <?php if($lawyer_found == 0 ): ?>
+
+                             <label for="">Number of Lawyers</label>
+
+                             <span class='fw-bold'><?=htmlspecialchars($nooflawyers); ?></span>
+                              
+                              <?php endif; ?>
 
                          </div>
 
-                     </div>
-
-
-
-                     <div class='d-flex flex-row flex-column text-secondary mt-3 px-3'>
-                         
-                          <label for="">Occupation</label>
-                
-
-                          <span class='fw-bold text-capitalize'><?php echo htmlspecialchars($user_type); ?></span>
-
-
-                          <span class='fw-bold text-capitalize'  onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_occupation');"><?php echo htmlspecialchars($user_occupation); ?></span>
-
-            
 
                      </div>
-
-             
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3 px-3'>
+                             
+                              <?php if($lawyer_found > 0 ): ?>
 
                               <label for="">Education</label>                       
 
-                              <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_education');"><?php echo htmlspecialchars($user_education); ?></span>
+                              <span class='fw-bold text-capitalize'><?=htmlspecialchars($user_education); ?></span>
+                              
+                               <?php else :  ?>
+                               
+                               <label for="">Certification and Accreditation</label> 
+                              
+                               <span><?= htmlspecialchars($certification_and_accreditation)?></span>
+                              
+                              <?php endif; ?>
 
                          </div>
 
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3 px-3'>
 
+                             <?php if($lawyer_found > 0 ): ?>
+
                              <label for="">Experience</label>                       
 
-                             <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_experience');"><?php echo htmlspecialchars($lawyer_experience); ?></span>
+                             <span class='fw-bold text-capitalize'><?=htmlspecialchars($lawyer_experience); ?></span>
+                             
+                             <?php else : ?>
+   
+                             <label for="">Joined date</label>                       
+
+                             <span class='fw-bold text-capitalize'><?=htmlspecialchars(timeAgo($date_created)); ?></span>
+                             
+                             <?php endif; ?>
 
                          </div>
 
@@ -236,11 +354,13 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
 
                                <label for="">Country</label>
 
-                                      <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_location');"><?php echo htmlspecialchars($user_location); ?></span>
+                                      <span class='fw-bold'><?=htmlspecialchars($user_location); ?></span>
                      
                            </div>
 
                      </div>
+                     
+         <?php if($lawyer_found > 0 ): ?>
 
                      <div class='d-flex justify-content-between align-items-start gap-1'>
 
@@ -248,14 +368,14 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
                           <div class='d-flex flex-row flex-column mt-3 text-secondary'>
 
                               <label for="">Supreme Court Number</label>
-                              <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'supreme_court_number');"><?php echo htmlspecialchars($supreme_court_number); ?></span>
+                              <span class='fw-bold'><?=htmlspecialchars($supreme_court_number); ?></span>
                               
                           </div>
 
                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
 
                                  <label for="">Currently Engaged</label>  
-                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'currently_engaged');"><?php echo htmlspecialchars($currently_engaged); ?></span>
+                                 <span class='fw-bold'><?=htmlspecialchars($currently_engaged); ?></span>
 
                           </div>
 
@@ -263,18 +383,21 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
        
                                 <label for="">Current Position</label>  
-                                <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'current_position');"><?php echo htmlspecialchars($current_position); ?></span>
+                                <span class='fw-bold'><?=htmlspecialchars($current_position); ?></span>
 
                          </div>
 
                      </div>
+        
+        <?php endif; ?>
+        
 
                      <div class='d-flex justify-content-between'>
 
                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
 
                               <label for="">Practice Location</label>  
-                               <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'practice_location');"><?php echo htmlspecialchars($practice_location); ?></span>
+                               <span class='fw-bold'><?=htmlspecialchars($practice_location); ?></span>
 
                          </div>
                    
@@ -296,7 +419,7 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
 
                   <br>
 
-                 <label class='text-secondary' for="">Practice Areas (Seperate each by commas) </label>  
+                 <label class='text-secondary' for="">Practice Areas</label>  
 
                      <?php 
 
@@ -304,7 +427,7 @@ if ($host !== $base_domain && strpos($host, '.' . $base_domain) !== false) {
 
                           foreach($areas as $lawyer_practice_areas){?>
 
-                             <span class='fw-bold text-secondary' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_practice_areas');"><?php echo htmlspecialchars($lawyer_practice_areas); ?> </span><br>
+                             <span class='fw-bold text-secondary mb-1'><?=htmlspecialchars($lawyer_practice_areas); ?> </span>
                      
                      <?php 
                      
@@ -402,4 +525,4 @@ function changeBackground(obj) {
 
 </body>
 
-</html> 
+</html>

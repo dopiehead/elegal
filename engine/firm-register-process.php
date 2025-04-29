@@ -1,139 +1,192 @@
 <?php
 require("config.php");
+header('Content-Type: application/json');
 
+// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Collect data from the form
-    $firm_name = trim($_POST['firm_name']);
-    $firm_email = trim($_POST['firm_email']);
-    $firm_password = $_POST['firm_password'];
-    $confirm_password = $_POST['confirm_password'];
-    $firm_phone_number = trim($_POST['firm_phone_number']);
-    $firm_bio = $_POST['firm_bio'];
-    $date_found = $_POST['date_found'];
-    $nooflawyers = trim($_POST['nooflawyers']);
-    $firm_img = $_FILES['firm_img']['name'] ?? ''; // Optional field for image
-    $firm_location = trim($_POST['firm_location']);
-    $firm_rating = $_POST['firm_rating'] ?? 0; // Default to '0' if not set
-    $verified = $_POST['verified'] ?? 0;
-    $payment_status = $_POST['payment_status'] ?? 0;
-    $created_at = date("Y-m-d H:i:s"); // Only define once
+    // Get the JSON input data
+    $inputData = json_decode(file_get_contents('php://input'), true);
+
+    // Collect data from the JSON input
+    $firm_name = trim($inputData['firm_name']);
+    $firm_email = trim($inputData['firm_email']);
+    $firm_password = $inputData['firm_password'];
+    $confirm_password = $inputData['confirm_password'];
+    $firm_phone_number = trim($inputData['firm_phone_number']);
+    $firm_bio = $inputData['firm_bio'];
+    $date_found = $inputData['date_found'];
+    $nooflawyers = trim($inputData['nooflawyers']);
+    $firm_img = $inputData['firm_img'] ?? ''; // Optional field for image
+    $firm_location = trim($inputData['firm_location']);
+    $firm_rating = $inputData['firm_rating'] ?? 0;
+    $verified = $inputData['verified'] ?? 0;
+    $payment_status = $inputData['payment_status'] ?? 0;
+    $created_at = date("Y-m-d H:i:s");
+    $vkey = md5(time() . $firm_email); // Generate a verification key
+
     // Handle practice areas selection
-    $practice_areas = isset($_POST['practice_areas']) ? $_POST['practice_areas'] : [];
-    $selectedareas = implode(' , ', $practice_areas);
+    $practice_areas = isset($inputData['practice_areas']) ? $inputData['practice_areas'] : [];
+    $selectedareas = implode(', ', $practice_areas);
 
     // Handle certification and accreditation
-    $certification_and_accreditation = isset($_POST['certification_accredit']) ? implode(" , ", $_POST['certification_accredit']) : '';
+    $certification_and_accreditation = isset($inputData['certification_accredit']) ? implode(", ", $inputData['certification_accredit']) : '';
 
     // Validation
     if (empty($firm_name) || empty($firm_email) || empty($firm_password) || empty($confirm_password) || empty($firm_phone_number) || empty($date_found) || empty($nooflawyers) || empty($selectedareas) || empty($firm_bio)) {
-        echo "All fields are required.";
+        echo json_encode(["error" => "All fields are required."]);
         exit;
     }
 
     if ($firm_password !== $confirm_password) {
-        echo "Passwords do not match.";
+        echo json_encode(["error" => "Passwords do not match."]);
         exit;
     }
 
     if (!filter_var($firm_email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format.";
+        echo json_encode(["error" => "Invalid email format."]);
         exit;
     }
 
     if (!preg_match('/^\d{11}$/', $firm_phone_number)) {
-        echo "Invalid phone number. Please enter an 11-digit number.";
+        echo json_encode(["error" => "Invalid phone number. Please enter an 11-digit number."]);
         exit;
     }
 
     if (strlen($firm_password) < 8 || !preg_match('/[A-Z]/', $firm_password) || !preg_match('/\d/', $firm_password)) {
-        echo "Password must be at least 8 characters long, contain at least one uppercase letter, and one number.";
+        echo json_encode(["error" => "Password must be at least 8 characters long, contain at least one uppercase letter, and one number."]);
         exit;
     }
 
-    // For image upload
+    // Image Upload
     $image_path = '';
     if (!empty($firm_img)) {
-        $target_dir = "uploads/"; // Define the directory where images will be stored
+        $target_dir = "uploads/";
         $target_file = $target_dir . basename($firm_img);
         $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
         // Validate image type
         $valid_image_types = ['jpg', 'png', 'gif'];
         if (!in_array($image_file_type, $valid_image_types)) {
-            echo "Only JPG, PNG, and GIF files are allowed for the profile image.";
+            echo json_encode(["error" => "Only JPG, PNG, and GIF files are allowed for the profile image."]);
             exit;
         }
 
-        // Check if file already exists to prevent overwriting
         if (file_exists($target_file)) {
-            echo "File already exists. Please upload a different image.";
+            echo json_encode(["error" => "File already exists. Please upload a different image."]);
             exit;
         }
 
-        // Move the uploaded file to the target directory
-        if (!move_uploaded_file($_FILES['firm_img']['tmp_name'], $target_file)) {
-            echo "Failed to upload the image.";
+        if (!move_uploaded_file($firm_img, $target_file)) {
+            echo json_encode(["error" => "Failed to upload the image."]);
             exit;
         }
 
-        $image_path = $target_file; // Store the image path for database insertion
+        $image_path = $target_file;
     }
 
-    // Hash the password before storing it in the database
+    // Hash the password
     $hashed_password = password_hash($firm_password, PASSWORD_BCRYPT);
 
-    // Correct SQL query with matching column names and placeholders
+    // Correct SQL query
     $sql = "INSERT INTO lawyer_firm (
-         firm_name, 
-         firm_email, 
-         firm_password, 
-         firm_about, 
-         certification_and_accreditation,
-         date_found,
-         nooflawyers,
-         firm_phone_number, 
-         firm_rating,
-         location, 
-         practice_areas,
-         firm_img,
-         date_created,
-         payment_status
-         verified
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        firm_name, 
+        firm_email, 
+        firm_password, 
+        firm_about, 
+        certification_and_accreditation,
+        date_found,
+        nooflawyers,
+        firm_phone_number, 
+        firm_rating,
+        location, 
+        practice_areas,
+        firm_img,
+        date_created,
+        payment_status,
+        verified,
+        vkey
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
-        // Bind parameters
-        $stmt->bind_param("sssssssssssssss", 
-             $firm_name, 
-             $firm_email, 
-             $hashed_password, 
-             $firm_bio, 
-             $certification_and_accreditation, 
-             $date_found, 
-             $nooflawyers, 
-             $firm_phone_number, 
-             $firm_rating, 
-             $firm_location, 
-             $selectedareas, 
-             $image_path, 
-             $created_at, // Get current timestamp
-             $payment_status,
-             $verified
+        $stmt->bind_param(
+            "ssssssssssssssss",
+            $firm_name,
+            $firm_email,
+            $hashed_password,
+            $firm_bio,
+            $certification_and_accreditation,
+            $date_found,
+            $nooflawyers,
+            $firm_phone_number,
+            $firm_rating,
+            $firm_location,
+            $selectedareas,
+            $image_path,
+            $created_at,
+            $payment_status,
+            $verified,
+            $vkey
         );
 
-        // Execute the query
         if ($stmt->execute()) {
-            echo "1";
+            require 'PHPMailer-master/PHPMailer-master/PHPMailerAutoload.php';
+
+            $mail = new PHPMailer;
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'elegal.ng';
+            $mail->Port = 465;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Username = 'info@elegal.ng';
+            $mail->Password = "Qbr0uX3mwA";
+            $mail->setFrom('info@elegal.ng', 'ElegalNG');
+            $mail->addAddress($firm_email);
+            $mail->addReplyTo('info@elegal.ng');
+            $mail->isHTML(true);
+            $mail->Subject = 'Welcome to ElegalNG';
+
+            $mailContent = "
+            <html>
+            <head>
+                 <meta name='color-scheme' content='light only'>
+                 <meta name='supported-color-schemes' content='light only'>
+                 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'>
+            </head>
+            <body style='font-family: Arial, sans-serif; padding: 10px;'>
+                <div style='text-align: left;'>
+                     <img src='https://elegal.ng/assets/icons/logo.png' height='50' width='50' alt='ElegalNG Logo'>
+                </div>
+                <br><br>
+                <div style='font-size: 15px;'>
+                    <h6>Hello {$firm_name},</h6>
+                    <p>Thank you for signing up with ElegalNG! We're excited to have you on board.</p>
+                    <p>To complete your registration and activate your account, please verify your email by clicking the link below:</p>
+                    <p><a href='https://elegal.ng/engine/verify-firm.php?vkey={$vkey}' style='background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;'>Verify Account</a></p>
+                    <br>
+                    <p>If you did not sign up for this account, please ignore this email.</p>
+                    <p>Need help? Contact our support team at <a href='mailto:info@elegal.ng'>info@elegal.ng</a>.</p>
+                    <p>Best regards,<br>The ElegalNG Team</p>
+                </div>
+            </body>
+            </html>";
+
+            $mail->Body = $mailContent;
+
+            if (!$mail->send()) {
+                echo json_encode(["error" => "Error in sending verification email: " . $mail->ErrorInfo]);
+            } else {
+                echo json_encode(["success" => "1"]);
+            }
         } else {
-            echo "Failed to register firm. Please try again. Error: " . $stmt->error;
+            echo json_encode(["error" => "Failed to register firm. Please try again. Error: " . $stmt->error]);
         }
 
         $stmt->close();
     } else {
-        echo "Error preparing the statement. " . $conn->error;
+        echo json_encode(["error" => "Error preparing the statement: " . $conn->error]);
     }
 
-    // Close the connection
     $conn->close();
 }
 ?>

@@ -16,7 +16,7 @@ if(isset($_POST["submit-search"]))   {
            <p><a class='d-block' href='index.php'>LOGO</a> </p> 
      </div>
      </div>
-     <div> 
+     <div class='search-container'> 
           <form action="" method="POST">
               <div>
                   <input type="text" name='search' placeholder='&#xF002; Search' style='font-family:arial,fontawesome;' class='rounded rounded-pill bg-white border-0 bg-search input-search'>
@@ -82,9 +82,9 @@ if(isset($_POST["submit-search"]))   {
      </ul>
 
 
-     <div class='navigator '>
+     <div class='navigator px-2'>
 
-         <p><span onclick="openform()" class='fa fa-bars d-md-none'>
+         <p><span onclick="openform()" class='fa fa-bars fs-4 d-md-none'>
 
 
          </span></p>

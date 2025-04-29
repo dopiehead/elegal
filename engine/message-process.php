@@ -37,15 +37,15 @@ if (empty($compose)) {
 
         $mail->SMTPDebug = 0;  // Enable verbose debug output
         $mail->isSMTP();       // Send using SMTP
-        $mail->Host = 'estores.ng';
+        $mail->Host = 'elegal.ng';
         $mail->Port = 465;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'ssl';
-        $mail->Username = 'info@estores.ng';
-        $mail->Password = "j(Mr7DlV7Oog";
-        $mail->setFrom('info@estores.ng', 'estores.ng');
+        $mail->Username = 'info@elegal.ng';
+        $mail->Password = "Qbr0uX3mwA";
+        $mail->setFrom('info@elegal.ng', 'Elegal.ng');
         $mail->addAddress($receiver_email);
-        $mail->addReplyTo('info@estores.ng');
+        $mail->addReplyTo('info@elegal.ng');
 
         // Email content
         $mail->isHTML(true);
@@ -71,7 +71,7 @@ if (empty($compose)) {
                 </div>
                 <br><br>
                 <div>
-                    <a href='https://estores.ng/chat.php?user_name=$sender_email' class='form-control'>Login to view message</a>
+                    <a href='https://elegal.ng/chat.php?user_name=$sender_email' class='form-control'>Login to view message</a>
                 </div>
             </body>
             </html>

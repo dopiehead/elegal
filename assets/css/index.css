@@ -1,10 +1,26 @@
 .tabs-link{
 
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-evenly;
-    gap:20px;
+     flex-wrap: wrap;
+     display: flex;
+     justify-content: space-evenly;
+     gap:20px;
 
+}
+
+
+@media (max-width:768px){
+   
+   .tabs-link{
+
+         justify-content:space-between;
+          gap:8px;
+  
+    } 
+    
+}
+
+body{
+    overflow-x:hidden;
 }
 
 a:hover{
@@ -16,32 +32,40 @@ a:hover{
     font-weight:bold;
 }
 
-
-.tabs-link div{
-
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:20px;
-    height:150px;
-    width:210px;
-    padding:0px 20px;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
-
+.tabs-link div {
+     flex-wrap: wrap;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 20px;
+     height: 150px;
+     width: 210px;
+     padding: 0px 20px;
+     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 768px) {
+    .tabs-link div {
+      
+         gap: 10px;
+         height: 120px;
+         width: 100%;  /* Responsive width for mobile */
+         max-width: 130px; /* Or use a max-width to control how wide it can go */
+    }
+}
+
 
 
 .section-volunteer img{
-width:100%;
-height:auto;
+     width:100%;
+     height:auto;
 }
 
 .volunteer-content{
-    display:flex;
+     display:flex;
     /* justify-content:center; */
-    align-items:flex-end;
+     align-items:flex-end;
 }
 
 

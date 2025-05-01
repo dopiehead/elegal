@@ -138,7 +138,6 @@ else {
 
                  </ul>     
                                                               <!-- main content  -->
-
                  <div class='b-part px-3'>
 
                            <div class='table-container container'></div>
@@ -154,7 +153,6 @@ else {
              <div class='popup' id="case_details"></div>
 
       </div>
-
 
      <br><br>
 
@@ -212,7 +210,6 @@ else {
          loadContent("../components/dashboard/reminder.php");
     });
 
-
 </script>
 
 <script>
@@ -265,7 +262,6 @@ else {
            $("#popup-reminder").show();          
      });
 
-
      $(document).on('click',"#closeButton",function(){       
            $("#popup-reminder").hide();   
  });
@@ -304,12 +300,14 @@ else {
             url: "../components/dashboard/components/assign-secretary.php",
             data: { id: id },
             success: function (response) {
-                if (response == "1") {
+                if (response === "1") {
                     swal({
                         icon: "success",
                         title: "Success",
                         text: "Secretary role has been assigned"
                     });
+                    $(this).hide();
+                    $(".btn-remove-secretary").show(100);
                 } else {
                     swal({
                         icon: "warning",
@@ -348,13 +346,15 @@ else {
                 if (response == "1") {
                     swal({
                         icon: "success",
-                        title: "Success",
+                        title: "Success!!",
                         text: "Secretary role has been removed"
                     });
+                    $('.btn-assign-secretary').show(100);
+                    $(this).hide();
                 } else {
                     swal({
                         icon: "warning",
-                        title: "Warning",
+                        title: "Notice",
                         text: response
                     });
                 }

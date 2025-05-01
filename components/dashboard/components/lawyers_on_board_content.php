@@ -40,7 +40,7 @@ if (!empty($_POST['id'])) {
                              <?php if($lawyer['lawyer_role']!='secretary'): ?>
                             <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-warning text-dark shadow-lg border-0 rounded-2 btn-assign-secretary'>Assign as Secretary</a>
                              <?php else: ?>
-                            <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-danger text-dark shadow-lg border-0 rounded-2 btn-remove-secretary'>Remove as Secretary</a>
+                            <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-danger text-dark shadow-lg border-0 rounded-2 btn-remove-secretary text-white'>Remove as Secretary</a>
                              <?php endif; ?>
                         </div>
                     </div>

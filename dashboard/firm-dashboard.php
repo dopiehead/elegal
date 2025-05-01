@@ -1,18 +1,13 @@
 <?php session_start();
       require("../engine/config.php");
-
 if(!isset($_SESSION['firm_id'])){
       header("location:../login.php");
       exit();
-} else
-     {
-
-
+} 
+else {
       include ("content/firm-content.php");
-
      }
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,21 +16,20 @@ if(!isset($_SESSION['firm_id'])){
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js'></script>
+    <!-- SweetAlert 1 (Classic) CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../assets/css/dashboard/firm-dashboard.css">
     <title>Firm dashboard</title>
     <style>
-
-   body{
-        font-family: "Helvetica Neue",Helvetica,Arial
-   }
-
+           body{
+                 font-family: "Helvetica Neue",Helvetica,Arial
+               }
     </style>
 </head>
 
 <body class='bg-light'>
    
      <div> 
-
              <div class='profile-container w-100 bg-dark pt-2 pb-3 px-3 mb-2'>
 
                   <div class='position-relative'>
@@ -46,16 +40,14 @@ if(!isset($_SESSION['firm_id'])){
                
                <?php 
                      $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
-
-                     $image_extension  = array('jpg','jpeg','png');
-                
+                     $image_extension  = array('jpg','jpeg','png');                
                      if (!in_array($extension , $image_extension)) {
 
                           echo"<div class='text-center px-1'><span class='text-secondary text-white text-uppercase' style='font-size:50px;'>".substr($user_name,0,2)."</span></div>";                  
 
                      } else { ?>    
 
-                           <img src="<?php echo "../assets/". htmlspecialchars($user_img); ?>" alt="e-legal">
+                           <img src="<?php echo "../". htmlspecialchars($user_img); ?>" alt="e-legal">
                   
                      <?php    }   ?>
 
@@ -150,7 +142,6 @@ if(!isset($_SESSION['firm_id'])){
                  <div class='b-part px-3'>
 
                            <div class='table-container container'></div>
-
 
                  </div>
 
@@ -260,8 +251,6 @@ if(!isset($_SESSION['firm_id'])){
    
 </script>
 
-
-
 <script>
 
       $(document).on('click',".close-btn",function(){
@@ -270,25 +259,118 @@ if(!isset($_SESSION['firm_id'])){
 
 </script>
 
- 
 <script>
 
-     $(document).on('click',".show-details",function(){
-       
-           $("#popup-reminder").show();
-          
+     $(document).on('click',".show-details",function(){       
+           $("#popup-reminder").show();          
      });
 
 
-     $(document).on('click',"#closeButton",function(){
-       
-       $("#popup-reminder").hide();
-      
+     $(document).on('click',"#closeButton",function(){       
+           $("#popup-reminder").hide();   
  });
 
 </script>
 
 
+<script>
+
+        $(document).on("click",".btn-show-lawyers",function(e){
+            e.preventDefault();
+         let onboard_lawyers = $(this).attr("id");
+         $.ajax({
+                type: "POST",
+                url: "../components/dashboard/components/lawyers_on_board_content.php",
+                data : {"id":onboard_lawyers},
+                success: function(response) {
+                     $("#case_details").html(response).show();
+                }
+           });
+        });
+
+</script>
+
+<script>
+    $(document).on("click", ".btn-assign-secretary", function (e) {
+        e.preventDefault();
+        const id = $(this).attr("id");
+
+        // Confirm before proceeding
+        const proceed = confirm("Are you sure you want to assign this lawyer as a secretary?");      
+        if (!proceed) return; // Abort if user clicks Cancel
+
+        $.ajax({
+            type: "POST",
+            url: "../components/dashboard/components/assign-secretary.php",
+            data: { id: id },
+            success: function (response) {
+                if (response == "1") {
+                    swal({
+                        icon: "success",
+                        title: "Success",
+                        text: "Secretary role has been assigned"
+                    });
+                } else {
+                    swal({
+                        icon: "warning",
+                        title: "Warning",
+                        text: response
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Error:", error);
+                swal({
+                    icon: "error",
+                    title: "AJAX Error",
+                    text: "Something went wrong. Please try again."
+                });
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).on("click", ".btn-remove-secretary", function (e) {
+        e.preventDefault();
+        const id = $(this).attr("id");
+
+        // Confirm before proceeding
+        const proceed = confirm("Are you sure you want to remove this lawyer as a secretary?");      
+        if (!proceed) return; // Abort if user clicks Cancel
+
+        $.ajax({
+            type: "POST",
+            url: "../components/dashboard/components/remove-secretary.php",
+            data: { id: id },
+            success: function (response) {
+                if (response == "1") {
+                    swal({
+                        icon: "success",
+                        title: "Success",
+                        text: "Secretary role has been removed"
+                    });
+                } else {
+                    swal({
+                        icon: "warning",
+                        title: "Warning",
+                        text: response
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Error:", error);
+                swal({
+                    icon: "error",
+                    title: "AJAX Error",
+                    text: "Something went wrong. Please try again."
+                });
+            }
+        });
+    });
+
+</script>
 
 </body>
 </html>

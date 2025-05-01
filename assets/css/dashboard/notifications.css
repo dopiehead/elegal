@@ -24,8 +24,6 @@ body{
    
     
 }
-
-
 .navigator{
 
     width:25%;
@@ -36,7 +34,6 @@ body{
 
 @media screen and (max-width: 768px){ 
 
-   
 .navigator{
 
     background-color: #52727c;
@@ -53,7 +50,7 @@ body{
    }
 }
 
-.active-link-notification{
+.active-link-firm{
    border: 1px solid white;
    padding:10px 10px;
 }

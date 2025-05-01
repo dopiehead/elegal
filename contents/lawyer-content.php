@@ -19,5 +19,9 @@
      $practice_location = isset($row['practice_location']) && !empty($row['practice_location']) ? $conn->real_escape_string($row['practice_location']) : " ";
      $lawyer_experience = isset($row['lawyer_experience']) && !empty($row['lawyer_experience']) ? $conn->real_escape_string($row['lawyer_experience']) : " ";
      $user_contact = isset($row['lawyer_phone_no']) && !empty($row['lawyer_phone_no']) ? $conn->real_escape_string($row['lawyer_phone_no']) : " ";
+     $lawyer_qualification =  isset($row['lawyer_qualification']) && !empty($row['lawyer_qualification']) ? $conn->real__escape_string($row['lawyer_qualification']) : " ";
+     $lawyer_firm = isset($row['lawyer_firm']) && !empty($row['lawyer_firm']) ? $conn->real__escape_string($row['lawyer_firm']) : "not available ";
+     $lawyer_role =  isset($row['lawyer_role']) && !empty($row['lawyer_role']) ?  $conn->real__escape_string($row['lawyer_role']) : "not available";
+     $lemployment_status = isset($row['employment_status']) && !empty($row['employment_status']) ?  $conn->real__escape_string($row['employment_status']) : "not employed ";
 
 ?>

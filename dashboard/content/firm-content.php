@@ -10,18 +10,23 @@
      $result = mysqli_stmt_get_result($stmt);
      if ($row = mysqli_fetch_assoc($result)) {
         
-         $date = $row['date_created'];
-         $date_found = $row['date_found'];
-         $user_bio = $row['firm_about'];
-         $user_name = $row['firm_name'];
-         $user_password = $row['firm_password'];
-         $user_location = $row['location'];
-         $user_rating = $row['firm_rating'];
-         $user_contact = $row['firm_phone_number'];
-         $user_img = $row['firm_img'];
-         $certification_and_accreditation = $row['certification_and_accreditation'];
-         $practice_areas = $row['practice_areas'];
-         $nooflawyers = $row['nooflawyers'];
+        function getValue($array, $key, $default = "not available") {
+            return isset($array[$key]) && !empty($array[$key]) ? $array[$key] : $default;
+        }
+        
+        $date = getValue($row, 'date_created');
+        $date_found = getValue($row, 'date_found');
+        $user_bio = getValue($row, 'firm_about');
+        $user_name = getValue($row, 'firm_name');
+        $user_password = getValue($row, 'firm_password');
+        $user_location = getValue($row, 'location');
+        $user_rating = getValue($row, 'firm_rating');
+        $user_contact = getValue($row, 'firm_phone_number');
+        $user_img = getValue($row, 'firm_img');
+        $certification_and_accreditation = getValue($row, 'certification_and_accreditation');
+        $practice_areas = getValue($row, 'practice_areas');
+        $nooflawyers = getValue($row, 'nooflawyers');
+        
          
      } else {
 

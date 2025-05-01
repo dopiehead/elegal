@@ -71,15 +71,13 @@ $image_extension  = array('jpg','jpeg','png');
 
                             echo "<div class='text-center rounded-circle border border-1 border-success px-2 py-1 position-relative'>
                             <strong class='text-secondary text-uppercase' style='font-size:40px;'>".substr($user_name, 0, 2)."</strong>"; ?>
-
-                            
+                           
                             <span class='fa fa-camera position-absolute bottom-0 start-100 ' style='cursor:pointer;'>
                                 <input type='file' name='fileupload' class='position-relative top-0 start-0 w-100 h-100 opacity-0'>
                             </span>
                             
                           </div>
-                                    
-                             
+                                                                
                          <?php } else { ?> 
 
                          <img class='user_image' src="<?php echo "../". htmlspecialchars($user_img); ?>" alt="elegal">
@@ -90,8 +88,11 @@ $image_extension  = array('jpg','jpeg','png');
 
                              <h6 class='fw-bold text-secondary text-capitalize'  ><?php echo htmlspecialchars($user_name); ?></h6>
                              
-                             <small class='text-secondary' ><?php echo htmlspecialchars($user_location); ?></small>
-
+                             <small class='text-secondary text-capitalize' ><?php echo htmlspecialchars($user_location); ?></small>
+                             <?php if(isset($_SESSION["lawyer_id"])) : ?>
+                             <small class='text-secondary text-capitalize' ><?php echo htmlspecialchars($lawyer_role); ?></small>
+                             <small class='text-primary text-capitalize' ><?php echo htmlspecialchars($employment_status); ?></small>
+                             <?php endif; ?>
                          </div>
 
                      </div>
@@ -105,7 +106,6 @@ $image_extension  = array('jpg','jpeg','png');
                  </div>
 
                  <!-- end of profile part -->
-
              
                 <div class='px-3 py-2 border border-1 border-mute shadow-lg bg-white mt-4'>
 
@@ -115,21 +115,19 @@ $image_extension  = array('jpg','jpeg','png');
 
                      </div>
 
-                     <div class='d-flex justify-content-between text-secondary  flex-md-row flex-column px-3'>
+                     <div class='d-flex justify-content-start text-secondary  flex-md-row flex-column px-3 gap-5'>
 
                          <div class='d-flex flex-row flex-column text-secondary mt-3'>
                         
-                             <label for="">Name</label>
+                             <label for="name">Name</label>
                               
                              <?php if(isset($_SESSION['id'])) { ?>
-                                  <span onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'user_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
+                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'user_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
                              <?php } else { ?>
-                                  <span onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
+                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
                              <?php } ?>
                          </div>
                            
-
-
                          <div class='d-flex flex-row flex-column text-secondary mt-3'>
                         
                          <label for="">Password</label>
@@ -223,9 +221,18 @@ $image_extension  = array('jpg','jpeg','png');
 
                              <label for="">Experience</label>                       
 
-                             <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_experience');"><?php echo htmlspecialchars($lawyer_experience); ?></span>
+                             <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_experience');"><?php echo htmlspecialchars($lawyer_experience)." years"; ?></span>
 
                          </div>
+
+
+                         <div class='d-flex flex-row flex-column text-secondary mt-3 px-3'>
+
+                              <label for="">Qualification</label>                       
+
+                                 <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_qualification');"><?php echo htmlspecialchars($lawyer_qualification); ?></span>
+
+                         </div> 
 
                      <?php }  ?>
 
@@ -240,16 +247,20 @@ $image_extension  = array('jpg','jpeg','png');
                      </div>
                     
 
-                     <div class='text-secondary d-flex flex-md-row flex-column flex-wrap justify-content-between mt-3'>
+                     <div class='text-secondary d-flex flex-md-row flex-column flex-wrap justify-content-start gap-5 mt-3'>
+                           <div class='d-flex flex-row flex-column'>    
+                               <label for="">Country</label>
+                              <span class='fw-bold'>Nigeria</span>
 
+                           </div>
                            <div class='d-flex flex-row flex-column'>
 
-                               <label for="">Country</label>
+                               <label for="">State</label>
 
                                <?php if(isset($_SESSION['id'])) { ?>
-                                     <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_location');"><?php echo htmlspecialchars($user_location); ?></span>
+                                     <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_location');"><?php echo htmlspecialchars($user_location); ?></span>
                                <?php } else { ?>
-                                      <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_location');"><?php echo htmlspecialchars($user_location); ?></span>
+                                      <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_location');"><?php echo htmlspecialchars($user_location); ?></span>
                                <?php } ?>
                            </div>
 
@@ -281,6 +292,14 @@ $image_extension  = array('jpg','jpeg','png');
 
                          </div>
 
+
+                         <div class='d-flex flex-row flex-column mt-3 text-secondary'>
+       
+                               <label for="">Current Firm </label>  
+                              <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_firm');"><?php echo htmlspecialchars($lawyer_firm); ?></span>
+
+                         </div>
+
                      </div>
 
                      <div class='d-flex justify-content-between'>
@@ -288,9 +307,11 @@ $image_extension  = array('jpg','jpeg','png');
                          <div class='d-flex flex-row flex-column mt-3 text-secondary'>
 
                               <label for="">Practice Location</label>  
-                               <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'practice_location');"><?php echo htmlspecialchars($practice_location); ?></span>
+                               <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'practice_location');"><?php echo htmlspecialchars($practice_location); ?></span>
 
                          </div>
+
+
                    
              </div>
 

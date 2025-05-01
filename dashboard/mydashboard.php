@@ -51,17 +51,14 @@ if (isset($_SESSION["firm_id"])) {
 
                   <?php include ("navigator.php"); ?>   
 
-             <div class='dashboard mt-3'>
+             <div class='dashboard mt-3 pe-4'>
 
                  <div class='d-flex justify-content-start gap-2'>
-                     <h4 class='text-capitalize'><b><?php echo htmlspecialchars($user_name); ?></b> dashboard</h4>
+                     <h4 class='text-capitalize'><b><?php echo htmlspecialchars($user_name); ?>'s</b> dashboard</h4>
                       <span><?php echo date("y-m-d"); ?></span>
                  </div>
 
-
                   <div class=' activities d-flex justify-content-between align-items-center mt-4 mb-3 flex-md-row flex-column gap-1'>
-
-                    
 
                       <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Notes</span><span class='fw-bold fs-5'>0</span></div>
                      <?php if(isset($_SESSION['id'])) {?>
@@ -69,7 +66,6 @@ if (isset($_SESSION["firm_id"])) {
                           <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Cases Filed</span><span class='fw-bold fs-5'>0</span></div>
                           <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Lawyers contacted</span><span class='fw-bold fs-5'>0</span></div>
                      <?php }?>
-
 
                      <?php if(isset($_SESSION['lawyer_id'])) {?>
                           <div class='bg-white shadow-lg d-flex flex-column flex-row justify-content-center align-items-center gap-1 '><span class='text-sm text-secondary'>Reminder</span><span class='fw-bold fs-5'><?php echo date("d-m-Y") ?></span></div>
@@ -118,8 +114,6 @@ if (isset($_SESSION["firm_id"])) {
                           <canvas id="salesChart"   height="200"></canvas>
                     
                      </div>
-
-
 
                      <div class='bg-white shadow-lg p-4'>Work analysis
 

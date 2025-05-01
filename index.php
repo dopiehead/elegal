@@ -403,7 +403,15 @@ require ("engine/config.php");
 
          <div class='d-flex flex-row  text-center flex-column g-5'>
 
-             <h4 class='fw-bold'>4723</h4>
+             <h4 class='fw-bold'><?php
+             $total_lawyers_list = $conn->prepare("SELECT COUNT(*) AS count FROM lawyer_profile WHERE verified = 1 ");
+             if($total_lawyers_list->execute()){
+                 $datafound = $total_lawyers_list->get_result();
+                 $row = $datafound->fetch_assoc();
+                 echo$row['count'];
+             }
+             
+             ?></h4>
 
              <p>Total lawyers</p>          
         
@@ -1032,6 +1040,7 @@ require ("engine/config.php");
      </script>
      
      <script>
+        
          function openform() {
              document.getElementById("myform").
              style.height="100%";

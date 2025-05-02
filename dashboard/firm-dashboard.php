@@ -100,22 +100,12 @@ else {
                           <span class='fa fa-arrow-right' id="money_in"></span>
                     
                      </li>    
-                    
-                    
+                                       
                      <li class='bg-light'>
                         
                          <span class='text-success fa fa-user-alt fa-1x'></span>
                          <a class='text-secondary text-decoration-none link-button' id="money_out">Money out</a>
                          <span class='fa fa-arrow-right' id="money_out"></span>
-                  
-                     </li> 
-
-
-                     <li class='bg-light'>
-                        
-                         <span class='text-success fa fa-user-alt fa-1x'></span>
-                         <a class='text-secondary text-decoration-none link-button' id="case_definition">Case definition</a>
-                         <span class='fa fa-arrow-right' id="case_definition"></span>
                   
                      </li> 
 
@@ -190,10 +180,6 @@ else {
          loadContent("../components/dashboard/lawyers_onboard.php");
     });
 
-    $("#case_definition").click(function() {
-         loadContent("../components/dashboard/case_definition.php");
-    });
-
     $("#money_in").click(function() {
          loadContent("../components/dashboard/money_in.php");
     });
@@ -266,6 +252,10 @@ else {
            $("#popup-reminder").hide();   
  });
 
+ $(document).on('click',".add_new_client",function(){       
+           $("#popup-add-client").toggle();   
+ });
+
 </script>
 
 
@@ -306,8 +296,8 @@ else {
                         title: "Success",
                         text: "Secretary role has been assigned"
                     });
-                    $(this).hide();
-                    $(".btn-remove-secretary").show(100);
+                
+                     $('#parent').load(location.href + " #child");
                 } else {
                     swal({
                         icon: "warning",
@@ -349,8 +339,8 @@ else {
                         title: "Success!!",
                         text: "Secretary role has been removed"
                     });
-                    $('.btn-assign-secretary').show(100);
-                    $(this).hide();
+                  
+                    $('#parent').load(location.href + " #child");
                 } else {
                     swal({
                         icon: "warning",
@@ -371,6 +361,104 @@ else {
     });
 
 </script>
+
+<script type="text/javascript">
+    function changeBackground(obj) {
+        $(obj).removeClass("bg-success");
+        $(obj).addClass("bg-danger");
+        $(obj).addClass("simple");
+
+    }
+
+    function save_data(obj, id, column) {
+        var customer = {
+            id: id,
+            column: column,
+            value: obj.innerHTML
+        }
+        $.ajax({
+            type: "POST",
+            url: "savedata-client.php",
+            data: customer,
+            dataType: 'json',
+            success: function(data){
+                if (data) {
+
+                swal({
+                    title:"Success",
+                    text:"Record saved",
+                    icon:"success",
+                });  
+                 
+                  $(obj).removeClass("bg-danger");
+                  $(obj).removeClass("simple");  
+                  $(".table_client span").removeClass("border-bottom border-secondary");   
+                   
+                }
+                            
+                else{
+                    
+                    swal({
+                        icon:"error",
+                        title:"Oops...",
+                        text:"Record was not saved"
+                    });
+                }
+            }
+       });
+    };
+    </script>
+
+    <script>
+        function edit_client(){
+            $(".table_client span").toggleClass("border-bottom border-secondary");           
+        }
+    </script>
+
+<script>
+
+    $(document).on('submit', "form", function (e) {
+        e.preventDefault(); // prevent default form submission
+
+        let formData = new FormData(this); // collect form data, including file
+
+        $.ajax({
+            url: 'save-client.php',  // your PHP handler
+            type: 'POST',
+            data: formData,
+            contentType: false, // required for file upload
+            processData: false, // required for file upload
+            success: function (response) {
+                if(response == 1){
+                    swal({
+                        text:"Client added successfully.",
+                        title:"Success!!",
+                        icon:"success"
+                    });
+                    $('.popup-add-client').fadeOut();
+                }
+                else{
+                swal({
+                    text:response,
+                    title:"Notice",
+                    icon:"warning",
+                }); 
+                // display server message
+                // Optionally: reset form and/or close popup
+                $('form')[0].reset(); 
+                
+
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX Error:', error);
+                console.log("An error occurred while saving the client.");
+            }
+        });
+    });
+
+</script>
+
 
 </body>
 </html>

@@ -35,94 +35,99 @@ a{
 }
 
 .profile-container img{
-     height:90px;
-     width:90px;
-     border-radius:50% !important;
-     padding:5px;
+      height:90px;
+      width:90px;
+      border-radius:50% !important;
+      padding:5px;
   
 }
 
 
-
 ul{
-     gap:30px;
-     box-shadow:0px 0px 8px rgba(0,0,0,0.3);
-     width:25%;
-     position:fixed;
-     margin-top:100px;
+      gap:30px;
+      box-shadow:0px 0px 8px rgba(0,0,0,0.3);
+      width:25%;
+      position:fixed;
+      margin-top:100px;
 }
 
 @media screen and (max-width:768px) {
 
     ul{
-         width:100%;
-         position: relative;
-         margin-top:3px;
+           width:100%;
+           position: relative;
+           margin-top:3px;
 
     }
 }
 
 li{
-     width:100%;
-     display: flex;
-     justify-content: space-between;
-     gap:15px;
-     font-size:15px;
-     padding:3px 8px;
+      width:100%;
+      display: flex;
+      justify-content: space-between;
+      gap:15px;
+      font-size:15px;
+      padding:3px 8px;
 }
 
 .b-part{
-    margin-left: 350px;
-    margin-top:100px;
-    width:75%;
+      margin-left: 350px;
+      margin-top:100px;
+      width:75%;
 }
 
 @media screen and (max-width:768px) {
 
     .b-part{
-         margin-left:0px;
-         margin-top:8px;
-         width:100%;
+           margin-left:0px;
+           margin-top:8px;
+           width:100%;
     }
     
-
 }
 
 table{
-     border-collapse: collapse;
-     width: 100%;
-     padding:20px;
+      border-collapse: collapse;
+       width: 100%;
+      padding:20px;
+}
+
+@media screen and (max-width:768px){
+     .table-container{
+           width:100%;
+           overflow-x:auto;
+     }
 }
 
 .text-sm{
-    font-size:14px;
+      font-size:14px;
 }
 
 .canvas{
-     width:80%;
-     max-height:300px;
+      width:80%;
+      max-height:300px;
 }
 
 
-.popup, .popup-reminder {
+.popup, .popup-reminder,.popup-add-client{
        display: none;
        position: fixed;
-      top: 50%;
-      width: 80%;
-      left: 50%;
-      height:500px;
-      overflow-y:auto;
-      transform: translate(-50%, -50%);
-      background-color: #ffffff;
-      padding: 30px 20px;
-      border-radius: 5px;
+       top: 50%;
+       width: 80%;
+       left: 50%;
+       height:500px;
+       overflow-y:auto;
+       transform: translate(-50%, -50%);
+       background-color: #ffffff;
+       padding: 10px 20px;
+       border-radius: 5px;
 
 }
 
 @media screen and (max-width: 768px) {
-     .popup, .popup-reminder {
+     .popup, .popup-reminder ,.popup-add-client{
           
-          width: 80%;
+             width: 90%;
                 
         }
 

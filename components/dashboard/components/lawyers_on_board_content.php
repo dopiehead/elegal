@@ -35,14 +35,19 @@ if (!empty($_POST['id'])) {
                             <span class="text-sm text-muted"><strong>Supreme Court Number:</strong> <?= htmlspecialchars($lawyer['supreme_court_number']); ?></span>
                             <span class="text-sm text-muted"><strong>Joined:</strong> <?= htmlspecialchars($lawyer['created_at']); ?></span>
                         </div>
-
+                         
                         <div class='w-25'>
-                             <?php if($lawyer['lawyer_role']!='secretary'): ?>
-                            <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-warning text-dark shadow-lg border-0 rounded-2 btn-assign-secretary'>Assign as Secretary</a>
-                             <?php else: ?>
-                            <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-danger text-dark shadow-lg border-0 rounded-2 btn-remove-secretary text-white'>Remove as Secretary</a>
-                             <?php endif; ?>
+                             <div id="parent">
+                                 <div id="child">
+                                     <?php if($lawyer['lawyer_role']!='secretary'): ?>
+                                         <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-warning text-dark shadow-lg border-0 rounded-2 btn-assign-secretary'>Assign as Secretary</a>
+                                     <?php else: ?>
+                                         <a id="<?= htmlspecialchars($lawyer['id']) ?>" class='btn btn-danger text-dark shadow-lg border-0 rounded-2 btn-remove-secretary text-white'>Remove as Secretary</a>
+                                     <?php endif; ?>
+                                 </div>
+                              </div>
                         </div>
+                        
                     </div>
 
                 </div>

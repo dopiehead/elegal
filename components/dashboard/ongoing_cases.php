@@ -1,12 +1,10 @@
-<?php require('../../engine/config.php'); ?>
-
-<?php
+<?php require('../../engine/config.php');
 $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSION['firm_id'] : null;
 ?>
 
 <h3 class='fw-bold mb-3 mt-2'>Ongoing cases</h3>
 
-<table class='table table-responsive table-striped table-hover w-100 text-sm px-2'>
+<table class='table table-responsive table-striped table-hover w-100 text-sm px-2 table_ongoing'>
     <thead>
         <tr class='bg-success text-white rounded w-100'>
         
@@ -46,16 +44,16 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
         ?>
         <tr>        
 
-            <td class='text-capitalize'><?= htmlspecialchars($row['lawyer_name'] ?? " not available"); ?></td>
-            <td class='text-capitalize'><?= htmlspecialchars($row['case_title'] ?? " not available"); ?></td>
-            <td class='text-capitalize'><?= htmlspecialchars($row['case_status'] ? " ongoing" : "concluded"); ?></td>
+            <td class='text-capitalize'><span><?= htmlspecialchars($row['lawyer_name'] ?? " not available"); ?></span></td>
+            <td class='text-capitalize'><?= htmlspecialchars($row['case_title'] ?? " not available"); ?></span></td>
+            <td class='text-capitalize'><a class='row_ongoing text-decoration-none text-dark' contenteditable onblur="save_data()"><?= htmlspecialchars($row['case_status'] ? " ongoing" : "concluded"); ?></a></td>
             <td class='text-'><?= htmlspecialchars($row['paid'] ?? " 0")."%"; ?></td>
             <td><span class='text-danger'><?= htmlspecialchars($row['unpaid'] ?? " not available")."%"; ?></span></td>
             <td><?= htmlspecialchars($row['date_created']) ?></td>
             <td>
                 <div class='d-flex justify-content-evenly gap-3 text-sm'>
          
-                     <a class='text-primary' href='edit-case.php?id=<?= htmlspecialchars($row['client_id']) ?>'><span class='fa fa-edit'></span></a>
+                     <a class='text-primary edit_ongoing'><span class='fa fa-edit'></span></a>
 
                 </div>
             </td>

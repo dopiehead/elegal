@@ -108,7 +108,6 @@ table{
       max-height:300px;
 }
 
-
 .popup, .popup-reminder,.popup-add-client{
        display: none;
        position: fixed;

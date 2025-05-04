@@ -447,7 +447,6 @@ else {
                 // Optionally: reset form and/or close popup
                 $('form')[0].reset(); 
                 
-
                 }
             },
             error: function (xhr, status, error) {
@@ -455,6 +454,12 @@ else {
                 console.log("An error occurred while saving the client.");
             }
         });
+    });
+
+    $(document).on("click",".edit_ongoing",function(e){
+         alert("clicked");
+         e.preventDefault();
+         $(".row_ongoing").toggleClass("border-bottom border-secondary border-2");
     });
 
 </script>

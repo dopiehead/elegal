@@ -160,8 +160,8 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
                 <div class='d-flex justify-content-evenly gap-3 text-sm'>
          
                     <a class='text-primary' onclick='edit_client()'><span class='fa fa-edit'></span></a>
-                    <a class='text-success' href='mailto:<?= htmlspecialchars($row['client_email']) ?>'>
-                         <span class='fa fa-envelope'></span>
+                    <a class='text-success' href='mailto:<?= htmlspecialchars($row['client_email']) ?>'>              
+                          <span class='fa fa-envelope'></span>
                     </a>
                     <a class='text-danger' href='delete-client.php?id=<?= htmlspecialchars($row['client_id']) ?>'><span class='fa fa-trash'></span></a>
                 </div>

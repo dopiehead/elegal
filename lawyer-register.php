@@ -151,75 +151,61 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    // Initially hide the spinner
-    $(".spinner-border").hide();
-
-    // Handle form submission
-    $('#lawyer-registration-form').on('submit', function(e) {
-        e.preventDefault();  // Prevent the default form submission
-
-        // Show spinner, disable submit button, and hide sign-up note
-        $(".spinner-border").show();
-        $('#btn-signup').prop('disabled', true);
-        $(".sign-up-note").hide();
-
-        // Create FormData object
-        let formData = new FormData(this);
-
-        // Send the form data via AJAX to the REST API
-        $.ajax({
-            type: "POST",
-            url: "engine/lawyer_registration.php",  // REST API endpoint (adjust as needed)
-            data: formData,
-            processData: false, // Don't let jQuery try to process the data
-            contentType: false, // Let FormData set content-type correctly
-            success: function(response) {
-                $(".spinner-border").hide();  // Hide the spinner
-                $(".sign-up-note").show();    // Show the sign-up note
-
-                // Parse the JSON response
-                let res = JSON.parse(response);
-
-                // Check if the response contains success message
-                if (res.success) {
-                    swal({
-                        title: "Success",
-                        icon: "success",
-                        text: "You have successfully registered. Please check your email for a verification link.",
+                $(document).ready(function () {
+                    $(".spinner-border").hide();
+                
+                    $('#lawyer-registration-form').on('submit', function (e) {
+                        e.preventDefault();
+                
+                        $(".spinner-border").show();
+                        $('#btn-signup').prop('disabled', true);
+                        $(".sign-up-note").hide();
+                
+                        let formData = new FormData(this);
+                
+                        $.ajax({
+                            type: "POST",
+                            url: "engine/lawyer-register-process.php",  // Adjust path as needed
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (response) {
+                                $(".spinner-border").hide();
+                                $(".sign-up-note").show();
+                
+                                let res = typeof response === "string" ? JSON.parse(response) : response;
+                
+                                if (res.success) {
+                                    swal({
+                                        title: "Success",
+                                        icon: "success",
+                                        text: res.success,
+                                    });
+                
+                                    $("#lawyer-registration-form")[0].reset();
+                                    $('#btn-signup').prop('disabled', false);
+                                } else if (res.error) {
+                                    swal({
+                                        title: "Notice",
+                                        icon: "warning",
+                                        text: res.error,
+                                    });
+                                    $('#btn-signup').prop('disabled', false);
+                                }
+                            },
+                            error: function () {
+                                $(".spinner-border").hide();
+                                $('#btn-signup').prop('disabled', false);
+                                swal({
+                                    title: "Error",
+                                    icon: "error",
+                                    text: "An error occurred. Please try again.",
+                                });
+                            }
+                        });
                     });
-
-                    // Reset the form
-                    $("#lawyer-registration-form")[0].reset();
-                    $("#lawyer-registration-form input").val(""); // Clears input fields
-                    $("#lawyer-registration-form select").val(""); // Clears select fields
-                    $("#lawyer-registration-form textarea").val(""); // Clears textarea fields
-                    $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                } else if (res.error) {
-                    swal({
-                        title: "Notice",
-                        icon: "warning",
-                        text: res.error,  // Show the error message from the response
-                    });
-                    $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                    $('input').css('border', '1px solid red');     // Highlight invalid fields
-                    $('textarea').css('border', '1px solid red');  // Highlight invalid textarea
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                $(".spinner-border").hide();  // Hide the spinner in case of error
-                $('#btn-signup').prop('disabled', false);  // Re-enable the submit button
-                console.log(errorThrown);  // Log the error
-                swal({
-                    title: "Error",
-                    icon: "error",
-                    text: "An error occurred. Please try again.",
                 });
-            }
-        });
-    });
-});
-</script>
+                </script>
 
 
      <!------------------------------------------btn-scroll--------------------------------------------------->

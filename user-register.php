@@ -10,23 +10,14 @@
 
 <body>
 
-
-
      <div class='create_background d-flex justify-content-center align-items-center flex-row flex-column'>
- 
-
-
-
-
    
          <div class='create-container px-5'>
 
              <div class='d-flex flex-row flex-column heading-container position-relative justify-content-start mt-4 w-100 w-md-100 g-3'>
                   <span class='fw-bold text-white'>Sign up</span>
                   <span class='text-sm text-white'>Already have an account? <a class='text-white border-bottom border-2 border-secondary pb-1 text-decoration-none' href='login.php'>login</a></span> 
-             </div>  
-
-             
+             </div>            
            
              <form id='user-registration-form'>
 
@@ -91,6 +82,7 @@
      </div>
 
      <script>
+        
 $(document).ready(function() {
  
     $(".spinner-border").hide();

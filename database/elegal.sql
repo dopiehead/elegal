@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 30, 2025 at 05:02 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Host: localhost
+-- Generation Time: May 05, 2025 at 11:27 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +32,7 @@ CREATE TABLE `admin` (
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
   `admin_date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -68,7 +67,7 @@ CREATE TABLE `applied_jobs` (
   `cover_letter` varchar(255) NOT NULL,
   `portfolio_link` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `applied_jobs`
@@ -85,22 +84,24 @@ INSERT INTO `applied_jobs` (`id`, `job_id`, `first_name`, `last_name`, `email`, 
 
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
+  `lawyer_id` int(11) NOT NULL,
+  `firm_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `article_images` varchar(255) NOT NULL,
   `article_details` text NOT NULL,
   `author_name` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `article_images`, `article_details`, `author_name`, `created_at`) VALUES
-(1, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 37.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'RUKKY OTIVE-IGBUZOR', '31/12/2022'),
-(2, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 38.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'RUKKY OTIVE-IGBUZOR', '31/12/2022'),
-(3, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 39.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'RUKKY OTIVE-IGBUZOR', '31/12/2022'),
-(4, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 40.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'RUKKY OTIVE-IGBUZOR', '31/12/2022');
+INSERT INTO `articles` (`id`, `lawyer_id`, `firm_id`, `title`, `article_images`, `article_details`, `author_name`, `created_at`) VALUES
+(1, 1, 12, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 37.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'richard igwe', '31/12/2022'),
+(2, 1, 12, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 38.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'richard igwe', '31/12/2022'),
+(3, 5, 12, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 39.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'josephine agbo', '31/12/2022'),
+(4, 5, 12, 'Reflections on 2022: My Nigerian Law School Experience', 'assets/images/articles/Frame 40.png', ' Our goal is to create a dynamic environment where students can actively participate in their education and connect with the world around them.\" The program will roll out over the next academic year, featuring a variety of projects that encourage collaboration and critical thinking. Students will engage in community service, work with local businesses, and participate in environmental sustainability projects, all while developing essential life skills. One of the standout components of the program is the introduction of technology labs, equipped with the latest tools for coding, robotics, and digital media. This initiative aims to prepare students for the demands of the modern workforce, ensuring they have the skills needed for future careers. Parents and community members are enthusiastic about the program. Jessica Ramirez, a parent of an eighth-grader, expressed her support: \"I love that the school is focusing on real-world experiences. This will help my child not only academically but also socially and emotionally.\" To further enhance the program, Riverside Middle School is partnering with local organizations and educational experts to provide additional resources and mentorship opportunities for students. These collaborations aim to create a well-rounded support system that fosters growth and development. As the excitement builds for the upcoming school year, Riverside Middle School is poised to set a new standard in education. With the \"Learning Beyond the Classroom\" program, students will not only gain knowledge but also experience the joy of learning in a meaningful and impactful way. For more updates on this program and other school initiatives, stay tuned to our local news outlet.', 'josephine agbo', '31/12/2022');
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,7 @@ CREATE TABLE `authors` (
   `author_img` varchar(255) NOT NULL,
   `noofbooks` varchar(11) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `authors`
@@ -122,6 +123,39 @@ CREATE TABLE `authors` (
 
 INSERT INTO `authors` (`id`, `author_name`, `author_img`, `noofbooks`, `created_at`) VALUES
 (1, 'james crowley', 'assets/images/authors/author1.jpg', '4', 'jan 2, 2024');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients_on_board`
+--
+
+CREATE TABLE `clients_on_board` (
+  `id` int(11) NOT NULL,
+  `client_image` varchar(255) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `client_address` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `next_of_kin` varchar(255) NOT NULL,
+  `relationship` varchar(255) NOT NULL,
+  `spouse` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `work_place` varchar(255) NOT NULL,
+  `occupation` varchar(255) NOT NULL,
+  `lawyer` varchar(255) NOT NULL,
+  `case_title` varchar(255) NOT NULL,
+  `case_status` varchar(255) NOT NULL,
+  `paid` varchar(255) NOT NULL,
+  `unpaid` varchar(255) NOT NULL,
+  `date_created` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `clients_on_board`
+--
+
+INSERT INTO `clients_on_board` (`id`, `client_image`, `client_name`, `client_address`, `email`, `next_of_kin`, `relationship`, `spouse`, `phone_number`, `work_place`, `occupation`, `lawyer`, `case_title`, `case_status`, `paid`, `unpaid`, `date_created`) VALUES
+(1, '', 'alan walker', 'abuja nigeria', 'abc@gmail.com', 'mr walker', 'father', 'none    ', '09087654357', 'shoprite        ', 'sales girl        ', 'josephine agbo', '\n        messi vs ronaldo    ', 'ongoing', '50', '50', '30-10-2025 11:13');
 
 -- --------------------------------------------------------
 
@@ -136,7 +170,7 @@ CREATE TABLE `courts` (
   `court_images` varchar(255) NOT NULL,
   `court_type` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courts`
@@ -171,7 +205,7 @@ CREATE TABLE `court_cases` (
   `last_appearance` varchar(255) NOT NULL,
   `next_appearance` varchar(255) NOT NULL,
   `court_remark` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `court_cases`
@@ -191,7 +225,7 @@ CREATE TABLE `fetch_income` (
   `id` int(11) NOT NULL,
   `month` varchar(255) NOT NULL,
   `income` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fetch_income`
@@ -224,7 +258,7 @@ CREATE TABLE `firm_notifications` (
   `recipient_id` int(11) NOT NULL,
   `pending` tinyint(11) NOT NULL,
   `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -249,20 +283,19 @@ CREATE TABLE `lawyer_firm` (
   `date_created` varchar(255) NOT NULL,
   `payment_status` tinyint(11) NOT NULL,
   `verified` tinyint(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lawyer_firm`
 --
 
 INSERT INTO `lawyer_firm` (`firm_id`, `firm_name`, `firm_email`, `firm_password`, `firm_about`, `certification_and_accreditation`, `date_found`, `nooflawyers`, `firm_phone_number`, `firm_rating`, `location`, `practice_areas`, `firm_img`, `date_created`, `payment_status`, `verified`) VALUES
-(1, 'Richey Law Firm', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 3, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35.png', '', 0, 0),
-(2, 'Suleiman Bakare Chambers', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 2, '09087654326', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (1).png', '', 0, 0),
-(3, 'Davis W. Smith, P.C.', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 6, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (2).png', '', 0, 0),
-(4, 'Feldman Kieffer Law Firm ', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 10, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (3).png', '', 0, 0),
-(5, 'Osuya & Osuya', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 36, '09075564353', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (4).png', '', 0, 0),
-(6, 'Okocha & Okocha', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 7, '08056435435', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (5).png', '', 0, 0),
-(9, 'Falana', 'ngnimitech@gmail.com', '$2y$10$KeqBEtyoc46A8Bz089aUnuoGu/4FCYIYJ5p7A7UJfSEJqlYDWGyza', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', 'san , usf', '2009-01-26', 5, '09074456453', 0, 'akure', 'civil , corporate', '', '2025-01-26 02:23:50', 0, 0),
+(1, 'Richey Law Firm', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\n The firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 3, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35.png', '', 0, 0),
+(2, 'Suleiman Bakare Chambers', '', '', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\n The firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 2, '09087654326', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (1).png', '', 0, 0),
+(3, 'Davis W.Smith P.C.', 'davidsmith@yahoo.com', '$2y$10$zo7kRBm2DRqc6QSQ4IF/YuGtuiDKnXKFF0bxBWBBn/nJS/kaGI8Be', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 6, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (2).png', '', 0, 1),
+(4, 'Feldman Kieffer Law Firm ', 'feldmankieffer@hotmail.com', '$2y$10$zo7kRBm2DRqc6QSQ4IF/YuGtuiDKnXKFF0bxBWBBn/nJS/kaGI8Be', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 10, '', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (3).png', '', 0, 1),
+(5, 'Osuya & Osuya', 'osuya@gmail.com', '$2y$10$zo7kRBm2DRqc6QSQ4IF/YuGtuiDKnXKFF0bxBWBBn/nJS/kaGI8Be', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 36, '09075564353', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (4).png', '', 0, 1),
+(6, 'Okocha & Okocha', 'niyialabi10@gmail.com', '$2y$10$zo7kRBm2DRqc6QSQ4IF/YuGtuiDKnXKFF0bxBWBBn/nJS/kaGI8Be', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', '', '2003', 7, '08056435435', 0, 'Abuja, FCT', 'Corporate, criminal, family law', 'assets/images/firms/Frame 35 (5).png', '', 0, 1),
 (12, 'Falana', 'ngnimitech@gmail.com', '$2y$10$zo7kRBm2DRqc6QSQ4IF/YuGtuiDKnXKFF0bxBWBBn/nJS/kaGI8Be', 'Resolution Law Firm is one of the leading legal firms in Nigeria. The firm was founded by a group of passionate, hardworking, and honest lawyers committed to the excellent delivery of legal services in Nigeria.\\nThe firm maintains two law offices in Lagos and another office in Abuja, offering corporate and general civil legal services. \\nThe Firm renders legal services for both local and foreign entities seeking legal services and representation in Nigeria.  Our lawyers are driven by their passion for legal services and they are always after the best and fairest deal in every bargaining. We maintained experienced lawyers who have distinguished themselves over time as thoroughbred professionals.  \\nThe firm is internationally recognized and has over the period assisted in several international and cross-border transactions for individuals and foreign corporations.  The major areas of practice are corporate & commercial law, intellectual property law, maritime law, oil & gas law, banking & finance, mining law, taxation, real estate law, family law, litigation, and arbitration.', 'usf', '2009-01-26', 5, '09074456453', 0, 'akure', 'civil , corporate', '', '2025-01-26 02:29:23', 0, 1);
 
 -- --------------------------------------------------------
@@ -278,7 +311,7 @@ CREATE TABLE `lawyer_notifications` (
   `recipient_id` int(11) NOT NULL,
   `pending` tinyint(11) NOT NULL,
   `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -292,9 +325,14 @@ CREATE TABLE `lawyer_profile` (
   `lawyer_password` varchar(255) NOT NULL,
   `lawyer_name` varchar(255) NOT NULL,
   `lawyer_img` varchar(255) NOT NULL,
+  `lawyer_firm_id` int(11) NOT NULL,
   `lawyer_firm` varchar(255) NOT NULL,
   `lawyer_bio` text NOT NULL,
   `lawyer_education` varchar(255) NOT NULL,
+  `lawyer_qualification` varchar(255) NOT NULL,
+  `cases` int(11) NOT NULL,
+  `cases_won` int(11) NOT NULL,
+  `cases_lost` int(11) NOT NULL,
   `lawyer_dob` varchar(255) NOT NULL,
   `lawyer_experience` int(11) NOT NULL,
   `lawyer_rating` int(11) NOT NULL,
@@ -305,22 +343,24 @@ CREATE TABLE `lawyer_profile` (
   `practice_location` varchar(255) NOT NULL,
   `published_articles` text NOT NULL,
   `supreme_court_number` varchar(255) NOT NULL,
+  `lawyer_role` varchar(255) NOT NULL,
+  `employment_status` varchar(255) NOT NULL,
   `payment_status` int(11) NOT NULL,
   `status` tinyint(11) NOT NULL,
   `currently_engaged` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL,
   `verified` tinyint(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lawyer_profile`
 --
 
-INSERT INTO `lawyer_profile` (`id`, `lawyer_email`, `lawyer_password`, `lawyer_name`, `lawyer_img`, `lawyer_firm`, `lawyer_bio`, `lawyer_education`, `lawyer_dob`, `lawyer_experience`, `lawyer_rating`, `lawyer_location`, `current_position`, `lawyer_phone_no`, `practice_areas`, `practice_location`, `published_articles`, `supreme_court_number`, `payment_status`, `status`, `currently_engaged`, `created_at`, `verified`) VALUES
-(1, 'kingrichard@gmail.com', '', 'Richard Igwe', 'assets/images/man-law.png', 'Chaman', 'Barr. Richard is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'Obafemi Awolowo University,Nigerian Law School', '', 6, 0, 'Lagos', '', '09087654323', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', 0, 0, '', 'dec 2, 2023', 0),
-(2, 'nnekaharry@gmail.com', '', 'Priscilla Nwosu', 'assets/images/woman-law.png', 'Chaman', 'Barr. Nneka is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'Obafemi Awolowo University, Nigerian Law School', '', 9, 0, 'Rivers', 'senior advocate', '09087654368', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', 0, 1, '', '10 jan, 2023', 0),
-(3, 'dayong@gmail.com', '', 'dayo mudashiru', 'assets/images/woman.png', 'Boss up', 'Barr. Dayo is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'University of ilorin, Nigerian Law School', '', 9, 0, 'Rivers', '', '09087654368', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', 0, 0, '', '10 jan, 2023', 0),
-(5, 'joseagbo@gmail.com', '$2y$10$SpvAvsJXFaOGQr6/5EC/LOvuv3xNvAeRPaCJZWYRMmZOhd93ZDcbW', 'josephine agbo', 'assets/images/woman.png', 'falana', 'hello hello', 'unilorin, nigeria law school abuja', '2008-12-30', 10, 0, 'lagos', 'senior advocate', '09074456453', 'common law', '12345', 'jerry maguire', '12345', 0, 1, 'yes', '2025-01-21 12:21:17', 1);
+INSERT INTO `lawyer_profile` (`id`, `lawyer_email`, `lawyer_password`, `lawyer_name`, `lawyer_img`, `lawyer_firm_id`, `lawyer_firm`, `lawyer_bio`, `lawyer_education`, `lawyer_qualification`, `cases`, `cases_won`, `cases_lost`, `lawyer_dob`, `lawyer_experience`, `lawyer_rating`, `lawyer_location`, `current_position`, `lawyer_phone_no`, `practice_areas`, `practice_location`, `published_articles`, `supreme_court_number`, `lawyer_role`, `employment_status`, `payment_status`, `status`, `currently_engaged`, `created_at`, `verified`) VALUES
+(1, 'teacher@gmail.com', '$2y$10$SpvAvsJXFaOGQr6/5EC/LOvuv3xNvAeRPaCJZWYRMmZOhd93ZDcbW', 'Richard Igwe', 'assets/images/man-law.png', 12, 'falana', 'Barr. Richard is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'Obafemi Awolowo University,Nigerian Law School', 'll.b', 5, 5, 0, '2001-08-30', 6, 0, 'Lagos', '', '09087654323', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', '', '', 0, 0, '', 'dec 2, 2023', 1),
+(2, 'nnekaharry@gmail.com', '$2y$10$SpvAvsJXFaOGQr6/5EC/LOvuv3xNvAeRPaCJZWYRMmZOhd93ZDcbW', 'Priscilla Nwosu', 'assets/images/woman-law.png', 5, 'osuya & osuya', 'Barr. Nneka is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'Obafemi Awolowo University, Nigerian Law School', 'll.m', 8, 5, 3, '1995-12-11', 9, 0, 'Rivers', 'senior advocate', '09087654368', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', '', '', 0, 1, '', '10 jan, 2023', 1),
+(3, 'dayong@gmail.com', '$2y$10$SpvAvsJXFaOGQr6/5EC/LOvuv3xNvAeRPaCJZWYRMmZOhd93ZDcbW', 'dayo mudashiru', 'assets/images/woman.png', 6, 'okoya & okoya', 'Barr. Dayo is well recognized for her in-depth expertise in her areas of specialization. Her major practice areas include Corporate & Commercial Law, intellectual property law, real estate law, family law, general civil litigation, arbitration, and dispute resolution. She is an Associate at Ernest & Young. With records of experience and achievement in Real Estate Law, Family Law, Intellectual Property Law and Litigation, she brings expertise and unwavering enthusiasm to every case. She has a proven record of delivering exceptional legal counsel and representation to various clients and is adept at analysing complex legal issues and developing strategic solutions. She is committed to delivering tailored solutions that address clients’ unique needs and providing legal advice to different clientele. She constantly stays updated on legal developments and adapts to changes in a bid to deliver feasible solutions. Barr. Nneka is result-oriented and driven by a desire to attain excellence.', 'University of ilorin, Nigerian Law School', 'll.m', 4, 2, 2, '2005-06-27', 9, 0, 'Rivers', '', '09087654368', 'Criminal Law, Franchising Law, Business Law ,Intellectual Property Law, Dispute Resolution & Arbitration, Litigation', '', '', '', 'secretary', '', 0, 0, '', '10 jan, 2023', 0),
+(5, 'joseagbo@gmail.com', '$2y$10$SpvAvsJXFaOGQr6/5EC/LOvuv3xNvAeRPaCJZWYRMmZOhd93ZDcbW', 'josephine agbo', 'assets/images/woman.png', 12, 'falana', 'hello hello', 'unilorin, nigeria law school abuja', 'll.b', 10, 8, 2, '2008-12-30', 10, 0, 'lagos', 'senior advocate', '09074456453', 'common law', 'lagos', 'jerry maguire', '12345', 'secretary', 'employed', 0, 1, 'yes', '2025-01-21 12:21:17', 1);
 
 -- --------------------------------------------------------
 
@@ -333,7 +373,7 @@ CREATE TABLE `lawyer_sales` (
   `daily_sales` int(11) NOT NULL,
   `monthly_sales` int(11) NOT NULL,
   `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lawyer_sales`
@@ -358,7 +398,7 @@ CREATE TABLE `law_books` (
   `book_img` text NOT NULL,
   `book_price` varchar(255) NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `law_books`
@@ -399,7 +439,7 @@ CREATE TABLE `law_jobs` (
   `noofapplicant` int(11) NOT NULL,
   `created_at` varchar(255) NOT NULL,
   `expiry_date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `law_jobs`
@@ -425,14 +465,14 @@ CREATE TABLE `messages` (
   `is_sender_deleted` tinyint(11) NOT NULL,
   `is_receiver_deleted` tinyint(11) NOT NULL,
   `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `messages`
 --
 
 INSERT INTO `messages` (`id`, `sender_email`, `name`, `subject`, `compose`, `receiver_email`, `has_read`, `is_sender_deleted`, `is_receiver_deleted`, `date`) VALUES
-(1, 'essentialng@gmail.com', 'essential nigeria', 'teacher', 'hello', 'teacher@gmail.com', 0, 0, 0, '2024-07-10 10:29:47'),
+(1, 'essentialng@gmail.com', 'essential nigeria', 'teacher', 'hello', 'teacher@gmail.com', 1, 0, 0, '2024-07-10 10:29:47'),
 (2, 'essentialng@gmail.com', 'essential nigeria', 'teacher', 'how are you?', 'ngnimitech@gmail.com', 1, 0, 0, '2024-07-10 10:29:47');
 
 -- --------------------------------------------------------
@@ -449,7 +489,7 @@ CREATE TABLE `subscriptions` (
   `reference` varchar(255) NOT NULL,
   `duration` varchar(255) NOT NULL,
   `expiry_date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subscriptions`
@@ -472,7 +512,7 @@ CREATE TABLE `user_notifications` (
   `recipient_id` int(11) NOT NULL,
   `pending` tinyint(11) NOT NULL,
   `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -494,7 +534,7 @@ CREATE TABLE `user_profile` (
   `created_at` varchar(255) NOT NULL,
   `payment_status` tinyint(11) NOT NULL,
   `verified` tinyint(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_profile`
@@ -505,7 +545,7 @@ INSERT INTO `user_profile` (`id`, `user_name`, `user_email`, `user_password`, `u
 (2, 'john doe', 'john@gmail.com', '', 'assets/images/users/Frame 35 (2).png', 'My name is John, and I am a teacher as you already know. I am just exploring, hopefully I find a decent lawyer when I need one', '', 'edo', 'nurse', '', 'dec 5, 2024', 0, 0),
 (3, 'jane doe', 'janet@gmail.com', '', 'assets/images/users/Frame 35 (3).png', 'My name is Janet, and I am a teacher as you already know. I am just exploring, hopefully I find a decent lawyer when I need one', '', 'lagos', 'fashion designer', '', 'dec 18, 2024', 0, 0),
 (4, 'john doe', 'johnathan@gmail.com', '', 'assets/images/users/Frame 35 (4).png', 'My name is Johnathan, and I am a teacher as you already know. I am just exploring, hopefully I find a decent lawyer when I need one', '', 'edo', 'doctor', '', 'dec 21, 2024', 0, 0),
-(8, 'neeyo', 'ngnimitech@gmail.com', '$2y$10$7FmsilYFCQ1agWqOmy1A4e7zc3eanyj0qkEOxePwYfux1/vx0AQj2', '', 'hello hello', '09074456453', 'fct abuja', 'student', '2025-01-01', '2025-01-26 13:13:42', 1, 1);
+(8, 'neeyo', 'essentialng@gmail.com', '$2y$10$7FmsilYFCQ1agWqOmy1A4e7zc3eanyj0qkEOxePwYfux1/vx0AQj2', '', 'hello hello', '09074456453', 'fct abuja', 'student', '2025-01-01', '2025-01-26 13:13:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -519,7 +559,7 @@ CREATE TABLE `volunteers` (
   `volunteer_image` varchar(255) NOT NULL,
   `practice_areas` varchar(255) NOT NULL,
   `joined_date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `volunteers`
@@ -558,6 +598,12 @@ ALTER TABLE `articles`
 -- Indexes for table `authors`
 --
 ALTER TABLE `authors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clients_on_board`
+--
+ALTER TABLE `clients_on_board`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -676,6 +722,12 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `clients_on_board`
+--
+ALTER TABLE `clients_on_board`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

@@ -161,7 +161,7 @@ $(document).ready(function() {
         // Send the form data as a JSON object to the API via AJAX
         $.ajax({
             type: "POST",
-            url: "engine/firm-register.php", // Replace with your API endpoint
+            url: "engine/firm-register-process.php", // Replace with your API endpoint
             contentType: "application/json",  // Set content type to JSON
             data: JSON.stringify(data), // Send data as JSON string
             success: function(response) {

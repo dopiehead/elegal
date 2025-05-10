@@ -36,6 +36,19 @@
                  <label class='text-sm text-secondary' for="">Education(Seperate higher institutions by a comma)<span class='text-danger'>*</span></label>
 
                  <input type="text" name="lawyer_education" class='bg-secondary border-0 w-100 py-2' placeholder="Seperate higher institutions by a comma">
+                 
+                 
+                 <label class='text-sm text-secondary' for="">Qualification <span class='text-danger'>*</span></label>
+
+                 <select name="lawyer_qualification" class='bg-secondary border-0 w-100 py-2'> 
+
+                               <option value="ll.b">LL.B</option>
+                               <option value="bl">BL</option>
+                               <option value="ll.m">LL.M</option>
+                               <option value="phd">PHD</option>
+
+
+                 </select>
 
                  <label  class='text-sm text-secondary' for="">Supreme court number  <span class='text-danger'>*</span></label>
 
@@ -44,7 +57,7 @@
                    
                  <label  class='text-sm text-secondary' for="">Telephone <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="telephone" class='bg-secondary border-0 w-100 py-2'>
+                 <input type="text" name="lawyer_phone_no" class='bg-secondary border-0 w-100 py-2'>
 
 
                  <label class='text-sm text-secondary' for="">Are you currently engaged with a law firm  <span class='text-danger'>*</span></label>
@@ -60,11 +73,7 @@
 
                  <select name="current_position" class='bg-secondary border-0 w-100 py-2'> 
 
-                               <option value="ll.b">LL.B</option>
-                               <option value="bl">BL</option>
-                               <option value="ll.m">LL.M</option>
-                               <option value="phd">PHD</option>
-                               <option value="san">SAN</option>
+                               <option value="senior advocate">SAN</option>
 
                  </select>
 
@@ -72,13 +81,13 @@
 
                  <input type="text" name="lawyer_firm" class='bg-secondary border-0 w-100 py-2'> 
 
-                 <label class='text-sm text-secondary' for="">How long have you been practicing <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary' for="">How long have you been practicing( Number in week, months or years) <span class='text-danger'>*</span></label>
 
                  <input type="text" name="lawyer_experience" class='bg-secondary border-0 w-100 py-2'>
 
                  <label class='text-sm text-secondary' for="">Date of birth <span class='text-danger'>*</span></label>
 
-                 <input type="date" name="lawyer_dob"  max="2009-01-01"  class='bg-secondary border-0 w-100 py-2'>
+                 <input type="date" name="lawyer_dob"  max="2009-01-01"  required  class='bg-secondary border-0 w-100 py-2'>
 
                  <label class='text-sm text-secondary' for="">What are you areas of specialization (seperate by comma if you have more than 1) <span class='text-danger'>*</span></label>
   
@@ -151,61 +160,107 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-                $(document).ready(function () {
-                    $(".spinner-border").hide();
-                
-                    $('#lawyer-registration-form').on('submit', function (e) {
-                        e.preventDefault();
-                
-                        $(".spinner-border").show();
-                        $('#btn-signup').prop('disabled', true);
-                        $(".sign-up-note").hide();
-                
-                        let formData = new FormData(this);
-                
-                        $.ajax({
-                            type: "POST",
-                            url: "engine/lawyer-register-process.php",  // Adjust path as needed
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            success: function (response) {
-                                $(".spinner-border").hide();
-                                $(".sign-up-note").show();
-                
-                                let res = typeof response === "string" ? JSON.parse(response) : response;
-                
-                                if (res.success) {
-                                    swal({
-                                        title: "Success",
-                                        icon: "success",
-                                        text: res.success,
-                                    });
-                
-                                    $("#lawyer-registration-form")[0].reset();
-                                    $('#btn-signup').prop('disabled', false);
-                                } else if (res.error) {
-                                    swal({
-                                        title: "Notice",
-                                        icon: "warning",
-                                        text: res.error,
-                                    });
-                                    $('#btn-signup').prop('disabled', false);
-                                }
-                            },
-                            error: function () {
-                                $(".spinner-border").hide();
-                                $('#btn-signup').prop('disabled', false);
-                                swal({
-                                    title: "Error",
-                                    icon: "error",
-                                    text: "An error occurred. Please try again.",
-                                });
-                            }
-                        });
+$(document).ready(function () {
+    $(".spinner-border").hide();
+
+    $('#lawyer-registration-form').on('submit', function (e) {
+        e.preventDefault();
+
+        $(".spinner-border").show();
+        $('#btn-signup').prop('disabled', true);
+        $(".sign-up-note").hide();
+
+        // Collect form data as an object
+        let formData = {};
+        $(this).serializeArray().forEach(item => {
+            // Handle arrays (e.g., practice_areas[])
+            if (item.name.endsWith('[]')) {
+                let key = item.name.replace('[]', '');
+                if (!formData[key]) {
+                    formData[key] = [];
+                }
+                if (item.value) { // Only add non-empty values
+                    formData[key].push(item.value);
+                }
+            } else {
+                formData[item.name] = item.value;
+            }
+        });
+
+        // Ensure practice_areas is an array, even if empty
+        formData['practice_areas'] = formData['practice_areas'] || [];
+
+        $.ajax({
+            type: "POST",
+            url: "engine/lawyer-register-process.php",
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            success: function (response) {
+                $(".spinner-border").hide();
+                $(".sign-up-note").show();
+                $('#btn-signup').prop('disabled', false);
+
+                let res;
+                try {
+                    res = typeof response === "string" ? JSON.parse(response) : response;
+                } catch (e) {
+                    console.error("Invalid JSON response:", response);
+                    swal({
+                        title: "Error",
+                        icon: "error",
+                        text: "An unexpected error occurred. Please try again.",
                     });
+                    return;
+                }
+
+                if (res.success) {
+                    swal({
+                        title: "Success",
+                        icon: "success",
+                        text: res.message || "Registration successful!",
+                    });
+                    $("#lawyer-registration-form")[0].reset();
+                } else if (res.error) {
+                    swal({
+                        title: "Notice",
+                        icon: "warning",
+                        text: res.error,
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                $(".spinner-border").hide();
+                $(".sign-up-note").show();
+                $('#btn-signup').prop('disabled', false);
+
+                console.error("XHR Status:", status);
+                console.error("HTTP Code:", xhr.status);
+                console.error("XHR Response:", xhr.responseText);
+                console.error("Thrown Error:", error);
+
+                let errorMessage = "An error occurred while submitting the form.";
+                if (xhr.responseText) {
+                    try {
+                        const errorObj = JSON.parse(xhr.responseText);
+                        if (errorObj.error) {
+                            errorMessage = errorObj.error;
+                        }
+                    } catch (e) {
+                        errorMessage = xhr.responseText;
+                    }
+                }
+
+                swal({
+                    title: "Submission Failed",
+                    icon: "error",
+                    text: errorMessage,
                 });
-                </script>
+            }
+        });
+    });
+});
+</script>
+
 
 
      <!------------------------------------------btn-scroll--------------------------------------------------->

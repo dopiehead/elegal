@@ -27,29 +27,35 @@
                    
                   <label class='text-sm text-secondary' for="">Firm name <span class='text-danger'>*</span></label>
 
-                  <input type="text" name="firm_name" class='bg-secondary border-0 w-100 py-2'>
+                  <input type="text" name="firm_name" id="firm_name" class='bg-secondary border-0 w-100 py-2'>
 
                   <br>
 
-                 <label class='text-sm text-secondary'  for="">Email address  <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary'   for="">Email address  <span class='text-danger'>*</span></label>
 
-                 <input type="email"  name="firm_email" class='bg-secondary border-0 w-100 py-2'>
+                 <input type="email"  name="firm_email" id="firm_email" class='bg-secondary border-0 w-100 py-2'>
 
                  <label class='text-sm text-secondary' for="">Phone number  <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="firm_phone_number" class='bg-secondary border-0 w-100 py-2'> 
+                 <input type="text" name="firm_phone_number" id="firm_phone_number" class='bg-secondary border-0 w-100 py-2'> 
 
-                 <label class='text-sm text-secondary' for="">Date found <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary'  for="">Date found <span class='text-danger'>*</span></label>
 
-                 <input type="date" name="date_found" class='bg-secondary border-0 w-100 py-2'> 
+                 <input type="date" name="date_found" id="date_found" class='bg-secondary border-0 w-100 py-2'> 
 
                   <label class='text-sm text-secondary' for="">Location<span class='text-danger'>*</span></label>
 
-                 <input type="text" name="firm_location" class='bg-secondary border-0 w-100 py-2' placeholder="Full address"> 
+                 <input type="text" name="firm_location" id="firm_location" class='bg-secondary border-0 w-100 py-2' placeholder="Full address">
+                 
+                 <!--<input type='hidden' name="cases" id="cases" value="0">-->
+                 <!--<input type='hidden' name="cases_won" id="cases_won" value="0">-->
+                 <!--<input type='hidden' name="cases_lost" id="cases_lost" value="0">-->
+                 <!--<input type='hidden' name="lawyer_role" id="lawyer_role" value="">-->
+                 <!--<input type='hidden' name="cases" value="0" id="cases">-->
 
                  <label class='text-sm text-secondary' for="">How many lawyers work in your firm <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="nooflawyers" class='bg-secondary border-0 w-100 py-2'>
+                 <input type="text" name="nooflawyers" id="nooflawyers" class='bg-secondary border-0 w-100 py-2'>
 
                  <label class='text-sm text-secondary form-label' for="">What are you areas of specialization (select multiple if you have more than 1) <span class='text-danger'>*</span></label>
                   
@@ -63,13 +69,14 @@
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="family"> Family Law</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="intellectual_property"> Intellectual Property</span>         
 
-                         <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Property"> Property</span>
+                         <span class='text-white'><input type="checkbox" name="practice_areas[]"  value="Property"> Property</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Labour"> Labour</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Administrative"> Administrative</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Common"> Common</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Constructive"> Constructive</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Constitutional"> Constitutional</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Energy"> Energy</span>
+                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="pro bono"> Pro bono</span>
 
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Public"> Public</span>
                          <span class='text-white'><input type="checkbox" name="practice_areas[]" value="Customary"> Customary</span>
@@ -86,7 +93,7 @@
                  <div>
 
                      <div class='d-flex justify-content-evenly g-1 flex-wrap mt-2 bg-secondary py-3 text-sm'>
-                         <span class='text-white'><input type="checkbox"  name="certification_accredit[]" value="san" > WHO Award</span>
+                         <span class='text-white'><input type="checkbox"  name="certification_accredit[]" value="who" > WHO Award</span>
                          <span class='text-white'>  <input type="checkbox"  name="certification_accredit[]" value="san"> SAN Award</span>
                          <span class='text-white'><input  type="checkbox" name="certification_accredit[]" value="usf"> USF Award</span>
                          <span class='text-white'><input  type="checkbox" name="certification_accredit[]" value="encomium"> Ecomium Award of the year</span>
@@ -96,15 +103,15 @@
                  </div>
                  <label class='text-sm text-secondary' for="">Tell us more about you <span class='text-danger'>*</span></label>
 
-                 <textarea name="firm_bio" class='bg-secondary border-0 w-100 py-2' rows="5"></textarea>  
+                 <textarea name="firm_bio" id="firm_bio" class='bg-secondary border-0 w-100 py-2' rows="5"></textarea>  
                  
                  <label class='text-sm text-secondary' for="">Password <span class='text-danger'>*</span></label>
 
-                 <input type="password" name="firm_password" class='bg-secondary border-0 w-100 py-2' placeholder='Enter Password'>  
+                 <input type="password" name="firm_password" id="firm_password" class='bg-secondary border-0 w-100 py-2' placeholder='Enter Password'>  
 
                  <label class='text-sm text-secondary' for="">Confirm password <span class='text-danger'>*</span></label>
 
-                 <input type="password" name="confirm_password" class='bg-secondary border-0 w-100 py-2' placeholder='Confrm password'>  
+                 <input type="password" name="confirm_password" id="confirm_password" class='bg-secondary border-0 w-100 py-2' placeholder='Confrm password'>  
                   
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 
@@ -119,91 +126,103 @@
 
      </div>
 
-   <script>
-$(document).ready(function() {
-    // Cache jQuery selectors for repeated use
-    const $spinner = $(".spinner-border");
-    const $signupBtn = $('#btn-signup');
-    const $signUpNote = $(".sign-up-note");
-    const $firmRegistrationForm = $('#firm-registration-form');
-    const $inputs = $('input, textarea');
 
-    // Initially hide the spinner and sign-up note
-    $spinner.hide();
-  
-    // Handle form submission
-    $firmRegistrationForm.on('submit', function(e) {
-        e.preventDefault();  // Prevent default form submission
+    
+<script>
+$(document).ready(function () {
+    $(".spinner-border").hide();
 
-        // Show spinner, disable submit button, and hide sign-up note
-        $spinner.show();
-        $signupBtn.prop('disabled', true);
-        $signUpNote.hide();
+    $('#firm-registration-form').on('submit', function (e) {
+        e.preventDefault();
 
-        // Create a JSON object to send as the API request body
-        let data = {
-            firm_name: $('#firm_name').val(),
-            firm_email: $('#firm_email').val(),
-            firm_password: $('#firm_password').val(),
-            confirm_password: $('#confirm_password').val(),
-            firm_phone_number: $('#firm_phone_number').val(),
-            firm_bio: $('#firm_bio').val(),
-            date_found: $('#date_found').val(),
-            nooflawyers: $('#nooflawyers').val(),
-            firm_location: $('#firm_location').val(),
-            firm_rating: $('#firm_rating').val() || 0, // Default to 0 if empty
-            verified: $('#verified').val() || 0, // Default to 0 if empty
-            payment_status: $('#payment_status').val() || 0, // Default to 0 if empty
-            practice_areas: $('#practice_areas').val() || [], // Default to empty array if no areas selected
-            certification_accredit: $('#certification_accredit').val() || [], // Default to empty array if no certs selected
-        };
+        $(".spinner-border").show();
+        $('#btn-signup').prop('disabled', true);
+        $(".sign-up-note").hide();
 
-        // Send the form data as a JSON object to the API via AJAX
+        // Collect form data as an object
+        let formData = {};
+        $(this).serializeArray().forEach(item => {
+            // Handle arrays (e.g., practice_areas[])
+            if (item.name.endsWith('[]')) {
+                let key = item.name.replace('[]', '');
+                if (!formData[key]) {
+                    formData[key] = [];
+                }
+                if (item.value) { // Only add non-empty values
+                    formData[key].push(item.value);
+                }
+            } else {
+                formData[item.name] = item.value;
+            }
+        });
+
+        // Ensure practice_areas is an array, even if empty
+        formData['practice_areas'] = formData['practice_areas'] || [];
+
         $.ajax({
             type: "POST",
-            url: "engine/firm-register-process.php", // Replace with your API endpoint
-            contentType: "application/json",  // Set content type to JSON
-            data: JSON.stringify(data), // Send data as JSON string
-            success: function(response) {
-                // Hide spinner, show the sign-up note
-                $spinner.hide();
-                $signUpNote.show();
+            url: "engine/firm-register-process.php",
+            data: JSON.stringify(formData),
+            contentType: 'application/json',
+            success: function (response) {
+                $(".spinner-border").hide();
+                $(".sign-up-note").show();
+                $('#btn-signup').prop('disabled', false);
 
-                if (response.success == "1") {
-                    swal({ 
-                          title: "Success",
-                          text: "Registration successful. Please check your email for verification.",
-                          icon: "success",
-                    });
-
-                    // Reset the form and re-enable the submit button
-                    $firmRegistrationForm[0].reset();
-                    $signupBtn.prop('disabled', false);
-                } else {
+                let res;
+                try {
+                    res = typeof response === "string" ? JSON.parse(response) : response;
+                } catch (e) {
+                    console.error("Invalid JSON response:", response);
                     swal({
-                         title: "Notice",
-                         icon: "warning",
-                         text: response.error || "An error occurred, please try again.",
+                        title: "Error",
+                        icon: "error",
+                        text: "An unexpected error occurred. Please try again.",
                     });
-                    $signupBtn.prop('disabled', false);  // Re-enable the submit button
+                    return;
+                }
 
-                    // Highlight invalid fields
-                    $inputs.css('border-color', 'red');
+                if (res.success) {
+                    swal({
+                        title: "Success",
+                        icon: "success",
+                        text: res.message || "Registration successful!",
+                    });
+                    $("#firm-registration-form")[0].reset();
+                } else if (res.error) {
+                    swal({
+                        title: "Notice",
+                        icon: "warning",
+                        text: res.error,
+                    });
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                // Hide spinner and re-enable the submit button
-                $spinner.hide();
-                $signupBtn.prop('disabled', false);
+            error: function (xhr, status, error) {
+                $(".spinner-border").hide();
+                $(".sign-up-note").show();
+                $('#btn-signup').prop('disabled', false);
 
-                // Log detailed error for debugging
-                console.error("Error Details: ", textStatus, errorThrown);
+                console.error("XHR Status:", status);
+                console.error("HTTP Code:", xhr.status);
+                console.error("XHR Response:", xhr.responseText);
+                console.error("Thrown Error:", error);
 
-                // Show error alert
+                let errorMessage = "An error occurred while submitting the form.";
+                if (xhr.responseText) {
+                    try {
+                        const errorObj = JSON.parse(xhr.responseText);
+                        if (errorObj.error) {
+                            errorMessage = errorObj.error;
+                        }
+                    } catch (e) {
+                        errorMessage = xhr.responseText;
+                    }
+                }
+
                 swal({
-                    title: 'Error',
+                    title: "Submission Failed",
                     icon: "error",
-                    text: "An error occurred. Please try again.",
+                    text: errorMessage,
                 });
             }
         });

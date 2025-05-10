@@ -34,7 +34,8 @@ if(isset($_POST["submit-search"]))   {
          <li class='practice-link'><a href='practice-areas.php'>Practice Areas</a></li>  
          <li class='court-link'><a href='court.php'>Court</a></li> 
          <li class='jobs-link'><a href='jobs.php'>Jobs</a></li>  
-         <li class='library-link'><a href='library.php'>Library</a></li>                  
+         <li class='library-link'><a href='library.php'>Library</a></li> 
+          <li class='police-link'><a href='police-records.php'>Police Records</a></li> 
 
      </ul>
 

@@ -10,8 +10,6 @@ require("../engine/config.php");
 if (isset($_SESSION["id"])) {
    
       include ("content/user-content.php");
-
-
 }
 
 
@@ -20,7 +18,6 @@ if (isset($_SESSION["lawyer_id"])) {
      include ("content/lawyer-content.php");
 
 }
-
 
 $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
 
@@ -45,6 +42,34 @@ $image_extension  = array('jpg','jpeg','png');
         .swal2-container {
               z-index: 9999 !important; /* Make sure SweetAlert has a very high z-index */ 
          }
+         
+         body{
+             font-family:poppins,sans-serif;
+         }
+     
+         .custom-file-wrapper {
+             display: inline-block;
+             position: relative;
+             overflow: hidden;
+             cursor: pointer;
+             color: #007bff;
+             font-weight: bold;
+             padding: 8px 12px;
+             border: 1px solid #007bff;
+             border-radius: 4px;
+             background-color: #f8f9fa;
+             }. 
+
+         .custom-file-wrapper input[type="file"] {
+            
+         }
+
+         #file-name-display {
+             margin-left: 10px;
+             font-style: italic;
+             color: #333;
+         }
+         
      </style>
 
 </head>
@@ -80,19 +105,24 @@ $image_extension  = array('jpg','jpeg','png');
                                                                 
                          <?php } else { ?> 
 
-                         <img class='user_image' src="<?php echo "../". htmlspecialchars($user_img); ?>" alt="elegal">
+                         <img class='user_image' src="<?= "../". htmlspecialchars($user_img); ?>" alt="elegal">
 
                          <?php } ?>
 
                          <div class='d-flex flex-column flex-row'>
 
-                             <h6 class='fw-bold text-secondary text-capitalize'  ><?php echo htmlspecialchars($user_name); ?></h6>
+                             <h6 class='fw-bold text-secondary text-capitalize'  ><?= htmlspecialchars($user_name); ?></h6>
                              
-                             <small class='text-secondary text-capitalize' ><?php echo htmlspecialchars($user_location); ?></small>
+                             <small class='text-secondary text-capitalize' ><?= htmlspecialchars($user_location); ?></small>
                              <?php if(isset($_SESSION["lawyer_id"])) : ?>
-                             <small class='text-secondary text-capitalize' ><?php echo htmlspecialchars($lawyer_role); ?></small>
-                             <small class='text-primary text-capitalize' ><?php echo htmlspecialchars($employment_status); ?></small>
+                             <small class='text-secondary text-capitalize' ><?= htmlspecialchars($lawyer_role); ?></small>
+                             <small class='text-primary text-capitalize' ><?= htmlspecialchars($employment_status); ?></small>
                              <?php endif; ?>
+                             <span class="custom-file-wrapper bg-light px-2 py-1 text-center">
+                               <i class='fa fa-camera'></i>
+                                    <input type="file" name="firm_img" id="firm_img" style=" position: absolute; left: 0;top: 0;opacity: 0;cursor: pointer;width: 100%;">
+                              </span>
+                             <span id="file-name-display">No file chosen</span>
                          </div>
 
                      </div>
@@ -122,9 +152,9 @@ $image_extension  = array('jpg','jpeg','png');
                              <label for="name">Name</label>
                               
                              <?php if(isset($_SESSION['id'])) { ?>
-                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'user_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
+                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'user_name');" class='fw-bold'><?= htmlspecialchars($user_name); ?></span>
                              <?php } else { ?>
-                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_name');" class='fw-bold'><?php echo htmlspecialchars($user_name); ?></span>
+                                  <span class='text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_name');" class='fw-bold'><?= htmlspecialchars($user_name); ?></span>
                              <?php } ?>
                          </div>
                            
@@ -139,11 +169,11 @@ $image_extension  = array('jpg','jpeg','png');
 
                          <?php if(isset($_SESSION['id'])) { ?>
 
-                             <span id='password' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'user_password');" class='fw-bold'><?php echo htmlspecialchars($masked_password); ?></span>
+                             <span id='password' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'user_password');" class='fw-bold'><?= htmlspecialchars($masked_password); ?></span>
 
                          <?php } else{ ?>
 
-                             <span id='password' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_password');" class='fw-bold'><?php echo  htmlspecialchars($masked_password); ?></span>
+                             <span id='password' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true'  onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_password');" class='fw-bold'><?= htmlspecialchars($masked_password); ?></span>
                          
                          <?php } ?>
                     </div>
@@ -158,7 +188,7 @@ $image_extension  = array('jpg','jpeg','png');
 
                              <label for="">Email address</label>
 
-                             <strong class='fw-bold text-success'><?php echo htmlspecialchars($you); ?></strong>
+                             <strong class='fw-bold text-success'><?= htmlspecialchars($you); ?></strong>
                             
                          </div>
 
@@ -168,9 +198,9 @@ $image_extension  = array('jpg','jpeg','png');
                              <label for="">Phone number</label>
 
                              <?php if(isset($_SESSION['id'])) { ?>
-                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_phone');"><?php echo htmlspecialchars($user_contact); ?></span>
+                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'user_phone');"><?= htmlspecialchars($user_contact); ?></span>
                              <?php } else { ?>
-                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_phone_no');"><?php echo htmlspecialchars($user_contact); ?></span>
+                                 <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_phone_no');"><?= htmlspecialchars($user_contact); ?></span>
                              <?php } ?>
                          </div>
 
@@ -180,7 +210,7 @@ $image_extension  = array('jpg','jpeg','png');
 
                              <label for="">Date of Birth</label>
 
-                             <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', '<?php echo $user_dob; ?>');"><?php echo htmlspecialchars($user_dob); ?></span>
+                             <span class='fw-bold' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', '<?= htmlspecialchars($user_dob); ?>');"><?= htmlspecialchars($user_dob); ?></span>
 
                          </div>
 
@@ -196,11 +226,51 @@ $image_extension  = array('jpg','jpeg','png');
                            
                           <?php if (isset($_SESSION['lawyer_id']) && !empty($_SESSION['lawyer_id'])) { ?>
 
-                          <span class='fw-bold text-capitalize'><?php echo htmlspecialchars($user_type); ?></span>
+                          <span class='fw-bold text-capitalize'><?= htmlspecialchars($user_type); ?></span>
+                          
+                          <?php 
+                          
+                             if (isset($_SESSION['lawyer_id'])) {
+
+                                  $getlawyerfirm = $conn->prepare("SELECT * FROM lawyer_profile WHERE id = ?");
+    
+                                  $getlawyerfirm->bind_param("i", $_SESSION['lawyer_id']);
+
+                                  if ($getlawyerfirm->execute()) {
+        
+                                     $resultlawyerfirm = $getlawyerfirm->get_result();
+
+                                        if ($rowlawyerfirm = $resultlawyerfirm->fetch_assoc()) {
+            
+                                             if (empty($rowlawyerfirm['lawyer_firm_id']) && empty($rowlawyerfirm['lawyer_firm'])) {
+                // Lawyer has no firm assigned — fetch all firms
+                                                    $getfirm = $conn->prepare("SELECT * FROM lawyer_firm");
+                                                    $getfirm->execute();
+                                                    $result = $getfirm->get_result();
+                          ?>
+
+                <select name="firm_name" id="firm_name" required>
+                    <option value="">-- Select a Firm --</option>
+                    <?php while ($rowfirm = $result->fetch_assoc()): ?>
+                        <option value="<?= htmlspecialchars($rowfirm['firm_id']) ?>">
+                            <?= htmlspecialchars($rowfirm['firm_name']) ?>
+                        </option>
+                    <?php endwhile; ?>
+                </select>
+
+            <?php
+            } else {
+                // Firm already assigned, display name
+                echo htmlspecialchars($rowlawyerfirm['lawyer_firm']);
+            }
+        }
+    }
+}
+?>
 
                           <?php } else { ?>
 
-                          <span class='fw-bold text-capitalize'  onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_occupation');"><?php echo htmlspecialchars($user_occupation); ?></span>
+                          <span class='fw-bold text-capitalize'  onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'user_occupation');"><?=htmlspecialchars($user_occupation); ?></span>
 
                           <?php } ?>
 
@@ -212,7 +282,7 @@ $image_extension  = array('jpg','jpeg','png');
 
                               <label for="">Education</label>                       
 
-                              <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_education');"><?php echo htmlspecialchars($user_education); ?></span>
+                              <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_education');"><?= htmlspecialchars($user_education); ?></span>
 
                          </div>
 
@@ -221,7 +291,7 @@ $image_extension  = array('jpg','jpeg','png');
 
                              <label for="">Experience</label>                       
 
-                             <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_experience');"><?php echo htmlspecialchars($lawyer_experience)." years"; ?></span>
+                             <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_experience');"><?= htmlspecialchars($lawyer_experience)." years"; ?></span>
 
                          </div>
 
@@ -230,7 +300,7 @@ $image_extension  = array('jpg','jpeg','png');
 
                               <label for="">Qualification</label>                       
 
-                                 <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_qualification');"><?php echo htmlspecialchars($lawyer_qualification); ?></span>
+                                 <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_qualification');"><?= htmlspecialchars($lawyer_qualification); ?></span>
 
                          </div> 
 
@@ -258,9 +328,9 @@ $image_extension  = array('jpg','jpeg','png');
                                <label for="">State</label>
 
                                <?php if(isset($_SESSION['id'])) { ?>
-                                     <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'user_location');"><?php echo htmlspecialchars($user_location); ?></span>
+                                     <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'user_location');"><?= htmlspecialchars($user_location); ?></span>
                                <?php } else { ?>
-                                      <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?php echo$userId;?>', 'lawyer_location');"><?php echo htmlspecialchars($user_location); ?></span>
+                                      <span class='fw-bold text-capitalize' onmouseover="changeBackground(this)" onfocus='changeBackground(this)' contenteditable='true' onblur="saveData(this, '<?= htmlspecialchars($userId);?>', 'lawyer_location');"><?= htmlspecialchars($user_location); ?></span>
                                <?php } ?>
                            </div>
 
@@ -370,6 +440,51 @@ $image_extension  = array('jpg','jpeg','png');
        
 
      </div>
+     
+     <script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#firm_name").on("change", function () {
+            let id = $(this).val();
+
+            if (id.length > 0) {
+                $.ajax({
+                    url: "add-firm.php",
+                    method: "POST",
+                    data: {
+                        id: id  // Corrected: send as an object key-value pair
+                    },
+                    success: function (response) {
+                        if (response == 1) {
+                            swal({
+                                icon: "success",
+                                title: "Success!!",
+                                text: "Firm has been updated"
+                            });
+                        } else {
+                            swal({
+                                icon: "warning",
+                                title: "Notice",
+                                text: response
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        swal({
+                            icon: "error",
+                            title: "Error",
+                            text: "An error occurred: " + error
+                        });
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 
      <script type="text/javascript">
 
@@ -442,7 +557,13 @@ function changeBackground(obj) {
        });
     };
     </script>
-
+    
+     <script>
+document.getElementById("firm_img").addEventListener("change", function () {
+    const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+    document.getElementById("file-name-display").textContent = fileName;
+});
+</script>
 
 </body>
 </html>

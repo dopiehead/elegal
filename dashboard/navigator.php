@@ -1,7 +1,13 @@
+     <?php require("../engine/config.php");?>
      <ul class='d-flex flex-row flex-column justify-content-center align-items-center gap-5 navigator full-height shadow-lg list-unstyled px-4 py-4'>
      <li><a class='text-white text-decoration-none' href='../index.php'><span class='fa fa-house'></span> Home</a></li>
          <li><a class='text-white text-decoration-none active-link-dashboard' href='mydashboard.php'><span class='fa fa-border-all'></span> Dashboard</a></li>
+         
+         <?php if(isset($_SESSION['lawyer_id'])): ?>
          <li><a class='text-white text-decoration-none active-link-firm' href='myfirm.php'><span class='fa fa-users'></span> My Firm</a></li>
+         <?php endif; ?>
+         
+         
          <li><a class='text-white text-decoration-none active-link-profile' href='myprofile.php'> <span class='fa fa-user-alt'></span> My Profile</a></li>
          <li><a class='text-white text-decoration-none active-link-messages' href='messages.php'><span class='fa fa-envelope'></span> Messages</a></li>
           
@@ -12,7 +18,7 @@
              
              // Get user ID from session or redirect if none found
              $user_id = $_SESSION['id'] ?? $_SESSION['lawyer_id'] ?? $_SESSION['firm_id'] ?? exit(header('Location: ../login.php'));
-             require("../engine/config.php");
+            
                // Determine the correct notifications table based on session
              if (isset($_SESSION['id'])) {
                  $query = "SELECT * FROM user_notifications WHERE recipient_id = ? AND pending = 0";

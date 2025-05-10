@@ -54,8 +54,8 @@ if (isset($_SESSION["firm_id"])) {
              <div class='dashboard mt-3 pe-4'>
 
                  <div class='d-flex justify-content-start gap-2'>
-                     <h4 class='text-capitalize'><b><?php echo htmlspecialchars($user_name); ?>'s</b> dashboard</h4>
-                      <span><?php echo date("y-m-d"); ?></span>
+                     <h4 class='text-capitalize'><b><?=htmlspecialchars($user_name); ?>'s</b> dashboard</h4>
+                      <span><?= date("y-m-d"); ?></span>
                  </div>
 
                   <div class=' activities d-flex justify-content-between align-items-center mt-4 mb-3 flex-md-row flex-column gap-1'>
@@ -286,6 +286,7 @@ if (isset($_SESSION["firm_id"])) {
             }
         });
     </script>
+
 
 </body>
 </html>

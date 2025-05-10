@@ -55,8 +55,8 @@ require ('../../engine/config.php');
              </td>
              <td>                 
                  <div class='d-flex justify-content-evenly gap-1 text-sm'>  
-                     <a class=' text-success  ongoing_cases btn-show-lawyers' id='<?php echo htmlspecialchars($lawyer_id); ?>'><span class='fa fa-eye'></span></a>
-                     <a class=' text-danger btn-remove-lawyers' href='delete-lawyers.php?id=<?php echo htmlspecialchars($lawyer_id);?>'> <span class='fa fa-trash'></span></a>
+                     <a class=' text-success  ongoing_cases btn-show-lawyers' id='<?= htmlspecialchars($lawyer_id); ?>'><span class='fa fa-eye'></span></a>
+                     <a class=' text-danger btn-remove-lawyers' href='delete-lawyers.php?id=<?= htmlspecialchars($lawyer_id);?>'> <span class='fa fa-trash'></span></a>
                  </div>
              </td>                                        
           </tr>

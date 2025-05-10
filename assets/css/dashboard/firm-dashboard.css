@@ -108,7 +108,7 @@ table{
       max-height:300px;
 }
 
-.popup, .popup-reminder,.popup-add-client{
+.popup, .popup-reminder, .popup-add-client{
        display: none;
        position: fixed;
        top: 50%;
@@ -123,17 +123,42 @@ table{
 
 }
 
+
+ .popup-email{
+       display: none;
+       position: fixed;
+       top: 50%;
+       width: 80%;
+       left: 50%;
+       height:100%;
+       overflow-y:auto;
+       transform: translate(-50%, -50%);
+       background-color: #ffffff;
+       padding: 10px 20px;
+       border-radius: 5px;
+       z-index:999;
+
+}
+
+
+
+
+
 @media screen and (max-width: 768px) {
-     .popup, .popup-reminder ,.popup-add-client{
+    
+     .popup, .popup-reminder ,.popup-add-client, .popup-email{
           
              width: 90%;
+              top: 30%;
+              z-index:999;
+              
                 
         }
 
 
 }
 
-.closeButton{
+.closeButton,#close-email{
      float:right;
 }
 

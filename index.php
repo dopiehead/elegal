@@ -370,7 +370,15 @@ require ("engine/config.php");
 
          <div class='d-flex flex-row text-center flex-column g-5'>
           
-               <h4 class='fw-bold'>3,489</h4>
+               <h4 class='fw-bold text-success'><?php
+             $total_san_lawyers = $conn->prepare("SELECT COUNT(*) AS san_count FROM lawyer_profile WHERE verified = 1 AND current_position LIKE '%senior%' ");
+             if($total_san_lawyers->execute()){
+                 $datafound_san_lawyers = $total_san_lawyers->get_result();
+                 $row_san_lawyers = $datafound_san_lawyers->fetch_assoc();
+                 echo$row_san_lawyers['san_count'];
+             }
+             
+             ?></h4>
 
                 <p>SAN lawyers</p>
 
@@ -381,7 +389,19 @@ require ("engine/config.php");
 
          <div class='d-flex flex-row text-center flex-column g-5'>
 
-              <h4 class='fw-bold'>102,300</h4>
+              <h4 class='fw-bold text-success'>
+                 <?php
+                      $stmt = $conn->prepare("SELECT SUM(cases_won) AS total_won FROM lawyer_profile WHERE verified = 1");
+                      if ($stmt && $stmt->execute()) {
+                         $result = $stmt->get_result();
+                         $data = $result->fetch_assoc();
+                         $total_cases_won = $data['total_won'] ?? 0;
+                         echo $total_cases_won;
+                      } else {
+                         echo "Error retrieving data.";
+                      }
+                 ?>
+             </h4>
 
                <p>Solved cases</p>
 
@@ -392,7 +412,23 @@ require ("engine/config.php");
          <div class='d-flex flex-row text-center flex-column g-5'>
 
 
-             <h4 class='fw-bold'>1,234</h4>
+             <h4 class='fw-bold text-success'>
+             
+             <?php
+                 $count = 0;
+                 $stmt = $conn->prepare("SELECT practice_areas FROM lawyer_profile WHERE verified = 1");
+                 $stmt->execute();
+                 $result = $stmt->get_result();
+
+                 while ($row = $result->fetch_assoc()) {
+                 $areas = array_map('trim', explode(',', strtolower($row['practice_areas'])));
+                 if (in_array('pro bono', $areas)) {
+                 $count++;
+             }
+          }
+
+          echo $count;
+?></h4>
 
               <p>Pro bono lawyers</p> 
 
@@ -403,12 +439,12 @@ require ("engine/config.php");
 
          <div class='d-flex flex-row  text-center flex-column g-5'>
 
-             <h4 class='fw-bold'><?php
+             <h4 class='fw-bold text-success'><?php
              $total_lawyers_list = $conn->prepare("SELECT COUNT(*) AS count FROM lawyer_profile WHERE verified = 1 ");
              if($total_lawyers_list->execute()){
                  $datafound = $total_lawyers_list->get_result();
                  $row = $datafound->fetch_assoc();
-                 echo$row['count'];
+                 echo$row['count'] ?? 0;
              }
              
              ?></h4>

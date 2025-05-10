@@ -9,6 +9,8 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
      <a class='fw-bold text-dark btn btn-warning add_new_client'><i class='fa fa-plus fa-1x'></i> Add new client</a>
 </div>
 
+<div style="width:100%;overflow-x:auto;">
+    
 <table class='table table-responsive table-striped table-hover w-100 text-sm px-2 table_client'>
     <thead>
         <tr class='bg-success text-white rounded w-100'>
@@ -27,6 +29,7 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
             <th scope='col'>Case Status</th>
             <th scope='col'>Paid</th>
             <th scope='col'>Unpaid</th>
+            <th scope='col'>Time of complaint</th>
             <th scope='col'>Date Created</th>
             <th class='text-center'>Action</th>
         </tr>
@@ -51,6 +54,7 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
                 clients_on_board.case_status AS case_status,
                 clients_on_board.paid AS paid,
                 clients_on_board.unpaid AS unpaid,
+                clients_on_board.time_of_complaint AS time_of_complaint,
                 clients_on_board.date_created AS date_created,
                 lawyer_profile.lawyer_name
             FROM clients_on_board
@@ -155,6 +159,12 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
     </span>
 </td>
 
+<td>
+    <span class='text-danger'  onblur="save_data(this, '<?= $row['client_id'] ?>', 'time_of_complaint')">
+        <?= htmlspecialchars($row['time_of_complaint'] ?? "not available") ?>
+    </span>
+</td>
+
             <td><?= htmlspecialchars($row['date_created']) ?></td>
             <td>
                 <div class='d-flex justify-content-evenly gap-3 text-sm'>
@@ -162,6 +172,10 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
                     <a class='text-primary' onclick='edit_client()'><span class='fa fa-edit'></span></a>
                     <a class='text-success' href='mailto:<?= htmlspecialchars($row['client_email']) ?>'>              
                           <span class='fa fa-envelope'></span>
+                    </a>
+                     <a class='text-dark send_email'>  
+                     
+                          <span class='fa fa-share-alt'></span>
                     </a>
                     <a class='text-danger' href='delete-client.php?id=<?= htmlspecialchars($row['client_id']) ?>'><span class='fa fa-trash'></span></a>
                 </div>
@@ -178,9 +192,11 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
     </tbody>
 </table>
 
-<div id='popup-add-client' class='popup-add-client'>
-    <a style='position:absolute;right:0;margin-top:-13px;' class='text-danger border-0 bg-light rounded-circle py-1 px-3 add_new_client'>&times;</a>
 
+
+
+<div id='popup-add-client' style='display:none; position: fixed;top: 53%;width: 90%;left: 50%; height:500px;overflow-y:auto;transform:translate(-50%,-50%);background-color: #ffffff;padding: 10px 20px;border-radius: 5px;' class='popup-add-client'>
+    <a style='position:absolute;right:0;top:-13px;z-index:999;' class='text-danger border-0 bg-light rounded-circle py-1 px-3 add_new_client'>&times;</a>
 <br>
 
 <h4 class='fw-bold mb-2'> Add new clients</h4>
@@ -279,18 +295,39 @@ $firm_id = isset($_SESSION['firm_id']) && !empty($_SESSION['firm_id']) ? $_SESSI
                 <label>Unpaid (%)</label>
                 <input type="number" name="unpaid" class="form-control" min="0" max="100">
             </div>
-
-            <div class="mb-2">
-                <label>Date Created</label>
-                <input type="date" name="date_created" class="form-control">
+            
+             <div class="mb-2">
+                <label>Time of complaint</label>
+                <input type="date" name="time_of_complaint" class="form-control">
             </div>
 
             <div class="mt-3">
                 <button type="submit" class="btn btn-success">Save Client</button>
             </div>
         </form>
-
     </div>
 </div>
 
 
+
+<div class='popup-email' style='display:none;z-index:999; position: fixed;top: 50%;width: 90%;left: 50%;transform: translate(-50%, -50%);border:2px solid rgba(0,0,0,0.7);border-radius:15px;padding:20px 14px;background-color:white;' id='popup-email'>
+     <a id='close-email' style="position:absolute;right:0;top:-19px;color:white;border-radius:50%;" class='bg-danger px-3 py-1 send_email'>&times;</a>
+     <div class='d-flex flex-row flex-column px-2 bg-light gap-3 email-container border-success px-2 rounded-2 p-2'>
+          <div>
+              <h6 class='fw-bold text-dark  text-center border-bottom pb-1'>Send to Admin</h6>
+          </div>
+          <div>
+              <input type='text' class='form-control border-bottom border-2 border-secondary' placeholder='Enter email address'>   
+         </div>
+         
+         <div style="text-align:center;" class='text-right mt-2'>
+             
+             <button class="btn btn-secondary text-white rounded">Send</button>
+             
+         </div>
+         
+         
+     </div>
+</div>
+
+</div>

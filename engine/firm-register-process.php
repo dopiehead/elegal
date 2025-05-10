@@ -1,12 +1,10 @@
 <?php
 require("config.php");
 header('Content-Type: application/json');
-
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the JSON input data
     $inputData = json_decode(file_get_contents('php://input'), true);
-
     // Collect data from the JSON input
     $firm_name = trim($inputData['firm_name']);
     $firm_email = trim($inputData['firm_email']);
@@ -23,16 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment_status = $inputData['payment_status'] ?? 0;
     $created_at = date("Y-m-d H:i:s");
     $vkey = md5(time() . $firm_email); // Generate a verification key
-
     // Handle practice areas selection
-    $practice_areas = isset($inputData['practice_areas']) ? $inputData['practice_areas'] : [];
-    $selectedareas = implode(', ', $practice_areas);
-
+    $practice_areas = isset($inputData['practice_areas']) ? implode(',', $inputData['practice_areas']): " ";
     // Handle certification and accreditation
     $certification_and_accreditation = isset($inputData['certification_accredit']) ? implode(", ", $inputData['certification_accredit']) : '';
-
     // Validation
-    if (empty($firm_name) || empty($firm_email) || empty($firm_password) || empty($confirm_password) || empty($firm_phone_number) || empty($date_found) || empty($nooflawyers) || empty($selectedareas) || empty($firm_bio)) {
+    if (empty($firm_name) || empty($firm_email) || empty($firm_password) || empty($confirm_password) || empty($firm_phone_number) || empty($date_found) || empty($nooflawyers) || empty($practice_areas) || empty($firm_bio)) {
         echo json_encode(["error" => "All fields are required."]);
         exit;
     }
@@ -120,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firm_phone_number,
             $firm_rating,
             $firm_location,
-            $selectedareas,
+            $practice_areas,
             $image_path,
             $created_at,
             $payment_status,
@@ -129,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         if ($stmt->execute()) {
-            require 'PHPMailer-master/PHPMailer-master/PHPMailerAutoload.php';
+            require '../PHPMailer-master/PHPMailer-master/PHPMailerAutoload.php';
 
             $mail = new PHPMailer;
             $mail->SMTPDebug = 0;

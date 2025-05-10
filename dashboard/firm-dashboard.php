@@ -129,9 +129,7 @@ else {
                  </ul>     
                                                               <!-- main content  -->
                  <div class='b-part px-3'>
-
-                           <div class='table-container container'></div>
-
+                     <div class='table-container container'></div>
                  </div>
 
              </div>
@@ -254,6 +252,10 @@ else {
 
  $(document).on('click',".add_new_client",function(){       
            $("#popup-add-client").toggle();   
+ });
+ 
+  $(document).on('click',".send_email",function(){       
+           $("#popup-email").toggle();   
  });
 
 </script>

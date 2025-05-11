@@ -91,29 +91,19 @@
     </div>
 
      <!-- Case Overview Section -->
-     <section class="case-overview">
-        <div class="container">
-            <h2>Case Overview</h2>
-            <div class="case-details">
-                <div class="case-item">
-                    <div class="case-label">Case Title:</div>
-                    <div class="case-value">Withdrawal of Commerciality</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-label">Case Number:</div>
-                    <div class="case-value"><span class="case-number">PN-2023-BCA</span></div>
-                </div>
-                <div class="case-item">
-                    <div class="case-label">Filing Date:</div>
-                    <div class="case-value">Mar 24, 2023</div>
-                </div>
-                <div class="case-item">
-                    <div class="case-label">Resolution Date:</div>
-                    <div class="case-value">Mar 28, 2023</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
+       
+      <div class="popup-details" id="details-container">
+
+
+
+
+      </div>
+
+
+
+
+   
 
     <!-- Terms of Settlement Section -->
     <section class="terms-settlement">
@@ -166,6 +156,12 @@
             </form>
         </div>
     </section>
+
+
+
+
+
+
     <footer class="footer">
         <div class="container">
             <a href="#" class="footer-logo">
@@ -282,7 +278,8 @@
 </div>
  
 <?php include("popup.php");?>
-     
+   
+
     <!-- jQuery (v3.7.1) CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -385,6 +382,32 @@
         });
     }
 </script>
+<script>
+$(document).on("click", ".btn-more", function() {
+    let id = $(this).attr("id");
+    if (id.length > 0) {
+        $.ajax({
+            url: "engine/get-details.php",
+            type: "POST",
+            data: { id: id },
+            success: function(response) {
+                // Assuming there's a container to show the result
+                $("#details-container").html(response).show();
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching details:", error);
+                $("#details-container").html("<p>Something went wrong. Please try again.</p>");
+            }
+        });
+    }
+});
+
+$(document).on("click",".close-details",function(){
+    $("#details-container").toggle();
+});
+</script>
+
+
 
 </body>
 </html>

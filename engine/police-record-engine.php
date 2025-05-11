@@ -1,5 +1,5 @@
 <?php 
-
+$counter = "";
 require("config.php");
 $gettotal = $conn->prepare("SELECT * FROM police_records WHERE active = 0");
 if($gettotal->execute()){
@@ -122,44 +122,74 @@ switch ($orderBy) {
 }
 
 // Pagination
-$num_per_page = 10;
+$num_per_page = 20;
 $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
 $initial_page = ($page - 1) * $num_per_page;
 $finalQuery = $baseQuery . " LIMIT $initial_page, $num_per_page";
+$counter = $initial_page + 1;
+
+$excludedFields = [
+    'active', 'mug_shot', 'age', 'nationality', 'profession', 'address', 'phone_number',
+    'religion', 'tribe', 'lga', 'height', 'next_of_kin',
+    'place_of_work', 'employer_name', 'employer_number', 'employer_address'
+];
+
 
 // Execute query
 $getlist = $conn->prepare($finalQuery);
 if ($getlist->execute()) {
     $result = $getlist->get_result();
     echo "<table class='table table-bordered' border='2'>";
+
     if ($result->num_rows > 0) {
         $firstRow = $result->fetch_assoc();
 
         echo "<thead><tr>";
+        echo "<th class='fw-bold'>Number</th>"; 
         foreach (array_keys($firstRow) as $header) {
-            if ($header !== 'active') {
+            if (!in_array($header, $excludedFields)) {
                 echo "<th class='fw-bold text-capitalize'>" . htmlspecialchars(preg_replace('/_/', ' ', $header)) . "</th>";
             }
         }
+        echo"<th class='fw-bold'>Action</th>";
         echo "</tr></thead><tbody>";
-
+    
         // First row
-        echo "<tr>";
+
+         echo "<tr>";
+         echo "<td>".$counter++."</td>";
         foreach ($firstRow as $key => $value) {
-            if ($key !== 'active') {
-                echo "<td>" . htmlspecialchars($value) . "</td>";
-            }
+              if ($key === 'record_id') {
+                    $value = encryptId($value); // Encrypt record_id only
+                }
+                if (!in_array($key, $excludedFields)) {
+                    echo "<td>" . htmlspecialchars($value) . "</td>";
+                }
         }
+        echo"<td><a class=' btn-more btn border-primary text-primary' id='".$firstRow['record_id']."'>View details</a></td>";
         echo "</tr>";
+
+
+
+
 
         // Remaining rows
         while ($row = $result->fetch_assoc()) {
+         
             echo "<tr>";
+            echo "<td>".$counter++."</td>";
             foreach ($row as $key => $value) {
-                if ($key !== 'active') {
+                if ($key === 'record_id') {
+                    $value = encryptId($value); // Encrypt record_id only
+                }
+                if (!in_array($key, $excludedFields)) {
                     echo "<td>" . htmlspecialchars($value) . "</td>";
                 }
+
             }
+
+            echo"<td><a class=' btn-more btn border-primary text-primary' id='".$row["record_id"]."'>View details</a></td>";
+            
             echo "</tr>";
         }
 
@@ -199,3 +229,17 @@ if ($page < $total_num_page) {
 }
 echo "</div>";
 ?>
+<?php
+function encryptId($id) {
+    $secret = 73829; // A secret multiplier (prime number is a good choice)
+    $offset = 123456789; // Optional additive offset
+    return ($id * $secret) + $offset;
+}
+
+function decryptId($encrypted) {
+    $secret = 73829;
+    $offset = 123456789;
+    return (int)(($encrypted - $offset) / $secret);
+}
+?>
+

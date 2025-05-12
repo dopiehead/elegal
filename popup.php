@@ -238,6 +238,12 @@
                <label for="height" class="form-label">Height (e.g., 5'9")</label>
                <input type="text" class="form-control" name="height" id="height">
             </div>
+
+            <div class="col-md-6">
+               <label for="medical_condition" class="form-label">Medical condition</label>
+               <input type="text" class="form-control" name="medical_condition" id="medical_condition">
+            </div>
+            
          </div>
      </div>
 

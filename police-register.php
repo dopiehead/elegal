@@ -22,50 +22,62 @@
 
              <form id="police-registration-form">
                    
-                  <label class='text-sm text-secondary' for="police_department">Police department<span class='text-danger'>*</span></label>
+                  <label class='text-sm text-secondary' for="police_name">Full name<span class='text-danger'>*</span></label>
 
-                  <input type="text" name='police_department' class='bg-secondary border-0 w-100 py-2 px-1'>
+                  <input type="text" name='police_name' class='bg-secondary border-0 w-100 py-2 px-1'>
 
                   <br>
 
-                 <label class='text-sm text-secondary' for="">Department Email address  <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary' for="">Email address  <span class='text-danger'>*</span></label>
 
-                 <input type="email" name="department_email" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Email address">
+                 <input type="email" name="email" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Email address">
 
 
-                 <label class='text-sm text-secondary' for="">Department head<span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary' for="">Rank name<span class='text-danger'>*</span></label>
 
-                 <input type="text" name="department_head" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Department head">
+                 <input type="text" name="rank_name" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Department head">
   
 
-                 <label  class='text-sm text-secondary' for="">Immediate reporting officer  <span class='text-danger'>*</span></label>
+                 <label  class='text-sm text-secondary' for="">Next of kin  <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="immediate_reporting_officer" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="immediate reporting officer">
-
-                   
-                 <label  class='text-sm text-secondary' for="">Department Telephone <span class='text-danger'>*</span></label>
-
-                 <input type="text" name="department_phone_number" class='bg-secondary border-0 w-100 py-2'>
+                 <input type="text" name="next_of_kin" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Next of Kin">
 
 
-                 <label class='text-sm text-secondary' for="">Zonal head  <span class='text-danger'>*</span></label>
+                 <label  class='text-sm text-secondary' for="">Relationship with Next of kin  <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="zonal_head" class='bg-secondary border-0 w-100 py-2 px-1'> 
+                 <input type="text" name="relationship" class='bg-secondary border-0 w-100 py-2 px-1'>
 
 
-                 <label class='text-sm text-secondary' for="">Department location <span class='text-danger'></span></label>
+                 <label  class='text-sm text-secondary' for="">Next of kin (Telephone)  <span class='text-danger'>*</span></label>
 
-                 <input type="text" name="department_location" class='bg-secondary border-0 w-100 py-2 px-1'> 
+                 <input type="text" name="next_of_kin_telephone" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Telephone">
+
+                                      
+                 <label  class='text-sm text-secondary' for=""> Telephone <span class='text-danger'>*</span></label>
+
+                 <input type="text" name="department_phone_number" class='bg-secondary border-0 w-100 py-2' placeholder="Your phone number">
+
+
+                 <label class='text-sm text-secondary' for="">Team (What team do you belong to ?)  <span class='text-danger'>*</span></label>
+
+                 <input type="text" name="team" class='bg-secondary border-0 w-100 py-2 px-1'> 
+
+
+                 <label class='text-sm text-secondary' for="">Location <span class='text-danger'></span></label>
+
+                 <input type="text" name="location" class='bg-secondary border-0 w-100 py-2 px-1'> 
 
 
                  <label class='text-sm text-secondary' for="">Password <span class='text-danger'>*</span></label>
 
-                 <input type="password" name="department_password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Enter password'>  
+                 <input type="password" name="password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Enter password'>  
+
 
                  <label class='text-sm text-secondary' for="">Confirm password <span class='text-danger'>*</span></label>
 
                  <input type="password" name="confirm_password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Confirm password'>  
                   
+
                  <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
 
                       <button class='btn btn-success text-sm d-flex justify-content-center align-items-center' id='btn-signup'><span class='spinner-border text-warning'></span> <span class='sign-up-note'>Sign up</span></button>
@@ -93,17 +105,15 @@ $(document).ready(function () {
         $('#btn-signup').prop('disabled', true);
         $(".sign-up-note").hide();
 
-        // Collect form data as an object (no support for arrays anymore)
+        // Collect form data
         let formData = {};
         $(this).serializeArray().forEach(item => {
-            if (item.value) { // Only add non-empty values
-                formData[item.name] = item.value;
-            }
+            formData[item.name] = item.value;
         });
 
         $.ajax({
             type: "POST",
-            url: "engine/police-department-register-process.php",
+            url: "engine/police-register-process.php",
             data: JSON.stringify(formData),
             contentType: 'application/json',
             success: function (response) {
@@ -124,18 +134,18 @@ $(document).ready(function () {
                     return;
                 }
 
-                if (res.success) {
+                if (res.status === "success") {
                     swal({
                         title: "Success",
                         icon: "success",
                         text: res.message || "Registration successful!",
                     });
                     $("#police-registration-form")[0].reset();
-                } else if (res.error) {
+                } else {
                     swal({
                         title: "Notice",
                         icon: "warning",
-                        text: res.error,
+                        text: res.message || "Something went wrong.",
                     });
                 }
             },
@@ -153,8 +163,8 @@ $(document).ready(function () {
                 if (xhr.responseText) {
                     try {
                         const errorObj = JSON.parse(xhr.responseText);
-                        if (errorObj.error) {
-                            errorMessage = errorObj.error;
+                        if (errorObj.message) {
+                            errorMessage = errorObj.message;
                         }
                     } catch (e) {
                         errorMessage = xhr.responseText;
@@ -171,9 +181,6 @@ $(document).ready(function () {
     });
 });
 </script>
-
-
-
 
      <!------------------------------------------btn-scroll--------------------------------------------------->
 

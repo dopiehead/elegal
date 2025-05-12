@@ -6,18 +6,20 @@ $gettotal = $conn->prepare("SELECT * FROM police_records WHERE active = 0");
 if($gettotal->execute()){
     $resultTotal = $gettotal->get_result();
     $totalRecords =  $resultTotal->num_rows;
-    $num_per_page = 4;
+    $num_per_page = 20;
     $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
     $initial_page = ($page - 1) * $num_per_page;
     $from = $initial_page + 1;
     $to = min($initial_page + $num_per_page, $totalRecords);
-    
-    echo"<div class='d-flex justify-content-between align-content-center'>";
-    echo "<span class='fw-bold'>Total number of record: ". $totalRecords."</span>";
-    echo "<p class='text-success'> ".$from." - ".$to." of <span class='fw-bold'>".$totalRecords."</span></p>";
-    echo"</div>";
-    echo'<div style="height:500px;" class="overflow-auto table-parent bg-light rounded rounded-5 px-4">';
-}
+}  
+    echo"
+    <div style='color:var(--primary-purple);' class='d-flex justify-content-between align-content-center'>
+       <span class='fw-bold text-danger'>Total number of record: ". $totalRecords."</span>
+        <p> ".$from." - ".$to." of <span class='fw-bold'>".$totalRecords."</span></p>
+    </div>";
+
+    echo"<div style='height:500px;' class='overflow-auto table-parent bg-light rounded rounded-5 px-4'>";
+
 // Build base query
 $baseQuery = "SELECT * FROM police_records WHERE active = 0";
 // Handle search query
@@ -138,7 +140,7 @@ $finalQuery = $baseQuery . " LIMIT $initial_page, $num_per_page";
 $counter = $initial_page + 1;
 
 $excludedFields = [
-    'active', 'mug_shot', 'age', 'nationality', 'profession', 'address', 'phone_number',
+    'active', 'mug_shot', 'medical_condition', 'age', 'nationality', 'profession', 'address', 'phone_number',
     'religion', 'tribe', 'lga', 'height', 'next_of_kin',
     'place_of_work', 'employer_name', 'employer_number', 'employer_address'
 ];

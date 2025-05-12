@@ -56,8 +56,9 @@ if ($id):
             <div class="col-md-4"><strong>Height:</strong> <?= htmlspecialchars($row['height']) ?> cm</div>
         </div>
         <div class="row mb-2">
-            <div class="col-md-6"><strong>Address:</strong> <?= htmlspecialchars($row['address']) ?></div>
-            <div class="col-md-6"><strong>Next of Kin:</strong> <?= htmlspecialchars($row['next_of_kin']) ?></div>
+            <div class="col-md-4"><strong>Address:</strong> <?= htmlspecialchars($row['address']) ?></div>
+            <div class="col-md-4"><strong>Next of Kin:</strong> <?= htmlspecialchars($row['next_of_kin']) ?></div>
+            <div class="col-md-4"><strong>Medical Condition:</strong> <?= htmlspecialchars($row['medical_condition']) ?></div>
         </div>
         <div class="row mb-2">
             <div class="col-md-4"><strong>Workplace:</strong> <?= htmlspecialchars($row['place_of_work']) ?></div>

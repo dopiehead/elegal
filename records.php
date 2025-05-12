@@ -36,7 +36,7 @@
                     </li>
                 </ul>
                 <div class="ms-auto d-flex align-items-center">
-                    <button class="btn btn-sign-in">
+                    <button href="create-account.php" class="btn btn-sign-in">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
                     </button>
                     <button class="btn btn-help">
@@ -50,9 +50,9 @@
     <!-- Records Table -->
     <div class="container records-table">
         <div class='d-flex justify-content-between'>
-             <h2 class="mb-4">Police Reports & Records</h2> 
-             <a class='text-white text-decoration-none btn-add' onclick="toggle()">
-                 <span style="cursor:pointer;" class='btn bg-warning fw-bold text-dark pt-1 pb-2 px-2 shadow'>
+             <h2 class="mb-4 police-heading fw-bold">Police Reports & Records</h2> 
+             <a class='text-white text-decoration-none btn-button' onclick="toggle()">
+                 <span style="cursor:pointer;" class='btn rounded-pill bg-button fw-bold text-white pt-1 pb-2 px-2 shadow'>
                       <i class='fa fa-plus'></i>
                       Add new record
                  </span>
@@ -75,58 +75,21 @@
                
         <br>
         <div class='w-100 d-flex justify-content-center align-items-center'>
-              <span class="spinner-border text-success" style="display:none;z-index:3000"></span></div>
+              <span class="spinner-border text-primary" style="display:none;z-index:3000"></span></div>
         <br>
         <div class="w-100">
 
-            <div style="height:500px;" class="overflow-auto table-parent bg-light rounded rounded-5 px-4">
+              <div id="table-container"> </div>
 
-                 <div id="table-container">
-
-                 </div>
-
-             </div>
+         </div>
      </div>
        
     </div>
 
-     <!-- Case Overview Section -->
-  
-       
-      <div class="popup-details" id="details-container">
-
-
-
-
-      </div>
-
-
-
-
-   
-
+      <!-- modal for more details -->
+      <div class="popup-details" id="details-container"> </div>
     <!-- Terms of Settlement Section -->
-    <section class="terms-settlement">
-        <div class="container">
-            <h2>Terms of Settlement</h2>
-            <div class="terms-content">
-                <div class="terms-left">
-                    <div class="terms-item">
-                        <p><strong>1. Stipulations:</strong> The parties hereto agree to the following stipulations:</p>
-                    </div>
-                    <div class="terms-item">
-                        <p><strong>2. Obligations of the Parties:</strong></p>
-                    </div>
-                </div>
-                <div class="terms-right">
-                    <div class="terms-item">
-                        <p><strong>Explanations for Terms:</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+ 
     <!-- Relevant Notes Section -->
     <section class="notes-section">
         <div class="container">
@@ -156,11 +119,6 @@
             </form>
         </div>
     </section>
-
-
-
-
-
 
     <footer class="footer">
         <div class="container">
@@ -201,213 +159,30 @@
             </div>
         </div>
     </footer>
-    
-    
-   <!-- Popup Filter -->
-<div class="popup-filter position-fixed  bg-white shadow p-4 border rounded" style="z-index: 999; display: none;">
-    <!-- Close Button -->
-    <div class="d-flex justify-content-end">
-        <button class="btn-close" aria-label="Close" onclick="filter()"></button>
-    </div>
-
-    <!-- Header -->
-    <h5 class="fw-bold border-bottom pb-2 mb-3">Filter Records</h5>
-
-    <!-- Filter Form -->
-    <form>
-        <div class="mb-3">
-            <label for="activityFilter" class="form-label fw-bold">Select by Activity</label>
-            <select name="activityFilter" id="activityFilter" class="form-select text-capitalize">
-                <option value="">All</option>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
-                <option value="yearly">Yearly</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="locationFilter" class="form-label fw-bold">By Location</label>
-            <select name="locationFilter" id="locationFilter" class="form-select text-capitalize">
-                <option value="">All</option>
-                <?php
-                require("engine/connection.php");
-                $getstate = $con->prepare("SELECT DISTINCT state FROM states_in_nigeria");
-                if ($getstate->execute()) {
-                    $result_state = $getstate->get_result();
-                    while ($data_state = $result_state->fetch_assoc()) { ?>
-                        <option value="<?= htmlspecialchars($data_state['state']) ?>"><?= htmlspecialchars($data_state['state']) ?></option>
-                    <?php }
-                }
-                ?>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="categoryFilter" class="form-label fw-bold">By Category</label>
-            <select name="categoryFilter" id="categoryFilter" class="form-select text-capitalize">
-                <option value="">All</option>
-                <option>Missing</option>
-                <option>Armed Robbery</option>
-                <option>Stolen Vehicles</option>
-                <option>Death Cases</option>
-                <option>Rape Cases</option>
-                <option>Murder Cases</option>
-                <option>Kidnap Cases</option>
-                <option>Manslaughter</option>
-                <option>Assault</option>
-                <option>Domestic Violence</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-        <label for="orderBy" class="form-label fw-bold">Sort By</label>         
-        <select name="orderBy" id="orderBy" class="form-select text-capitalize">
-            <option value="date_of_arrest_DESC" >Date of Arrest (Newest)</option>
-            <option value="date_of_arrest_ASC">Date of Arrest (Oldest)</option>
-            <option value="offender_name_ASC" >Offender Name (A-Z)</option>
-            <option value="offender_name_DESC">Offender Name (Z-A)</option>
-            <option value="age_ASC">Age (Youngest First)</option>
-            <option value="age_DESC">Age (Oldest First)</option>
-            <option value="court_date_ASC" >Court Date (Earliest First)</option>
-            <option value="court_date_DESC">Court Date (Latest First)</option>
-        </select>
-
-        </div>
-    </form>
-</div>
- 
+      
+   <!-- modal Filter -->
+<?php include("popup-filter.php");?>
+    <!-- modal to insert data -->
 <?php include("popup.php");?>
-   
 
     <!-- jQuery (v3.7.1) CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
         function toggle(){
-            $(".popup").toggle();
+             $(".popup").toggle();
         }
         function filter(){
-            $(".popup-filter").toggle();
+             $(".popup-filter").toggle();
         }
     </script>
-
-<script>
-    $("#table-container").load("engine/police-record-engine.php");
-
-    $("#q").on("keyup", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        getData(x);
+    <script>
+        $(".btn-sign-in").on("click",function(e){
+             e.preventDefault();
+             let signin = $(".btn-sign-in").attr("href");
+             window.location.href = signin;
     });
-
-    $("#activityFilter").on("change", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        getData(x, activityFilter);
-    });  
-    
-    $("#locationFilter").on("change", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        let locationFilter = $("#locationFilter").val();
-        getData(x, activityFilter, locationFilter);
-    });   
-    
-    $("#categoryFilter").on("change", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        let locationFilter = $("#locationFilter").val();
-        let categoryFilter = $("#categoryFilter").val();
-        getData(x, activityFilter, locationFilter, categoryFilter);
-    });
-
-
-    $("#activityFilter, #locationFilter, #categoryFilter").on("change", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        let locationFilter = $("#locationFilter").val();
-        let categoryFilter = $("#categoryFilter").val();
-        getData(x, activityFilter, locationFilter, categoryFilter);
-    });
-
-    $("#orderBy").on("change",function(e){
-         e.preventDefault();
-        let orderBy = $("#orderBy").val();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        let locationFilter = $("#locationFilter").val();
-        let categoryFilter = $("#categoryFilter").val();
-        getData(x, activityFilter, locationFilter, categoryFilter,orderBy);
-    });
- 
-
-    $(document).on("click", ".btn-success", function(e) {
-        e.preventDefault();
-        let x = $("#q").val();
-        let activityFilter = $("#activityFilter").val();
-        let locationFilter = $("#locationFilter").val();
-        let categoryFilter = $("#categoryFilter").val();
-        let orderBy = $("#orderBy").val();
-        let page = $(this).attr("id");
-        getData(x, activityFilter, locationFilter, categoryFilter, orderBy, page);
-    });
-
-    function getData(x, activityFilter, locationFilter, categoryFilter, orderBy, page) {
-        $(".spinner-border").show();
-        $.ajax({
-            url: "engine/police-record-engine.php",
-            type: "POST",
-            data: {
-                "q": x,
-                "activityFilter": activityFilter,
-                "locationFilter": locationFilter,
-                "categoryFilter": categoryFilter,
-                "orderBy": orderBy,
-                "page": page
-            },
-            success: function(data) {
-                $(".spinner-border").hide();
-                $("#table-container").html(data).show();
-            },
-            error: function(xhr,status, error) {
-                $(".spinner-border").hide(); // Hide the spinner on error
-                 console.error("AJAX Error:", status, error); // Log the error details
-                 $("#table-container").html("<div class='alert alert-danger w-100'>An error occurred while loading the data. Please try again later.</div>");
-            }
-        });
-    }
-</script>
-<script>
-$(document).on("click", ".btn-more", function() {
-    let id = $(this).attr("id");
-    if (id.length > 0) {
-        $.ajax({
-            url: "engine/get-details.php",
-            type: "POST",
-            data: { id: id },
-            success: function(response) {
-                // Assuming there's a container to show the result
-                $("#details-container").html(response).show();
-            },
-            error: function(xhr, status, error) {
-                console.error("Error fetching details:", error);
-                $("#details-container").html("<p>Something went wrong. Please try again.</p>");
-            }
-        });
-    }
-});
-
-$(document).on("click",".close-details",function(){
-    $("#details-container").toggle();
-});
-</script>
-
-
+    </script>
 
 </body>
 </html>

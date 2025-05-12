@@ -41,3 +41,10 @@ select:focus,input:focus,textarea:focus{
      border:1px solid transparent;
      outline:1px solid transparent;
  }
+
+ .police-logo{
+     height: 50px;
+     width: 80px;
+     object-fit: contain;
+   
+ }

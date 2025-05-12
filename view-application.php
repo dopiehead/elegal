@@ -5,7 +5,6 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
      <?php include ('components/links.php'); ?>
-
      <link rel="stylesheet" href="assets/css/view-application.css">
      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>View application</title>
@@ -33,14 +32,12 @@
                  <a class='text-dark pb-1 border-bottom border-1 border-secondary w-50' href="">View profile</a>
 
              </div>
-
-             
+        
          </div>
 
          <div>
  
            <a class='text-dark border border-2 border-secondary  px-2 text-capitalize hover:text-white' id='message' onclick='message()'>message</a>     
-
 
          </div>
 </div>
@@ -71,7 +68,6 @@
 
      </div>
 
-
      <div class='d-flex text-sm'>
 
           <div class='col-md-6'>
@@ -86,8 +82,6 @@
 
      </div>
 
-
-
      <div class='d-flex text-sm'>
 
           <div class='col-md-6'>
@@ -98,25 +92,17 @@
                 <span><input type="checkbox"> <span>I'm willing to relocate</span></span>
               </div>
 
-
           </div>
 
-          <div class='col-md-6'>
-             
-          
-          </div>
-
-
+          <div class='col-md-6'>  </div>
 
      </div>
-
-     
+   
  </div>
 
 <br><br>
 
  <div class='container'>
-
 
  <h5 class='fw-bold text-white bg-dark py-2 px-2'>Most recent job</h5>
 
@@ -134,8 +120,6 @@
      </div>
 
  </div>
-
-
 
  <div class='d-flex flex-md-row flex-column text-sm'>
 
@@ -180,8 +164,6 @@
 
 </div>
 
-
-
 <div class='d-flex flex-md-row flex-column text-sm'>
 
      <div class='col-md-6'>
@@ -199,8 +181,6 @@
      </div>
 
 </div>
-
-
 
 <div class='d-flex flex-md-row flex-column text-sm'>
 
@@ -220,10 +200,7 @@
 
 </div>
 
-
-
 <br><br>
-
 
  <div class='popup px-3 shadow-lg'>
 
@@ -247,16 +224,10 @@
               <button class='btn btn-dark'>Send <i class='fa fa-arrow-right'></i></button>
 
          </div>
-        
-
+    
      </div>
 
-
-
-
  </div>
-
-
 
 </div>
        <?php include ("components/footer.php");?>
@@ -268,7 +239,6 @@
              document.querySelector('.popup').style.display ='block';
           
           }
-
 
           $("#close").click(function(){
 

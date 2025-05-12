@@ -1,15 +1,25 @@
-<?php 
+<?php
+
 $counter = "";
 require("config.php");
 $gettotal = $conn->prepare("SELECT * FROM police_records WHERE active = 0");
 if($gettotal->execute()){
     $resultTotal = $gettotal->get_result();
     $totalRecords =  $resultTotal->num_rows;
-    echo "Total number of record: ". $totalRecords;
+    $num_per_page = 4;
+    $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
+    $initial_page = ($page - 1) * $num_per_page;
+    $from = $initial_page + 1;
+    $to = min($initial_page + $num_per_page, $totalRecords);
+    
+    echo"<div class='d-flex justify-content-between align-content-center'>";
+    echo "<span class='fw-bold'>Total number of record: ". $totalRecords."</span>";
+    echo "<p class='text-success'> ".$from." - ".$to." of <span class='fw-bold'>".$totalRecords."</span></p>";
+    echo"</div>";
+    echo'<div style="height:500px;" class="overflow-auto table-parent bg-light rounded rounded-5 px-4">';
 }
 // Build base query
 $baseQuery = "SELECT * FROM police_records WHERE active = 0";
-
 // Handle search query
 if (isset($_POST['q']) && !empty($_POST['q'])) {
     $search = explode(" ", $conn->real_escape_string($_POST['q']));
@@ -67,13 +77,13 @@ if (isset($_POST['q']) && !empty($_POST['q'])) {
 $activityFilter = isset($_POST['activityFilter']) && !empty($_POST['activityFilter']) ? $conn->real_escape_string($_POST['activityFilter']) : "";
 if ($activityFilter) {
     if ($activityFilter === 'daily') {
-        $baseQuery .= " AND DATE(date_of_arrest) = CURDATE()";
+         $baseQuery .= " AND DATE(date_of_arrest) = CURDATE()";
     } elseif ($activityFilter === 'weekly') {
-        $baseQuery .= " AND YEARWEEK(STR_TO_DATE(date_of_arrest, '%Y-%m-%d'), 1) = YEARWEEK(CURDATE(), 1)";
+         $baseQuery .= " AND YEARWEEK(STR_TO_DATE(date_of_arrest, '%Y-%m-%d'), 1) = YEARWEEK(CURDATE(), 1)";
     } elseif ($activityFilter === 'monthly') {
-        $baseQuery .= " AND DATE_FORMAT(STR_TO_DATE(date_of_arrest, '%Y-%m-%d'), '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m')";
+         $baseQuery .= " AND DATE_FORMAT(STR_TO_DATE(date_of_arrest, '%Y-%m-%d'), '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m')";
     } elseif ($activityFilter === 'yearly') {
-        $baseQuery .= " AND YEAR(STR_TO_DATE(date_of_arrest, '%Y-%m-%d')) = YEAR(CURDATE())";
+         $baseQuery .= " AND YEAR(STR_TO_DATE(date_of_arrest, '%Y-%m-%d')) = YEAR(CURDATE())";
     }
 }
 
@@ -122,9 +132,8 @@ switch ($orderBy) {
 }
 
 // Pagination
-$num_per_page = 20;
-$page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
-$initial_page = ($page - 1) * $num_per_page;
+
+
 $finalQuery = $baseQuery . " LIMIT $initial_page, $num_per_page";
 $counter = $initial_page + 1;
 
@@ -133,7 +142,6 @@ $excludedFields = [
     'religion', 'tribe', 'lga', 'height', 'next_of_kin',
     'place_of_work', 'employer_name', 'employer_number', 'employer_address'
 ];
-
 
 // Execute query
 $getlist = $conn->prepare($finalQuery);
@@ -153,7 +161,6 @@ if ($getlist->execute()) {
         }
         echo"<th class='fw-bold'>Action</th>";
         echo "</tr></thead><tbody>";
-    
         // First row
 
          echo "<tr>";
@@ -166,12 +173,8 @@ if ($getlist->execute()) {
                     echo "<td>" . htmlspecialchars($value) . "</td>";
                 }
         }
-        echo"<td><a class=' btn-more btn border-primary text-primary' id='".$firstRow['record_id']."'>View details</a></td>";
+        echo"<td><a class=' btn-more btn text-more' id='".$firstRow['record_id']."'>View details</a></td>";
         echo "</tr>";
-
-
-
-
 
         // Remaining rows
         while ($row = $result->fetch_assoc()) {
@@ -188,7 +191,7 @@ if ($getlist->execute()) {
 
             }
 
-            echo"<td><a class=' btn-more btn border-primary text-primary' id='".$row["record_id"]."'>View details</a></td>";
+            echo"<td><a class=' btn-more btn  text-more' id='".$row["record_id"]."'>View details</a></td>";
             
             echo "</tr>";
         }
@@ -198,25 +201,23 @@ if ($getlist->execute()) {
         echo "<tr><td colspan='100%'>No records found.</td></tr></table>";
     }
 }
-
+echo"</div>";
 // Pagination display
-$pageres = mysqli_query($conn, "SELECT * FROM police_records WHERE active = 0");
-$numpage = $pageres->num_rows;
-$total_num_page = ceil($numpage / $num_per_page);
-$radius = 6;
 
+$total_num_page = ceil($totalRecords / $num_per_page);
+$radius = 2;
 echo "<div class='text-center mt-3'>";
 if ($page > 1) {
      $previous = $page - 1;
-     echo '<span id="page_num"><a class="btn btn-success mx-1 prev" id="' . $previous . '">&lt;</a></span>';
+     echo '<span id="page_num"><a class="btn btn-pagination btn-success mx-1 prev" id="' . $previous . '">&lt;</a></span>';
 }
 
 for ($i = 1; $i <= $total_num_page; $i++) {
     if (($i >= 1 && $i <= $radius) || ($i > $page - $radius && $i < $page + $radius) || ($i <= $total_num_page && $i > $total_num_page - $radius)) {
         if ($i == $page) {
-            echo '<span id="page_num"><a class="btn btn-success active-button mx-1" id="' . $i . '">' . $i . '</a></span>';
+            echo '<a class="btn btn-pagination btn-success active-button mx-1" id="' . $i . '">' . $i . '</a>';
         } else {
-            echo '<span id="page_num"><a class="btn btn-outline-success mx-1" id="' . $i . '">' . $i . '</a></span>';
+            echo '<a class="btn btn-pagination btn-outline-success mx-1" id="' . $i . '">' . $i . '</a>';
         }
     } elseif ($i == $page - $radius || $i == $page + $radius) {
         echo "... ";
@@ -225,7 +226,7 @@ for ($i = 1; $i <= $total_num_page; $i++) {
 
 if ($page < $total_num_page) {
     $next = $page + 1;
-    echo '<span id="page_num"><a class="btn btn-success mx-1 next" id="' . $next . '">&gt;</a></span>';
+    echo '<span id="page_num"><a class="btn btn-pagination btn-success mx-1 next" id="' . $next . '">&gt;</a></span>';
 }
 echo "</div>";
 ?>
@@ -242,4 +243,5 @@ function decryptId($encrypted) {
     return (int)(($encrypted - $offset) / $secret);
 }
 ?>
+
 

@@ -35,7 +35,7 @@ if ($id):
 ?>
  
 <div class="card shadow mt-3 animate-fade-in">
-    <div class="card-header bg-primary text-white fw-bold d-flex justify-content-between align-items-center">
+    <div style="background-color:var(--primary-purple);" class="card-header  text-white fw-bold d-flex justify-content-between align-items-center">
         <span>Personal Information</span>
         <a id="close-details" class="close-details text-white"><i class="fa fa-close fa-2x"></i></a>
     </div>

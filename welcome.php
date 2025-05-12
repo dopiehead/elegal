@@ -9,8 +9,6 @@
 <body>
      <div class='welcome_background w-100'>
 
-
-
           <div class='d-flex flex-row flex-column g-3 welcome-container px-3 py-5'>
 
               <h2 class='fw-bold text-white'>Registration successful</h2>
@@ -20,11 +18,6 @@
               <button class='btn btn-success mt-3'>Back to home</button>
 
           </div>
-
-
-
-
-
 
      </div>
 

@@ -93,15 +93,21 @@
 
                                  $extension = strtolower(pathinfo($img,PATHINFO_EXTENSION));
 
-                                 $image_extension  = array('jpg','jpeg','png'); 
-                               
+                                 $image_extension  = array('jpg','jpeg','png');                              
 
                      ?>
 
                                   <div class='package border'>
 
-                                      <img style='height:14em;' src="<?php echo htmlspecialchars($img); ?>" class='w-100' alt="elegal">
+                                  <?php  
+                                    
+                                     if (!in_array($extension , $image_extension)) {
 
+                                     echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($name,0,2)."</span></div>";                  
+
+                                    } else { ?>
+                                      <img style='height:14em;' src="<?php echo htmlspecialchars($img); ?>" class='w-100' alt="elegal">
+                                     <?php } ?>
                                       <div class='px-2 py-2 d-flex flex-row flex-column mt-1'>
 
                                          <span>Assosiate at <?php htmlspecialchars($firm); ?> Law firm</span>
@@ -267,7 +273,6 @@
 
     });
 </script>
-
-    
+   
 </body>
 </html>

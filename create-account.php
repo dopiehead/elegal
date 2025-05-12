@@ -44,6 +44,11 @@
                  <span class='text-sm text-white'><a class='text-white text-decoration-none' href='firm-register.php'>I am a firm</a></span>
              </div>
 
+             <div class='create-container'>
+                 <span><a class='text-white' href='police-department-register.php'><img class="police-logo" src="assets/images/police-icon-new.png" alt=""></a></span>
+                 <span class='text-sm text-white'><a class='text-white text-decoration-none' href='police-department-register.php'>Police department</a></span>
+             </div>
+
          </div>
         
 

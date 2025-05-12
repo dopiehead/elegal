@@ -20,8 +20,7 @@ require ("engine/config.php");
 </head>
 <body class='bg-light'>
 <?php include ("components/nav.php"); ?>
-   
-    
+      
      <div class='hero-section'>
 
       <div class='hero-text px-3 '>
@@ -45,7 +44,6 @@ require ("engine/config.php");
 
          <div class='d-flex justify-content-center g-5 mt-3 tabs-link'>
 
-
              <div class='g-3 py-1' data-aos='fade-up'>
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
@@ -53,8 +51,6 @@ require ("engine/config.php");
                  <h6 class='fw-bold text-sm text-decoration-none'><a class='text-dark text-decoration-none' href='lawyers.php?category=pro bono'> Pro Bono </a></h6>
 
              </div>
-
-
              
              <div class='g-3 py-1'  data-aos='fade-up'>
 
@@ -98,7 +94,6 @@ require ("engine/config.php");
 
              </div>
 
-
              <div class='g-3  py-1' data-aos='fade-up'>
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
@@ -123,7 +118,6 @@ require ("engine/config.php");
 
              </div>
 
-
              <div class=' g-3  py-1' data-aos='fade-up'>
 
                  <img src="assets/images/carbon_building.png" alt="elegal">
@@ -131,7 +125,6 @@ require ("engine/config.php");
                  <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=energy law'>Energy Law </a></h6>
 
              </div>
-
 
              <div class=' g-3  py-1' data-aos='fade-up'>
 
@@ -156,7 +149,6 @@ require ("engine/config.php");
                  <h6 class='fw-bold text-sm'><a class='text-dark text-decoration-none' href='lawyers.php?category=administrative law'>Admiralty Law </a></h6>
 
              </div>
-
 
              <div class='g-3  py-1' data-aos='fade-up'>
 
@@ -188,7 +180,6 @@ require ("engine/config.php");
 
      <br>
 
-
      <div  class='px-3 section-voluteer'>
           
          <div class='d-flex flex-md-row flex-column'>
@@ -213,16 +204,12 @@ require ("engine/config.php");
                   
                  </div>
 
-
              </div>
-
 
          </div>
 
      </div>
-
-
-     
+    
 </div>
 
 <div class='need-container py-2 py-5 mt-5'>
@@ -236,7 +223,6 @@ require ("engine/config.php");
         <p class='text-white'>Leave your details and we’ll be in touch within 24 hours</p>
 
     </div>
-
 
     <div>
 
@@ -266,7 +252,6 @@ require ("engine/config.php");
 
          </div>
 
-
          <div class='col-md-6 py-3' data-aos='zoom-in'>
 
               <iframe class='w-100' height="315" src="https://www.youtube.com/embed/EdwAiHpN1Mg?si=6wyEkzyAnfufyvaZ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -275,7 +260,6 @@ require ("engine/config.php");
 
      </div>
 
- 
  </div>
 
  <br>
@@ -305,8 +289,6 @@ require ("engine/config.php");
                      if($lawyer){
 
                          include('components/lawyer-profile.php');
-   
-
    ?>
 
              <div class='connect-content col-md-6 d-flex  flex-md-row flex-column' data-aos='fade-up-left'>
@@ -384,9 +366,6 @@ require ("engine/config.php");
 
          </div>
 
-
-
-
          <div class='d-flex flex-row text-center flex-column g-5'>
 
               <h4 class='fw-bold text-success'>
@@ -407,12 +386,9 @@ require ("engine/config.php");
 
          </div>
 
-
-
          <div class='d-flex flex-row text-center flex-column g-5'>
 
-
-             <h4 class='fw-bold text-success'>
+            <h4 class='fw-bold text-success'>
              
              <?php
                  $count = 0;
@@ -431,12 +407,8 @@ require ("engine/config.php");
 ?></h4>
 
               <p>Pro bono lawyers</p> 
-
-
          </div>
          
-         
-
          <div class='d-flex flex-row  text-center flex-column g-5'>
 
              <h4 class='fw-bold text-success'><?php
@@ -452,7 +424,6 @@ require ("engine/config.php");
              <p>Total lawyers</p>          
         
         </div>        
-
 
      </div>
 
@@ -482,12 +453,9 @@ require ("engine/config.php");
 
              $image_extension  = array('jpg','jpeg','png'); 
 
-
         ?>
          
-
          <div class='shadow rounded package-container' style='width:18rem !important; height:29rem; !important'  data-aos='fade-up'>
-
 
              <div class='w-100'>
 
@@ -503,8 +471,6 @@ require ("engine/config.php");
                   
                   <?php } ?>
               </div>
-
-
 
              <div class='p-2 d-flex flex-row flex-column g-1'>
                 
@@ -531,14 +497,10 @@ require ("engine/config.php");
                      <a class='btn border border-success border-2 text-success' href="lawyers.php?current_position=senior advocate">View profile</a>
                  </div>
 
-
              </div>
 
-
          </div>
-
-                
-          
+        
         <?php } ?>
 
 </div>
@@ -592,7 +554,7 @@ require ("engine/config.php");
 
      <br>
      
-     <div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column lawyer-content-container' data-aos='fade-in'>
+     <div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column g-3 lawyer-content-container' data-aos='fade-in'>
 
 
      <?php 
@@ -606,14 +568,23 @@ require ("engine/config.php");
               if($lawyer){
 
                   include('components/lawyer-profile.php');
+
+                  $extension = strtolower(pathinfo($img,PATHINFO_EXTENSION));
+
+                  $image_extension  = array('jpg','jpeg','png'); 
      
 
      ?>
 
          <div class='d-flex flex-row flex-column shadow'>
+      <?php   if (!in_array($extension , $image_extension)) {
 
+          echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($name,0,2)."</span></div>";                  
+
+         } else { 
+     ?>  
              <img class='w-100' src="<?php echo htmlspecialchars($img); ?>" alt="elegal">
-
+<?php }?>
              <div class='d-flex flex-row flex-column px-2 py-3'>
 
                    <h5 class='text-capitalize fw-bold'><?php echo htmlspecialchars($name); ?>, Esq</h5>
@@ -630,7 +601,7 @@ require ("engine/config.php");
                    </span>
 
                    <div class='d-flex justify-content-between mt-2 g-5'>
-                     <a class='btn btn-success text-white  text-sm' href='pricing-list'>Send a message</a>
+                     <a class='btn btn-success text-white  text-sm' href='pricing-list.php'>Send a message</a>
                      <a class='btn border border-success text-success text-sm' href="profile.php?id=<?php echo htmlspecialchars($id); ?>&&user_type=lawyer">View Profile</a>
                    </div>
 
@@ -647,14 +618,13 @@ require ("engine/config.php");
 <br><br>
 
 
-
  <div class='mt-3'>
 
  <h4 class='fw-bold px-4'>CONNECT WITH SPECIFIC LAWYERS </h4>
 
 <br>
 
-<div class='d-flex justify-content-between align-items-center px-3 flex-md-row flex-column  lawyer-content-container' data-aos='fade-up'>
+<div class='d-flex justify-content-between align-items-center px-3 g-3 flex-md-row flex-column  lawyer-content-container' data-aos='fade-up'>
 
 
 <?php 
@@ -669,11 +639,24 @@ require ("engine/config.php");
 
               include('components/lawyer-profile.php');
 
+              $extension = strtolower(pathinfo($img,PATHINFO_EXTENSION));
+
+              $image_extension  = array('jpg','jpeg','png'); 
+
 ?>
 
     <div class='d-flex flex-row flex-column shadow'>
 
+      <?php   if (!in_array($extension , $image_extension)) {
+
+          echo"<div class='text-center'><span class='text-secondary text-uppercase' style='font-size:120px;'>".substr($name,0,2)."</span></div>";                  
+
+     } else { 
+
+     ?>  
          <img class='w-100' src="<?php echo htmlspecialchars($img); ?>" alt="elegal">
+
+     <?php } ?>
 
          <div class='d-flex flex-row flex-column px-2 py-3'>
 
@@ -776,7 +759,7 @@ require ("engine/config.php");
   
               <p class='w-75 w-md-100 text-sm'>Are you a lawyer looking for <b>work in a reputable firm?</b> Join E-Legal today!</p>
 
-              <a class='btn btn-secondary text-white text-sm' href="">Get started</a>
+              <a class='btn btn-secondary text-white text-sm' href="jobs.php">Get started</a>
  
               <div class='d-flex justify-content-end bg-seeker'>
 
@@ -790,14 +773,9 @@ require ("engine/config.php");
 
          </div>         
 
-
      </div>
 
      <br><br>
-
-
-
-
 
      <div class='d-flex justify-content-between connect-home px-3 flex-md-row flex-column' >
            
@@ -807,7 +785,7 @@ require ("engine/config.php");
 
                    <p class='text-sm'>Find out <b>who is hiring</b> today!
                           Get connected to reputable firms with the click of a button.</p>
-                   <a class='btn btn-dark text-white text-sm w-75' href="">Get started</a>
+                   <a class='btn btn-dark text-white text-sm w-75' href="jobs.php">Get started</a>
 
              </div>
 
@@ -819,14 +797,13 @@ require ("engine/config.php");
 
      </div>
 
-
          <div class='d-flex justify-content-between g-3  connect-container border  border-success px-2 py-3' data-aos='fade-left'>
 
                  <div class='d-flex justify-content-center  align-items-start flex-row flex-column w-100'>
 
                       <p class='text-sm'>Find out <b>who is hiring</b> today!
                          Get connected to reputable firms with the click of a button.</p>
-                      <a class='btn btn-dark text-white text-sm w-75' href="">Get started</a>
+                      <a class='btn btn-dark text-white text-sm w-75' href="jobs.php">Get started</a>
 
                   </div>
 
@@ -840,12 +817,6 @@ require ("engine/config.php");
      </div>
 
      <br><br>
-
-
-
-
-
-
 
      <div class='d-flex banner-learn border border-success px-3 py-2'  data-aos='fade-up'>
 
@@ -869,8 +840,6 @@ require ("engine/config.php");
               <img class='shadow' src="assets/images/chess-table.png" alt="elegal">
 
          </div>
-
-
 
      </div>
      
@@ -1017,9 +986,6 @@ require ("engine/config.php");
 
          </div>
 
-
-
-
      </div>
 
      <br><br>
@@ -1040,10 +1006,9 @@ require ("engine/config.php");
  
      ?>    
 
-
          <div class='d-flex flex-row flex-column'>
 
-            <a href="article-details.php?id=<?php echo htmlspecialchars($article_id); ?>"> <img src="<?php echo htmlspecialchars($article_img); ?>" alt="elegal"></a>
+            <a href="article-details.php?id=<?= htmlspecialchars($article_id); ?>"> <img src="<?php echo htmlspecialchars($article_img); ?>" alt="elegal"></a>
              
               <h6 class='text-dark'><a class='text-dark text-decoration-none' href="article-details.php?id=<?php echo htmlspecialchars($id); ?>"><?php echo htmlspecialchars($title); ?></a></h6>
 
@@ -1054,8 +1019,6 @@ require ("engine/config.php");
         <?php } } ?>
 
      </div>
-
-
 
      <br><br>
      
@@ -1087,9 +1050,6 @@ require ("engine/config.php");
              style.height="0%";
          }
 </script>
-
-
-
 
 </body>
 </html>

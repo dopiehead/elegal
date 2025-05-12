@@ -1,7 +1,7 @@
     <!--popup to insert data of offenders-->
     
     <div class="popup rounded">
-  <a class='close-popup text-dark bg-danger rounded-circle py-1 px-3 shadow-md' onclick="toggle()">&times;</a>
+  <a class='close-popup text-secondary' onclick="toggle()"><i class='fa fa-close fa-2x'></i></a>
   <h5 class='fw-bold ps-3 pt-2'>Add new offender</h5><br>
 
   <div class="modal-content px-2">

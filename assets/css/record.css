@@ -13,6 +13,9 @@ body {
     color: #212529;
     background-color: white;
 }
+.police-heading{
+    color:var(--primary-purple);
+}
 
 /* Navbar styles */
 .navbar {
@@ -396,8 +399,13 @@ h5{
 .close-popup,.close-filter{
     position:absolute;
     right:0;
-    margin-top:-10px;
+    margin-right: 20px;
+    margin-top: 8px;
     cursor:pointer;
+}
+
+.close-popup:hover,.close-popup:focus,.close-filter:focus,.close-filter:hover,#close-details:focus,#close-details:hover{
+    opacity: 0.5;
 }
 
 /* modal buttons */
@@ -407,9 +415,7 @@ h5{
 }
 
 .filter-button:hover,
-.filter-button:focus,
-.btn-add:focus,
-.btn-add:hover{
+.filter-button:focus{
     opacity:0.6;
 }
 
@@ -429,3 +435,26 @@ scrollbar-width:none;
 #close-details{
     cursor:pointer;
 }
+
+.bg-button{
+    background: linear-gradient(to right, rgb(255, 60, 93), blue);
+    transition: 0.5s ease-in-out;
+}
+
+.bg-button:hover{
+    background: linear-gradient(to right, blue, rgb(255, 60, 93));
+   
+}
+
+.text-more{
+    border:1px solid var(--primary-purple);
+    color:var(--primary-purple);
+}
+
+.text-more:hover,.text-more:focus{
+    border:none;
+    color:white;
+    background-color: var(--primary-purple);
+}
+
+

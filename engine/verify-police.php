@@ -2,15 +2,13 @@
 require("config.php");
 
 $verification_message = "";
-
 $alert_class = "alert-danger"; // Default to error
 
 if (isset($_GET['vkey'])) {
-    
     $vkey = $_GET['vkey'];
 
     // Check if the vkey exists in the database and is not already verified
-    $sql = "SELECT verified FROM lawyer_firm WHERE vkey = ? LIMIT 1";
+    $sql = "SELECT verified FROM police_officer WHERE vkey = ? LIMIT 1";
 
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("s", $vkey);
@@ -23,7 +21,7 @@ if (isset($_GET['vkey'])) {
 
             if ($verified == 0) {
                 // Update verification status
-                $update_sql = "UPDATE lawyer_firm SET verified = 1 WHERE vkey = ?";
+                $update_sql = "UPDATE police_officer SET verified = 1 WHERE vkey = ?";
                 if ($update_stmt = $conn->prepare($update_sql)) {
                     $update_stmt->bind_param("s", $vkey);
                     if ($update_stmt->execute()) {

@@ -55,25 +55,25 @@ $email_check_stmt->close();
 $hashed_password = password_hash($data['password'], PASSWORD_BCRYPT);
 
 // Generate verification key
-$vkey = md5(time() . $data['police_name']);
+$vkey = md5(time() . $data['police_email']);
 $verified = 0;
 
 // Prepare insert statement
 $sql = "INSERT INTO police_officer (
-    police_name, email, rank_name, next_of_kin, relationship,
-    next_of_kin_telephone, department_phone_number, team, location, password, vkey, verified, date
+    police_name, police_email, rank_name, next_of_kin, relationship,
+    next_of_kin_telephone, police_phone_number, team, location, password, vkey, verified, date
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param(
         "sssssssssssis",
         $data['police_name'],
-        $data['email'],
+        $data['police_email'],
         $data['rank_name'],
         $data['next_of_kin'],
         $data['relationship'],
         $data['next_of_kin_telephone'],
-        $data['department_phone_number'],
+        $data['police_phone_number'],
         $data['team'],
         $data['location'],
         $hashed_password,

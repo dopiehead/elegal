@@ -17,16 +17,23 @@
              ini_set('display_errors', 1);
              
              // Get user ID from session or redirect if none found
-             $user_id = $_SESSION['id'] ?? $_SESSION['lawyer_id'] ?? $_SESSION['firm_id'] ?? exit(header('Location: ../login.php'));
+             $user_id = $_SESSION['id'] ?? $_SESSION['lawyer_id'] ?? $_SESSION['firm_id'] ?? $_SESSION['department_id'] ?? $_SESSION['police_id'] ?? exit(header('Location: ../login.php'));
             
                // Determine the correct notifications table based on session
-             if (isset($_SESSION['id'])) {
-                 $query = "SELECT * FROM user_notifications WHERE recipient_id = ? AND pending = 0";
-             } elseif (isset($_SESSION['lawyer_id'])) {
-                  $query = "SELECT * FROM lawyer_notifications WHERE recipient_id = ? AND pending = 0";
-             } else {
-                 $query = "SELECT * FROM firm_notifications WHERE recipient_id = ? AND pending = 0";
-             }
+               $notificationTables = [
+                'id' => 'user_notifications',
+                'lawyer_id' => 'lawyer_notifications',
+                'firm_id' => 'firm_notifications',
+                'department_id' => 'department_notifications',
+                'police_id' => 'police_notifications'
+            ];
+            
+            foreach ($notificationTables as $sessionKey => $table) {
+                if (isset($_SESSION[$sessionKey])) {
+                    $query = "SELECT * FROM {$table} WHERE recipient_id = ? AND pending = 0";
+                    break;
+                }
+            }
                   // Prepare and execute the statement
              $get_notifications = $conn->prepare($query);
              

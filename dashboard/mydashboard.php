@@ -26,6 +26,13 @@ if (isset($_SESSION["firm_id"])) {
 }
 
 
+if (isset($_SESSION["police_id"])) {
+  
+    include ("content/police-content.php");
+
+}
+
+
 ?>
 
 <html lang="en">

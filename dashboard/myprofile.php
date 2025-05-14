@@ -1,26 +1,38 @@
 <?php session_start();
 
-if (!isset($_SESSION['id']) && !isset($_SESSION['lawyer_id'])) {
-     header("Location: ../login.php");
-     exit();
+$allowedSessions = ['id', 'lawyer_id','police_id','department_id'];
+
+$authenticated = false;
+foreach ($allowedSessions as $sessionKey) {
+    if (isset($_SESSION[$sessionKey])) {
+        $authenticated = true;
+        break;
+    }
+}
+
+if (!$authenticated) {
+    header("Location: ../login.php");
+    exit();
 }
 
 require("../engine/config.php");
 
-if (isset($_SESSION["id"])) {
-   
-      include ("content/user-content.php");
+$sessionIncludes = [
+    "id" => "content/user-content.php",
+    "lawyer_id" => "content/lawyer-content.php",
+    "police_id" => "content/police-content.php",
+    "department_id" => "content/police-department-content.php"
+];
+
+foreach ($sessionIncludes as $key => $file) {
+    if (isset($_SESSION[$key])) {
+        include($file);
+        break; // Stop after first match
+    }
 }
 
-
-if (isset($_SESSION["lawyer_id"])) {
- 
-     include ("content/lawyer-content.php");
-
-}
 
 $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
-
 $image_extension  = array('jpg','jpeg','png'); 
 
 ?>

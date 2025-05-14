@@ -58,6 +58,10 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
 
                          <option value="firm">Law Firm</option>
 
+                         <option value="police">Police Officer</option>
+
+                         <option value="police_department">Police Department</option>
+
                          <option value="admin">Admin</option>
                     
                       </select>
@@ -91,18 +95,19 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
      </div>
 
 
-     <input type="hidden" id="details" value="<?php echo htmlspecialchars($details); ?>">
+     <input type="hidden" id="details" value="<?= htmlspecialchars($details); ?>">
 
      <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Initially hide the spinner
         $(".spinner-border").hide();
 
-        $(".btn-login").on("click", function(e) {
+        // Use ID consistently for the login button
+        $("#btn-login").on("click", function (e) {
             e.preventDefault();
 
             $(".spinner-border").show();
-            $('#btn-login').prop('disabled', true);
+            $("#btn-login").prop("disabled", true);
             $(".sign-in-note").hide();
 
             let details = $("#details").val();
@@ -113,23 +118,35 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
                 type: "POST",
                 url: "engine/login-process.php",
                 data: formData,
-                success: function(response) {
+                success: function (response) {
                     $(".spinner-border").hide();
                     $(".sign-in-note").show();
-                    $('#btn-login').prop('disabled', false);
+                    $("#btn-login").prop("disabled", false);
 
                     if (response == 1) {
-                        $("#login-form")[0].reset();
-
+                        // Redirect based on details or user type
                         if (details !== "") {
                             window.location.href = details;
                         } else {
-                            if (user_type == "admin") {
-                                window.location.href = "admin/admin-dashboard.php";
-                            } else if (user_type == "firm") {
-                                window.location.href = "dashboard/firm-dashboard.php";
-                            } else {
-                                window.location.href = "dashboard/mydashboard.php";
+                            switch (user_type) {
+                                case "admin":
+                                    window.location.href = "admin/admin-dashboard.php";
+                                    break;
+
+                                case "firm":
+                                    window.location.href = "dashboard/firm-dashboard.php";
+                                    break;
+
+                                case "police_department":
+                                    window.location.href = "dashboard/police-department-dashboard.php";
+                                    break;  
+
+                                case "police":
+                                    window.location.href = "dashboard/police-dashboard.php";
+                                    break;                                    
+
+                                default:
+                                    window.location.href = "dashboard/mydashboard.php";
                             }
                         }
                     } else {
@@ -138,15 +155,15 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
                             text: response,
                             title: "Notice"
                         });
-                        $("input").css('border', '1px solid red');
+                        $("input").css("border", "1px solid red");
                     }
                 },
-
-                error: function(err) {
+                error: function (err) {
                     $(".spinner-border").hide();
+                    $("#btn-login").prop("disabled", false);
                     swal({
                         icon: "error",
-                        text: err,
+                        text: "An error occurred while processing your request.",
                         title: "Error"
                     });
                 }

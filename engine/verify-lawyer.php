@@ -71,7 +71,7 @@ if (isset($_GET['vkey'])) {
             <?php echo $verification_message; ?>
         </div>
         <div class="text-center">
-            <a href="https://elegal.ng/login.php" class="btn btn-primary w-100">Go to Login</a>
+            <a href="login.php" class="btn btn-primary w-100">Go to Login</a>
         </div>
     </div>
 </div>

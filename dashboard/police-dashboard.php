@@ -31,36 +31,17 @@ else {
             <div class="text-warning fw-bold fs-4">ele<span class="text-dark">gal</span></div>
         </div>
         <ul class="sidebar-menu list-unstyled">
+            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#" class="sidebar-menu-item"><i class="fas fa-th-large"></i> Dashboard</a></li>
-            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
-            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-chart-bar"></i> Reports</a></li>
-
-            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-file-alt"></i> Pages</a></li>
-            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-envelope"></i> Contact</a></li>
-
+            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-user"></i> My profile</a></li>   
+            <li><a style="cursor:pointer;" class="sidebar-menu-item dropdown-btn"><i class="fas fa-gear"></i> Settings</a></li>  
+             <ul style='display:none;' class='dropdown-content d-flex flex-column flex-row gap-3 ms-2 bg-light p-2 text-secondary list-unstyled d-none'>
+                   <li class='ps-4 cursor-pointer'><a class='show-popup text-decoration-none text-secondary'><i class='fas fa-key'></i> Change Password</a></li>
+                   <li class="ps-4 cursor-pointer"><a class='show-delete text-decoration-none text-secondary'><i class='fas fa-trash'></i> Delete account</a></li>
+             </ul>    
+            <li><a href="#" class="sidebar-menu-item"><i class="fas fa-sign-out"></i> Log out</a></li>
         </ul>
-        <div class="user-menu-section">
-            <div class="d-flex align-items-center mb-3">
-                <div class="position-relative me-2">
-                    
-                </div>
-                <div class="small">
-                    <div class="fw-bold"><?= htmlspecialchars($police_name) ?></div>
-                    <div class="text-muted small"><?= htmlspecialchars($email) ?></div>
-                </div>
-            </div>
-            <div class="small">
-                <a href="#" class="text-decoration-none text-dark d-block py-1">My Profile</a>
-            
-                <a href="#" class="text-decoration-none text-dark d-block py-1">My Bank</a>
-                <a href="#" class="text-decoration-none text-dark d-block py-1">Change Password</a>
-            </div>
-            <div class="d-flex align-items-center mt-3 bg-warning bg-opacity-10 p-2 rounded">
-                <div class="ms-auto">
-                    <i class="fas fa-plus text-warning"></i>
-                </div>
-            </div>
-        </div>
+       
     </div>
 
     <!-- Main Content -->
@@ -123,30 +104,39 @@ else {
         <div class="info-card">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="mb-0">Personal Information</h5>
-                <button class="edit-btn">Edit</button>
+                <button class="edit-btn edit-button">Edit</button>
             </div>
 
             <div class="row">
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Full Name</div>
-                    <div><?= htmlspecialchars($police_name)?></div>
+                    <div class="field"><span><?= htmlspecialchars($police_name)?></span></div>
                 </div>
 
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Date of Birth</div>
-                    <div><?= htmlspecialchars($police_dob)?></div>
+                    <div class="field"><span><?= htmlspecialchars($police_dob)?></span></div>
                 </div>
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Email Address</div>
-                    <div><?= htmlspecialchars($_SESSION['email'])?></div>
+                    <div class="field"><span><?= htmlspecialchars($_SESSION['email'])?></span></div>
                 </div>
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Phone Number</div>
-                    <div><?= htmlspecialchars($police_phone_number)?></div>
+                    <div class="field"><span><?= htmlspecialchars($police_phone_number)?></span></div>
                 </div>
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">User Role</div>
-                    <div><span class='text-capitalize'><?= htmlspecialchars(preg_replace("/_/"," ",$user_type))?></span></div>
+                    <div class="field"><span class='text-capitalize'><?= htmlspecialchars(preg_replace("/_/"," ",$user_type))?></span></div>
+                </div>
+                <div class="col-md-4 profile-info-section">
+                    <div class="text-muted small">Rank name</div>
+                    <div class="field"><span class='text-capitalize'><?= htmlspecialchars(preg_replace("/_/"," ",$rank_name))?></span></div>
+                </div>
+
+                <div class="col-md-4 profile-info-section">
+                    <div class="text-muted small">Team</div>
+                    <div class="field"><span class='text-capitalize' ><?= htmlspecialchars(preg_replace("/_/"," ",$team))?></span></div>
                 </div>
             </div>
         </div>
@@ -155,11 +145,11 @@ else {
         <div class="info-card">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="mb-0">Address</h5>
-                <button class="btn p-0">
+                <button class="btn p-0 edit-address">
                     <i class="fas fa-pencil-alt edit-icon"></i>
                 </button>
             </div>
-
+            
             <div class="row">
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Country</div>
@@ -167,14 +157,222 @@ else {
                 </div>
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">City</div>
-                    <div><?= htmlspecialchars($lga)?></div>
+                    <div><span class='field-address capitalize'><?= htmlspecialchars($lga)?></span></div>
                 </div>
                 <div class="col-md-4 profile-info-section">
                     <div class="text-muted small">Full Address</div>
-                    <div><?= htmlspecialchars($full_address)?></div>
+                    <div><span class='field-address'><?= htmlspecialchars($full_address)?></span></div>
                 </div>
             </div>
         </div>
+
+         <!-- official information -->
+          
+        <div class="info-card">
+
+           <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0">Next of Kin</h5>
+                <button class="btn p-0 edit-nextofKin">
+                    <i class="fas fa-pencil-alt edit-icon"></i>
+                </button>
+            </div>
+          
+
+            <div class="row">
+                <div class="col-md-4 profile-info-section">
+                    <div class="text-muted small">Next of Kin</div>
+                    <div class='text-secondary capitalize'><span class='nextofKin'><?= htmlspecialchars($next_of_kin) ?></span></div>
+                </div>
+                <div class="col-md-4 profile-info-section">
+                    <div class="text-muted small">Relationship</div>
+                    <div><span class='nextofKin text-capitalize'><?= htmlspecialchars($relationship)?></span></div>
+                </div>
+                <div class="col-md-4 profile-info-section">
+                    <div class="text-muted small">Phone number</div>
+                    <div><span class='nextofKin'><?= htmlspecialchars($next_of_kin_telephone)?></span></div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
     </div>
+
+<!-- modal for password change -->
+<div class="popup-password d-none">
+    <a href="#" class="close-popup"><i class="fas fa-close"></i></a>
+    <div class="popup-content">
+        <h2>Reset Password</h2>
+        <form>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            
+            <label for="password">New Password</label>
+            <input type="password" id="password" placeholder="Enter new password" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Delete Confirmation Popup -->
+<div class="popup-delete d-none">
+    <a href="#" class="close-delete"><i class="fas fa-close"></i></a>
+    
+    <div class="delete-content">
+        <h2><i class="fas fa-exclamation-triangle"></i> Confirm Deletion</h2>
+        <p>Are you sure you want to delete this item?</p>
+        
+        <ul class="delete-notes">
+            <li>This action <strong>cannot</strong> be undone.</li>
+            <li>The item will be permanently removed from the database.</li>
+            <li>All associated data will be lost.</li>
+        </ul>
+        
+        <div class="delete-buttons">
+            <button class="btn-confirm">Yes, Delete</button>
+            <button class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(document).on("click", ".dropdown-btn", function (e) {
+        e.preventDefault();
+        var $dropdown = $(".dropdown-content");
+
+        if ($dropdown.hasClass("d-none")) {
+            $dropdown.removeClass("d-none").hide().slideDown(200);
+        } else {
+            $dropdown.slideUp(200, function () {
+                $dropdown.addClass("d-none");
+            });
+        }
+    });
+</script>
+<script>
+    // Show the popup
+    $(document).on("click", ".show-popup", function(e) {
+        e.preventDefault();
+        $(".popup-password")
+            .removeClass("d-none")
+            .addClass("show");
+    });
+
+    // Hide the popup
+    $(document).on("click", ".close-popup", function(e) {
+        e.preventDefault();
+        $(".popup-password")
+            .removeClass("show")
+            .delay(300) // Wait for animation to complete
+            .queue(function(next){
+                $(this).addClass("d-none");
+                next();
+            });
+    });
+</script>
+
+<script>
+    // Show the delete popup
+    $(document).on("click", ".show-delete", function(e) {
+        e.preventDefault();
+        $(".popup-delete")
+            .removeClass("d-none")
+            .addClass("show");
+    });
+
+    // Hide the delete popup
+    $(document).on("click", ".close-delete, .btn-cancel", function(e) {
+        e.preventDefault();
+        $(".popup-delete")
+            .removeClass("show")
+            .delay(300)
+            .queue(function(next){
+                $(this).addClass("d-none");
+                next();
+            });
+    });
+
+    // Confirm delete
+    $(document).on("click", ".btn-confirm", function(e) {
+        e.preventDefault();
+        alert("Item deleted!");
+        // You can trigger actual deletion here
+
+        $(".popup-delete")
+            .removeClass("show")
+            .delay(300)
+            .queue(function(next){
+                $(this).addClass("d-none");
+                next();
+            });
+    });
+</script>
+<script>
+   $(document).on("click", ".edit-button", function () {
+      $(".field").each(function () {
+         const isEditable = $(this).attr("contenteditable") === "true";
+
+         // Toggle contenteditable
+         $(this).attr("contenteditable", !isEditable);
+
+         // Toggle border style
+         $(this).toggleClass("border-bottom border-1 border-danger border-dotted");
+
+         // Optional: focus when entering edit mode
+         if (!isEditable) {
+            $(this).focus();
+         }
+      });
+   });
+</script>
+<script>
+   $(document).on("click", ".edit-address", function () {
+      $(".field-address").each(function () {
+         const isEditable = $(this).attr("contenteditable") === "true";
+
+         // Toggle contenteditable
+         $(this).attr("contenteditable", !isEditable);
+
+         // Toggle border style to indicate edit mode
+         $(this).toggleClass("border-bottom border-1 border-danger border-dotted");
+
+         // Optional: focus the field if entering edit mode
+         if (!isEditable) {
+            $(this).focus();
+         }
+      });
+   });
+</script>
+
+<script>
+   $(document).on("click", ".edit-nextofKin", function () {
+      $(".nextofKin").each(function () {
+         const isEditable = $(this).attr("contenteditable") === "true";
+
+         // Toggle contenteditable
+         $(this).attr("contenteditable", !isEditable);
+
+         // Toggle border style to indicate edit mode
+         $(this).toggleClass("border-bottom border-1 border-danger border-dotted");
+
+         // Optional: focus the field if entering edit mode
+         if (!isEditable) {
+            $(this).focus();
+         }
+      });
+   });
+</script>
+
+
+

@@ -5,7 +5,9 @@ if(!isset($_SESSION['firm_id'])){
       exit();
 } 
 else {
-      include ("content/firm-content.php");
+      include ("content/firm-content.php");     
+      $extension = strtolower(pathinfo($user_img,PATHINFO_EXTENSION));
+      $image_extension  = array('jpg','jpeg','png'); 
      }
 ?>
 <html lang="en">

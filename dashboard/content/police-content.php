@@ -1,8 +1,15 @@
 <?php 
 
-$userId = $_SESSION['police_id'];
-$you = $_SESSION['police_email'];
-$user_type = "police";     
+$userId = $_SESSION['officer_id'];
+$you = $_SESSION['email'];
+$user_type = "police_officer";     
+$user_img = ""; 
+
+
+date_default_timezone_set('Africa/Lagos');
+date_default_timezone_get();
+$dateToday = date("F d, Y");
+
 
 $query = "SELECT * FROM police_officer WHERE officer_id = ?";
 $stmt = mysqli_prepare($conn, $query);
@@ -25,12 +32,16 @@ if ($row = mysqli_fetch_assoc($result)) {
     $relationship = getValue($row, 'relationship');
     $next_of_kin_telephone = getValue($row, 'next_of_kin_telephone');
     $police_phone_number = getValue($row, 'police_phone_number');
+    $police_dob = getValue($row, 'police_dob');
     $team = getValue($row, 'team');
     $location = getValue($row, 'location');
+    $lga = getValue($row, 'lga');
+    $full_address = getValue($row, 'full_address');
     $password = getValue($row, 'password');
     $vkey = getValue($row, 'vkey');
     $verified = getValue($row, 'verified');
     $date_created = getValue($row, 'date');
+   
 
 } else {
     echo "No user found.";

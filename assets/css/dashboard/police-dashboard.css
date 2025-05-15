@@ -1,0 +1,144 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    background-color: white;
+    height: 100vh;
+    width: 240px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+.logo {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #eee;
+}
+.logo img {
+    max-width: 120px;
+}
+.sidebar-menu {
+    padding: 20px 0;
+}
+.sidebar-menu-item {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    color: #555;
+    text-decoration: none;
+}
+.sidebar-menu-item:hover {
+    background-color: #f8f9fa;
+}
+.sidebar-menu-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+.sidebar-menu-item.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+.main-content {
+    margin-left: 240px;
+    padding: 20px;
+}
+.top-bar {
+    background-color: #0c522d;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.search-box {
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+}
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+}
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+.badge-notification {
+    position: relative;
+}
+.badge-notification .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff6b01;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-card, .info-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+}
+.profile-info-section {
+    margin-bottom: 15px;
+}
+.edit-btn {
+    background-color: #ff6b01;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.edit-icon {
+    color: #aaa;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.user-menu-section {
+    padding: 10px 20px;
+    border-top: 1px solid #eee;
+}
+.user-profile-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #ddd;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.collapsible-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.premium-badge {
+    background-color: #ff6b01;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin-left: 5px;
+}

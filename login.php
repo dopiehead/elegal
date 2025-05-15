@@ -58,7 +58,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
 
                          <option value="firm">Law Firm</option>
 
-                         <option value="police">Police Officer</option>
+                         <option value="police_officer">Police Officer</option>
 
                          <option value="police_department">Police Department</option>
 
@@ -141,7 +141,7 @@ if(isset($_GET['details']) && !empty($_GET['details'])){
                                     window.location.href = "dashboard/police-department-dashboard.php";
                                     break;  
 
-                                case "police":
+                                case "police_officer":
                                     window.location.href = "dashboard/police-dashboard.php";
                                     break;                                    
 

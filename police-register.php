@@ -21,71 +21,60 @@
              </div>  
 
              <form id="police-registration-form">
-                   
-                  <label class='text-sm text-secondary' for="police_name">Full name<span class='text-danger'>*</span></label>
 
+                  <label class='text-sm text-secondary' for="police_name">Full name <span class='text-danger'>*</span></label>
                   <input type="text" name='police_name' class='bg-secondary border-0 w-100 py-2 px-1'>
 
-                  <br>
+             <br>
 
-                 <label class='text-sm text-secondary' for="">Email address  <span class='text-danger'>*</span></label>
+                  <label class='text-sm text-secondary' for="email">Email address <span class='text-danger'>*</span></label>
+                  <input type="email" name="email" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Email address">
 
-                 <input type="email" name="email" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Email address">
+                 <label class='text-sm text-secondary' for="rank_name">Rank name <span class='text-danger'>*</span></label>
+                 <input type="text" name="rank_name" class='bg-secondary border-0 w-100 py-2 px-1'>
 
+                 <label class='text-sm text-secondary' for="next_of_kin">Next of kin <span class='text-danger'>*</span></label>
+                 <input type="text" name="next_of_kin" class='bg-secondary border-0 w-100 py-2 px-1'>
 
-                 <label class='text-sm text-secondary' for="">Rank name<span class='text-danger'>*</span></label>
-
-                 <input type="text" name="rank_name" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Department head">
-  
-
-                 <label  class='text-sm text-secondary' for="">Next of kin  <span class='text-danger'>*</span></label>
-
-                 <input type="text" name="next_of_kin" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Next of Kin">
-
-
-                 <label  class='text-sm text-secondary' for="">Relationship with Next of kin  <span class='text-danger'>*</span></label>
-
+                 <label class='text-sm text-secondary' for="relationship">Relationship with Next of kin <span class='text-danger'>*</span></label>
                  <input type="text" name="relationship" class='bg-secondary border-0 w-100 py-2 px-1'>
 
-
-                 <label  class='text-sm text-secondary' for="">Next of kin (Telephone)  <span class='text-danger'>*</span></label>
-
+                 <label class='text-sm text-secondary' for="next_of_kin_telephone">Next of kin (Telephone) <span class='text-danger'>*</span></label>
                  <input type="text" name="next_of_kin_telephone" class='bg-secondary border-0 w-100 py-2 px-1' placeholder="Telephone">
 
-                                      
-                 <label  class='text-sm text-secondary' for=""> Telephone <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary' for="police_phone_number">Telephone <span class='text-danger'>*</span></label>
+                 <input type="text" name="police_phone_number" class='bg-secondary border-0 w-100 py-2' placeholder="Your phone number">
 
-                 <input type="text" name="department_phone_number" class='bg-secondary border-0 w-100 py-2' placeholder="Your phone number">
+                 <label class='text-sm text-secondary' for="police_dob">Date of Birth <span class='text-danger'>*</span></label>
+                 <input type="date" name="police_dob" class='bg-secondary border-0 w-100 py-2 px-1'>
 
+                 <label class='text-sm text-secondary' for="team">Team (What team do you belong to?) <span class='text-danger'>*</span></label>
+                 <input type="text" name="team" class='bg-secondary border-0 w-100 py-2 px-1'>
 
-                 <label class='text-sm text-secondary' for="">Team (What team do you belong to ?)  <span class='text-danger'>*</span></label>
+                 <label class='text-sm text-secondary' for="location">Location</label>
+                 <input type="text" name="location" class='bg-secondary border-0 w-100 py-2 px-1'>
 
-                 <input type="text" name="team" class='bg-secondary border-0 w-100 py-2 px-1'> 
+                 <label class='text-sm text-secondary' for="lga">LGA</label>
+                 <input type="text" name="lga" class='bg-secondary border-0 w-100 py-2 px-1'>
 
+                 <label class='text-sm text-secondary' for="full_address">Full Address</label>
+                 <input type="text" name="full_address" class='bg-secondary border-0 w-100 py-2 px-1'>
 
-                 <label class='text-sm text-secondary' for="">Location <span class='text-danger'></span></label>
+                 <label class='text-sm text-secondary' for="password">Password <span class='text-danger'>*</span></label>
+                 <input type="password" name="password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Enter password'>
 
-                 <input type="text" name="location" class='bg-secondary border-0 w-100 py-2 px-1'> 
+                 <label class='text-sm text-secondary' for="confirm_password">Confirm Password <span class='text-danger'>*</span></label>
+                 <input type="password" name="confirm_password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Confirm password'>
 
+<div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
+    <button class='btn btn-success text-sm d-flex justify-content-center align-items-center' id='btn-signup'>
+        <span class='spinner-border text-warning d-none'></span>
+        <span class='sign-up-note'>Sign up</span>
+    </button>
+    <span class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</span>
+</div>
 
-                 <label class='text-sm text-secondary' for="">Password <span class='text-danger'>*</span></label>
-
-                 <input type="password" name="password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Enter password'>  
-
-
-                 <label class='text-sm text-secondary' for="">Confirm password <span class='text-danger'>*</span></label>
-
-                 <input type="password" name="confirm_password" class='bg-secondary border-0 w-100 py-2 px-1' placeholder='Confirm password'>  
-                  
-
-                 <div class='text-center d-flex justify-content-center mt-4 mb-2 gap-1'>
-
-                      <button class='btn btn-success text-sm d-flex justify-content-center align-items-center' id='btn-signup'><span class='spinner-border text-warning'></span> <span class='sign-up-note'>Sign up</span></button>
-                      <span class='btn border border-2 border-white text-white' onclick="history.go(-1)">Go back</span>
-
-                 </div>
-
-             </form>
+</form> 
 
          </div>
 

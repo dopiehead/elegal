@@ -2,7 +2,11 @@
 
 $userId = $_SESSION['police_id'];
 $userEmail = $_SESSION['police_email'];
-$user_type = "police";     
+$user_type = "police department";   
+
+date_default_timezone_set('Africa/Lagos');
+date_default_timezone_get();
+$dateToday = date("F d, Y");
 
 $query = "SELECT * FROM police_department WHERE id = ?";
 $stmt = mysqli_prepare($conn, $query);
@@ -25,6 +29,8 @@ if ($row = mysqli_fetch_assoc($result)) {
     $department_phone_number = getValue($row, 'department_phone_number');
     $zonal_head = getValue($row, 'zonal_head');
     $department_location = getValue($row, 'department_location');
+    $lga = getValue($row, 'lga');
+    $full_address = getValue($row, 'full_address');
     $department_password = getValue($row, 'department_password'); // avoid exposing this in real app
     $vkey = getValue($row, 'vkey');
     $verified = getValue($row, 'verified');

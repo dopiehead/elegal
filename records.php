@@ -161,9 +161,217 @@
     </footer>
       
    <!-- modal Filter -->
-<?php include("popup-filter.php");?>
+   <?php include("popup-filter.php");?>
     <!-- modal to insert data -->
 <?php include("popup.php");?>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<script>
+
+ $(document).ready(function(){
+    $("#table-container").load("engine/police-record-engine.php");
+
+    $("#q").on("keyup", function(e) {
+        e.preventDefault();
+        let x = $("#q").val();
+        getData(x);
+    });
+
+    $("#activityFilter").on("change", function(e) {
+        e.preventDefault();
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        getData(x, activityFilter);
+    });  
+    
+    $("#locationFilter").on("change", function(e) {
+        e.preventDefault();
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        let locationFilter = $("#locationFilter").val();
+        getData(x, activityFilter, locationFilter);
+    });   
+    
+    $("#categoryFilter").on("change", function(e) {
+        e.preventDefault();
+
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        let locationFilter = $("#locationFilter").val();
+        let categoryFilter = $("#categoryFilter").val();
+        
+        getData(x, activityFilter, locationFilter, categoryFilter);
+    });
+
+    $("#activityFilter, #locationFilter, #categoryFilter").on("change", function(e) {
+        e.preventDefault();
+
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        let locationFilter = $("#locationFilter").val();
+        let categoryFilter = $("#categoryFilter").val();
+
+        getData(x, activityFilter, locationFilter, categoryFilter);
+    });
+
+    $("#orderBy").on("change",function(e){
+         e.preventDefault();
+
+        let orderBy = $("#orderBy").val();
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        let locationFilter = $("#locationFilter").val();
+        let categoryFilter = $("#categoryFilter").val();
+
+        getData(x, activityFilter, locationFilter, categoryFilter,orderBy);
+    });
+ 
+    $(document).on("click", ".btn-pagination", function(e) {
+        e.preventDefault();
+
+        let x = $("#q").val();
+        let activityFilter = $("#activityFilter").val();
+        let locationFilter = $("#locationFilter").val();
+        let categoryFilter = $("#categoryFilter").val();
+        let orderBy = $("#orderBy").val();
+        let page = $(this).attr("id");
+     
+        getData(x, activityFilter, locationFilter, categoryFilter, orderBy, page);
+    });
+
+    function getData(x, activityFilter, locationFilter, categoryFilter, orderBy, page) {
+        $(".spinner-border").show();
+        $.ajax({
+            url: "engine/police-record-engine.php",
+            type: "POST",
+            data: {
+                "q": x,
+                "activityFilter": activityFilter,
+                "locationFilter": locationFilter,
+                "categoryFilter": categoryFilter,
+                "orderBy": orderBy,
+                "page": page
+            },
+            success: function(data) {
+                $(".spinner-border").hide();
+                $("#table-container").html(data).show();
+            },
+            error: function(xhr,status, error) {
+                $(".spinner-border").hide(); // Hide the spinner on error
+                 console.error("AJAX Error:", status, error); // Log the error details
+                 $("#table-container").html("<div class='alert alert-danger w-100'>An error occurred while loading the data. Please try again later.</div>");
+            }
+        });
+    }
+});
+</script>
+
+<script>
+$(document).on("click", ".btn-more", function() {
+    let id = $(this).attr("id");
+    if (id.length > 0) {
+        $.ajax({
+            url: "engine/get-details.php",
+            type: "POST",
+            data: { id: id },
+            success: function(response) {
+                // Assuming there's a container to show the result
+                $("#details-container").html(response).show();
+            },
+            error: function(xhr, status, error) {
+                console.error("Error fetching details:", error);
+                $("#details-container").html("<p>Something went wrong. Please try again.</p>");
+            }
+        });
+    }
+});
+
+$(document).on("click",".close-details",function(){
+    $("#details-container").toggle();
+});
+</script>
+
+   <script>
+$(document).ready(function() {
+  $('#insert-police-data').on('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    let isValid = true;
+
+    // Loop through all required inputs
+    $('#insert-police-data').find('input, textarea, select').each(function() {
+      const type = $(this).attr('type');
+      const value = $(this).val();
+
+      // Skip file inputs in basic validation (we'll handle them separately if needed)
+      if (type !== 'file' && !value.trim()) {
+        isValid = false;
+        $(this).addClass('is-invalid');
+      } else {
+        $(this).removeClass('is-invalid');
+      }
+    });
+
+    if (!isValid) {
+      swal({
+        title: "Incomplete Form",
+        text: "Please fill out all required fields before submitting.",
+        icon: "warning"
+      });
+      return;
+    }
+
+    // If form is valid, send using FormData to include file uploads
+    const formData = new FormData(this);
+
+    $.ajax({
+      url: 'submit_police_record.php',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        if (response.trim() === "1") {
+          swal({
+            text: "Record submitted successfully!",
+            title: "Success!!",
+            icon: "success",
+          });
+          $('#insert-police-data')[0].reset();
+          $('.tab-pane').removeClass('show active');
+          $('#step1').addClass('show active');
+          $('.nav-link').removeClass('active');
+          $('#step1-tab').addClass('active');
+          $(".popup").fadeOut(100);
+        } else {
+          swal({
+            text: "Error: " + response,
+            title: "Notice",
+            icon: "warning",
+          });
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error("AJAX Error:", error);
+        swal({
+          title: "Error",
+          text: "An error occurred while submitting the form.",
+          icon: "error",
+        });
+      }
+    });
+  });
+});
+</script>
 
     <!-- jQuery (v3.7.1) CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
